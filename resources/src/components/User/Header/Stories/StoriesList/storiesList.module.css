@@ -1,0 +1,15 @@
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 15px 0 5px 0;
+    padding: 0 8% 0 8%;
+}
+
+@media all and (max-width: 768px) {
+
+    .container {
+        padding: 0;
+    }
+}

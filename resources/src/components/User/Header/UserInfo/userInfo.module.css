@@ -1,0 +1,25 @@
+
+.mainContainer {
+    display: flex;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.unitContainer {
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+}
+
+@media (max-width: 425px) {
+    .unitContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.unitNumber {
+    color: black;
+    font-weight: 600;
+    margin-right: 5px;
+}

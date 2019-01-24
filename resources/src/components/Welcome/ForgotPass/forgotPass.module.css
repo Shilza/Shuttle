@@ -1,0 +1,9 @@
+.submit {
+    width: 100%;
+}
+
+.loginRegisterContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

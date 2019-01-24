@@ -1,0 +1,17 @@
+.rememberForgotContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginRegisterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5% 0 5% 0;
+}
+
+.login {
+    width: 100%;
+}

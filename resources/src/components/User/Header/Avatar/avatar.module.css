@@ -1,0 +1,33 @@
+
+.avatarContainer {
+    height: 100px;
+    margin: 3%;
+    overflow: hidden;
+    position: relative;
+}
+
+.avatar {
+    z-index: 1;
+    top: 0;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(0,0,0,.0975);
+}
+
+.buttonsContainer {
+    position: absolute;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    width: 100px;
+    height: 100px;
+    margin-bottom: -100px;
+    border-radius: 50%;
+    transition: margin 0.2s linear;
+    z-index: 0;
+}
+
+.avatarContainer:hover .buttonsContainer {
+    margin-bottom: 0;
+}

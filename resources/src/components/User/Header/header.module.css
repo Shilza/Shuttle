@@ -1,0 +1,34 @@
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2%;
+}
+
+.subMainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.directionInfoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+}
+
+@media all and (max-width: 425px){
+    .subMainContainer {
+        flex-direction: column;
+    }
+
+    .directionInfoContainer {
+        align-items: center;
+    }
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+}

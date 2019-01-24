@@ -1,0 +1,35 @@
+
+.optionsContainer {
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    min-width: 300px;
+    align-items: center;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.optionsContainer > li:nth-child(n) {
+    border-bottom: 1px solid #efefef;
+    width: 100%; padding: 8px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.optionsContainer > li:first-child {
+    color: red;
+}
+
+.optionsContainer > li:last-child {
+    border: none;
+}
+
+.optionsButton {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: 0;
+}

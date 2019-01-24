@@ -1,0 +1,24 @@
+
+.friendshipsContainer {
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    min-width: 300px;
+    align-items: center;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.friendshipsContainer > li:nth-child(n) {
+    border-bottom: 1px solid #efefef;
+    width: 100%; padding: 8px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.friendshipsContainer > li:last-child {
+    border: none;
+}

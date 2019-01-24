@@ -1,0 +1,30 @@
+
+
+.feedList {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    width: 90%;
+    margin: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    border: 1px solid #e6e6e6;
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+.media {
+    margin-left: -15px;
+    width: calc(100% + 30px);
+}
+
+.media:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}

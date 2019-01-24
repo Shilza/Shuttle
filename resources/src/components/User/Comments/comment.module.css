@@ -1,0 +1,39 @@
+
+.commentList {
+    -ms-overflow-style: none;
+    overflow: scroll;
+    max-height: 320px;
+}
+
+.commentList::-webkit-scrollbar { width: 0; }
+
+@media all and (max-width: 768px) {
+    .commentList {
+        max-height: 300px;
+    }
+}
+
+.comment {
+    display: inline-block;
+    align-items: center;
+    width: 100%;
+    padding: 2%;
+}
+
+.username {
+    display: inline-flex;
+    margin-right: 5px;
+    font-weight: 600
+}
+
+.metaContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+.likesCount {
+    margin-right: 5px;
+}

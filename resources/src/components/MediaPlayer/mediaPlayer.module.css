@@ -1,0 +1,18 @@
+
+.mediaContainer img{
+    max-height: 500px;
+    width: 500px;
+}
+
+@media (max-width: 500px) {
+    .mediaContainer img{
+        width: 100%;
+        position: relative;
+    }
+
+    .mediaContainer:before img{
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+}

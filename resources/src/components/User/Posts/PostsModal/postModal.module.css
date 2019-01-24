@@ -1,0 +1,14 @@
+
+.postModalContainer {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    height: 500px;
+}
+
+@media all and (max-width: 768px) {
+    .postModalContainer {;
+        flex-direction: column;
+        height: auto;
+    }
+}
