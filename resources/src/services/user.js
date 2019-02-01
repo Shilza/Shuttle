@@ -20,7 +20,7 @@ export function getFollowers(id) {
             Http.get('/api/v1/users/followers?id=' + id)
                 .then(({data}) => {
                     dispatch(action.setFollowers(data.followers));
-                    resolve();
+                    resolve({friendships: data.followers});
                 })
                 .catch(err => reject(err))
         })
@@ -33,9 +33,35 @@ export function getFollows(id) {
             Http.get('/api/v1/users/follows?id=' + id)
                 .then(({data}) => {
                     dispatch(action.setFollows(data.follows));
-                    resolve();
+                    resolve({friendships: data.follows});
                 })
                 .catch(err => reject(err))
         })
     )
+}
+
+export function updateAvatar(avatar) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.put('/api/v1/users/avatar', avatar, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then(({data}) => {
+                        dispatch(action.updateAvatar(data.avatar));
+                        resolve(data);
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function deleteAvatar() {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.delete('/api/v1/users/avatar')
+                    .then(() => {
+                        dispatch(action.deleteAvatar());
+                        resolve();
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
 }

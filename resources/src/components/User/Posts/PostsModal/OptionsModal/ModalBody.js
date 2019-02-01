@@ -18,15 +18,20 @@ const ModalBody = ({post_id, owner_id, currentUserId, dispatch, closeModal}) => 
             message.error('Only owner can delete post');
     };
 
+    const me = owner_id === currentUserId;
+
     return (
         <ul className={styles.optionsContainer}>
             <li>Complain</li>
-            {
-                (owner_id === currentUserId) &&
-                <li onClick={removePost}>Delete post</li>
-            }
             <li>Share</li>
             <li>Copy link</li>
+            {
+                me &&
+                <>
+                    <li>Edit post</li>
+                    <li onClick={removePost}>Delete post</li>
+                </>
+            }
             <li onClick={closeModal}>Cancel</li>
         </ul>
     );

@@ -8,8 +8,8 @@ import {connect} from "react-redux";
 
 const FeedPost = React.memo(({post, comments, open}) => (
     <article className={styles.item}>
-        <Header username={post.owner}/>
-        <div onClick={() => open(post)}>
+        <Header username={post.owner} avatar={post.avatar}/>
+        <div className={styles.mediaContainer} onClick={() => open(post)}>
             {
                 post.src.match('.mp4') ?
                     <video src={post.src}

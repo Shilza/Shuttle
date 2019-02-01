@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 
 const PostControl = ({post, comments}) => (
     <div className={styles.postControl}>
-        <Header username={post.owner}/>
+        <Header username={post.owner} avatar={post.avatar}/>
         <Caption post={post}/>
         <CommentsList comments={comments}/>
         <Actions post={post}/>

@@ -35,9 +35,10 @@ class CommentInput extends React.PureComponent {
 
     render() {
         const {loading} = this.state;
+        const {post_id} = this.props;
 
         return (
-            <div className={styles.commentInputContainer} id='commentInputContainer'>
+            <div className={styles.commentInputContainer} id={'commentInputContainer' + post_id}>
                 <input
                     ref={this.inputRef}
                     placeholder='Add comment'

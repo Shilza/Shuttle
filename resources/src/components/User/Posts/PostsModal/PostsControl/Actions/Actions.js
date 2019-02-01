@@ -4,11 +4,12 @@ import styles from './actions.module.css';
 import Like from "./Like";
 import {addSmoothScrolling} from "../../../../../../utils/scrolling";
 import {convertTime} from "../../../../../../utils/timeConverter";
+import Save from "./Save";
 
 class Actions extends React.Component {
 
     componentDidMount() {
-        addSmoothScrolling('postCommentLink');
+        addSmoothScrolling('postCommentLink' + this.props.post.id);
     }
 
     render() {
@@ -21,17 +22,10 @@ class Actions extends React.Component {
                         <span>{post.likes_count || ''}</span>
                         <Like post={post}/>
                     </div>
-                    <a className={styles.action} id='postCommentLink' href='#commentInputContainer'>
+                    <a className={styles.action} id={'postCommentLink' + post.id} href={'#commentInputContainer' + post.id}>
                         <Icon type="message" style={{color: 'rgba(0,0,0,1)'}}/>
                     </a>
-                    <div className={styles.save} role='button'>
-                        {
-                            post.isSaved ?
-                                <div className={styles.bookmarkSolid}/>
-                                :
-                                <div className={styles.bookmarkFlat}/>
-                        }
-                    </div>
+                    <Save post={post}/>
                 </div>
                 <time dateTime={post.created_at}>{convertTime(post.created_at)}</time>
             </div>

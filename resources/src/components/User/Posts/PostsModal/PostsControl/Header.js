@@ -1,12 +1,19 @@
 import React from "react";
 import styles from './postControl.module.css';
 import {Link} from "react-router-dom";
+import DefaultAvatar from "../../../../DefaultAvatar/DefaultAvatar";
 
-const Header = ({username}) => (
-    <header className={styles.header}>
-        <img src='https://i.ytimg.com/vi/Y5GLCBjHR8U/maxresdefault.jpg' className={styles.avatar}/>
-        <Link to={username} className={styles.username}>{username}</Link>
-    </header>
+const Header = ({username, avatar}) => (
+    <Link to={username}>
+        <header className={styles.header}>
+            {
+                avatar
+                    ? <img src={avatar} alt='avatar' className={styles.avatar}/>
+                    : <div className={styles.avatar}><DefaultAvatar fontSize={'20px'}/></div>
+            }
+            <span className={styles.username}>{username}</span>
+        </header>
+    </Link>
 );
 
 export default Header;

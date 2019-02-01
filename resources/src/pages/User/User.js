@@ -4,50 +4,40 @@ import {message} from "antd/lib/index";
 import * as UserService from "../../services/user";
 import styles from './user.module.css';
 import User from "../../components/User/User";
+import WithLoading from "../../components/Loader/Loader";
 
+const UserPageWithLoading = WithLoading(User);
 
-function withUser(Component) {
-    return class extends React.Component {
+class UserPage extends React.Component {
 
-        state = {
-            error: false
-        };
+    state = {
+        isLoading: true,
+        error: ''
+    };
 
-        componentDidMount() {
-            const {match, dispatch} = this.props;
-            dispatch(UserService.getUser(match.params.username))
-                .catch(err => {
-                    message.error(err.response.data.message);
-                    this.setState({error: true});
-                });
-        }
+    componentDidMount() {
+        const {match, dispatch} = this.props;
 
-        render() {
-            const {user, currentAuthUserId} = this.props;
-            const {error} = this.state;
+        dispatch(UserService.getUser(match.params.username))
+            .then(() => this.setState({isLoading: false}))
+            .catch(err => this.setState({
+                isLoading: false,
+                error: err.response.data.message
+            }));
+    }
 
-            return (
-                <div className={styles.container}>{
-                    user ?
-                        <Component me={user.id === currentAuthUserId}/>
-                        :
-                        <LoadingOrError error={error}/>
+    render() {
+        const {isLoading, error} = this.state;
+
+        return (
+            <div className={styles.container}>
+                {
+                    error ? <span>{error}</span> :
+                        <UserPageWithLoading isLoading={isLoading}/>
                 }
-                </div>
-            )
-        }
+            </div>
+        )
     }
 }
 
-const LoadingOrError = ({error}) => {
-    return error ? <div>User does not exists</div> : <div>Loading</div>;
-};
-
-const mapStateToProps = state => {
-    return {
-        user: state.users.user,
-        currentAuthUserId: state.auth.user.id
-    };
-};
-
-export default connect(mapStateToProps)(withUser(User));
+export default connect()(UserPage);

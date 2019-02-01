@@ -79,6 +79,7 @@ class AuthController {
             .generate(user);
 
         jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
+        jwt.user = user;
 
         response.json(jwt);
     }

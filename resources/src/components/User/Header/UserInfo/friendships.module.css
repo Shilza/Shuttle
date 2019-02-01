@@ -22,3 +22,14 @@
 .friendshipsContainer > li:last-child {
     border: none;
 }
+
+.cardContainer {
+    display: inline-flex;
+}
+
+.avatar {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+border: 1px solid rgba(0,0,0,.0975);
+}

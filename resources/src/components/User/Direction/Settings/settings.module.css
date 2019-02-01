@@ -1,0 +1,30 @@
+
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.settingsButton {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.settingsButton:hover {
+    transform: rotate(160deg);
+}
+
+.logoutContainer {
+    margin-top: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout {
+    border: none;
+    background: transparent;
+    color: dodgerblue;
+    outline: none;
+    margin-right: 10px;
+    cursor: pointer;
+}

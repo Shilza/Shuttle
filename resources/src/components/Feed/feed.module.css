@@ -18,13 +18,11 @@
     margin-bottom: 40px;
 }
 
+.mediaContainer {
+    cursor: pointer;
+}
+
 .media {
     margin-left: -15px;
     width: calc(100% + 30px);
-}
-
-.media:before{
-    content: "";
-    display: block;
-    padding-top: 100%;
 }

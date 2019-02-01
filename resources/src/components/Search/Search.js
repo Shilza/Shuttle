@@ -2,8 +2,8 @@ import React, {createRef} from "react";
 import SearchBar from './SearchBar';
 import styles from './search.module.css';
 import {connect} from "react-redux";
-import * as SearchService from "../services/search";
-import {removeUsers} from "../store/actions/search";
+import * as SearchService from "../../services/search";
+import {removeUsers} from "../../store/actions/search";
 
 class Search extends React.Component {
 

@@ -1,4 +1,4 @@
-import {SET_FOLLOWERS, SET_FOLLOWS, SET_USER} from "../actionTypes/users";
+import {DELETE_AVATAR, SET_FOLLOWERS, SET_FOLLOWS, SET_USER, UPDATE_AVATAR} from "../actionTypes/users";
 import {FOLLOW, UNFOLLOW} from "../actionTypes/friendships";
 
 const initialState = {
@@ -19,6 +19,10 @@ const Users = (state = initialState, {type, payload = null}) => {
             return follow(state);
         case UNFOLLOW:
             return unfollow(state);
+        case UPDATE_AVATAR:
+            return updateAvatar(state, payload);
+        case DELETE_AVATAR:
+            return deleteAvatar(state);
         default:
             return state;
     }
@@ -74,5 +78,30 @@ const unfollow = state => {
         user
     };
 };
+
+const updateAvatar = (state, avatar) => {
+    state = {
+        ...state,
+        user: {
+            ...state.user,
+            avatar
+        }
+    };
+
+    return state;
+};
+
+const deleteAvatar = (state) => {
+    state = {
+        ...state,
+        user: {
+            ...state.user,
+            avatar: null
+        }
+    };
+
+    return state;
+};
+
 
 export default Users;

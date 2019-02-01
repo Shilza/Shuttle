@@ -9,7 +9,7 @@
 .header {
     display: flex;
     flex-direction: row;
-    padding: 0 0 10px 5px;
+    padding-bottom: 10px;
     align-items: center;
     border-bottom: 1px solid #efefef;
     order: -2;
@@ -36,6 +36,12 @@
 .captionUsername {
     display: inline-flex;
     margin-right: 5px;
+}
+
+.captionTextArea {
+    display: block;
+    width: 100%;
+    border: none;
 }
 
 .footer {

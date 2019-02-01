@@ -49,10 +49,45 @@ class UserController {
 
     async updateAvatar({ request, response, auth }) {
 
+        const user = await auth.getUser();
+
+        const Helpers = use('Helpers');
+        const uuidv1 = require('uuid/v1');
+
+        const profilePic = request.file('avatar', {
+            types: ['image'],
+            size: '10mb',
+            extnames: ['jpg', 'jpeg']
+        });
+
+        const name = uuidv1() + '.' + profilePic.extname;
+        const path = Helpers.publicPath('uploads') + '/' + user.id;
+
+        await profilePic.move(path, {
+            name, overwrite: true
+        });
+
+        if (!profilePic.moved())
+            return profilePic.error();
+
+        user.avatar = 'uploads/' + user.id + '/' + name;
+        user.save();
+
+        response.json({
+            message: 'Avatar successfully updated',
+            avatar: user.avatar
+        });
     }
 
     async deleteAvatar({ request, response, auth }) {
+        const user = await auth.getUser();
 
+        user.avatar = null;
+        user.save();
+
+        response.json({
+            message: 'Avatar successfully deleted',
+        });
     }
 
     async followers({ request, response }) {

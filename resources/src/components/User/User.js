@@ -1,17 +1,11 @@
 import React from "react";
-import PostsUploader from "./Posts/Uploader/PostsUploader";
-import Posts from "./Posts/Posts";
 import Header from "./Header/Header";
 import styles from './userPage.module.css';
 
-const User = ({me}) => {
+const User = () => {
     return (
         <div className={styles.userPageContainer}>
             <Header/>
-            {
-                me && <PostsUploader/>
-            }
-            <Posts/>
         </div>
     );
 };

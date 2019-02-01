@@ -7,13 +7,13 @@ import {render} from 'react-dom';
 import Routes from "./routes";
 import Provider from "react-redux/es/components/Provider";
 import * as AuthService from './services/auth';
-import Loader from "./components/Loader/Loader";
+import StartLoader from "./components/StartLoader/StartLoader";
 
 
 void async function () {
     if (localStorage.hasOwnProperty('accessToken')) {
         render(
-            <Loader/>,
+            <StartLoader/>,
             document.getElementById('root')
         );
 

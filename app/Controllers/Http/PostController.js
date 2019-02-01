@@ -46,6 +46,7 @@ class PostController {
         const owner = await User.find(request.input('owner_id'));
         posts.rows = posts.rows.map(post => {
             post.owner = owner.username;
+            post.avatar = owner.avatar;
             // is comment liked by requester
             if (likes) {
                 post.isLiked = !!likes.find(like => {
@@ -65,7 +66,7 @@ class PostController {
         const Helpers = use('Helpers');
         const uuidv1 = require('uuid/v1');
 
-        const profilePic = request.file('media', {
+        const postImage = request.file('media', {
             types: ['image', 'video'],
             size: '10mb',
             extnames: ['jpg', 'jpeg', 'mp4']
@@ -84,15 +85,15 @@ class PostController {
 
         const user = await auth.getUser();
         const postData = request.only(['caption']);
-        const name = uuidv1() + '.' + profilePic.extname;
+        const name = uuidv1() + '.' + postImage.extname;
         const path = Helpers.publicPath('uploads') + '/' + user.id;
 
-        await profilePic.move(path, {
+        await postImage.move(path, {
             name, overwrite: true
         });
 
-        if (!profilePic.moved())
-            return profilePic.error();
+        if (!postImage.moved())
+            return postImage.error();
 
         let post = await Post.create({
             ...postData,

@@ -20,3 +20,18 @@ export function setFollows(payload){
         payload
     }
 }
+
+
+export function updateAvatar(payload){
+    return {
+        type: ActionTypes.UPDATE_AVATAR,
+        payload
+    }
+}
+
+
+export function deleteAvatar(){
+    return {
+        type: ActionTypes.DELETE_AVATAR,
+    }
+}

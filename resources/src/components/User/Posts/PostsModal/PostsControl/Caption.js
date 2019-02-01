@@ -17,8 +17,8 @@ class Caption extends React.Component {
             <div className={styles.caption}>
                 <h4 className={styles.captionUsername}>{post.owner}</h4>
                 {
-                    isInput ? <textarea defaultValue={post.caption} style={{display: 'block', width: '100%', border: 'none'}} /> :
-                    <span onClick={this.changeInput}>{post.caption || 'Caaption'}</span>
+                    isInput ? <textarea defaultValue={post.caption} className={styles.captionTextArea} /> :
+                    <span onClick={this.changeInput}>{post.caption}</span>
                 }
             </div>
         );

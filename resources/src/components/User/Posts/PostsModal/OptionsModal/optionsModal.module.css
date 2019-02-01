@@ -10,6 +10,7 @@
     align-items: center;
     margin-left: 0;
     padding-left: 0;
+    max-width: 310px;
 }
 
 .optionsContainer > li:nth-child(n) {

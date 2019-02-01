@@ -11,15 +11,15 @@ class Post extends Model {
         return ['updated_at']
     }
 
-    comments () {
+    comments() {
         return this.hasMany('App/Models/Comment')
     }
 
-    likes () {
+    likes() {
         return this.hasMany('App/Models/Like', 'id', 'entity_id')
     }
 
-    owner () {
+    owner() {
         return this.belongsTo('App/Models/User');
     }
 }

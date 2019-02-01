@@ -1,20 +1,20 @@
 import {connect} from "react-redux";
 import Avatar from "./Avatar/Avatar";
-import Direction from "./Direction";
+import Direction from "../Direction/Direction";
 import UserInfo from "./UserInfo/UserInfo";
 import React from "react";
 import styles from './header.module.css';
 import StoriesList from "./Stories/StoriesList/StoriesList";
-import {Tabs} from 'antd';
+import NavigationPanel from "../NavigationPanel/NavigationPanel";
+import PostsUploader from "../Posts/Uploader/PostsUploader";
 
-const TabPane = Tabs.TabPane;
 
-const Header = ({user}) => (
+const Header = ({user, me}) => (
     <div className={styles.mainContainer}>
         <div className={styles.subMainContainer}>
             <Avatar avatar={user.avatar}/>
             <div className={styles.directionInfoContainer}>
-                <Direction id={user.id} username={user.username} isFollows={user.isFollows}/>
+                <Direction username={user.username}/>
                 <UserInfo
                     id={user.id}
                     postsCount={user.posts_count}
@@ -33,18 +33,17 @@ const Header = ({user}) => (
                 }
             ]
         }/>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-            <Tabs defaultActiveKey="1">
-                <TabPane tab="Posts" key="1">Posts</TabPane>
-                <TabPane tab="Marks" key="2">Marks</TabPane>
-            </Tabs>
-        </div>
+        {
+            me && <PostsUploader/>
+        }
+        <NavigationPanel/>
     </div>
 );
 
 const mapStateToProps = state => {
     return {
-        user: state.users.user
+        user: state.users.user,
+        me: state.auth.user.id === state.users.user.id
     }
 };
 

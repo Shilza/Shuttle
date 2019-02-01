@@ -6,13 +6,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
-.logout {
-    border: none;
-    background: transparent;
-    color: dodgerblue;
-    outline: none;
-    margin-right: 20px;
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.0975);
 }

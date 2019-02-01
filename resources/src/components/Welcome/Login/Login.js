@@ -41,7 +41,7 @@ class Login extends React.Component {
             if (!err) {
                 this.setState({loading: true});
                 login({username, password, remember})
-                    .then(() => history.push('/home'))
+                    .then(() => history.push('/'))
                     .catch(err => {
                         this.setState({loading: false});
                         message.error(err.response.data.message);

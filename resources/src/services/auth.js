@@ -1,7 +1,7 @@
 import Http from '../Http'
 import * as action from '../store/actions/auth'
 
-function setTokens(expiresIn, accessToken, refreshToken) {
+function saveTokensToLocalStorage(expiresIn, accessToken, refreshToken) {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('expiresIn', expiresIn);
     localStorage.setItem('refreshToken', refreshToken);
@@ -18,11 +18,12 @@ export function login({remember, ...data}) {
                             refreshToken,
                             user
                         } = data;
-                        dispatch(action.authLogin(user));
 
                         if (remember)
-                            setTokens(expiresIn, token, refreshToken);
+                            saveTokensToLocalStorage(expiresIn, token, refreshToken);
                         Http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+                        dispatch(action.authLogin(user));
                     })
                     .catch(err => reject(err))
             }
@@ -63,7 +64,7 @@ export function refresh() {
                     refreshToken,
                 } = data;
 
-                setTokens(expiresIn, token, refreshToken);
+                saveTokensToLocalStorage(expiresIn, token, refreshToken);
                 Http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 resolve(data);
             })

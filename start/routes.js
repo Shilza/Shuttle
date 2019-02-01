@@ -35,9 +35,9 @@ Route.group(() => {
 }).prefix('api/v1/auth').middleware(['auth:jwt']);
 
 Route.group(() => {
-    Route.put('avatar', 'UserController.updateAvatar');
-    Route.delete('avatar', 'UserController.deleteAvatar');
-}).prefix('api/v1/users').middleware(['auth:jwt']);
+    Route.put('', 'UserController.updateAvatar');
+    Route.delete('', 'UserController.deleteAvatar');
+}).prefix('api/v1/users/avatar').middleware(['auth:jwt']);
 
 Route.group(() => {
     Route.get('', 'UserController.show');
@@ -47,19 +47,20 @@ Route.group(() => {
 
 
 Route.group(() => {
-    Route.get('posts', 'PostC' +
-        'ontroller.show');
-    Route.post('posts', 'PostController.create');
-    Route.patch('posts', 'PostController.update');
-    Route.delete('posts', 'PostController.delete');
-}).prefix('api/v1').middleware(['auth:jwt']);
+    Route.get('', 'PostController.show');
+    Route.post('', 'PostController.create');
+    Route.post('/save', 'CompilationController.create');
+    Route.patch('', 'PostController.update');
+    Route.delete('', 'PostController.delete');
+    Route.delete('/save', 'CompilationController.deletePost');
+}).prefix('api/v1/posts').middleware(['auth:jwt']);
 
 Route.group(() => {
-    Route.get('comments', 'CommentController.show');
-    Route.post('comments', 'CommentController.create');
-    Route.patch('comments', 'CommentController.update');
-    Route.delete('comments', 'CommentController.delete');
-}).prefix('api/v1').middleware(['auth:jwt']);
+    Route.get('', 'CommentController.show');
+    Route.post('', 'CommentController.create');
+    Route.patch('', 'CommentController.update');
+    Route.delete('', 'CommentController.delete');
+}).prefix('api/v1/comments').middleware(['auth:jwt']);
 
 Route.group(() => {
     Route.post('like', 'LikeController.like');
@@ -70,6 +71,13 @@ Route.group(() => {
     Route.post('follow', 'FriendshipController.follow');
     Route.post('unfollow', 'FriendshipController.unfollow');
 }).prefix('api/v1/friendships').middleware(['auth:jwt']);
+
+Route.group(() => {
+    Route.get('', 'CompilationController.showCompilations');
+    Route.get('/posts', 'CompilationController.showPosts');
+    Route.patch('', 'CompilationController.update');
+    Route.delete('', 'CompilationController.delete');
+}).prefix('api/v1/compilations').middleware(['auth:jwt']);
 
 Route.get('api/v1/feed', 'FeedController.show').middleware(['auth:jwt']);
 Route.get('api/v1/search', 'SearchController.search');

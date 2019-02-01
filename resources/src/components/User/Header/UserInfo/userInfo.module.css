@@ -15,6 +15,7 @@
     .unitContainer {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -22,4 +23,14 @@
     color: black;
     font-weight: 600;
     margin-right: 5px;
+}
+
+.simpleTextStyledItem {
+    color: currentColor;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
 }

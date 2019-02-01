@@ -7,6 +7,13 @@ export function setPosts(payload){
     }
 }
 
+export function setSavedPosts(payload){
+    return {
+        type: ActionTypes.SET_SAVED_POSTS,
+        payload
+    }
+}
+
 export function setCurrentPost(payload) {
     return {
         type: ActionTypes.SET_CURRENT_POST,
@@ -30,6 +37,20 @@ export function removePost(payload) {
 export function addPost(payload) {
     return {
         type: ActionTypes.ADD_POST,
+        payload
+    }
+}
+
+export function save(payload){
+    return {
+        type: ActionTypes.SAVE,
+        payload
+    }
+}
+
+export function removeSavedPost(payload) {
+    return {
+        type: ActionTypes.REMOVE_SAVED_POST,
         payload
     }
 }

@@ -3,14 +3,13 @@ import styles from './userInfo.module.css';
 import {addSmoothScrolling} from "../../../../utils/scrolling";
 import {connect} from "react-redux";
 import * as UsersService from "../../../../services/user";
-import FollowersModal from "./FollowersModal";
-import FollowsModal from "./FollowsModal";
+import Friendships from "./Friendships";
 
 class UserInfo extends React.Component {
 
     state = {
-        isModalFollowers: false,
-        isModalFollows: false
+        isModalOpen: false,
+        friendships: undefined
     };
 
     componentDidMount() {
@@ -18,50 +17,56 @@ class UserInfo extends React.Component {
     }
 
     closeFollowersModal = () => {
-        this.setState({isModalFollowers: false});
+        this.setState({isModalOpen: false});
     };
 
     closeFollowsModal = () => {
-        this.setState({isModalFollows: false});
+        this.setState({isModalOpen: false});
     };
 
     loadFollowers = () => {
-        const {dispatch, id} = this.props;
-        dispatch(UsersService.getFollowers(id))
-            .then(() => this.setState({isModalFollowers: true}));
+        const {dispatch, id, followersCount} = this.props;
+        if (followersCount)
+            dispatch(UsersService.getFollowers(id))
+                .then(({friendships}) => this.setState({isModalOpen: true, friendships}));
     };
 
     loadFollows = () => {
-        const {dispatch, id} = this.props;
-        dispatch(UsersService.getFollows(id))
-            .then(() => this.setState({isModalFollows: true}));
+        const {dispatch, id, followsCount} = this.props;
+        if (followsCount)
+            dispatch(UsersService.getFollows(id))
+                .then(({friendships}) => this.setState({isModalOpen: true, friendships}));
+    };
+
+    isOpen = () => {
+        const {isModalOpen, friendships} = this.state;
+
+        return !!(isModalOpen && friendships && friendships.length);
     };
 
     render() {
         const {postsCount, followersCount, followsCount} = this.props;
+        const {friendships} = this.state;
+
         return (
             <>
                 <ul className={styles.mainContainer}>
                     <li className={styles.unitContainer}>
                         <span className={styles.unitNumber}>{postsCount}</span>
-                        <a id='userInfoPostsLink' href={"#postsList"}>Posts</a>
+                        <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
                     </li>
                     <li className={styles.unitContainer}>
                         <span className={styles.unitNumber}>{followersCount}</span>
-                        <button onClick={this.loadFollowers}>Followers</button>
+                        <button className={styles.simpleTextStyledItem} onClick={this.loadFollowers}>Followers</button>
                     </li>
                     <li className={styles.unitContainer}>
                         <span className={styles.unitNumber}>{followsCount}</span>
-                        <button onClick={this.loadFollows}>Follows</button>
+                        <button className={styles.simpleTextStyledItem} onClick={this.loadFollows}>Follows</button>
                     </li>
                 </ul>
                 {
-                    this.state.isModalFollowers &&
-                    <FollowersModal closeModal={this.closeFollowersModal}/>
-                }
-                {
-                    this.state.isModalFollows &&
-                    <FollowsModal closeModal={this.closeFollowsModal}/>
+                    this.isOpen() &&
+                    <Friendships friendships={friendships} closeModal={this.closeFollowersModal}/>
                 }
             </>
         );

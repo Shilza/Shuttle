@@ -1,18 +1,15 @@
+import {Icon} from "antd";
 import React from "react";
-import styles from './loader.module.css';
 
-const Loader = () => {
-    return (
-        <div className={styles.container}>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    );
-};
+const Loader = () => (
+    <Icon type="loading"/>
+);
 
-export default Loader;
+function WithLoading(Component) {
+    return function WihLoadingComponent({ isLoading, ...props }) {
+        if (!isLoading) return (<Component {...props} />);
+        return <Loader/>
+    }
+}
+
+export default WithLoading;
