@@ -23,7 +23,11 @@ const providers = [
     '@adonisjs/auth/providers/AuthProvider',
     '@adonisjs/validator/providers/ValidatorProvider',
     '@adonisjs/mail/providers/MailProvider',
-    path.join(__dirname, '..', 'providers', 'CValidatorProvider')
+    path.join(__dirname, '..', 'providers', 'CValidatorProvider'),
+    path.join(__dirname, '..', 'providers', 'PostsServiceProvider'),
+    path.join(__dirname, '..', 'providers', 'LikesServiceProvider'),
+    path.join(__dirname, '..', 'providers', 'CommentsServiceProvider'),
+    path.join(__dirname, '..', 'providers', 'CompilationsServiceProvider')
 ];
 
 /*
@@ -52,7 +56,11 @@ const aceProviders = [
 |
 */
 const aliases = {
-    CValidator: 'Adonis/Addons/CValidator'
+    CValidator: 'Adonis/Addons/CValidator',
+    PostsService: 'Adonis/Addons/PostsService',
+    LikesService: 'Adonis/Addons/LikesService',
+    CommentsService: 'Adonis/Addons/CommentsService',
+    CompilationsService: 'Adonis/Addons/CompilationsService'
 };
 
 /*

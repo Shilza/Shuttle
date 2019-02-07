@@ -2,9 +2,9 @@
 
 const Comment = use('App/Models/Comment');
 const Post = use('App/Models/Post');
-const User = use('App/Models/User');
-const Database = use('Database');
 const {validate} = use('CValidator');
+const LikesService = use('LikesService');
+const CommentsService = use('CommentsService');
 
 class CommentController {
 
@@ -21,56 +21,16 @@ class CommentController {
                 message: validation.messages()[0].message
             });
 
-        const page = parseInt(request.input('page'), 10);
-
-        const comments = await Comment
-            .query()
-            .where('post_id', request.input('post_id'))
-            .withCount('likes')
-            .orderBy('id', 'desc')
-            .paginate(page, 4);
-
-        let owners = await Database
-            .from('users')
-            .whereIn('id', comments.rows.map(e => e.owner_id));
-        owners = JSON.parse(JSON.stringify(owners));
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
 
         const user = await auth.getUser();
-        let likes;
-        if (user) {
-            // get requester likes on comments by post
-            likes = await Database
-                .from('likes')
-                .where('type', 2)
-                .where('owner_id', user.id)
-                .whereIn('entity_id', comments.rows.map(e => e.id));
 
-            likes = JSON.parse(JSON.stringify(likes));
-        }
-
-        comments.rows = comments.rows.map(comment => {
-            comment.owner = this.find(owners, comment.owner_id);
-            // is comment liked by requester
-            if (likes) {
-                comment.isLiked = !!likes.find(like => {
-                    if (like.entity_id === comment.id)
-                        return true;
-                });
-            }
-
-            return comment;
-        });
+        const comments = await CommentsService.getComments(
+            user.id, request.input('post_id'), page
+        );
 
         response.json(comments);
-    }
-
-    find(array, id) {
-        const user = array.find(user => {
-            if (user.id === id)
-                return true;
-        });
-
-        return user.username;
     }
 
     async create({request, response, auth}) {
@@ -110,10 +70,7 @@ class CommentController {
         comment.owner = user.username;
         comment.isLiked = false;
 
-        response.json({
-            message: 'Comment successfully created',
-            comment
-        });
+        response.json({comment});
     }
 
     async update({request, response}) {
@@ -128,7 +85,6 @@ class CommentController {
             return response.status(400).json({
                 message: validation.messages()[0].message
             });
-
 
         const comment = await Comment.find(request.input('id'));
         if (!comment)

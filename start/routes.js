@@ -35,25 +35,42 @@ Route.group(() => {
 }).prefix('api/v1/auth').middleware(['auth:jwt']);
 
 Route.group(() => {
+    Route.get('', 'UserController.show');
+    Route.get('/unique', 'UserController.isNameUnique');
+    Route.get('followers', 'UserController.followers');
+    Route.get('follows', 'UserController.follows');
+}).prefix('api/v1/users').middleware(['auth:jwt']);
+
+Route.group(() => {
     Route.put('', 'UserController.updateAvatar');
     Route.delete('', 'UserController.deleteAvatar');
 }).prefix('api/v1/users/avatar').middleware(['auth:jwt']);
 
 Route.group(() => {
-    Route.get('', 'UserController.show');
-    Route.get('followers', 'UserController.followers');
-    Route.get('follows', 'UserController.follows');
-}).prefix('api/v1/users');
+    Route.post('', 'UserController.makePrivate');
+    Route.delete('', 'UserController.makePublic');
+}).prefix('api/v1/users/privacy').middleware(['auth:jwt']);
 
 
 Route.group(() => {
+    Route.get('', 'PostController.showArchived');
+    Route.post('', 'PostController.addToArchive');
+    Route.delete('', 'PostController.deleteFromArchive');
+}).prefix('api/v1/posts/archive').middleware(['auth:jwt']);
+
+Route.group(() => {
     Route.get('', 'PostController.show');
+    Route.get('/:code', 'PostController.showPostByCode');
     Route.post('', 'PostController.create');
-    Route.post('/save', 'CompilationController.create');
     Route.patch('', 'PostController.update');
     Route.delete('', 'PostController.delete');
-    Route.delete('/save', 'CompilationController.deletePost');
 }).prefix('api/v1/posts').middleware(['auth:jwt']);
+
+Route.group(() => {
+    Route.post('', 'CompilationController.create');
+    Route.delete('', 'CompilationController.deletePost');
+}).prefix('api/v1/posts/save').middleware(['auth:jwt']);
+
 
 Route.group(() => {
     Route.get('', 'CommentController.show');
@@ -63,6 +80,7 @@ Route.group(() => {
 }).prefix('api/v1/comments').middleware(['auth:jwt']);
 
 Route.group(() => {
+    Route.get('/likes', 'LikeController.show');
     Route.post('like', 'LikeController.like');
     Route.post('unlike', 'LikeController.unlike');
 }).prefix('api/v1').middleware(['auth:jwt']);
@@ -78,6 +96,12 @@ Route.group(() => {
     Route.patch('', 'CompilationController.update');
     Route.delete('', 'CompilationController.delete');
 }).prefix('api/v1/compilations').middleware(['auth:jwt']);
+
+Route.group(() => {
+    Route.get('', 'BlacklistController.show');
+    Route.post('', 'BlacklistController.add');
+    Route.delete('', 'BlacklistController.delete');
+}).prefix('api/v1/users/blacklist').middleware(['auth:jwt']);
 
 Route.get('api/v1/feed', 'FeedController.show').middleware(['auth:jwt']);
 Route.get('api/v1/search', 'SearchController.search');

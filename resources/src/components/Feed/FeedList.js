@@ -25,6 +25,4 @@ const FeedList = ({posts, dispatch}) => {
     );
 };
 
-
-
 export default connect()(FeedList);

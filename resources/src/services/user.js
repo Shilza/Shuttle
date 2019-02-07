@@ -40,6 +40,16 @@ export function getFollows(id) {
     )
 }
 
+export function checkIsUsernameUnique(username) {
+    return new Promise((resolve, reject) => {
+        Http.get('/api/v1/users/unique?username=' + username)
+            .then(({data}) => {
+                resolve(data);
+            })
+            .catch(err => reject(err.response.data));
+    })
+}
+
 export function updateAvatar(avatar) {
     return dispatch => (
         new Promise((resolve, reject) => {
@@ -59,6 +69,45 @@ export function deleteAvatar() {
                 Http.delete('/api/v1/users/avatar')
                     .then(() => {
                         dispatch(action.deleteAvatar());
+                        resolve();
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function setPrivate() {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.post('/api/v1/users/privacy')
+                    .then(({data}) => {
+                        dispatch(action.setPrivate());
+                        resolve(data.message);
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function setPublic() {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.delete('/api/v1/users/privacy')
+                    .then(({data}) => {
+                        dispatch(action.setPublic());
+                        resolve(data.message);
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function getBlacklisted() {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.get('/api/v1/users/blacklist')
+                    .then(({data}) => {
+                        dispatch(action.setBlacklisted(data.data));
                         resolve();
                     })
                     .catch(err => reject(err))

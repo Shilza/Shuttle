@@ -3,9 +3,10 @@
 const {validate} = use('CValidator');
 const Post = use('App/Models/Post');
 const Database = use('Database');
-const User = use('App/Models/User');
 const Compilation = use('App/Models/Compilation');
-
+const CompilationsService = use('CompilationsService');
+const LikesService = use('LikesService');
+const PostsService = use('PostsService');
 
 class CompilationController {
 
@@ -25,93 +26,23 @@ class CompilationController {
 
         const user = await auth.getUser();
 
-        const postsIds = await Compilation
-            .query()
-            .where('owner_id', user.id)
-            .where('name', request.input('compilation'))
-            .pluck('post_id');
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
 
-        const page = parseInt(request.input('page'), 10);
-        let posts = await Post
-            .query()
-            .whereIn('id', postsIds)
-            .withCount('comments')
-            .withCount('likes')
-            .orderBy('id', 'desc')
-            .paginate(page, 12);
-
-        let likes;
-        if (user) {
-            // get requester likes on post
-            likes = await Database
-                .from('likes')
-                .where('type', 1)
-                .where('owner_id', user.id)
-                .whereIn('entity_id', posts.rows.map(e => e.id));
-
-            likes = JSON.parse(JSON.stringify(likes));
-        }
-
-        let owners = await User
-            .query()
-            .select(['id', 'username'])
-            .whereIn('id', posts.rows.map(e => e.owner_id))
-            .fetch();
-
-        owners = owners.toJSON();
-        posts.rows = posts.rows.map(post => {
-            post.owner = this.find(owners, post.owner_id);
-            // is comment liked by requester
-            if (likes) {
-                post.isLiked = !!likes.find(like => {
-                    if (like.entity_id === post.id)
-                        return true;
-                });
-            }
-
-            return post;
-        });
+        const posts = await PostsService.getCompilationsPosts(
+            user.id,
+            request.input('compilation'),
+            page
+        );
 
         response.json(posts);
     }
 
-    find(array, id) {
-        const user = array.find(user => {
-            if (user.id === id)
-                return true;
-        });
-
-        return user.username;
-    }
-
     async showCompilations({request, response, auth}) {
-
         const user = await auth.getUser();
-        const compilationsNames = await Compilation
-            .query()
-            .where('owner_id', user.id)
-            .distinct('name')
-            .pluck('name');
+        const compilations = await CompilationsService.getCompilations(user.id);
 
-        let comp = [];
-        for (let i = 0; i < compilationsNames.length; i++) {
-            let data = await Compilation
-                .query()
-                .select('post_id')
-                .where('name', compilationsNames[i])
-                .with('post')
-                .limit(4)
-                .orderBy('id', 'desc')
-                .fetch();
-
-            data = data.toJSON().map(item => item.post = item.post.src);
-
-            comp.push({
-                [compilationsNames[i]]: data
-            });
-        }
-
-        response.json({compilations: comp});
+        response.json({compilations});
     }
 
     async create({request, response, auth}) {
@@ -127,7 +58,12 @@ class CompilationController {
                 message: validation.messages()[0].message
             });
 
-        const post = await Post.find(request.input('post_id'));
+        let post = await Post
+            .query()
+            .where('id', request.input('post_id'))
+            .notArchived()
+            .first();
+
         if (!post)
             return response.status(400).json({
                 message: 'Post does not exists'
@@ -137,6 +73,7 @@ class CompilationController {
 
         const isSaved = await Compilation
             .query()
+            .select(1)
             .where('owner_id', user.id)
             .where('post_id', post.id)
             .first();
@@ -263,7 +200,7 @@ class CompilationController {
             return response.status(400).json({
                 message: 'Post does not exists'
             });
-;
+
         const isDeleted = await Compilation
             .query()
             .where('owner_id', user.id)

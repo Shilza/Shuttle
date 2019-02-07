@@ -19,14 +19,15 @@ class OptionsModal extends React.PureComponent {
 
     render() {
         const {isOpen} = this.state;
-        const {post_id, owner_id} = this.props;
+        const {post} = this.props;
+        const link = window.location.origin + '/p/'+ post.src.match(/.+?\/.+?\/(.+?)\.+/)[1];
 
         return (
             <>
                 {
                     isOpen &&
                     <Modal closeModal={this.closeModal}>
-                        <ModalBody closeModal={this.closeModal} post_id={post_id} owner_id={owner_id}/>
+                        <ModalBody closeModal={this.closeModal} post_id={post.id} owner_id={post.owner_id} isArchived={post.archive} link={link}/>
                     </Modal>
                 }
                 <OptionsButton open={this.open}/>

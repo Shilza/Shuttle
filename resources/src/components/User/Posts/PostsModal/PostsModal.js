@@ -2,11 +2,11 @@ import React from "react";
 import Modal from "../../../Modal/Modal";
 import ModalBody from "./ModalBody";
 import {connect} from "react-redux";
-import {closePostsModal} from "../../../../store/actions/posts";
+import {removeCurrentPost} from "../../../../store/actions/posts";
 
 const PostsModal = ({isOpen, currentPost, dispatch}) => {
 
-    const closeModal = () => dispatch(closePostsModal());
+    const closeModal = () => dispatch(removeCurrentPost());
 
     return (
         <>

@@ -11,7 +11,7 @@ class CompilationSchema extends Schema {
             table.integer('post_id').unsigned().notNullable().references('id').inTable('posts').onDelete('cascade');
             table.string('name', 32).defaultTo('All');
             table.timestamp('created_at');
-        })
+        });
     }
 
     down() {

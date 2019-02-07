@@ -6,7 +6,8 @@ import FeedList from "./FeedList";
 class Feed extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(FeedService.getFeed());
+        const {dispatch} = this.props;
+        dispatch(FeedService.getFeed());
     }
 
     render() {

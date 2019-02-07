@@ -21,9 +21,9 @@ export function setCurrentPost(payload) {
     }
 }
 
-export function closePostsModal() {
+export function removeCurrentPost() {
     return {
-        type: ActionTypes.CLOSE_POSTS_MODAL
+        type: ActionTypes.REMOVE_CURRENT_POST
     }
 }
 

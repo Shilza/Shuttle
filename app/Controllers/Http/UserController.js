@@ -5,7 +5,7 @@ const Friendship = use('App/Models/Friendship');
 
 class UserController {
 
-    async show({ request, response, auth }) {
+    async isNameUnique({request, response, auth}) {
         const {validate} = use('CValidator');
 
         const rules = {
@@ -19,35 +19,70 @@ class UserController {
                 message: validation.messages()[0].message
             });
 
-        //const user = await User.findBy('username', request.input('username'));
+        const currentUser = await auth.getUser();
+        if (currentUser.username === request.input('username'))
+            return response.json({
+                unique: true
+            });
+
+        const user = await User
+            .query()
+            .select(1)
+            .where('username', request.input('username'))
+            .fetch();
+
+        if (user.rows.length)
+            return response.json({
+                unique: false,
+                message: 'Username already exists'
+            });
+
+        response.json({
+            unique: true
+        });
+    }
+
+    async show({request, response, auth}) {
+        const {validate} = use('CValidator');
+
+        const rules = {
+            username: 'required|min:2|max:16'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
         let user = await User.query()
             .where('username', request.input('username'))
-            .withCount('posts')
+            .withCount('posts', (builder) => {
+                builder.where('archive', false)
+            })
             .withCount('followers')
             .withCount('follows')
-            .fetch();
-        user = user.toJSON()[0];
+            .first();
 
-        if(!user)
+        if (!user)
             return response.status(404).json({
                 message: 'User does not exists'
             });
 
-        if(auth){
-            const me = await auth.getUser();
-            const isFollows = await Friendship
-                .query()
-                .where('user_id', user.id)
-                .where('subscriber_id', me.id)
-                .fetch();
+        const me = await auth.getUser();
+        const isFollows = await Friendship
+            .query()
+            .where('user_id', user.id)
+            .where('subscriber_id', me.id)
+            .first();
 
-            user.isFollows = isFollows.rows.length > 0;
-        }
+        user.isFollows = !!isFollows;
 
         response.json(user);
     }
 
-    async updateAvatar({ request, response, auth }) {
+    async updateAvatar({request, response, auth}) {
 
         const user = await auth.getUser();
 
@@ -70,7 +105,7 @@ class UserController {
         if (!profilePic.moved())
             return profilePic.error();
 
-        user.avatar = 'uploads/' + user.id + '/' + name;
+        user.avatar = '/uploads/' + user.id + '/' + name;
         user.save();
 
         response.json({
@@ -79,7 +114,7 @@ class UserController {
         });
     }
 
-    async deleteAvatar({ request, response, auth }) {
+    async deleteAvatar({request, response, auth}) {
         const user = await auth.getUser();
 
         user.avatar = null;
@@ -90,7 +125,7 @@ class UserController {
         });
     }
 
-    async followers({ request, response }) {
+    async followers({request, response}) {
         const {validate} = use('CValidator');
 
         const rules = {
@@ -105,11 +140,11 @@ class UserController {
             });
 
         const user = await User.find(request.input('id'));
-        if(!user)
+        if (!user)
             response.status(400).json({message: 'User does not exists'});
 
         let followersIds = await user.followers().fetch();
-        followersIds = JSON.parse(JSON.stringify(followersIds)).map(item => item.subscriber_id);
+        followersIds = followersIds.toJSON().map(item => item.subscriber_id);
 
         const followers = await User
             .query()
@@ -119,7 +154,7 @@ class UserController {
         response.json({followers});
     }
 
-    async follows({ request, response }) {
+    async follows({request, response}) {
         const {validate} = use('CValidator');
 
         const rules = {
@@ -134,11 +169,11 @@ class UserController {
             });
 
         const user = await User.find(request.input('id'));
-        if(!user)
+        if (!user)
             response.status(400).json({message: 'User does not exists'});
 
         let followsIds = await user.follows().fetch();
-        followsIds = JSON.parse(JSON.stringify(followsIds)).map(item => item.user_id);
+        followsIds = followsIds.toJSON().map(item => item.user_id);
 
         const follows = await User
             .query()
@@ -146,6 +181,39 @@ class UserController {
             .fetch();
 
         response.json({follows});
+    }
+
+    async makePrivate({request, response, auth}) {
+
+        const user = await auth.getUser();
+
+        if (user.private)
+            return response.status(400).json({
+                message: 'Account already is private'
+            });
+
+        user.private = true;
+        await user.save();
+
+        response.json({
+            message: 'Account is now private'
+        });
+    }
+
+    async makePublic({request, response, auth}) {
+        const user = await auth.getUser();
+
+        if (!user.private)
+            return response.status(400).json({
+                message: 'Account already is public'
+            });
+
+        user.private = false;
+        await user.save();
+
+        response.json({
+            message: 'Account is now public'
+        });
     }
 }
 

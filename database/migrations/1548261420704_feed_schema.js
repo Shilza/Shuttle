@@ -10,7 +10,7 @@ class FeedSchema extends Schema {
             table.integer('receiver_id').unsigned().notNullable().references('id').inTable('users').onDelete('cascade');
             table.integer('post_id').unsigned().notNullable().references('id').inTable('posts').onDelete('cascade');
             table.timestamp('created_at');
-        })
+        });
     }
 
     down() {

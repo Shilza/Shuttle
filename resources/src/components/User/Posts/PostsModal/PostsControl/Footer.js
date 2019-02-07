@@ -6,7 +6,7 @@ import CommentInput from "./CommentInput";
 const Footer = ({post}) => (
     <div className={styles.footer}>
         <CommentInput post_id={post.id}/>
-        <OptionsModal post_id={post.id} owner_id={post.owner_id}/>
+        <OptionsModal post={post}/>
     </div>
 );
 

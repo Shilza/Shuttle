@@ -35,3 +35,24 @@ export function deleteAvatar(){
         type: ActionTypes.DELETE_AVATAR,
     }
 }
+
+
+export function setPrivate(){
+    return {
+        type: ActionTypes.SET_PRIVATE,
+    }
+}
+
+export function setPublic(){
+    return {
+        type: ActionTypes.SET_PUBLIC,
+    }
+}
+
+
+export function setBlacklisted(payload){
+    return {
+        type: ActionTypes.SET_BLACKLISTED,
+        payload
+    }
+}

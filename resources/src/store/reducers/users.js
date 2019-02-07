@@ -1,10 +1,20 @@
-import {DELETE_AVATAR, SET_FOLLOWERS, SET_FOLLOWS, SET_USER, UPDATE_AVATAR} from "../actionTypes/users";
+import {
+    DELETE_AVATAR, SET_BLACKLISTED,
+    SET_FOLLOWERS,
+    SET_FOLLOWS,
+    SET_PRIVATE,
+    SET_PUBLIC,
+    SET_USER,
+    UPDATE_AVATAR
+} from "../actionTypes/users";
 import {FOLLOW, UNFOLLOW} from "../actionTypes/friendships";
+import {ADD_POST, REMOVE_POST} from "../actionTypes/posts";
 
 const initialState = {
     user: undefined,
     followers: undefined,
-    follows: undefined
+    follows: undefined,
+    blacklisted: undefined
 };
 
 const Users = (state = initialState, {type, payload = null}) => {
@@ -19,10 +29,20 @@ const Users = (state = initialState, {type, payload = null}) => {
             return follow(state);
         case UNFOLLOW:
             return unfollow(state);
+        case ADD_POST:
+            return incrementsPostsCount(state);
+        case REMOVE_POST:
+            return decrementsPostsCount(state);
         case UPDATE_AVATAR:
             return updateAvatar(state, payload);
         case DELETE_AVATAR:
             return deleteAvatar(state);
+        case SET_PRIVATE:
+            return setPrivate(state);
+        case SET_PUBLIC:
+            return setPublic(state);
+        case SET_BLACKLISTED:
+            return setBlacklisted(state, payload);
         default:
             return state;
     }
@@ -30,7 +50,7 @@ const Users = (state = initialState, {type, payload = null}) => {
 
 const setUser = (state, user) => {
 
-    if(user.hasOwnProperty('__meta__')) {
+    if (user.hasOwnProperty('__meta__')) {
         Object.keys(user.__meta__).forEach(key =>
             user[key] = user.__meta__[key]
         );
@@ -41,6 +61,28 @@ const setUser = (state, user) => {
         ...state,
         user
     };
+};
+
+const decrementsPostsCount = state => {
+
+    const user = {...state.user};
+    user.posts_count--;
+
+    return {
+        ...state,
+        user
+    }
+};
+
+const incrementsPostsCount = state => {
+
+    const user = {...state.user};
+    user.posts_count++;
+
+    return {
+        ...state,
+        user
+    }
 };
 
 const setFollowers = (state, followers) => {
@@ -91,7 +133,7 @@ const updateAvatar = (state, avatar) => {
     return state;
 };
 
-const deleteAvatar = (state) => {
+const deleteAvatar = state => {
     state = {
         ...state,
         user: {
@@ -103,5 +145,35 @@ const deleteAvatar = (state) => {
     return state;
 };
 
+const setPrivate = state => {
+    state = {
+        ...state,
+        user: {
+            ...state.user,
+            private: true
+        }
+    };
+
+    return state;
+};
+
+const setPublic = state => {
+    state = {
+        ...state,
+        user: {
+            ...state.user,
+            private: false
+        }
+    };
+
+    return state;
+};
+
+const setBlacklisted = (state, blacklisted) => {
+    return {
+        ...state,
+        blacklisted: blacklisted.map(item => item.blacklisted[0])
+    };
+};
 
 export default Users;

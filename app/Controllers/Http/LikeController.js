@@ -5,8 +5,32 @@ const Post = use('App/Models/Post');
 const Comment = use('App/Models/Comment');
 const EntityType = use('App/Models/EntityType');
 const {validate} = use('CValidator');
+const PostsService = use('PostsService');
+const LikesService = use('LikesService');
 
 class LikeController {
+
+    async show({request, response, auth}) {
+        const rules = {
+            page: 'integer'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
+        const user = await auth.getUser();
+
+       const likedPosts = await PostsService.getLikedPosts(user.id, page);
+
+        response.json(likedPosts);
+    }
 
     async like({request, response, auth}) {
         const rules = {
@@ -36,13 +60,13 @@ class LikeController {
             .where('type', type.id)
             .first();
 
-        if(like)
+        if (like)
             return response.json({message: 'Like already exists'});
 
         switch (type.type) {
             case 'comment':
                 const comment = await Comment.find(entity_id);
-                if(!comment)
+                if (!comment)
                     return response.status(400).json({
                         message: 'Comment does not exists'
                     });
@@ -53,7 +77,7 @@ class LikeController {
 
             case 'post':
                 const post = await Post.find(entity_id);
-                if(!post)
+                if (!post)
                     return response.status(400).json({
                         message: 'Post does not exists'
                     });
@@ -67,7 +91,7 @@ class LikeController {
     }
 
 
-    async unlike({ request, response, auth}) {
+    async unlike({request, response, auth}) {
         const rules = {
             type: 'required|string',
             entity_id: 'required|integer'
@@ -95,30 +119,30 @@ class LikeController {
             .where('type', type.id)
             .first();
 
-        if(!like)
+        if (!like)
             return response.json({message: 'Like does not exists'});
 
         switch (type.type) {
             case 'comment':
                 const comment = await Comment.find(entity_id);
-                if(!comment)
+                if (!comment)
                     return response.status(400).json({
                         message: 'Comment does not exists'
                     });
 
-                if(await like.delete())
+                if (await like.delete())
                     return response.json({message: 'Comment unliked successfully'});
 
                 break;
 
             case 'post':
                 const post = await Post.find(entity_id);
-                if(!post)
+                if (!post)
                     return response.status(400).json({
                         message: 'Post does not exists'
                     });
 
-                if(await like.delete())
+                if (await like.delete())
                     return response.json({message: 'Post unliked successfully'});
 
                 break;

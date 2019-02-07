@@ -11,6 +11,14 @@ class Post extends Model {
         return ['updated_at']
     }
 
+    static scopeArchived(query) {
+        return query.where('archive', true);
+    }
+
+    static scopeNotArchived(query) {
+        return query.where('archive', false);
+    }
+
     comments() {
         return this.hasMany('App/Models/Comment')
     }

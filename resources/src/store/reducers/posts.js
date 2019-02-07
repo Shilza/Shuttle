@@ -16,7 +16,7 @@ const Posts = (state = initialState, {type, payload = null}) => {
             return setSavedPosts(state, payload);
         case ActionTypes.SET_CURRENT_POST:
             return setCurrentPost(state, payload);
-        case ActionTypes.CLOSE_POSTS_MODAL:
+        case ActionTypes.REMOVE_CURRENT_POST:
             return removeCurrentPost(state);
         case ActionTypes.ADD_POST:
             return addPost(state, payload);
@@ -86,6 +86,7 @@ const removeCurrentPost = (state) => {
 const removePost = (state, id) => {
     return {
         ...state,
+        isModalOpen: false,
         posts: state.posts.filter(item => item.id !== id)
     };
 };

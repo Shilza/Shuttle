@@ -4,6 +4,10 @@ import Home from '../pages/Home/Home'
 import Register from '../components/Welcome/Register/Register'
 import ForgotPass from '../components/Welcome/ForgotPass/ForgotPass'
 import ResetPass from '../components/Welcome/ResetPass/ResetPass'
+import PostByCode from "../pages/PostByCode/PostByCode";
+import Archive from "../components/Archive/Archive";
+import LikedPosts from "../components/LikedPosts/LikedPosts";
+import Blacklist from "../components/Blacklist/Blacklist";
 
 export const routes = [
     {
@@ -47,5 +51,29 @@ export const routes = [
         exact: true,
         auth: false,
         component: ResetPass
+    },
+    {
+        path: '/p/:code',
+        exact: true,
+        auth: true,
+        component: PostByCode
+    },
+    {
+        path: '/posts/archive',
+        exact: true,
+        auth: true,
+        component: Archive
+    },
+    {
+        path: '/posts/liked',
+        exact: true,
+        auth: true,
+        component: LikedPosts
+    },
+    {
+        path: '/account/blacklist',
+        exact: true,
+        auth: true,
+        component: Blacklist
     }
 ];

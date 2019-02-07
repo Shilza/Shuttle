@@ -1,6 +1,5 @@
 import FriendshipActions from "./FriendshipActions";
 import {connect} from "react-redux";
-import {Button, Icon} from "antd";
 import React from "react";
 import Settings from "./Settings/Settings";
 import Edit from "./Edit/Edit";

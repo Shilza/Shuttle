@@ -12,7 +12,7 @@ const Header = ({username, avatar}) => (
             <img width='30' height='30' src={shuttle}/>
         </Link>
         <Search/>
-        <Link to={username} style={{marginRight: 20}}>
+        <Link to={'/' + username} style={{marginRight: 20}}>
             {
                 avatar
                     ? <img src={avatar} alt='avatar' className={styles.avatar}/>

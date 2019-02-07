@@ -2,20 +2,33 @@ import React from "react";
 import styles from './optionsModal.module.css';
 import * as PostService from "../../../../../services/post";
 import {message} from "antd/lib/index";
-import {closePostsModal} from "../../../../../store/actions/posts";
+import {removeCurrentPost} from "../../../../../store/actions/posts";
 import {connect} from "react-redux";
+import Archive from "./Archive";
 
-const ModalBody = ({post_id, owner_id, currentUserId, dispatch, closeModal}) => {
+const ModalBody = ({post_id, owner_id, isArchived, link, currentUserId, dispatch, closeModal}) => {
     const removePost = () => {
         if (owner_id === currentUserId)
             dispatch(PostService.remove(post_id))
                 .then(data => {
                     message.success(data.message);
-                    dispatch(closePostsModal());
+                    dispatch(removeCurrentPost());
                 })
                 .catch(err => message.error(err.response.data.message));
         else
             message.error('Only owner can delete post');
+    };
+
+
+    const copyLinkToClipboard = () => {
+        let el = document.createElement('textarea');
+        el.value = link;
+        el.setAttribute('readonly', '');
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        message.success('Link copied to clipboard');
     };
 
     const me = owner_id === currentUserId;
@@ -24,10 +37,11 @@ const ModalBody = ({post_id, owner_id, currentUserId, dispatch, closeModal}) => 
         <ul className={styles.optionsContainer}>
             <li>Complain</li>
             <li>Share</li>
-            <li>Copy link</li>
+            <li onClick={copyLinkToClipboard}>Copy link</li>
             {
                 me &&
                 <>
+                    <Archive isArchived={isArchived} post_id={post_id}/>
                     <li>Edit post</li>
                     <li onClick={removePost}>Delete post</li>
                 </>

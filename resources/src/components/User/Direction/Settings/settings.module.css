@@ -2,6 +2,22 @@
 .settingsContainer {
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.settingsContainer > li:nth-child(n) {
+     list-style-type: none;
+     cursor: pointer;
+     margin-bottom: 12px;
+}
+
+.settingsContainer > li:nth-child(n):hover {
+    color: #000c17;
+}
+
+.settingsContainer > li > span{
+    margin-right: 10px;
 }
 
 .settingsButton {
