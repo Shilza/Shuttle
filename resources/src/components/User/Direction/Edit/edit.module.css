@@ -1,103 +1,35 @@
 
-/* form starting stylings ------------------------------- */
-.group 			  {
-    position:relative;
-    margin: 10px 15px 30px 0;
-    width: 90%;
+.editContainer {
+    position: relative;
+    height: 100%;
+    padding: 3em 8%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-input 				{
-    padding:10px 10px 5px 5px;
-    display:block;
-    border:none;
-    border-bottom:1px solid #757575;
+
+
+.editContainer form {
     width: 100%;
 }
-input:focus 		{ outline:none; }
 
-/* LABEL ======================================= */
-.label {
-    color:#999;
-    font-weight:normal;
-    position:absolute;
-    pointer-events:none;
-    left:5px;
-    top:10px;
-    transition:0.2s ease all;
-    -moz-transition:0.2s ease all;
-    -webkit-transition:0.2s ease all;
-}
-
-/* active state */
-input:focus ~ .label, input:valid ~ .label {
-    top:-15px;
-    font-size:14px;
-    color:cornflowerblue;
+.editTitle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 18px 16px 12px;
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.85);
 }
 
-.errorLabel {
-    color:red;
-    font-size: 12px;
-    font-weight:normal;
-    position:absolute;
-    pointer-events:none;
-    left: 5px;
-    top:40px;
-    transition:0.2s ease all;
-    -moz-transition:0.2s ease all;
-    -webkit-transition:0.2s ease all;
-}
-
-/* BOTTOM BARS ================================= */
-.bar { position:relative; display:block; }
-.bar:before, .bar:after {
-    content:'';
-    height:1px;
-    width:0;
-    position:absolute;
-    background: cornflowerblue;
-    transition:0.2s ease all;
-    -moz-transition:0.2s ease all;
-    -webkit-transition:0.2s ease all;
-}
-.bar:before {
-    left:50%;
-}
-.bar:after {
-    right:50%;
-}
-
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-    width:50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-    position:absolute;
-    height:60%;
-    top:25%;
-    left:0;
-    pointer-events:none;
-    opacity:0.5;
-}
-
-/* active state */
-input:focus ~ .highlight {
-    -webkit-animation:inputHighlighter 0.3s ease;
-    -moz-animation:inputHighlighter 0.3s ease;
-    animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-    from { background:cornflowerblue; }
-    to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-    from { background:cornflowerblue; }
-    to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-    from { background:cornflowerblue; }
-    to 	{ width:0; background:transparent; }
+.editTitleCheck {
+    margin-left: auto;
+    color: cornflowerblue;
 }

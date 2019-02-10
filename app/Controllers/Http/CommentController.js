@@ -5,6 +5,8 @@ const Post = use('App/Models/Post');
 const {validate} = use('CValidator');
 const LikesService = use('LikesService');
 const CommentsService = use('CommentsService');
+const UsersService = use('UsersService');
+const PostsService = use('PostsService');
 
 class CommentController {
 
@@ -24,13 +26,18 @@ class CommentController {
         let page = parseInt(request.input('page'), 10);
         page = page > 0 ? page : 1;
 
+        const postId  = request.input('post_id');
         const user = await auth.getUser();
 
-        const comments = await CommentsService.getComments(
-            user.id, request.input('post_id'), page
-        );
+        const owner = await PostsService.getPostsOwnerByPostId(postId);
 
-        response.json(comments);
+        const canSee = await UsersService.canSee(owner, user.id);
+        if(canSee) {
+            const comments = await CommentsService.getComments(user.id, postId, page);
+
+            return response.json(comments);
+        } else
+            return response.json({ private: true });
     }
 
     async create({request, response, auth}) {

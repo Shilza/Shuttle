@@ -146,6 +146,9 @@ const unlikePost = (state, postId) => {
 };
 
 const save = (state, postId) => {
+    let currentPost = {...state.currentPost};
+    currentPost.isSaved = true;
+
     let posts = [...state.posts].map(post => {
         if (post.id === postId) {
             post.isSaved = true;
@@ -158,11 +161,15 @@ const save = (state, postId) => {
 
     return {
         ...state,
+        currentPost,
         posts
     };
 };
 
 const removeSavedPost = (state, postId) => {
+    let currentPost = {...state.currentPost};
+    currentPost.isSaved = false;
+
     let posts = [...state.posts].map(post => {
         if (post.id === postId) {
             post.isSaved = false;
@@ -175,6 +182,7 @@ const removeSavedPost = (state, postId) => {
 
     return {
         ...state,
+        currentPost,
         posts
     };
 };

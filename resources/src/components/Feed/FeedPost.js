@@ -1,10 +1,10 @@
-import Header from "../User/Posts/PostsModal/PostsControl/Header";
-import Actions from "../User/Posts/PostsModal/PostsControl/Actions/Actions";
 import React from "react";
 import styles from './feed.module.css';
-import Footer from "../User/Posts/PostsModal/PostsControl/Footer";
-import CommentsList from "../User/Comments/CommentsList";
+import CommentsList from "../Comments/CommentsList";
 import {connect} from "react-redux";
+import Header from "../Posts/PostsModal/PostsControl/Header";
+import Actions from "../Posts/PostsModal/PostsControl/Actions/Actions";
+import Footer from "../Posts/PostsModal/PostsControl/Footer";
 
 const FeedPost = React.memo(({post, comments, open}) => (
     <article className={styles.item}>
@@ -37,17 +37,15 @@ function getComments(comments, props) {
 
     let com = [];
     comments.forEach(comment => {
-        if(comment.post_id === props.post.id)
+        if (comment.post_id === props.post.id)
             com.push(comment);
     });
 
     return com;
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        comments: getComments(state.comments.comments, props)
-    };
-};
+const mapStateToProps = (state, props) => ({
+    comments: getComments(state.comments.comments, props)
+});
 
 export default connect(mapStateToProps)(FeedPost);

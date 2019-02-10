@@ -6,50 +6,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/LikesService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/72cf660a-cbf9-4987-84d6-bda2b63ef11f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/72cf660a-cbf9-4987-84d6-bda2b63ef11f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/72cf660a-cbf9-4987-84d6-bda2b63ef11f/storage_v2/_src_/schema/shuttle.udiLew.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/72cf660a-cbf9-4987-84d6-bda2b63ef11f/storage_v2/_src_/schema/shuttle.udiLew.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/FeedController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/FeedController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/PostController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/PostController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/SearchController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/SearchController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Like.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Like.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/CommentsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CommentsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/CompilationsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CompilationsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/LikesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/LikesService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/PostsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PostsService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/1503248427885_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1503248427885_user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1547151225029_post_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1547151225029_post_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1548261420704_feed_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1548261420704_feed_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/1548753487007_compilation_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1548753487007_compilation_schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/FeedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/FeedList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/MediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/MediaPlayer/MediaPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/DirectionActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/DirectionActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/UploadMediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/MediaPlayer/UploadMediaPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/MediaPlayer/VideoPlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Modal/Modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Comments/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Comments/CommentsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Comments/comment.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/comment.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Bio.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Bio.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/MaterialInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/MaterialInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/MaterialInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/MaterialInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Site.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Site.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/settings.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/settings.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/ModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/ModalBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/OptionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/OptionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/postModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/postModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/routes/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/materialInput.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Avatar/Avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/Avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Avatar/DeleteButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DeleteButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Avatar/DiretionButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DiretionButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Avatar/UploadButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/UploadButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Avatar/avatar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/avatar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Stories/StoriesList/StoriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/StoriesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Stories/StoriesList/storiesList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/storiesList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Stories/Story/Story.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/Story/Story.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/Stories/Story/story.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/Story/story.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/UserInfo/Friendships.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/Friendships.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/UserInfo/UserFriendshipCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserFriendshipCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/UserInfo/friendships.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/friendships.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/UserInfo/userInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/userInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Header/header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/userInfoHeader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Post/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Post/post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/post.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsList/PostsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsList/postsList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/postsList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/ModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/ModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/OptionsButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/OptionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/optionsModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/optionsModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Actions/Actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Actions/Like.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Like.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Actions/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Actions/actions.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/actions.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Caption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/CommentInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/CommentInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/PostControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/postControl.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/postControl.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/postModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/postModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Uploader/Modal/UploadButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Uploader/Modal/UploadPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Uploader/Modal/uploadPost.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/uploadPost.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Posts/Uploader/PostsUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Welcome/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Welcome/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/Welcome/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Welcome/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/pages/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/services/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/services/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/services/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/utils/scrolling.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/utils/scrolling.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
@@ -92,23 +143,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LikeController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/LikeController.js">
+      <file leaf-file-name="UserController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="29" column="74" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
+            <state relative-caret-position="254">
+              <caret line="252" column="52" lean-forward="true" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="52" />
               <folding>
-                <element signature="n#!!block;n#unlike#0;n#LikeController#0" />
+                <element signature="n#!!block;n#updateAvatar#0;n#UserController#0" />
+                <element signature="n#!!block;n#deleteAvatar#0;n#UserController#0" />
+                <element signature="n#!!block;n#makePrivate#0;n#UserController#0" />
+                <element signature="n#!!block;n#makePublic#0;n#UserController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CommentController.js">
+      <file leaf-file-name="friendships" pinned="false" current-in-tab="false">
+        <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/friendships">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="posts" pinned="false" current-in-tab="false">
+        <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/posts">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Services/UsersService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="51">
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -116,70 +188,8 @@
       <file leaf-file-name="CommentsService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/CommentsService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/PostController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1129">
-              <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!block;n#create#0;n#PostController#0" />
-                <element signature="n#!!block;n#contentDistribution#0;n#PostController#0" />
-                <element signature="n#!!block;n#update#0;n#PostController#0" />
-                <element signature="n#!!block;n#delete#0;n#PostController#0" />
-                <element signature="n#!!block;n#addToArchive#0;n#PostController#0" />
-                <element signature="n#!!block;n#deleteFromArchive#0;n#PostController#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendshipController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/FriendshipController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LikesService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/LikesService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/FeedController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompilationController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CompilationController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompilationsService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/CompilationsService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+            <state relative-caret-position="34">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -187,10 +197,42 @@
       <file leaf-file-name="PostsService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/PostsService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="195" column="22" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
+            <state relative-caret-position="17">
+              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/PostController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CommentController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="likes" pinned="false" current-in-tab="false">
+        <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/likes">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SearchController.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -206,36 +248,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>posts.rows = PostsService.setOwnerInfo(user, posts.rows);         posts.rows = await LikesService.setIsLikedInfo(user.id, posts.rows);</find>
-      <find>databa</find>
-      <find>getposts</find>
-      <find>getPostsByPage</find>
-      <find>getPostsL</find>
-      <find>isCommentLikedBy</find>
-      <find>getpostsLikes</find>
-      <find>setIsLikedInfo</find>
-      <find>getUsersLikesByComments</find>
-      <find>console</find>
-      <find>setSavedInfo</find>
-      <find>getUsersLikedPosts</find>
-      <find>setOwnerInfo</find>
-      <find>like</find>
-      <find>Like.qu</find>
-      <find>getCommentsLikes</find>
-      <find>Compilation</find>
-      <find>isSavedBy</find>
-      <find>getSavedPostsId</find>
-      <find>Comment.</find>
-      <find>json.parse</find>
-      <find>isPostLikedBy</find>
-      <find>getPostsIdsByCompilationName</find>
-      <find>byids</find>
-      <find>getPostsIdsByCompilationsName</find>
-      <find>_isSavedBy</find>
       <find>likedPosts</find>
       <find>getLikedPosts</find>
       <find>getResultedComments</find>
       <find>_getLikedPosts</find>
+      <find>_isSavedBy</find>
+      <find>dispat</find>
+      <find>getlikedPosts</find>
+      <find>posts</find>
+      <find>getcomm</find>
+      <find>getFeedPosts</find>
+      <find>setIsLikedInfo</find>
+      <find>feed</find>
+      <find>setsaved</find>
+      <find>save</find>
+      <find>moment</find>
+      <find>getAr</find>
+      <find>convertTime</find>
+      <find>error</find>
+      <find>padd</find>
+      <find>service</find>
+      <find>likes</find>
+      <find>/api/v1/likes</find>
+      <find>get</find>
+      <find>defa</find>
+      <find>users</find>
+      <find>select(1)</find>
+      <find>getComments</find>
+      <find>console.</find>
+      <find>getPostsByOwner</find>
+      <find>followers</find>
     </findStrings>
     <replaceStrings>
       <replace>counter</replace>
@@ -254,57 +296,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Username.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Site.js" />
-        <option value="$PROJECT_DIR$/database/migrations/1547151225029_post_schema.js" />
-        <option value="$PROJECT_DIR$/database/migrations/1503248427885_user.js" />
-        <option value="$PROJECT_DIR$/app/Models/BlackList.js" />
-        <option value="$PROJECT_DIR$/database/migrations/1548753487007_compilation_schema.js" />
-        <option value="$PROJECT_DIR$/database/migrations/1548261420704_feed_schema.js" />
-        <option value="$PROJECT_DIR$/app/Models/Post.js" />
-        <option value="$PROJECT_DIR$/database/migrations/1549121700703_blacklist_schema.js" />
-        <option value="$PROJECT_DIR$/app/Models/Blacklist.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Archive/archive.module.css" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/PostsControl/Footer.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/OptionsModal.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/posts.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/Archive.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/ModalBody.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/actions/users.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/actionTypes/users.js" />
-        <option value="$PROJECT_DIR$/resources/src/services/user.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Blacklist/Blacklisted.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/users.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Blacklist/Blacklist.js" />
-        <option value="$PROJECT_DIR$/app/Models/User.js" />
-        <option value="$PROJECT_DIR$/app/Models/Like.js" />
-        <option value="$PROJECT_DIR$/resources/src/routes/routes.js" />
-        <option value="$PROJECT_DIR$/resources/src/services/post.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/LikedPosts/likedPosts.module.css" />
-        <option value="$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js" />
-        <option value="$PROJECT_DIR$/providers/PostServiceProvider.js" />
-        <option value="$PROJECT_DIR$/providers/PostsServiceProvider.js" />
-        <option value="$PROJECT_DIR$/providers/LikesServiceProvider.js" />
-        <option value="$PROJECT_DIR$/providers/CompilationsServiceProvider.js" />
-        <option value="$PROJECT_DIR$/providers/CommentsServiceProvider.js" />
-        <option value="$PROJECT_DIR$/start/app.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/SearchController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/BlacklistController.js" />
-        <option value="$PROJECT_DIR$/start/routes.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/UserController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/FeedController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/PostController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" />
-        <option value="$PROJECT_DIR$/app/Services/CommentsService.js" />
-        <option value="$PROJECT_DIR$/app/Services/CompilationsService.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Bio.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/EditBio.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/EditUsername.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" />
-        <option value="$PROJECT_DIR$/app/Services/LikesService.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Edit/Site.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/Posts.js" />
+        <option value="$PROJECT_DIR$/resources/src/css/normalize.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Feed/transitions.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Feed/FeedList.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsList/transitions.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Drawer/transitions.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Drawer/drawer.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Drawer/Drawer.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/materialInput.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/MaterialInput.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/Edit.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/reducers/index.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/actionTypes/edit.js" />
+        <option value="$PROJECT_DIR$/start/routes.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1503248427885_user.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/actions/edit.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/reducers/edit.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/actionTypes/auth.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditTitle.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Search/Search.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/reducers/auth.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/actions/auth.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/user.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Site.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Username.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Bio.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Edit/Bio.js" />
+        <option value="$PROJECT_DIR$/start/app.js" />
+        <option value="$PROJECT_DIR$/providers/UsersServiceProvider.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/post.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/User.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/comments.js" />
+        <option value="$PROJECT_DIR$/resources/src/utils/scrolling.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/UserController.js" />
+        <option value="$PROJECT_DIR$/app/Services/CommentsService.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" />
         <option value="$PROJECT_DIR$/app/Services/PostsService.js" />
+        <option value="$PROJECT_DIR$/app/Services/UsersService.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/PostController.js" />
       </list>
     </option>
   </component>
@@ -376,6 +418,118 @@
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Fields" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Fields" type="462c0819:PsiDirectoryNode" />
+              <item name="MaterialInput" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
+              <item name="Edit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
+              <item name="Edit" type="462c0819:PsiDirectoryNode" />
+              <item name="EditBody" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Welcome" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Welcome" type="462c0819:PsiDirectoryNode" />
+              <item name="Register" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
               <item name="start" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -395,22 +549,23 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\adojs\resources\src\pages\PostByCode" />
-      <recent name="D:\adojs\resources\src\components\User\Direction\Edit\EditBody" />
-      <recent name="D:\adojs\resources\src\components\User\Direction\Settings" />
-      <recent name="D:\adojs\resources\src\components\User\Direction" />
-      <recent name="D:\adojs\resources\src\components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\adojs\resources\src\components\User\Direction\Edit\EditBody" />
+      <recent name="D:\adojs\resources\src\components\Feed" />
       <recent name="D:\adojs\resources\src\components\User\Header\UserInfo" />
       <recent name="D:\adojs\resources\public" />
       <recent name="D:\adojs\providers" />
-      <recent name="D:\adojs\resources\views\emails" />
-      <recent name="D:\adojs\resources\js\components\Fields" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\adojs\resources\src\components\Drawer" />
+      <recent name="D:\adojs\resources\src\components\Fields\Edit" />
+      <recent name="D:\adojs\resources\src\components\Fields\MaterialInput" />
+      <recent name="D:\adojs\resources\src\components\Fields" />
+      <recent name="D:\adojs\resources\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -506,7 +661,11 @@
       <workItem from="1549286951842" duration="9645000" />
       <workItem from="1549377475896" duration="9272000" />
       <workItem from="1549463323505" duration="4541000" />
-      <workItem from="1549525771987" duration="23779000" />
+      <workItem from="1549525771987" duration="26562000" />
+      <workItem from="1549612643205" duration="10318000" />
+      <workItem from="1549629874192" duration="22402000" />
+      <workItem from="1549713530094" duration="20010000" />
+      <workItem from="1549787881370" duration="9769000" />
     </task>
     <servers />
   </component>
@@ -516,7 +675,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="615052000" />
+    <option name="totallyTimeSpent" value="680334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -529,7 +688,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" weight="0.32954547" />
@@ -537,8 +695,9 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35227272" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.24837662" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2624811" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.23863636" />
+      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32954547" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27836612" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.20574887" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
@@ -553,7 +712,6 @@
       <window_info anchor="bottom" id="Command Line Tools Console" order="12" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32954547" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,234 +722,329 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/users.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Edit/Site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        <state relative-caret-position="221">
+          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Blacklist/Blacklisted.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/services/search.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Posts/PostsModal/OptionsModal/ModalBody.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/axios/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        <state relative-caret-position="177">
+          <caret line="116" column="39" selection-start-line="116" selection-start-column="39" selection-end-line="116" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Blacklist/Blacklist.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actionTypes/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        <state relative-caret-position="85">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/services/user.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="109" column="64" selection-start-line="109" selection-start-column="64" selection-end-line="109" selection-end-column="64" />
+        <state relative-caret-position="272">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Blacklist.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="34">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/entity_types">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/User.js">
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/AuthController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="51" column="23" lean-forward="true" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+        <state relative-caret-position="345">
+          <caret line="167" column="18" lean-forward="true" selection-start-line="167" selection-start-column="18" selection-end-line="167" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Comment.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actionTypes/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditTitle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Search/SearchBar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Search/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Username.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="13" selection-end-column="5" />
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Search/User.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="174" column="63" selection-start-line="174" selection-start-column="63" selection-end-line="174" selection-end-column="63" />
+        <state relative-caret-position="-51">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#176#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/posts.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="170">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/services/likes.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/services/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/routes/routes.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/services/post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="101" column="28" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Archive/Archive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="49" selection-start-line="6" selection-end-line="26" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Archive/archive.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/LikedPosts/likedPosts.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="306">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Settings.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Username.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state relative-caret-position="510">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start/kernel.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Welcome/Register/Register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="527">
+          <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/es/form/FormItem.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
           <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utils/CValidator/index.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/form/Form.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/providers/CValidatorProvider.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Bio.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="340">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Edit/Bio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/providers/CommentsServiceProvider.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/providers/PostsServiceProvider.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        <state relative-caret-position="272">
+          <caret line="16" column="8" lean-forward="true" selection-end-line="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/providers/LikesServiceProvider.js">
+    <entry file="file://$PROJECT_DIR$/start/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="16" selection-end-column="8" />
+        <state relative-caret-position="153">
+          <caret line="51" column="41" lean-forward="true" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/providers/CompilationsServiceProvider.js">
+    <entry file="file://$PROJECT_DIR$/providers/UsersServiceProvider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/LikesService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="40" />
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
     </entry>
-    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/compilations">
+    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/comments">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Post.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="221">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Like.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="221">
+          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/providers/PostsServiceProvider.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/services/post.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="40" column="52" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="40" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start/app.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/services/comments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="61" column="53" lean-forward="true" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
+        <state relative-caret-position="289">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/AuthController.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/utils/scrolling.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2108">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="102">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/comments">
+    <entry file="file://$PROJECT_DIR$/start/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/CommentsService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SearchController.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/likes">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/friendships">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -805,129 +1058,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/PasswordController.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/likes">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="69" column="46" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SearchController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/friendships">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="178" column="20" lean-forward="true" selection-start-line="178" selection-start-column="20" selection-end-line="178" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/BlacklistController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-707">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CommentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/FeedController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/FriendshipController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/CommentsService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CompilationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/CompilationsService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/LikeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="29" column="74" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
-          <folding>
-            <element signature="n#!!block;n#unlike#0;n#LikeController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/LikesService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+        <state relative-caret-position="153">
+          <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/PostsService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="195" column="22" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
+        <state relative-caret-position="17">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/UsersService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/UserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="252" column="52" lean-forward="true" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="52" />
+          <folding>
+            <element signature="n#!!block;n#updateAvatar#0;n#UserController#0" />
+            <element signature="n#!!block;n#deleteAvatar#0;n#UserController#0" />
+            <element signature="n#!!block;n#makePrivate#0;n#UserController#0" />
+            <element signature="n#!!block;n#makePublic#0;n#UserController#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/PostController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1129">
-          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#create#0;n#PostController#0" />
-            <element signature="n#!!block;n#contentDistribution#0;n#PostController#0" />
-            <element signature="n#!!block;n#update#0;n#PostController#0" />
-            <element signature="n#!!block;n#delete#0;n#PostController#0" />
-            <element signature="n#!!block;n#addToArchive#0;n#PostController#0" />
-            <element signature="n#!!block;n#deleteFromArchive#0;n#PostController#0" />
-          </folding>
+        <state relative-caret-position="353">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
         </state>
       </provider>
     </entry>

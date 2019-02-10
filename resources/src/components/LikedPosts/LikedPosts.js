@@ -1,8 +1,8 @@
 import React from "react";
-import {getArchived, getLiked} from "../../services/post";
+import {getLiked} from "../../services/post";
 import {connect} from "react-redux";
 import styles from './likedPosts.module.css';
-import Posts from "../User/Posts/Posts";
+import Posts from "../Posts/Posts";
 
 class LikedPosts extends React.Component {
 

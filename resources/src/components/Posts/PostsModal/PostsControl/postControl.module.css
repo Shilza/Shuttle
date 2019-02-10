@@ -1,0 +1,62 @@
+
+.postControl {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    margin: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    order: -2;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.0975);
+}
+
+.username {
+    margin: 0 10px 0 10px;
+    color: #262626;
+}
+
+.caption {
+    display: inline-block;
+    align-items: center;
+    padding: 2%;
+}
+
+.captionUsername {
+    display: inline-flex;
+    margin-right: 5px;
+}
+
+.captionTextArea {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+.footer {
+    display: inline-flex;
+    margin-top: 10px;
+    align-items: flex-end;
+}
+
+.commentInputContainer {
+    width: 100%;
+}
+
+.commentInput {
+    border: none;
+    width: 100%;
+    outline: 0
+}
+

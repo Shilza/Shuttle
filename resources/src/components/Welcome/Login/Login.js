@@ -10,7 +10,7 @@ import {message} from "antd/lib/index";
 import {Link, withRouter} from 'react-router-dom';
 import Password from "../../Fields/Password";
 import Remember from "../../Fields/Remember";
-import Username from "../../Fields/Username";
+import {Username} from "../../Fields/Username";
 import FormItem from "antd/es/form/FormItem";
 import styles from './login.module.css';
 

@@ -18,10 +18,8 @@ const SearchBar = ({searchBarRef, users}) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        users: state.search.users
-    }
-};
+const mapStateToProps = state => ({
+    users: state.search.users
+});
 
 export default connect(mapStateToProps)(SearchBar);

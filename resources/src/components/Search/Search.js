@@ -7,7 +7,6 @@ import {removeUsers} from "../../store/actions/search";
 
 class Search extends React.Component {
 
-
     searchBarRef = createRef();
 
     componentDidMount() {

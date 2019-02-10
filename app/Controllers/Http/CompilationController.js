@@ -209,7 +209,7 @@ class CompilationController {
 
         if (isDeleted)
             return response.json({
-                message: 'Post deleted successfully'
+                message: 'Post deleted from saved successfully'
             });
 
         response.status(400).json({

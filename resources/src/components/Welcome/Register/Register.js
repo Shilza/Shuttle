@@ -6,7 +6,7 @@ import * as AuthService from "../../../services/auth";
 import {Link, withRouter} from 'react-router-dom'
 import {message} from "antd/lib/index";
 import Email from "../../Fields/Email";
-import Username from "../../Fields/Username";
+import {Username} from "../../Fields/Username";
 import Password from "../../Fields/Password";
 import Confirm from "../../Fields/Confirm";
 import {Form, Icon, Spin, Button} from "antd";

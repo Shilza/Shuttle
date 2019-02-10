@@ -1,5 +1,6 @@
 import Http from "../Http";
 import * as action from "../store/actions/users";
+import {setAuthUser} from "../store/actions/auth";
 
 export function getUser(username) {
     return dispatch => (
@@ -10,6 +11,21 @@ export function getUser(username) {
                         resolve();
                     })
                     .catch(err => reject(err))
+            }
+        ));
+}
+
+
+export function update(editedData) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.patch('/api/v1/users', editedData)
+                    .then(({data}) => {
+                        dispatch(setAuthUser(data.user));
+                        dispatch(action.setUser(data.user));
+                        resolve(data.message);
+                    })
+                    .catch(err => reject(err.response.data.message))
             }
         ));
 }

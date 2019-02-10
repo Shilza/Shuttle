@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {getCompilations} from "../../../../services/saved";
 import SavedContainer from "./SavedContainer";
 import withLoader from "../../../Loader/Loader";
-import Posts from "../../Posts/Posts";
+import Posts from "../../../Posts/Posts";
 
 const SavedWithLoading = withLoader(SavedContainer);
 

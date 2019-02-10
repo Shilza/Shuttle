@@ -1,41 +1,53 @@
 import React from "react";
-import MaterialInput from "./MaterialInput";
-import {Icon} from "antd";
+import {Form, Icon} from "antd";
 import {checkIsUsernameUnique} from "../../../../../services/user";
+import {Username as UsernameField} from "../../../../Fields/Edit/Username";
+import {connect} from "react-redux";
+import {setEditedName} from "../../../../../store/actions/edit";
 
 class Username extends React.Component {
 
-    state = {
-        isLoading: false,
-        error: undefined,
-        isOk: false
+    isUnique = () => {
+        this.props.form.validateFields((err, {username}) => {
+            if (!err) {
+                checkIsUsernameUnique(username)
+                    .then(({unique, message}) => {
+                        this.sett(unique, message, username)
+                    })
+                    .catch(({unique, message}) => {
+                        this.sett(unique, message, username)
+                    })
+            }
+        });
     };
 
-    isUnique = event => {
-        this.setState({isLoading: true, error: undefined, isOk: false});
-        checkIsUsernameUnique(event.target.value)
-            .then(({unique, message}) => this.setState({isOk: unique, error: message, isLoading: false}))
-            .catch(({message}) => this.setState({isOk: false, error: message, isLoading: false}))
+    sett = (unique, message, username) => {
+        if (!unique)
+            this.props.form.setFields({
+                username: {
+                    errors: [new Error(message)],
+                },
+            });
+        else {
+            const {dispatch} = this.props;
+            dispatch(setEditedName(username));
+        }
     };
 
     render() {
-        const {username} = this.props;
-        const {isLoading, error, isOk} = this.state;
+        const {username, form} = this.props;
 
         return (
             <>
-                <div style={{display: 'inline-flex', alignItems: 'center', width: '100%'}}>
-                    <MaterialInput defaultValue={username} label={'Username'} error={error} onChange={this.isUnique}/>
-                    {
-                        isLoading && <Icon type="loading"/>
-                    }
-                    {
-                        isOk && <Icon type="check-circle" style={{color: 'green', marginBottom: 12}}/>
-                    }
-                </div>
+                <Form onChange={this.isUnique}>
+                    <UsernameField
+                        getFieldDecorator={form.getFieldDecorator}
+                        initialValue={username}
+                    />
+                </Form>
             </>
         );
     }
 }
 
-export default Username;
+export default connect()(Form.create()(Username));

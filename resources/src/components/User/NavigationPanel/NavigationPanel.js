@@ -3,7 +3,6 @@ import styles from './navigationPanel.module.css';
 import {Tabs} from 'antd';
 import Saved from "./Saved/Saved";
 import Marks from "./Marks/Marks";
-import Posts from "../Posts/Posts";
 import PostsManager from "./PostsManager/PostsManager";
 import {connect} from "react-redux";
 const TabPane = Tabs.TabPane;
@@ -26,6 +25,8 @@ const NavigationPanel = ({me}) => (
     </div>
 );
 
-export default connect(state => ({
+const mapStateToProps = state => ({
     me: state.users.user.id === state.auth.user.id
-}))(NavigationPanel);
+});
+
+export default connect(mapStateToProps)(NavigationPanel);

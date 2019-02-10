@@ -14,7 +14,7 @@ class VideoPlayer extends React.Component{
 
     play() {
         this.state.play ? this.playerRef.current.pause() : this.playerRef.current.play();
-        this.setState(prevState => ({play: !prevState.play}));
+        this.setState(prevState => ({ play: !prevState.play }));
     }
 
     render() {

@@ -8,6 +8,7 @@ const {validate} = use('CValidator');
 const PostsService = use('PostsService');
 const CompilationsService = use('CompilationsService');
 const LikesService = use('LikesService');
+const UsersService = use('UsersService');
 
 class PostController {
 
@@ -42,9 +43,28 @@ class PostController {
         page = page > 0 ? page : 1;
 
         const user = await auth.getUser();
-        const posts = await PostsService.getPostsByOwner(request.input('owner_id'), user.id, page);
 
-        response.json(posts);
+        const ownerId = parseInt(request.input('owner_id'), 10);
+
+        const owner = await User.find(ownerId);
+
+        await this.sleep(3000);
+        const canSee = await UsersService.canSee(owner, user.id);
+
+        if (canSee) {
+            const posts = await PostsService.getPostsByOwner(ownerId, user.id, page);
+            return response.json(posts);
+        } else
+            return response.json({private: true});
+
+    }
+
+    sleep(duration) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve()
+            }, duration);
+        })
     }
 
     async showArchived({request, response, auth}) {
@@ -67,6 +87,28 @@ class PostController {
         const posts = await PostsService.getArchivedPosts(user, page);
 
         response.json(posts);
+    }
+
+    async showLikedPosts({request, response, auth}) {
+        const rules = {
+            page: 'integer'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
+        const user = await auth.getUser();
+
+        const likedPosts = await PostsService.getLikedPosts(user.id, page);
+
+        response.json(likedPosts);
     }
 
     async create({request, response, auth}) {

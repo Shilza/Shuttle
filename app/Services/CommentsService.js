@@ -1,8 +1,11 @@
 const User = use('App/Models/User');
 const Comment = use('App/Models/Comment');
 const LikesService = use('LikesService');
+const PostsService = use('PostsService');
+const UsersService = use('UsersService');
 
 class CommentsService {
+
 
     async getComments(userId, postId, page) {
         const comments = await Comment
@@ -13,7 +16,7 @@ class CommentsService {
             .paginate(page, 4);
 
         comments.rows = await this._setOwnersInfo(comments.rows);
-        comments.rows = await LikesService.setIsLikedInfo(userId, comments.rows);
+        comments.rows = await LikesService.setIsLikedCommentsInfo(userId, comments.rows);
 
         return comments;
     }

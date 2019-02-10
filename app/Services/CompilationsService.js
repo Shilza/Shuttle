@@ -14,6 +14,7 @@ class CompilationsService {
             let data = await Compilation
                 .query()
                 .select('post_id')
+                .where('owner_id', userId)
                 .where('name', compilationsNames[i])
                 .with('post')
                 .limit(4)
@@ -38,7 +39,20 @@ class CompilationsService {
             .pluck('post_id');
     }
 
-    async _getSavedPostsId(userId, postsIds) {
+    async setSavedInfo(userId, posts) {
+        const savedPosts = await this.getSavedPostsId(userId, posts.map(item => item.id));
+
+        return posts.map(post => {
+            post.isSaved = !!savedPosts.find(savedPost => {
+                if (savedPost === post.id)
+                    return true;
+            });
+
+            return post;
+        });
+    }
+
+    async getSavedPostsId(userId, postsIds) {
         return await Compilation
             .query()
             .where('owner_id', userId)
@@ -46,8 +60,7 @@ class CompilationsService {
             .pluck('post_id');
     }
 
-    //!!!!!!!!! may be unused
-    async _isSavedBy(userId, postId) {
+    async isSavedBy(userId, postId) {
         const isSaved = await Compilation
             .query()
             .select(1)

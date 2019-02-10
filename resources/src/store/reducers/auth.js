@@ -9,6 +9,8 @@ const Auth = (state = initialState, {type, payload = null}) => {
     switch (type) {
         case ActionTypes.AUTH_LOGIN:
             return auth(state, payload);
+        case ActionTypes.SET_AUTH_USER:
+            return setUser(state, payload);
         case ActionTypes.AUTH_LOGOUT:
             return logout(state);
         default:
@@ -16,23 +18,20 @@ const Auth = (state = initialState, {type, payload = null}) => {
     }
 };
 
-const auth = (state, payload) => {
-    state = {
-        ...state,
-        isAuthenticated: true,
-        user: payload
-    };
+const setUser = (state, user) => ({
+    ...state,
+    user
+});
 
-    return state;
-};
+const auth = (state, user) => ({
+    ...state,
+    isAuthenticated: true,
+    user
+});
 
-const logout = (state) => {
-    state = {
-        ...state,
-        isAuthenticated: false
-    };
-
-    return state;
-};
+const logout = state => ({
+    ...state,
+    isAuthenticated: false
+});
 
 export default Auth;

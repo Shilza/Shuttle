@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {getPostByCode} from "../../services/post";
-import ModalBody from "../../components/User/Posts/PostsModal/ModalBody";
 import {removeCurrentPost} from "../../store/actions/posts";
+import PostModalBody from "../../components/Posts/PostsModal/PostModalBody";
 
 class PostByCode extends React.Component {
 
@@ -22,7 +22,7 @@ class PostByCode extends React.Component {
             <>
                 {
                     currentPost &&
-                    <ModalBody post={currentPost}/>
+                    <PostModalBody post={currentPost}/>
                 }
             </>
         )

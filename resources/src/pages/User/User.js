@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {message} from "antd/lib/index";
 import * as UserService from "../../services/user";
 import styles from './user.module.css';
 import User from "../../components/User/User";

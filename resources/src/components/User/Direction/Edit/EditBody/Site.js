@@ -1,15 +1,34 @@
 import React from "react";
-import MaterialInput from "./MaterialInput";
+import {Form} from "antd";
+import {Site as SiteField} from "../../../../Fields/Edit/Site";
+import {setEditedSite} from "../../../../../store/actions/edit";
+import {connect} from "react-redux";
 
 class Site extends React.Component {
 
+    checkValidation = () => {
+        this.props.form.validateFields((err, {site}) => {
+            if (!err) {
+                const {dispatch} = this.props;
+                dispatch(setEditedSite(site));
+            }
+        });
+    };
+
     render() {
-        const {site} = this.props;
+        const {site, form} = this.props;
 
         return (
-            <MaterialInput defaultValue={site} label={'Site'}/>
+            <>
+                <Form onChange={this.checkValidation}>
+                    <SiteField
+                        getFieldDecorator={form.getFieldDecorator}
+                        initialValue={site}
+                    />
+                </Form>
+            </>
         );
     }
 }
 
-export default Site;
+export default connect()(Form.create()(Site));

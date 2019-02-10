@@ -2,6 +2,7 @@
 
 const User = use('App/Models/User');
 const Friendship = use('App/Models/Friendship');
+const UsersService = use('UsersService');
 
 class UserController {
 
@@ -29,9 +30,9 @@ class UserController {
             .query()
             .select(1)
             .where('username', request.input('username'))
-            .fetch();
+            .first();
 
-        if (user.rows.length)
+        if (user)
             return response.json({
                 unique: false,
                 message: 'Username already exists'
@@ -71,15 +72,84 @@ class UserController {
             });
 
         const me = await auth.getUser();
-        const isFollows = await Friendship
-            .query()
-            .where('user_id', user.id)
-            .where('subscriber_id', me.id)
-            .first();
-
-        user.isFollows = !!isFollows;
+        user.isFollows = await UsersService.isFollower(user.id, me.id);
+        user.private = user.private && !user.isFollows;
 
         response.json(user);
+    }
+
+    async update({request, response, auth}) {
+        const {validate} = use('CValidator');
+
+        //TODO: add regex validation
+        const rules = {
+            username: 'string|min:2|max:16',
+            bio: 'string|max:100',
+            site: 'string|max:50'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        const user = await auth.getUser();
+
+        const availableFields = [
+            'username', 'bio', 'site'
+        ];
+
+        let dataForUpdate = {};
+        Object.entries(request.all()).forEach(entry => {
+            if (availableFields.includes(entry[0]) && user[entry[0]] !== entry[1]){
+                dataForUpdate[entry[0]] = entry[1];
+            }
+        });
+
+        if(!Object.keys(dataForUpdate).length)
+            return response.status(400).json({
+                message: 'Nothing to update'
+            });
+
+        if(dataForUpdate.hasOwnProperty('username')) {
+            const username = await User
+                .query()
+                .select(1)
+                .where('username', dataForUpdate.username)
+                .first();
+
+            if (username)
+                return response.status(400).json({
+                    message: 'Username already exists'
+                });
+        }
+
+        let isUpdated = await User
+            .query()
+            .where('id', user.id)
+            .update(dataForUpdate);
+
+        if(isUpdated) {
+            const updatedUser = await User.query()
+                .where('id', user.id)
+                .withCount('posts', (builder) => {
+                    builder.where('archive', false)
+                })
+                .withCount('followers')
+                .withCount('follows')
+                .first();
+
+            return response.json({
+                message: 'Updated successfully',
+                user: updatedUser
+            });
+        }
+
+        response.status(400).json({
+            message: 'Something went wrong'
+        });
     }
 
     async updateAvatar({request, response, auth}) {
@@ -125,7 +195,7 @@ class UserController {
         });
     }
 
-    async followers({request, response}) {
+    async followers({request, response, auth}) {
         const {validate} = use('CValidator');
 
         const rules = {
@@ -141,20 +211,20 @@ class UserController {
 
         const user = await User.find(request.input('id'));
         if (!user)
-            response.status(400).json({message: 'User does not exists'});
+            return response.status(400).json({message: 'User does not exists'});
 
-        let followersIds = await user.followers().fetch();
-        followersIds = followersIds.toJSON().map(item => item.subscriber_id);
+        const requester = await auth.getUser();
 
-        const followers = await User
-            .query()
-            .whereIn('id', followersIds)
-            .fetch();
-
-        response.json({followers});
+        const canSee = await UsersService.canSee(user, requester.id);
+        if(canSee) {
+            const followers = await UsersService.getFollowers(user);
+            return response.json({ followers });
+        }
+        else
+            return response.json({ private: true });
     }
 
-    async follows({request, response}) {
+    async follows({request, response, auth}) {
         const {validate} = use('CValidator');
 
         const rules = {
@@ -172,15 +242,15 @@ class UserController {
         if (!user)
             response.status(400).json({message: 'User does not exists'});
 
-        let followsIds = await user.follows().fetch();
-        followsIds = followsIds.toJSON().map(item => item.user_id);
+        const requester = await auth.getUser();
 
-        const follows = await User
-            .query()
-            .whereIn('id', followsIds)
-            .fetch();
-
-        response.json({follows});
+        const canSee = await UsersService.canSee(user, requester.id);
+        if(canSee) {
+            const follows = await UsersService.getFollows(user);
+            return response.json({ follows });
+        }
+        else
+            return response.json({ private: true });
     }
 
     async makePrivate({request, response, auth}) {

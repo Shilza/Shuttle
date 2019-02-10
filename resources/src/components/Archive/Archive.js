@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {getArchived} from "../../services/post";
-import Posts from "../User/Posts/Posts";
 import styles from './archive.module.css';
+import Posts from "../Posts/Posts";
 
 class Archive extends React.Component {
 

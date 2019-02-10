@@ -34,7 +34,11 @@ export function getPosts(id) {
         new Promise((resolve, reject) => {
                 Http.get('/api/v1/posts?owner_id=' + id)
                     .then(({data}) => {
-                        dispatch(actions.setPosts(data.data))
+                        if(data.private)
+                            return resolve({isPrivate: true});
+
+                        dispatch(actions.setPosts(data.data));
+                        resolve({isPrivate: false});
                     })
                     .catch(err => reject(err))
             }
@@ -102,7 +106,7 @@ export function getArchived() {
 export function getLiked() {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/likes')
+                Http.get('/api/v1/posts/liked')
                     .then(({data}) => {
                         dispatch(actions.setPosts(data.data));
                     })

@@ -36,6 +36,7 @@ Route.group(() => {
 
 Route.group(() => {
     Route.get('', 'UserController.show');
+    Route.patch('', 'UserController.update');
     Route.get('/unique', 'UserController.isNameUnique');
     Route.get('followers', 'UserController.followers');
     Route.get('follows', 'UserController.follows');
@@ -60,6 +61,7 @@ Route.group(() => {
 
 Route.group(() => {
     Route.get('', 'PostController.show');
+    Route.get('/liked', 'PostController.showLikedPosts');
     Route.get('/:code', 'PostController.showPostByCode');
     Route.post('', 'PostController.create');
     Route.patch('', 'PostController.update');
@@ -80,7 +82,6 @@ Route.group(() => {
 }).prefix('api/v1/comments').middleware(['auth:jwt']);
 
 Route.group(() => {
-    Route.get('/likes', 'LikeController.show');
     Route.post('like', 'LikeController.like');
     Route.post('unlike', 'LikeController.unlike');
 }).prefix('api/v1').middleware(['auth:jwt']);

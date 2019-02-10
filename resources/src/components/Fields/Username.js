@@ -1,26 +1,27 @@
 import React from "react";
-import { Input, Icon } from 'antd';
+import {Input, Icon} from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
-const Username = ({getFieldDecorator, fieldName}) => {
+export const Username = ({getFieldDecorator, fieldName = 'username', initialValue = '', onChange}) => {
+    const regExpr = /^[a-zA-Z0-9]+$/;
+
     return (
         <FormItem>
             {getFieldDecorator(fieldName, {
                 rules: [
                     {required: true, message: 'Please input your username!'},
                     {max: 16, message: 'Username must be less than 16 characters!'},
-                    {min: 1, message: 'Username must be at least 2 characters!'}
-                    ],
+                    {min: 1, message: 'Username must be at least 2 characters!'},
+                    {pattern: regExpr, message: 'Invalid username'}
+                ],
+                initialValue
             })(
-                <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                       placeholder="Username"/>
+                <Input
+                    onChange={onChange}
+                    prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                    placeholder="Username"
+                />
             )}
         </FormItem>
     );
 };
-
-Username.defaultProps = {
-    fieldName: 'username'
-};
-
-export default Username;

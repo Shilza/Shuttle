@@ -1,0 +1,11 @@
+
+.appear {
+    opacity: 0;
+    margin-bottom: 200%;
+}
+
+.appearActive {
+    margin-bottom: 0;
+    opacity: 1;
+    transition: .45s ease-out;
+}

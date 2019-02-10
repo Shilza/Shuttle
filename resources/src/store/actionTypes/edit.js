@@ -1,0 +1,6 @@
+
+export const SET_VISIBLE = 'SET_VISIBLE';
+
+export const SET_EDITED_USERNAME = 'SET_EDITED_USERNAME';
+export const SET_EDITED_BIO = 'SET_EDITED_BIO';
+export const SET_EDITED_SITE = 'SET_EDITED_SITE';

@@ -13,29 +13,37 @@ class LikesService {
     }
 
     async getUsersLikesByComments(userId, commentsIds) {
-        const likes = await Like
+        return await Like
             .query()
             .where('type', 2)
             .where('owner_id', userId)
             .whereIn('entity_id', commentsIds)
-            .fetch();
-
-        return likes.toJSON();
+            .pluck('entity_id');
     }
 
-    async setIsLikedInfo(userId, entities) {
+    async getUsersLikesByPosts(userId, postsIds) {
+        return await Like
+            .query()
+            .where('type', 1)
+            .where('owner_id', userId)
+            .whereIn('entity_id', postsIds)
+            .pluck('entity_id');
+    }
+
+    async setIsLikedCommentsInfo(userId, comments) {
         const likes = await this.getUsersLikesByComments(
-            userId, entities.map(e => e.id)
+            userId, comments.map(e => e.id)
         );
 
-        return entities.map(entity => {
-            entity.isLiked = !!likes.find(like => {
-                if (like.entity_id === entity.id)
-                    return true;
-            });
+        return this._isLikedInfo(comments, likes);
+    }
 
-            return entity;
-        });
+    async setIsLikedPostsInfo(userId, posts) {
+        const likes = await this.getUsersLikesByPosts(
+            userId, posts.map(e => e.id)
+        );
+
+       return this._isLikedInfo(posts, likes);
     }
 
     async getUsersLikedPosts(userId) {
@@ -46,7 +54,7 @@ class LikesService {
             .pluck('entity_id')
     }
 
-    async _getCommentsLikes(userId, ids) {
+    async getCommentsLikes(userId, ids) {
         const commentLikes = await Like
             .query()
             .where('type', 2)
@@ -55,6 +63,17 @@ class LikesService {
             .fetch();
 
         return commentLikes.toJSON();
+    }
+
+    _isLikedInfo(entities, likes) {
+        return entities.map(entity => {
+            entity.isLiked = !!likes.find(like => {
+                if (like === entity.id)
+                    return true;
+            });
+
+            return entity;
+        });
     }
 
     async _isCommentLikedBy(userId, commentId) {

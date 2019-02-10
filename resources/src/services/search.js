@@ -6,7 +6,7 @@ export function search(username) {
         new Promise((resolve, reject) => {
                 Http.get('/api/v1/search?username=' + username)
                     .then(({data}) => {
-                        dispatch(setUsers(data.users));
+                        dispatch(setUsers(data.data));
                         resolve();
                     })
                     .catch(err => reject(err))

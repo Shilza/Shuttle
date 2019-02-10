@@ -5,32 +5,8 @@ const Post = use('App/Models/Post');
 const Comment = use('App/Models/Comment');
 const EntityType = use('App/Models/EntityType');
 const {validate} = use('CValidator');
-const PostsService = use('PostsService');
-const LikesService = use('LikesService');
 
 class LikeController {
-
-    async show({request, response, auth}) {
-        const rules = {
-            page: 'integer'
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        let page = parseInt(request.input('page'), 10);
-        page = page > 0 ? page : 1;
-
-        const user = await auth.getUser();
-
-       const likedPosts = await PostsService.getLikedPosts(user.id, page);
-
-        response.json(likedPosts);
-    }
 
     async like({request, response, auth}) {
         const rules = {

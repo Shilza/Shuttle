@@ -5,6 +5,7 @@ const Post = use('App/Models/Post');
 const User = use('App/Models/User');
 const LikesService = use('LikesService');
 const CompilationsService = use('CompilationsService');
+const UsersService = use('UsersService');
 
 class PostsService {
 
@@ -43,35 +44,17 @@ class PostsService {
             .paginate(page, 12);
 
         posts.rows = await this._setOwnersInfo(posts.rows);
-        posts.rows = await LikesService.setIsLikedInfo(userId, posts.rows);
-
-        return posts;
-    }
-
-    async getPostsByOwner(ownerId, userId, page) {
-        let posts = await Post
-            .query()
-            .where('owner_id', ownerId)
-            .withCount('comments')
-            .withCount('likes')
-            .notArchived()
-            .orderBy('id', 'desc')
-            .paginate(page, 12);
-
-        const owner = await User.find(ownerId);
-
-        posts.rows = this._setOwnerInfo(owner, posts.rows);
-        posts.rows = await LikesService.setIsLikedInfo(userId, posts.rows);
+        posts.rows = await LikesService.setIsLikedPostsInfo(userId, posts.rows);
 
         return posts;
     }
 
     async getFeedPosts(userId, page) {
-        let posts = this._getFeedPosts(userId, page);
+        let posts = await this._getFeedPosts(userId, page);
 
         posts.data = await this._setOwnersInfo(posts.data);
-        posts.data = await LikesService.setIsLikedInfo(userId, posts.data);
-        posts.data = await this._setSavedInfo(userId, posts.data);
+        posts.data = await LikesService.setIsLikedPostsInfo(userId, posts.data);
+        posts.data = await CompilationsService.setSavedInfo(userId, posts.data);
         posts.comments = await this.getResultedComments(userId, posts.data);
         posts.data = posts.data.map(post => {
             delete post.comments;
@@ -93,7 +76,7 @@ class PostsService {
             .paginate(page, 12);
 
         posts.rows = this._setOwnerInfo(user, posts.rows);
-        posts.rows = await LikesService.setIsLikedInfo(user.id, posts.rows);
+        posts.rows = await LikesService.setIsLikedPostsInfo(user.id, posts.rows);
 
         return posts;
     }
@@ -111,8 +94,22 @@ class PostsService {
             .paginate(page, 12);
 
         likedPosts.rows = await this._setOwnersInfo(likedPosts.rows);
+        likedPosts.rows = likedPosts.rows.map(post => {
+            post.isLiked = true;
+
+            return post;
+        });
 
         return likedPosts;
+    }
+
+    async getPostsOwnerByPostId(postId) {
+        const userId = (await Post
+            .query()
+            .where('id', postId)
+            .pluck('owner_id'))[0];
+
+        return await User.find(userId);
     }
 
     async getResultedComments(userId, posts) {
@@ -133,6 +130,25 @@ class PostsService {
         });
 
         return comments;
+    }
+
+    async getPostsByOwner(ownerId, userId, page) {
+        let posts = await Post
+            .query()
+            .where('owner_id', ownerId)
+            .withCount('comments')
+            .withCount('likes')
+            .notArchived()
+            .orderBy('id', 'desc')
+            .paginate(page, 12);
+
+        const owner = await User.find(ownerId);
+
+        posts.rows = this._setOwnerInfo(owner, posts.rows);
+        posts.rows = await LikesService.setIsLikedPostsInfo(userId, posts.rows);
+        posts.rows = await CompilationsService.setSavedInfo(userId, posts.rows);
+
+        return posts;
     }
 
     async _getFeedPosts(userId, page) {
@@ -177,7 +193,7 @@ class PostsService {
     }
 
     async _getCommentsOwners(ids) {
-        const owners =  await User
+        const owners = await User
             .query()
             .select('id', 'username')
             .whereIn('id', ids)
@@ -201,19 +217,6 @@ class PostsService {
             }
 
             return comment;
-        });
-    }
-
-    async _setSavedInfo(userId, posts) {
-        const savedPosts = await CompilationsService.getSavedPostsId(userId, posts.map(item => item.id));
-
-        return posts.map(post => {
-            post.isSaved = !!savedPosts.find(savedPost => {
-                if (savedPost === post.id)
-                    return true;
-            });
-
-            return post;
         });
     }
 

@@ -1,7 +1,6 @@
 import {createPortal} from "react-dom";
 import styles from './modal.module.css';
 import React from "react";
-import {connect} from "react-redux";
 
 const Modal = ({children, closeModal}) => {
     const closeByCoverClick = event => {
@@ -26,4 +25,4 @@ const Modal = ({children, closeModal}) => {
     );
 };
 
-export default connect()(Modal);
+export default Modal;
