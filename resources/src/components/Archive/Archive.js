@@ -13,7 +13,7 @@ class Archive extends React.Component {
     render() {
         return (
             <div className={styles.pageContainer}>
-                <span>Only you can see archived posts</span>
+                <span className={styles.title}>Only you can see archived posts</span>
                 <Posts posts={this.props.posts}/>
             </div>
         );

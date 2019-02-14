@@ -1,15 +1,13 @@
 import React from "react";
-import styles from './marks.module.css';
-import navigationStyles from '../navigationPanel.module.css';
+import styles from './marksExplaining.module.css';
+import ExplainingLabel from "../ExplainingLabel";
 
-const Marks = () => (
-    <div className={navigationStyles.sectionContainer}>
-        <div className={navigationStyles.iconContainer}>
-            <div className={styles.eye}/>
-        </div>
-        <span className={navigationStyles.sectionLabel}>Marks</span>
-        <span>Here you can see the photos in which you are marked</span>
-    </div>
+const MarksLabel = () => (
+    <ExplainingLabel icon={<div className={styles.eye}/>} text='Marks'>
+        <span>
+            Here you can see the photos in which you are marked
+        </span>
+    </ExplainingLabel>
 );
 
-export default Marks;
+export default MarksLabel;

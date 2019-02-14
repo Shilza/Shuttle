@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './optionsModal.module.css';
 import * as PostService from "../../../../services/post";
 import {message} from "antd/lib/index";
 import {removeCurrentPost} from "../../../../store/actions/posts";
 import {connect} from "react-redux";
 import Archive from "./Archive";
+import ListModal from "../../../Modal/ListModal";
 
 const ModalBody = ({post_id, owner_id, isArchived, link, currentUserId, dispatch, closeModal}) => {
     const removePost = () => {
@@ -33,7 +33,7 @@ const ModalBody = ({post_id, owner_id, isArchived, link, currentUserId, dispatch
     const me = owner_id === currentUserId;
 
     return (
-        <ul className={styles.optionsContainer}>
+        <ListModal>
             <li>Complain</li>
             <li>Share</li>
             <li onClick={copyLinkToClipboard}>Copy link</li>
@@ -46,7 +46,7 @@ const ModalBody = ({post_id, owner_id, isArchived, link, currentUserId, dispatch
                 </>
             }
             <li onClick={closeModal}>Cancel</li>
-        </ul>
+        </ListModal>
     );
 };
 

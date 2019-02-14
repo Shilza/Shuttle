@@ -18,17 +18,10 @@ const FeedList = ({posts, dispatch}) => {
         <>
             <div className={styles.feedList}>
                 <ReactCSSTransitionGroup
-                    transitionName={{
-                        enter: transitions.enter,
-                        enterActive: transitions.enterActive,
-                        leave: transitions.leave,
-                        leaveActive: transitions.leaveActive,
-                        appear: transitions.appear,
-                        appearActive: transitions.appearActive
-                    }}
+                    transitionName={transitions}
                     transitionAppear={true}
                     transitionAppearTimeout={500}
-                    transitionEnterTimeout={500}
+                    transitionEnter={false}
                     transitionLeaveTimeout={300}>
                     {posts.map(post => <FeedPost key={post.id} post={post} open={open}/>)}
                 </ReactCSSTransitionGroup>

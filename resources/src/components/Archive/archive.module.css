@@ -5,4 +5,11 @@
     max-width: 900px;
     text-align: center;
     margin: auto;
+    padding-top: 15px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
 }

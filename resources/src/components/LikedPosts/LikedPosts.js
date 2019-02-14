@@ -13,7 +13,7 @@ class LikedPosts extends React.Component {
     render() {
         return (
             <div className={styles.pageContainer}>
-                <span>LikedPosts</span>
+                <span className={styles.title}>LikedPosts</span>
                 <Posts posts={this.props.posts}/>
             </div>
         );

@@ -13,9 +13,17 @@
     background: white;
 }
 
+@media (max-width: 768px) {
+    .mainContainer {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+}
+
 .sideContainer {
     display: flex;
     flex-direction: column;
     margin: 20px;
-    width: 260px;
+    min-width: 260px;
 }

@@ -1,14 +1,19 @@
-import SavedExplainingLabel from "./SavedExplainingLabel";
+import SavedExplainingLabel from "../../../ExplainingLabels/SavedLabel/SavedExplainingLabel";
 import CompilationsList from "./CompilationsList";
 import React from "react";
+import {connect} from "react-redux";
 
-const SavedContainer = ({compilations}) => (
+const SavedContainer = ({compilations, goToSavedPosts}) => (
     <>
         {
-            compilations ? <CompilationsList compilations={compilations}/> :
+            compilations ? <CompilationsList compilations={compilations} goToSavedPosts={goToSavedPosts}/> :
                 <SavedExplainingLabel/>
         }
     </>
 );
 
-export default SavedContainer;
+const mapStateToProps = state => ({
+    compilations: state.saved.compilations
+});
+
+export default connect(mapStateToProps)(SavedContainer);

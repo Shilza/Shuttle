@@ -3,10 +3,11 @@
 const {validate} = use('CValidator');
 const Blacklist = use('App/Models/Blacklist');
 const User = use('App/Models/User');
+const UsersService = use('UsersService');
 
 class BlacklistController {
 
-    async show({ request, response, auth }) {
+    async show({request, response, auth}) {
 
         const rules = {
             page: 'integer'
@@ -24,18 +25,25 @@ class BlacklistController {
 
         const user = await auth.getUser();
 
-        let blacklisted = await Blacklist
+        let blacklisted = (await Blacklist
             .query()
             .select('blacklisted_id')
             .where('user_id', user.id)
             .with('blacklisted')
             .orderBy('updated_at', 'desc')
-            .paginate(page, 40);
+            .paginate(page, 40)).toJSON();
+
+        blacklisted.data = blacklisted.data.map(item => {
+            delete item.blacklisted_id;
+            item = item.blacklisted[0];
+
+            return item;
+        });
 
         response.json(blacklisted);
     }
 
-    async add({ request, response, auth }) {
+    async add({request, response, auth}) {
         const rules = {
             id: 'required|integer'
         };
@@ -50,23 +58,19 @@ class BlacklistController {
         const user = await auth.getUser();
         const blacklisted = await User.find(request.input('id'));
 
-        if(parseInt(request.input('id')) === user.id)
+        if (parseInt(request.input('id')) === user.id)
             return response.status(400).json({
                 message: 'Unable to blacklist itself'
             });
 
-        if(!blacklisted)
+        if (!blacklisted)
             return response.status(400).json({
                 message: 'User does not exists'
             });
 
-        const isBlacklisted = await Blacklist
-            .query()
-            .where('user_id', user.id)
-            .where('blacklisted_id', blacklisted.id)
-            .first();
+        const isBlacklisted = await UsersService.isBlacklisted(blacklisted.id, user.id);
 
-        if(isBlacklisted)
+        if (isBlacklisted)
             return response.status(400).json({
                 message: 'User already blacklisted'
             });
@@ -81,7 +85,7 @@ class BlacklistController {
         });
     }
 
-    async delete({ request, response, auth }) {
+    async delete({request, response, auth}) {
         const rules = {
             id: 'required|integer'
         };
@@ -96,7 +100,7 @@ class BlacklistController {
         const user = await auth.getUser();
         const blacklisted = await User.find(request.input('id'));
 
-        if(parseInt(request.input('id')) === user.id)
+        if (parseInt(request.input('id')) === user.id)
             return response.status(400).json({
                 message: 'Unable to remove yourself from the blacklist'
             });
@@ -106,18 +110,18 @@ class BlacklistController {
                 message: 'User does not exists'
             });
 
-        const blacklist = await Blacklist
-            .query()
-            .where('user_id', user.id)
-            .where('blacklisted_id', blacklisted.id)
-            .first();
+        const isBlacklisted = await UsersService.isBlacklisted(blacklisted.id, user.id);
 
-        if (!blacklist)
+        if (!isBlacklisted)
             return response.status(400).json({
                 message: 'User is not blacklisted'
             });
 
-        await blacklist.delete();
+        await Blacklist
+            .query()
+            .where('user_id', user.id)
+            .where('blacklisted_id', blacklisted.id)
+            .delete();
 
         response.json({
             message: 'Deleted successfully from blacklist'

@@ -1,0 +1,54 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin: 20px;
+    box-shadow: 0 5px 22px 0 rgba(0,0,0,.25);
+    overflow: hidden;
+    border-bottom-left-radius: 8%;
+    border-bottom-right-radius: 8%;
+    transition: .4s;
+}
+
+.userCard:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.user{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.usernameWrapper {
+    position: relative;
+    top: -25px;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px 0 10px;
+}
+
+.username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeButton {
+    outline: 0;
+    background: transparent;
+    border: 0;
+    height: 30px;
+    cursor: pointer;
+}

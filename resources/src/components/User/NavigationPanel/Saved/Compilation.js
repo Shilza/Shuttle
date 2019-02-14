@@ -3,7 +3,7 @@ import styles from './saved.module.css';
 
 const Compilation = ({compilation, loadPosts}) => {
 
-    const compilationImages = Object.values(compilation)[0];
+    const compilationImages = [...Object.values(compilation)[0]];
     const compilationName = Object.keys(compilation)[0];
     const isQuad = compilationImages.length === 4;
 

@@ -3,6 +3,7 @@
     border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
     padding: 10px 0 10px 0;
+    margin-top: auto;
 }
 
 .actionsContainer > time {

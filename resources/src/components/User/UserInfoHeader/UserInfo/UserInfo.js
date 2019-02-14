@@ -16,25 +16,18 @@ class UserInfo extends React.Component {
         addSmoothScrolling('userInfoPostsLink');
     }
 
-    closeFollowersModal = () => {
+    closeFriendshipsModal = () => {
         this.setState({isModalOpen: false});
     };
 
-    closeFollowsModal = () => {
-        this.setState({isModalOpen: false});
-    };
+    loadFollowers = () => this.load(UsersService.getFollowers, this.props.followersCount);
 
-    loadFollowers = () => {
-        const {dispatch, id, followersCount} = this.props;
-        if (followersCount)
-            dispatch(UsersService.getFollowers(id))
-                .then(({friendships}) => this.setState({isModalOpen: true, friendships}));
-    };
+    loadFollows = () => this.load(UsersService.getFollows, this.props.followsCount);
 
-    loadFollows = () => {
-        const {dispatch, id, followsCount} = this.props;
-        if (followsCount)
-            dispatch(UsersService.getFollows(id))
+    load = (loadFunction, count) => {
+        const {dispatch, id, canSee} = this.props;
+        if (count && canSee)
+            dispatch(loadFunction(id))
                 .then(({friendships}) => this.setState({isModalOpen: true, friendships}));
     };
 
@@ -66,7 +59,7 @@ class UserInfo extends React.Component {
                 </ul>
                 {
                     this.isOpen() &&
-                    <Friendships friendships={friendships} closeModal={this.closeFollowersModal}/>
+                    <Friendships friendships={friendships} closeModal={this.closeFriendshipsModal}/>
                 }
             </>
         );

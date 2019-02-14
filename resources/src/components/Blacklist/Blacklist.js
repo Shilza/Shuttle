@@ -1,7 +1,8 @@
 import React from "react";
-import {connect} from "react-redux";
 import {getBlacklisted} from "../../services/user";
 import Blacklisted from "./Blacklisted";
+import style from './blacklist.module.css';
+import {connect} from "react-redux";
 
 class Blacklist extends React.Component {
 
@@ -13,19 +14,21 @@ class Blacklist extends React.Component {
         const {blacklisted} = this.props;
 
         return (
-            <>
-                <span>Blacklist</span>
-                {
-                    blacklisted &&
-                    blacklisted.map(user => <Blacklisted key={user.id} user={user}/>)
-                }
-            </>
+            <div className={style.blacklistContainer}>
+                <span className={style.title}>Blacklist</span>
+                <div className={style.cardsList}>
+                    {
+                        blacklisted &&
+                        blacklisted.map(user => <Blacklisted key={user.id} user={user}/>)
+                    }
+                </div>
+            </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    blacklisted: state.users.blacklisted
+    blacklisted: state.blacklist.users
 });
 
 export default connect(mapStateToProps)(Blacklist);

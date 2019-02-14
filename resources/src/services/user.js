@@ -1,6 +1,7 @@
 import Http from "../Http";
 import * as action from "../store/actions/users";
 import {setAuthUser} from "../store/actions/auth";
+import {removeFromBlackListedUsers, setBlacklistedUsers} from "../store/actions/blacklist";
 
 export function getUser(username) {
     return dispatch => (
@@ -123,8 +124,35 @@ export function getBlacklisted() {
         new Promise((resolve, reject) => {
                 Http.get('/api/v1/users/blacklist')
                     .then(({data}) => {
-                        dispatch(action.setBlacklisted(data.data));
+                        dispatch(setBlacklistedUsers(data.data));
                         resolve();
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function addToBlacklist(data) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.post('/api/v1/users/blacklist', data)
+                    .then(({data}) => {
+                        dispatch(action.setBlacklisted());
+                        resolve(data.message);
+                    })
+                    .catch(err => reject(err))
+            }
+        ));
+}
+
+export function removeFromBlacklist(id) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+                Http.delete('/api/v1/users/blacklist?id=' + id)
+                    .then(({data}) => {
+                        dispatch(action.setUnblacklisted());
+                        dispatch(removeFromBlackListedUsers(id));
+                        resolve(data.message);
                     })
                     .catch(err => reject(err))
             }

@@ -4,7 +4,7 @@ import styles from './optionsModal.module.css';
 
 const OptionsButton = ({open}) => (
     <button className={styles.optionsButton} onClick={open}>
-        <Icon type="ellipsis" style={{color: 'rgba(0,0,0,1)'}}/>
+        <Icon type="ellipsis"/>
     </button>
 );
 

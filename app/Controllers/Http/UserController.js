@@ -73,7 +73,8 @@ class UserController {
 
         const me = await auth.getUser();
         user.isFollows = await UsersService.isFollower(user.id, me.id);
-        user.private = user.private && !user.isFollows;
+        user.canSee = await UsersService.canSee(user, me.id);
+        user.blacklisted = await UsersService.isBlacklisted(user.id, me.id);
 
         response.json(user);
     }

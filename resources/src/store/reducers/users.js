@@ -3,7 +3,7 @@ import {
     SET_FOLLOWERS,
     SET_FOLLOWS,
     SET_PRIVATE,
-    SET_PUBLIC,
+    SET_PUBLIC, SET_UNBLACKLISTED,
     SET_USER,
     UPDATE_AVATAR
 } from "../actionTypes/users";
@@ -14,7 +14,6 @@ const initialState = {
     user: undefined,
     followers: undefined,
     follows: undefined,
-    blacklisted: undefined
 };
 
 const Users = (state = initialState, {type, payload = null}) => {
@@ -42,7 +41,9 @@ const Users = (state = initialState, {type, payload = null}) => {
         case SET_PUBLIC:
             return setPublic(state);
         case SET_BLACKLISTED:
-            return setBlacklisted(state, payload);
+            return setBlacklisted(state);
+        case SET_UNBLACKLISTED:
+            return setUnblacklisted(state);
         default:
             return state;
     }
@@ -169,11 +170,24 @@ const setPublic = state => {
     return state;
 };
 
-const setBlacklisted = (state, blacklisted) => {
+const setBlacklisted = state => {
+    let updatedUser = {...state.user};
+    updatedUser.blacklisted = true;
+
     return {
         ...state,
-        blacklisted: blacklisted.map(item => item.blacklisted[0])
-    };
+        user: updatedUser
+    }
+};
+
+const setUnblacklisted = state => {
+    let updatedUser = {...state.user};
+    updatedUser.blacklisted = false;
+
+    return {
+        ...state,
+        user: updatedUser
+    }
 };
 
 export default Users;

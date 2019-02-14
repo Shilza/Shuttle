@@ -6,10 +6,13 @@ import comments from "./comments";
 import search from "./search";
 import saved from "./saved";
 import edit from "./edit";
+import blacklist from "./blacklist";
 
 
 const RootReducer = combineReducers({
-    auth, posts, users, comments, search, saved, edit
+    auth, posts, users,
+    comments, search, saved,
+    edit, blacklist
 });
 
 

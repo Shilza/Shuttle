@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+.compilationsLabel {
+    margin: 15px 0 25px 0;
+}
+
 .bookmark {
     color: rgb(100, 100, 100);
     position: absolute;

@@ -15,7 +15,7 @@ class Feed extends React.Component {
 
         return (
             <>
-                {posts ? <FeedList posts={posts}/> : <span>Loading</span>}
+            {posts ? <FeedList posts={posts}/> : <span>Loading</span>}
             </>
         );
     }

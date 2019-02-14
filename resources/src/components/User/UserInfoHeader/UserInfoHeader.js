@@ -15,8 +15,10 @@ const UserInfoHeader = ({user}) => (
                 postsCount={user.posts_count}
                 followsCount={user.follows_count}
                 followersCount={user.followers_count}
+                canSee={user.canSee}
             />
             <span>{user.bio}</span>
+            <a>{user.site}</a>
         </div>
     </div>
 );

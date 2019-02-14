@@ -16,7 +16,7 @@ class PostController {
 
         const user = await auth.getUser();
 
-        const post = await PostsService.getPostByCode(user, params.code);
+        const post = await PostsService.getPostByCode(params.code, user);
         if (!post)
             return response.status(400).json({
                 message: 'Post does not exists'
@@ -119,7 +119,7 @@ class PostController {
         const postImage = request.file('media', {
             types: ['image', 'video'],
             size: '10mb',
-            extnames: ['jpg', 'jpeg', 'mp4']
+            subtypes: ['jpg', 'jpeg', 'mp4']
         });
 
         const rules = {
@@ -135,7 +135,8 @@ class PostController {
 
         const user = await auth.getUser();
 
-        const name = uuidv4() + '.' + postImage.extname;
+        const extension = postImage.type === 'image' ? 'jpg' : 'mp4';
+        const name = uuidv4() + '.' + extension;
         const path = Helpers.publicPath('uploads') + '/' + user.id;
 
         await postImage.move(path, {

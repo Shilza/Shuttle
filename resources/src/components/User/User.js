@@ -5,12 +5,13 @@ import NavigationPanel from "./NavigationPanel/NavigationPanel";
 import {connect} from "react-redux";
 import PostsUploader from "../Posts/Uploader/PostsUploader";
 import UserInfoHeader from "./UserInfoHeader/UserInfoHeader";
+import PrivacyExplainingLabel from "../ExplainingLabels/PrivacyLabel/PrivacyExplainingLabel";
 
-const User = ({me, isPrivate}) => (
+const User = ({me, canSee}) => (
     <div className={styles.userPageContainer}>
         <UserInfoHeader/>
         {
-            isPrivate ? <span>Private</span>
+            !canSee ? <PrivacyExplainingLabel/>
                 :
                 <>
                     <StoriesList stories={
@@ -33,7 +34,7 @@ const User = ({me, isPrivate}) => (
 
 const mapStateToProps = state => ({
     me: state.auth.user.id === state.users.user.id,
-    isPrivate: state.users.user.private
+    canSee: state.users.user.canSee
 });
 
 export default connect(mapStateToProps)(User);

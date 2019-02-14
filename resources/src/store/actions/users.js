@@ -56,3 +56,10 @@ export function setBlacklisted(payload){
         payload
     }
 }
+
+export function setUnblacklisted(payload){
+    return {
+        type: ActionTypes.SET_UNBLACKLISTED,
+        payload
+    }
+}

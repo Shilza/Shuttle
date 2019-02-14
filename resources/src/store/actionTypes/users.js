@@ -10,3 +10,4 @@ export const SET_PRIVATE = 'SET_PRIVATE';
 export const SET_PUBLIC = 'SET_PUBLIC';
 
 export const SET_BLACKLISTED = 'SET_BLACKLISTED';
+export const SET_UNBLACKLISTED = 'SET_UNBLACKLISTED';

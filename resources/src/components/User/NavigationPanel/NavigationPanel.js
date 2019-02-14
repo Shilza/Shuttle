@@ -2,7 +2,7 @@ import React from "react";
 import styles from './navigationPanel.module.css';
 import {Tabs} from 'antd';
 import Saved from "./Saved/Saved";
-import Marks from "./Marks/Marks";
+import MarksLabel from "../../ExplainingLabels/MarksLabel/MarksLabel";
 import PostsManager from "./PostsManager/PostsManager";
 import {connect} from "react-redux";
 const TabPane = Tabs.TabPane;
@@ -14,7 +14,7 @@ const NavigationPanel = ({me}) => (
                 <PostsManager/>
             </TabPane>
             <TabPane tab="Marks" key="2">
-                <Marks/>
+                <MarksLabel/>
             </TabPane>
             {
                 me && <TabPane tab="Saved" key="3">

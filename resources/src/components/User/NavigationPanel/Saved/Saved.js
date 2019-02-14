@@ -4,13 +4,16 @@ import {getCompilations} from "../../../../services/saved";
 import SavedContainer from "./SavedContainer";
 import withLoader from "../../../Loader/Loader";
 import Posts from "../../../Posts/Posts";
+import styles from './saved.module.css';
+import {Button} from "antd";
 
 const SavedWithLoading = withLoader(SavedContainer);
 
 class Saved extends React.PureComponent {
 
     state = {
-        isLoading: true
+        isLoading: true,
+        compilationsPage: true
     };
 
     componentDidMount() {
@@ -19,14 +22,27 @@ class Saved extends React.PureComponent {
             .catch(() => this.setState({isLoading: false}));
     }
 
+    goToCompilationsPage = () => this.setState({compilationsPage: true});
+
+    goToSavedPosts = () => this.setState({compilationsPage: false});
+
     render() {
-        const {savedPosts, compilations} = this.props;
+        const {savedPosts} = this.props;
+        const {compilationsPage} = this.state;
 
         return (
             <>
                 {
-                    savedPosts ? <Posts posts={savedPosts}/> :
-                        <SavedWithLoading isLoading={this.state.isLoading} compilations={compilations}/>
+                    compilationsPage &&
+                    <SavedWithLoading isLoading={this.state.isLoading} goToSavedPosts={this.goToSavedPosts}/>
+                }
+                {
+                    !compilationsPage && savedPosts &&
+                    <>
+                        <Button className={styles.compilationsLabel}
+                              onClick={this.goToCompilationsPage}>Compilations</Button>
+                        <Posts posts={savedPosts}/>
+                    </>
                 }
             </>
         );
@@ -35,7 +51,6 @@ class Saved extends React.PureComponent {
 
 const mapStateToProps = state => ({
     savedPosts: state.posts.savedPosts,
-    compilations: state.saved.compilations
 });
 
 export default connect(mapStateToProps)(Saved);

@@ -1,17 +1,13 @@
 import styles from './postsExplainingLabel.module.css';
-import navigationStyles from '../../navigationPanel.module.css';
 import React from "react";
+import ExplainingLabel from "../ExplainingLabel";
 
 const PostsExplainingLabel = () => (
-    <div className={navigationStyles.sectionContainer}>
-        <div className={navigationStyles.iconContainer}>
-            <div className={styles.pictureIcon}/>
-        </div>
-        <span className={navigationStyles.sectionLabel}>Images</span>
-        <span>
+    <ExplainingLabel icon={<div className={styles.pictureIcon}/>} text='Posts'>
+       <span>
             Pictures are not yet post
         </span>
-    </div>
+    </ExplainingLabel>
 );
 
 export default PostsExplainingLabel;

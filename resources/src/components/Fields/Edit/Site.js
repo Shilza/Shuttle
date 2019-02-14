@@ -2,7 +2,7 @@ import MaterialInput from "../MaterialInput/MaterialInput";
 import React from "react";
 import FormItem from "antd/es/form/FormItem";
 
-export const Site = ({getFieldDecorator, fieldName = 'bio', initialValue = ''}) => (
+export const Site = ({getFieldDecorator, fieldName = 'site', initialValue = ''}) => (
     <FormItem>
         {getFieldDecorator(fieldName, {
             rules: [
@@ -10,7 +10,7 @@ export const Site = ({getFieldDecorator, fieldName = 'bio', initialValue = ''}) 
             ],
             initialValue
         })(
-            <MaterialInput label={'Site'}/>
+            <MaterialInput defaultValue={initialValue} label={'Site'}/>
         )}
     </FormItem>
 );

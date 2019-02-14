@@ -88,7 +88,7 @@ class LikesService {
         return !!like.rows.length;
     }
 
-    async _isPostLikedBy(userId, postId) {
+    async isPostLikedBy(userId, postId) {
         let like = await Like
             .query()
             .select(1)

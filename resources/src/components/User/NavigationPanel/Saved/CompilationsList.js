@@ -4,9 +4,10 @@ import React from "react";
 import {connect} from "react-redux";
 import {getSavedPosts} from "../../../../services/post";
 
-const CompilationsList = ({compilations, dispatch}) => {
+const CompilationsList = ({compilations, goToSavedPosts, dispatch}) => {
     const loadPosts = (compilationName) => {
         dispatch(getSavedPosts(compilationName));
+        goToSavedPosts();
     };
 
     return (

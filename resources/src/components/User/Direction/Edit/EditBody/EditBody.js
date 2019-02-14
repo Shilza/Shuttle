@@ -14,14 +14,14 @@ const EditBody = ({user}) => {
             <ReactCSSTransitionGroup
                 transitionName={transitions}
                 transitionAppear={true}
-                transitionAppearTimeout={450}
+                transitionAppearTimeout={500}
                 transitionEnter={false}
                 transitionLeave={false}
                 style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}
             >
                 <Username username={user.username}/>
                 <Bio bio={user.bio}/>
-                <Site bio={user.site}/>
+                <Site site={user.site}/>
                 <Button size='small' type={'primary'}>Save</Button>
             </ReactCSSTransitionGroup>
         </div>

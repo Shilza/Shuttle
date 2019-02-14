@@ -1,9 +1,10 @@
 import React from "react";
 import VideoPlayer from "./VideoPlayer";
+import CropImage from "../Posts/Uploader/CropImage/CropImage";
 
 const UploadMediaPlayer = ({media}) => (
     media.type.match('image') ?
-        <img src={URL.createObjectURL(media)}/> :
+        <CropImage src={URL.createObjectURL(media)}/> :
         <VideoPlayer src={URL.createObjectURL(media)}/>
 );
 

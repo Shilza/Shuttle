@@ -32,4 +32,5 @@
 .editTitleCheck {
     margin-left: auto;
     color: cornflowerblue;
+    cursor: pointer;
 }

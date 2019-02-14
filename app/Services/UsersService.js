@@ -1,5 +1,6 @@
 const User = use('App/Models/User');
 const Friendship = use('App/Models/Friendship');
+const Blacklist = use('App/Models/Blacklist');
 
 class UsersService {
 
@@ -8,6 +9,17 @@ class UsersService {
             return await this.isFollower(user.id, requesterId);
 
         return true;
+    }
+
+    async isBlacklisted(blacklistedId, userId) {
+        const isBlacklisted = await Blacklist
+            .query()
+            .select(1)
+            .where('user_id', userId)
+            .where('blacklisted_id', blacklistedId)
+            .fetch();
+
+        return !!isBlacklisted.rows.length;
     }
 
     async isFollower(userId, subscriberId) {

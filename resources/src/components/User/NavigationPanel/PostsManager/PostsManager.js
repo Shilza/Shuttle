@@ -1,7 +1,7 @@
 import * as PostService from "../../../../services/post";
 import React from "react";
 import {connect} from "react-redux";
-import PostsExplainingLabel from "./PostsExplainingLabel/PostsExplainingLabel";
+import PostsExplainingLabel from "../../../ExplainingLabels/PostsLabel/PostsExplainingLabel";
 import Posts from "../../../Posts/Posts";
 
 class PostsManager extends React.PureComponent {
