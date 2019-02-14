@@ -1,0 +1,13 @@
+
+.toolbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40px;
+    border-top: 1px solid #efefef;
+    position: fixed;
+    top: calc(100% - 40px);
+    width: 100%;
+    background: white;
+    z-index: 999;
+}

@@ -1,10 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
-import UploadButton from "./Modal/UploadButton";
+import Uploader from "./Modal/Uploader";
 import * as PostService from "../../../services/post";
 import {message} from "antd/lib/index";
 import Modal from "../../Modal/Modal";
 import UploadPost from "./Modal/UploadPost";
+import {Button} from "antd";
+import DefaultAvatar from "../../DefaultAvatar/DefaultAvatar";
 
 class PostsUploader extends React.Component {
 
@@ -13,13 +15,9 @@ class PostsUploader extends React.Component {
         media: undefined
     };
 
-    closeModal = () => {
-        this.setState({isOpen: false});
-    };
+    closeModal = () => this.setState({isOpen: false});
 
-    loadMedia = event => {
-        this.setState({isOpen: true, media: event.target.files[0]});
-    };
+    loadMedia = event => this.setState({isOpen: true, media: event.target.files[0]});
 
     upload = postData => {
         this.props.dispatch(PostService.create(postData))
@@ -39,8 +37,9 @@ class PostsUploader extends React.Component {
                     <Modal closeModal={this.closeModal}>
                         <UploadPost media={media} upload={this.upload}/>
                     </Modal>
+
                 }
-                <UploadButton loadMedia={this.loadMedia}/>
+                <Uploader loadMedia={this.loadMedia} trigger={this.props.trigger}/>
             </>
         )
     }

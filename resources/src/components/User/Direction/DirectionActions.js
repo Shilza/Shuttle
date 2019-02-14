@@ -1,9 +1,11 @@
 import FriendshipActions from "./FriendshipActions";
 import {connect} from "react-redux";
 import React from "react";
-import Settings from "./Settings/Settings";
 import Edit from "./Edit/Edit";
 import UserActions from "./UserActions/UserActions";
+import SettingsMenu from "./Settings/SettingsMenu";
+import {Icon} from "antd";
+import styles from './Settings/settings.module.css';
 
 const DirectionActions = ({me}) => {
     return (
@@ -23,7 +25,9 @@ const DirectionActions = ({me}) => {
 const PrivateButtons = () => (
     <>
         <Edit/>
-        <Settings/>
+        <SettingsMenu
+            trigger={<Icon type="setting" className={styles.settingsButton}/>}
+        />
     </>
 );
 

@@ -8,6 +8,7 @@ import PostByCode from "../pages/PostByCode/PostByCode";
 import Archive from "../components/Archive/Archive";
 import LikedPosts from "../components/LikedPosts/LikedPosts";
 import Blacklist from "../components/Blacklist/Blacklist";
+import Notifications from "../components/Notifications/Notifications";
 
 export const routes = [
     {
@@ -75,5 +76,11 @@ export const routes = [
         exact: true,
         auth: true,
         component: Blacklist
+    },
+    {
+        path: '/account/notifications',
+        exact: true,
+        auth: true,
+        component: Notifications
     }
 ];

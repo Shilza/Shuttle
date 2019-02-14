@@ -45,6 +45,9 @@
     align-items: center;
 }
 
+.likesContainer span{
+    font-size: 0.8em;
+}
 
 .bookmark {
     color: #000;

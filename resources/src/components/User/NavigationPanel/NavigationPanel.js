@@ -5,24 +5,23 @@ import Saved from "./Saved/Saved";
 import MarksLabel from "../../ExplainingLabels/MarksLabel/MarksLabel";
 import PostsManager from "./PostsManager/PostsManager";
 import {connect} from "react-redux";
+
 const TabPane = Tabs.TabPane;
 
 const NavigationPanel = ({me}) => (
-    <div className={styles.navigationContainer}>
-        <Tabs defaultActiveKey="1" className={styles.tabsContainer}>
-            <TabPane tab="Posts" key="1">
-                <PostsManager/>
+    <Tabs defaultActiveKey="1" className={styles.tabsContainer}>
+        <TabPane tab="Posts" key="1">
+            <PostsManager/>
+        </TabPane>
+        <TabPane tab="Marks" key="2">
+            <MarksLabel/>
+        </TabPane>
+        {
+            me && <TabPane tab="Saved" key="3">
+                <Saved/>
             </TabPane>
-            <TabPane tab="Marks" key="2">
-                <MarksLabel/>
-            </TabPane>
-            {
-                me && <TabPane tab="Saved" key="3">
-                    <Saved/>
-                </TabPane>
-            }
-        </Tabs>
-    </div>
+        }
+    </Tabs>
 );
 
 const mapStateToProps = state => ({

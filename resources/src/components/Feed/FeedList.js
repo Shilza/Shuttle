@@ -20,7 +20,7 @@ const FeedList = ({posts, dispatch}) => {
                 <ReactCSSTransitionGroup
                     transitionName={transitions}
                     transitionAppear={true}
-                    transitionAppearTimeout={500}
+                    transitionAppearTimeout={250}
                     transitionEnter={false}
                     transitionLeaveTimeout={300}>
                     {posts.map(post => <FeedPost key={post.id} post={post} open={open}/>)}
