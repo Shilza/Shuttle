@@ -1,14 +1,33 @@
 const User = use('App/Models/User');
-const Friendship = use('App/Models/Friendship');
 const Blacklist = use('App/Models/Blacklist');
+const SubscriptionRequest = use('App/Models/SubscriptionRequest');
+const FriendshipsService = use('FriendshipsService');
 
 class UsersService {
 
     async canSee(user, requesterId) {
-        if(user.private && (requesterId !== user.id ))
-            return await this.isFollower(user.id, requesterId);
+        if (user.private && (requesterId !== user.id))
+            return await FriendshipsService.isFollower(user.id, requesterId);
 
         return true;
+    }
+
+    async getFriendshipState(userId, meId) {
+        if(await this.isSubscriptionRequest(userId, meId))
+            return 1;
+        if (await FriendshipsService.isFollower(userId, meId))
+            return 2;
+        else
+            return 0;
+    }
+
+    async isSubscriptionRequest(receiverId, subId) {
+        return await SubscriptionRequest
+            .query()
+            .select(1)
+            .where('receiver_id', receiverId)
+            .where('subscriber_id', subId)
+            .first();
     }
 
     async isBlacklisted(blacklistedId, userId) {
@@ -20,17 +39,6 @@ class UsersService {
             .fetch();
 
         return !!isBlacklisted.rows.length;
-    }
-
-    async isFollower(userId, subscriberId) {
-        const isFollower = await Friendship
-            .query()
-            .select(1)
-            .where('user_id', userId)
-            .where('subscriber_id', subscriberId)
-            .fetch();
-
-        return !!isFollower.rows.length;
     }
 
     async getFollowers(user) {
@@ -51,6 +59,14 @@ class UsersService {
             .query()
             .whereIn('id', followsIds)
             .fetch();
+    }
+
+    async cancelSubRequest(receiverId, subId) {
+        await SubscriptionRequest
+            .query()
+            .where('receiver_id', receiverId)
+            .where('subscriber_id', subId)
+            .delete();
     }
 }
 

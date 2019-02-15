@@ -1,0 +1,34 @@
+
+.notificationsList {
+    background: white;
+    border: 1px solid #efefef;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 14px;
+}
+
+.notificationsList span {
+    margin: 0 5px 0 5px;
+}
+
+.notificationsList img {
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+}
+
+.notificationCard {
+    margin: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+}
+
+.avatar img {
+    border-radius: 50%;
+}

@@ -1,7 +1,6 @@
 'use strict';
 
 const User = use('App/Models/User');
-const Friendship = use('App/Models/Friendship');
 const UsersService = use('UsersService');
 
 class UserController {
@@ -72,7 +71,7 @@ class UserController {
             });
 
         const me = await auth.getUser();
-        user.isFollows = await UsersService.isFollower(user.id, me.id);
+        user.friendshipState = await UsersService.getFriendshipState(user.id, me.id);
         user.canSee = await UsersService.canSee(user, me.id);
         user.blacklisted = await UsersService.isBlacklisted(user.id, me.id);
 

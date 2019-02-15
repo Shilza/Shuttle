@@ -27,8 +27,11 @@ const providers = [
     path.join(__dirname, '..', 'providers', 'PostsServiceProvider'),
     path.join(__dirname, '..', 'providers', 'LikesServiceProvider'),
     path.join(__dirname, '..', 'providers', 'CommentsServiceProvider'),
+    path.join(__dirname, '..', 'providers', 'UsersServiceProvider'),
     path.join(__dirname, '..', 'providers', 'CompilationsServiceProvider'),
-    path.join(__dirname, '..', 'providers', 'UsersServiceProvider')
+    path.join(__dirname, '..', 'providers', 'SubscriptionRequestProvider'),
+    path.join(__dirname, '..', 'providers', 'FriendshipProvider'),
+    path.join(__dirname, '..', 'providers', 'NotificationProvider')
 ];
 
 /*
@@ -62,7 +65,10 @@ const aliases = {
     LikesService: 'Adonis/Addons/LikesService',
     CommentsService: 'Adonis/Addons/CommentsService',
     CompilationsService: 'Adonis/Addons/CompilationsService',
-    UsersService: 'Adonis/Addons/UsersService'
+    UsersService: 'Adonis/Addons/UsersService',
+    SubscriptionRequestsService: 'Adonis/Addons/SubscriptionRequestsService',
+    FriendshipsService: 'Adonis/Addons/FriendshipsService',
+    NotificationsService: 'Adonis/Addons/NotificationsService'
 };
 
 /*

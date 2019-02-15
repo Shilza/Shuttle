@@ -60,9 +60,8 @@ class User extends Model {
         return entity.owner_id === this.id;
     }
 
-    // TODO: refactor with permissions
-    canComment() {
-        return true;
+    subscriprionRequests() {
+        return this.hasMany('App/Models/SubscriptionRequest', 'id', 'receiver_id');
     }
 }
 

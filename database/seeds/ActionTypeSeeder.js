@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| NotificationTypSeeder
+| ActionTypeSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -12,14 +12,14 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory');
-const NotificationType = use('App/Models/NotificationType');
+const ActionType = use('App/Models/ActionType');
 
-class NotificationTypeSeeder {
-  async run () {
-      await NotificationType.create({id: 1, type: 'like'});
-      await NotificationType.create({id: 2, type: 'comment'});
-      await NotificationType.create({id: 3, type: 'follow'});
-  }
+class ActionTypeSeeder {
+    async run() {
+        await ActionType.create({id: 1, type: 'like'});
+        await ActionType.create({id: 2, type: 'comment'});
+        await ActionType.create({id: 3, type: 'follow'});
+    }
 }
 
-module.exports = NotificationTypeSeeder;
+module.exports = ActionTypeSeeder

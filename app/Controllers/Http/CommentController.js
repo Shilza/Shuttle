@@ -63,10 +63,10 @@ class CommentController {
                 message: 'Post does not exists'
             });
 
-        if (!user.canComment())
-            return response.status(403).json({
-                message: 'You cannot comment on this post'
-            });
+        // if (!user.canComment())
+        //     return response.status(403).json({
+        //         message: 'You cannot comment on this post'
+        //     });
 
         let comment = await Comment.create({
             post_id,

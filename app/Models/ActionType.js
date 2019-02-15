@@ -3,11 +3,14 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class Notification extends Model {
+class ActionType extends Model {
+    static get createdAtColumn () {
+        return null;
+    }
 
     static get updatedAtColumn () {
         return null;
     }
 }
 
-module.exports = Notification
+module.exports = ActionType

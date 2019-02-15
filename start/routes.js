@@ -104,6 +104,14 @@ Route.group(() => {
     Route.delete('', 'BlacklistController.delete');
 }).prefix('api/v1/users/blacklist').middleware(['auth:jwt']);
 
+Route.group(() => {
+    Route.get('/preview', 'SubscriptionRequestController.preview');
+    Route.get('', 'SubscriptionRequestController.show');
+    Route.post('', 'SubscriptionRequestController.accept');
+    Route.delete('', 'SubscriptionRequestController.delete');
+}).prefix('api/v1/subRequests').middleware(['auth:jwt']);
+
+
 Route.get('api/v1/notifications', 'NotificationController.show').middleware(['auth:jwt']);
 Route.get('api/v1/feed', 'FeedController.show').middleware(['auth:jwt']);
 Route.get('api/v1/search', 'SearchController.search');

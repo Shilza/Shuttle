@@ -2,7 +2,7 @@
 
 const {ServiceProvider} = require('@adonisjs/fold')
 
-class PostsServiceProvider extends ServiceProvider {
+class NotificationProvider extends ServiceProvider {
     /**
      * Register namespaces to the IoC container
      *
@@ -11,10 +11,10 @@ class PostsServiceProvider extends ServiceProvider {
      * @return {void}
      */
     register() {
-        this.app.singleton('Adonis/Addons/PostsService', () => {
-            const PostsService = require('../app/Services/PostsService');
-            return new PostsService();
-        })
+        this.app.singleton('Adonis/Addons/NotificationsService', () => {
+            const NotificationsService = require('../app/Services/NotificationsService');
+            return new NotificationsService();
+        });
     }
 
     /**
@@ -30,4 +30,4 @@ class PostsServiceProvider extends ServiceProvider {
     }
 }
 
-module.exports = PostsServiceProvider;
+module.exports = NotificationProvider;

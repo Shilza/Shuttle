@@ -2,7 +2,10 @@
 
 const Friendship = use('App/Models/Friendship');
 const User = use('App/Models/User');
+const UsersService = use('UsersService');
+const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const {validate} = use('CValidator');
+const FriendshipsService = use('FriendshipsService');
 
 class FriendshipController {
 
@@ -29,20 +32,29 @@ class FriendshipController {
                 message: 'User does not exists'
             });
 
-        const friendship = await Friendship
-            .query()
-            .where('user_id', user_id)
-            .where('subscriber_id', user.id)
-            .first();
-
-        if(friendship)
+        if (await FriendshipsService.isFollower(userId, user.id))
             return response.status(400).json({
                 message: 'Already follow'
             });
 
-        await Friendship.create({
-            user_id, subscriber_id: user.id
-        });
+        if (owner.private) {
+            if (!(await UsersService.isSubscriptionRequest(owner.id, user.id))) {
+                await SubscriptionRequest
+                    .create({
+                        receiver_id: owner.id,
+                        subscriber_id: user.id
+                    });
+
+                return response.json({
+                    message: 'Subscription request successfully sent'
+                });
+            } else
+                return response.status(400).json({
+                    message: 'Subscription request already sent'
+                });
+        }
+
+        await FriendshipsService.create(owner.id, user.id);
 
         return response.json({message: 'Followed successfully'});
     }
@@ -69,22 +81,24 @@ class FriendshipController {
                 message: 'User does not exists'
             });
 
-        const friendship = await Friendship
-            .query()
-            .where('user_id', user_id)
-            .where('subscriber_id', user.id)
-            .fetch();
+        const isFollower = await FriendshipsService.isFollower(user_id, user.id);
 
-        if(!friendship)
+        if (owner.private && !friendship) {
+            if (await UsersService.isSubscriptionRequest(owner.id, user.id)) {
+                await UsersService.cancelSubRequest(owner.id, user.id);
+
+                return response.json({
+                    message: 'Subscription request successfully canceled'
+                });
+            }
+        }
+
+        if (!isFollower)
             return response.status(400).json({
                 message: 'Does not follow'
             });
 
-        await Friendship
-            .query()
-            .where('user_id', user_id)
-            .where('subscriber_id', user.id)
-            .delete();
+        await FriendshipsService.delete(user_id, user.id);
 
         return response.json({message: 'Unfollowed successfully'});
     }
