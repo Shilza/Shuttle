@@ -6,7 +6,6 @@ const UsersService = use('UsersService');
 
 class CommentsService {
 
-
     async getComments(userId, postId, page) {
         const comments = await Comment
             .query()

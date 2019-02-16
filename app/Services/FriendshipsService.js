@@ -2,12 +2,12 @@ const Friendship = use('App/Models/Friendship');
 
 class FriendshipsService {
     async isFollower(userId, subscriberId) {
-        return await Friendship
+        return !!(await Friendship
             .query()
             .select(1)
             .where('user_id', userId)
             .where('subscriber_id', subscriberId)
-            .first();
+            .first());
     }
 
     async create(user_id, subscriber_id) {

@@ -21,6 +21,7 @@ const getLikeType = type => {
             return ActionTypes.COMMENT_LIKE;
         case 'post':
             return ActionTypes.POST_LIKE;
+        default:
     }
 };
 
@@ -30,5 +31,6 @@ const getUnlikeType = type => {
             return ActionTypes.COMMENT_UNLIKE;
         case 'post':
             return ActionTypes.POST_UNLIKE;
+        default:
     }
 };

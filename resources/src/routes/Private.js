@@ -13,7 +13,6 @@ const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
             <Main>
                 <Header/>
                 <Component {...props}/>
-
                 { isMobile() && <Toolbar/> }
             </Main>
         ) : (

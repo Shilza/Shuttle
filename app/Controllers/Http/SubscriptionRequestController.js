@@ -1,18 +1,19 @@
 'use strict';
 
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
+const User = use('App/Models/User');
 const {validate} = use('CValidator');
 const SubscriptionRequestsService = use('SubscriptionRequestsService');
 const FriendshipsService = use('FriendshipsService');
 
 class SubscriptionRequestController {
 
-    async preview({ request, response, auth }) {
+    async preview({request, response, auth}) {
         const user = await auth.getUser();
 
         const subsRequestsCount = await SubscriptionRequestsService.getSubRequestsCount(user.id);
         let subscriptionsRequests;
-        if(subsRequestsCount) {
+        if (subsRequestsCount) {
             const avatar = await SubscriptionRequestsService.getAvatarOfLastSubscriber(user.id);
             subscriptionsRequests = {
                 avatar: avatar,
@@ -23,7 +24,7 @@ class SubscriptionRequestController {
         response.json(subscriptionsRequests);
     }
 
-    async show({ request, response, auth }) {
+    async show({request, response, auth}) {
         const rules = {
             page: 'integer'
         };
@@ -39,15 +40,12 @@ class SubscriptionRequestController {
         page = page > 0 ? page : 1;
 
         const user = await auth.getUser();
-        const requests = await SubscriptionRequest
-            .query()
-            .where('receiver_id', user.id)
-            .paginate(page, 20);
+        const requests = await SubscriptionRequestsService.getRequests(user.id, page);
 
         return response.json(requests);
     }
 
-    async accept({ request, response, auth }) {
+    async accept({request, response, auth}) {
         const rules = {
             user_id: 'required|integer'
         };
@@ -61,9 +59,9 @@ class SubscriptionRequestController {
 
         const user = await auth.getUser();
         const subscriberId = request.input('user_id');
-        const isReqExists = await SubscriptionRequestsService.isReqestExists(user.id, subscriberId);
+        const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
 
-        if(!isReqExists)
+        if (!isReqExists)
             return response.status(400).json({
                 message: 'Subscription request does not exists'
             });
@@ -76,7 +74,7 @@ class SubscriptionRequestController {
         });
     }
 
-    async delete({ request, response, auth }) {
+    async delete({request, response, auth}) {
         const rules = {
             user_id: 'required|integer'
         };
@@ -90,9 +88,9 @@ class SubscriptionRequestController {
 
         const user = await auth.getUser();
         const subscriberId = request.input('user_id');
-        const isReqExists = await SubscriptionRequestsService.isReqestExists(user.id, subscriberId);
+        const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
 
-        if(!isReqExists)
+        if (!isReqExists)
             return response.status(400).json({
                 message: 'Subscription request does not exists'
             });

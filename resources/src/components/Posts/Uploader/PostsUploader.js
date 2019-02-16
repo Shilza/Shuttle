@@ -5,8 +5,6 @@ import * as PostService from "../../../services/post";
 import {message} from "antd/lib/index";
 import Modal from "../../Modal/Modal";
 import UploadPost from "./Modal/UploadPost";
-import {Button} from "antd";
-import DefaultAvatar from "../../DefaultAvatar/DefaultAvatar";
 
 class PostsUploader extends React.Component {
 

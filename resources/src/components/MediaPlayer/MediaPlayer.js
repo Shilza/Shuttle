@@ -6,7 +6,7 @@ const MediaPlayer = ({media}) => (
     <div className={styles.mediaContainer}>{
         media.match('.mp4') ?
             <VideoPlayer src={media}/> :
-            <img src={media}/>
+            <img src={media} alt={'User media'}/>
     }
     </div>
 );

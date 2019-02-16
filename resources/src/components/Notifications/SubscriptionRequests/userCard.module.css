@@ -1,11 +1,7 @@
 
 .userCardContainer {
-    background: white;
-    border: 1px solid #efefef;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 10px;
     display: flex;
+    margin: 10px 10px 15px 10px;
 }
 
 .subContainer {
@@ -17,4 +13,21 @@
 .actionButtons {
     display: flex;
     justify-content: space-evenly;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    color: black;
+}
+
+.avatar img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.usernameLink {
+    color: black;
+    font-weight: 500;
 }

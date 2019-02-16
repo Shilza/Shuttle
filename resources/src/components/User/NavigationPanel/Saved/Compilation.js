@@ -26,14 +26,14 @@ const Compilation = ({compilation, loadPosts}) => {
 
 const QuadCompilation = (item, index) => (
     <div className={styles.pic} key={index}>
-        <img src={item}/>
+        <img src={item} alt={'Compilation'}/>
     </div>
 );
 
 const SingleCompilation = src => (
     <div>
         <div className={styles.singlePic}>
-            <img src={src}/>
+            <img src={src} alt={'Compilation'}/>
         </div>
     </div>
 );

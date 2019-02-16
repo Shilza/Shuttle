@@ -18,7 +18,7 @@ const UserInfoHeader = ({user}) => (
                 canSee={user.canSee}
             />
             <span>{user.bio}</span>
-            <a>{user.site}</a>
+            <a href={user.site} target={'_blank'} rel={'noreferrer noopener'}>{user.site}</a>
         </div>
     </div>
 );

@@ -9,7 +9,7 @@ import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 const Header = ({username, avatar}) => (
     <div className={styles.header}>
         <Link to='/' style={{marginLeft: 20}}>
-            <img width='30' height='30' src={shuttle}/>
+            <img width='30' height='30' src={shuttle} alt={'Shuttle'}/>
         </Link>
         <Search/>
         <Link to={'/' + username} style={{marginRight: 20}}>

@@ -68,12 +68,17 @@ class NotificationsService {
                 case 2:
                     item.info = 'comment your post';
                     comments.rows.forEach(comment => {
-                        if (comment.id === item.entity_id)
+                        if (comment.id === item.entity_id) {
+                            let text = comment.text;
+                            if(comment.text.length > 20)
+                                text = text.slice(0, 20) + '...';
+                            item.text = text;
                             item.post_src = (posts.rows.find(post => {
                                     if (post.id === comment.post_id)
                                         return true;
                                 }
                             )).src;
+                        }
                     });
                     break;
                 case 3:
@@ -111,6 +116,13 @@ class NotificationsService {
         );
 
         return await Post.query().select(['id', 'src']).whereIn('id', postsIds).fetch();
+    }
+
+    async getNotificationsCount(receiverId) {
+        return (await Action
+            .query()
+            .where('receiver_id', receiverId)
+            .count())[0]['count(*)'];
     }
 
     async _getNotifications(receiverId, page) {

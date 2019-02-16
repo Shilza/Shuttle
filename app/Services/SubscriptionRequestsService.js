@@ -2,8 +2,38 @@ const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const User = use('App/Models/User');
 
 class SubscriptionRequestsService{
+
+    async getRequests(userId, page) {
+        const requests = await this._getRequests(userId, page);
+
+        const subsIds = requests.data.map(item => item.subscriber_id);
+        const subs = await User
+            .query()
+            .select(['id', 'username', 'avatar'])
+            .whereIn('id', subsIds)
+            .fetch();
+
+        requests.data = requests.data.map(item => {
+            const user = subs.rows.find(user => {
+                if(user.id === item.subscriber_id)
+                    return true;
+            });
+
+            item.avatar = user.avatar;
+            item.username = user.username;
+            item.id = user.id;
+
+            delete item.receiver_id;
+            delete item.subscriber_id;
+
+            return item;
+        });
+
+        return requests;
+    }
+
     async isRequestExists(receiverId, subscriberId) {
-        await SubscriptionRequest
+        return await SubscriptionRequest
             .query()
             .select(1)
             .where('receiver_id', receiverId)
@@ -38,6 +68,13 @@ class SubscriptionRequestsService{
             .where('receiver_id', receiverId)
             .where('subscriber_id', subscriberId)
             .delete();
+    }
+
+    async _getRequests(userId, page) {
+        return (await SubscriptionRequest
+            .query()
+            .where('receiver_id', userId)
+            .paginate(page, 20)).toJSON();
     }
 }
 

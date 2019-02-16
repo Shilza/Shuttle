@@ -3,7 +3,7 @@ import styles from './story.module.css';
 
 const Story = ({story}) => (
     <div className={styles.container}>
-        <img src={story.src} className={styles.cover}/>
+        <img src={story.src} className={styles.cover} alt={'Story'}/>
         <span>{story.name || 'Hightlits'}</span>
     </div>
 );

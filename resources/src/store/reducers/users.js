@@ -102,8 +102,10 @@ const setFollows = (state, follows) => {
 
 const follow = state => {
     let user = {...state.user};
-    user.isFollows = true;
-    user.followers_count++;
+    user.friendshipState = user.private ? 1 : 2;
+
+    if(!user.private)
+        user.followers_count++;
 
     return {
         ...state,
@@ -113,8 +115,11 @@ const follow = state => {
 
 const unfollow = state => {
     let user = {...state.user};
-    user.isFollows = false;
-    user.followers_count--;
+
+    if(user.friendshipState !== 1)
+        user.followers_count--;
+
+    user.friendshipState = 0;
 
     return {
         ...state,

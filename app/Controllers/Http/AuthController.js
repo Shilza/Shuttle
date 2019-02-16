@@ -1,6 +1,7 @@
 'use strict';
 
 const User = use('App/Models/User');
+const NotificationsService = use('NotificationsService');
 
 class AuthController {
 
@@ -80,6 +81,7 @@ class AuthController {
 
         jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
         jwt.user = user;
+        jwt.user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
 
         response.json(jwt);
     }
@@ -93,6 +95,7 @@ class AuthController {
     async me({request, response, auth}) {
         try {
             const user = await auth.getUser();
+            user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
             return response.json({user});
         } catch (error) {
             response.status(400).json('You are not logged in');

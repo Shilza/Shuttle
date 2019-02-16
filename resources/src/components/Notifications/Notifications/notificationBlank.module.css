@@ -1,0 +1,90 @@
+
+.icon {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.icon:after {
+    content: "";
+    position: absolute;
+    height: 200%;
+    transform: rotate(-30deg);
+    width: 200%;
+    animation: blink ease 1s infinite;
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.13) 77%,
+            rgba(255, 255, 255, 0.5) 92%,
+            rgba(255, 255, 255, 0.0) 100%
+    );
+}
+
+@keyframes blink {
+    0% {
+        left: -230%;
+        opacity: 0;
+        top: -20%;
+    }
+
+    100% {
+        left: -50%;
+        opacity: 1;
+        top: -50%;
+    }
+}
+
+.avatarStub {
+    composes: icon;
+    min-height: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    background: lightgrey;
+}
+
+.usernameStub {
+    composes: icon;
+    height: 8px;
+    background: lightslategray;
+}
+
+.infoContainer {
+    composes: icon;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.infoContainer span {
+    margin: 2px;
+}
+
+.infoStub {
+    height: 8px;
+    background: lightblue;
+}
+
+.timeStub {
+    composes: icon;
+    height: 0.5em;
+    width: 60px;
+    background: lightgrey;
+    margin: 4px 2px;
+}
+
+.postImgStub {
+    composes: icon;
+    min-height: 48px;
+    max-height: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    border-radius: 10%;
+    margin-left: auto;
+    margin-right: 10px;
+    background-image: linear-gradient(to bottom right, #99cfda, #d0e2e3);
+}

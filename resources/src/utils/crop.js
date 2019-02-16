@@ -1,17 +1,13 @@
-
 function resizeableImage(image_target) {
-    'use strict';
-
     let cropComponent
         , container
         , crop_img
         , event_state = {}
         , ratio = 1.0
         , keyZoomValue = 4.0
-        , MINWIDTH = 50
-        , MINHEIGHT = 50
-        , CROPWIDTH = 200
-        , CROPHEIGHT = 200
+        , MIN_WIDTH = 50
+        , CROP_WIDTH = 200
+        , CROP_HEIGHT = 200
         , cropLeft = 0
         , cropTop = 0
         , cropWidth = 0
@@ -49,9 +45,8 @@ function resizeableImage(image_target) {
     function init() {
         let wrapper, left, top;
 
-        if (image_target.dataset.isCrop) {
-            throw 'image is already crop'
-        }
+        if (image_target.dataset.isCrop)
+            return;
 
         image_target.dataset.isCrop = 'true';
         image_target.classList.add('crop-blur');
@@ -77,8 +72,8 @@ function resizeableImage(image_target) {
         cropComponent.appendChild(image_target);
         container.appendChild(crop_img);
 
-        left = image_target.offsetWidth / 2 - CROPWIDTH / 2;
-        top = image_target.offsetHeight / 2 - CROPHEIGHT / 2;
+        left = image_target.offsetWidth / 2 - CROP_WIDTH / 2;
+        top = image_target.offsetHeight / 2 - CROP_HEIGHT / 2;
 
         updateCropImage(left, top);
         addHandlers();
@@ -100,8 +95,8 @@ function resizeableImage(image_target) {
     }
 
     function updateContainer(left, top) {
-        top = top + (CROPWIDTH / 2) + 'px';
-        left = left + (CROPHEIGHT / 2) + 'px';
+        top = top + (CROP_WIDTH / 2) + 'px';
+        left = left + (CROP_HEIGHT / 2) + 'px';
 
         container.style.top = top;
         container.style.left = left;
@@ -115,8 +110,8 @@ function resizeableImage(image_target) {
         event_state.container_left = container.offsetLeft;
         event_state.container_top = container.offsetTop;
 
-        event_state.mouse_x = (e.clientX || e.pageX || e.touches && e.touches[0].clientX) + window.scrollX;
-        event_state.mouse_y = (e.clientY || e.pageY || e.touches && e.touches[0].clientY) + window.scrollY;
+        event_state.mouse_x = (e.clientX || e.pageX || (e.touches && e.touches[0].clientX)) + window.scrollX;
+        event_state.mouse_y = (e.clientY || e.pageY || (e.touches && e.touches[0].clientY)) + window.scrollY;
     }
 
     function imgZoom(zoom) {
@@ -130,7 +125,7 @@ function resizeableImage(image_target) {
             , right
             , bottom;
 
-        if ((newWidth < MINWIDTH) || (newWidth > w))
+        if ((newWidth < MIN_WIDTH) || (newWidth > w))
             return;
 
         left = container.offsetLeft - (zoom / 2);
@@ -145,7 +140,7 @@ function resizeableImage(image_target) {
         if (right > w || bottom > h)
             return;
 
-        ratio = CROPWIDTH / newWidth;
+        ratio = CROP_WIDTH / newWidth;
 
         updateCropSize(newWidth, newWidth);
         updateCropImage(left, top);
@@ -156,14 +151,11 @@ function resizeableImage(image_target) {
     function keyHandler(e) {
         e.preventDefault();
 
-        switch (String.fromCharCode(e.charCode)) {
-            case '+' :
-                imgZoom(keyZoomValue);
-                break;
-            case '-' :
-                imgZoom(-keyZoomValue);
-                break;
-        }
+        const charCode = String.fromCharCode(e.charCode);
+        if (charCode === '+')
+            imgZoom(keyZoomValue);
+        else if (charCode === '-')
+            imgZoom(-keyZoomValue);
     }
 
     function resizing(e) {
@@ -201,8 +193,8 @@ function resizeableImage(image_target) {
 
         e.stopPropagation();
 
-        currentTouch.x = e.pageX || e.touches && e.touches[0].pageX;
-        currentTouch.y = e.pageY || e.touches && e.touches[0].pageY;
+        currentTouch.x = e.pageX || (e.touches && e.touches[0].pageX);
+        currentTouch.y = e.pageY || (e.touches && e.touches[0].pageY);
 
         left = currentTouch.x - (event_state.mouse_x - event_state.container_left);
         top = currentTouch.y - (event_state.mouse_y - event_state.container_top);
@@ -228,8 +220,8 @@ function resizeableImage(image_target) {
         cropWidth = crop_img.width * ratio;
         cropHeight = crop_img.height * ratio;
 
-        resize_canvas.width = CROPWIDTH;
-        resize_canvas.height = CROPHEIGHT;
+        resize_canvas.width = CROP_WIDTH;
+        resize_canvas.height = CROP_HEIGHT;
 
         let ctx = resize_canvas.getContext('2d');
         ctx.drawImage(crop_img,
@@ -252,6 +244,5 @@ function resizeableImage(image_target) {
 
     return getCroppedImage;
 }
-
 
 export default resizeableImage;

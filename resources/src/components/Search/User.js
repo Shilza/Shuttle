@@ -7,7 +7,7 @@ const User = ({user}) => (
     <Link to={'/' + user.username} className={styles.user}>
         {
             user.avatar
-                ? <img className={styles.avatar} src={user.avatar}/>
+                ? <img className={styles.avatar} src={user.avatar} alt={'avatar'}/>
                 : <div className={styles.avatar}><DefaultAvatar/></div>
         }
         <span>{user.username}</span>

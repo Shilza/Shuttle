@@ -3,7 +3,6 @@ import styles from './searchBar.module.css';
 import {Icon} from "antd";
 import {connect} from "react-redux";
 import User from "./User";
-import {removeUsers} from "../../store/actions/search";
 
 class SearchBar extends React.Component {
 

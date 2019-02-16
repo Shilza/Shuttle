@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Icon} from "antd";
+import {Form} from "antd";
 import {checkIsUsernameUnique} from "../../../../../services/user";
 import {Username as UsernameField} from "../../../../Fields/Edit/Username";
 import {connect} from "react-redux";

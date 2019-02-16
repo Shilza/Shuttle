@@ -1,6 +1,5 @@
 'use strict';
 
-const Friendship = use('App/Models/Friendship');
 const User = use('App/Models/User');
 const UsersService = use('UsersService');
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
@@ -32,7 +31,7 @@ class FriendshipController {
                 message: 'User does not exists'
             });
 
-        if (await FriendshipsService.isFollower(userId, user.id))
+        if (await FriendshipsService.isFollower(owner.id, user.id))
             return response.status(400).json({
                 message: 'Already follow'
             });
@@ -81,9 +80,9 @@ class FriendshipController {
                 message: 'User does not exists'
             });
 
-        const isFollower = await FriendshipsService.isFollower(user_id, user.id);
+        const isFollower = await FriendshipsService.isFollower(owner.id, user.id);
 
-        if (owner.private && !friendship) {
+        if (owner.private && !isFollower) {
             if (await UsersService.isSubscriptionRequest(owner.id, user.id)) {
                 await UsersService.cancelSubRequest(owner.id, user.id);
 

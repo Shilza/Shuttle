@@ -4,22 +4,30 @@ import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-const FriendshipButton = ({id, isFollows, follow, unfollow}) => {
+const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
 
-    const friendships = () => isFollows ?
+    const friendships = () => (friendshipState !== 0) ?
         unfollow({id}) :
         follow({id});
 
+    let buttonText;
+    switch (friendshipState) {
+        case 0: buttonText = 'Follow'; break;
+        case 1: buttonText = 'Subscription request sent'; break;
+        case 2: buttonText = 'Unfollow'; break;
+        default: buttonText = 'Undefined';
+    }
+
     return (
         <Button size={'small'} onClick={friendships}>
-            {isFollows ? 'Unollow' : 'Follow'}
+            {buttonText}
         </Button>
     );
 };
 
 const mapStateToProps = state => ({
     id: state.users.user.id,
-    isFollows: state.users.user.isFollows
+    friendshipState: state.users.user.friendshipState
 });
 
 const mapDispatchToProps = dispatch => {
