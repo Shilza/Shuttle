@@ -5,6 +5,7 @@ import styles from './notifications.module.css';
 import {convertTime} from "../../../utils/timeConverter";
 
 const Notification = ({item}) => {
+    console.log(item);
     const {username, avatar, info, post_src, text, created_at} = item;
     let postLink;
     if (post_src)

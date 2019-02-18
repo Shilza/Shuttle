@@ -6,14 +6,14 @@ import {connect} from "react-redux";
 const SavedContainer = ({compilations, goToSavedPosts}) => (
     <>
         {
-            compilations ? <CompilationsList compilations={compilations} goToSavedPosts={goToSavedPosts}/> :
+            compilations.length ? <CompilationsList compilations={compilations} goToSavedPosts={goToSavedPosts}/> :
                 <SavedExplainingLabel/>
         }
     </>
 );
 
 const mapStateToProps = state => ({
-    compilations: state.saved.compilations
+    compilations: state.saved.compilations.data
 });
 
 export default connect(mapStateToProps)(SavedContainer);

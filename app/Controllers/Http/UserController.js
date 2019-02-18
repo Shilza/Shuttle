@@ -74,6 +74,7 @@ class UserController {
         user.friendshipState = await UsersService.getFriendshipState(user.id, me.id);
         user.canSee = await UsersService.canSee(user, me.id);
         user.blacklisted = await UsersService.isBlacklisted(user.id, me.id);
+        user.amBlacklisted = await UsersService.isBlacklisted(me.id, user.id);
 
         response.json(user);
     }
@@ -81,9 +82,8 @@ class UserController {
     async update({request, response, auth}) {
         const {validate} = use('CValidator');
 
-        //TODO: add regex validation
         const rules = {
-            username: 'string|min:2|max:16',
+            username: 'string|min:2|max:16|regex:^[a-z0-9]+$',
             bio: 'string|max:100',
             site: 'string|max:50'
         };
@@ -199,7 +199,8 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            id: 'required|integer'
+            id: 'required|integer',
+            page: 'integer'
         };
 
         const validation = await validate(request.all(), rules);
@@ -208,6 +209,9 @@ class UserController {
             return response.status(400).json({
                 message: validation.messages()[0].message
             });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
 
         const user = await User.find(request.input('id'));
         if (!user)
@@ -217,8 +221,8 @@ class UserController {
 
         const canSee = await UsersService.canSee(user, requester.id);
         if(canSee) {
-            const followers = await UsersService.getFollowers(user);
-            return response.json({ followers });
+            const followers = await UsersService.getFollowers(user, page);
+            return response.json(followers);
         }
         else
             return response.json({ private: true });
@@ -228,7 +232,8 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            id: 'required|integer'
+            id: 'required|integer',
+            page: 'integer'
         };
 
         const validation = await validate(request.all(), rules);
@@ -238,6 +243,9 @@ class UserController {
                 message: validation.messages()[0].message
             });
 
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
         const user = await User.find(request.input('id'));
         if (!user)
             response.status(400).json({message: 'User does not exists'});
@@ -246,8 +254,8 @@ class UserController {
 
         const canSee = await UsersService.canSee(user, requester.id);
         if(canSee) {
-            const follows = await UsersService.getFollows(user);
-            return response.json({ follows });
+            const follows = await UsersService.getFollows(user, page);
+            return response.json(follows);
         }
         else
             return response.json({ private: true });

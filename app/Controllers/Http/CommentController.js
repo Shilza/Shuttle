@@ -34,7 +34,6 @@ class CommentController {
         const canSee = await UsersService.canSee(owner, user.id);
         if(canSee) {
             const comments = await CommentsService.getComments(user.id, postId, page);
-
             return response.json(comments);
         } else
             return response.json({ private: true });
@@ -62,11 +61,6 @@ class CommentController {
             return response.status(400).json({
                 message: 'Post does not exists'
             });
-
-        // if (!user.canComment())
-        //     return response.status(403).json({
-        //         message: 'You cannot comment on this post'
-        //     });
 
         let comment = await Comment.create({
             post_id,

@@ -12,6 +12,16 @@ class LikesService {
         return likes.toJSON();
     }
 
+    async isLikeExists(ownerId, entityId, type) {
+        return !!(await Like
+            .query()
+            .select(1)
+            .where('owner_id', ownerId)
+            .where('entity_id', entityId)
+            .where('type', type)
+            .first());
+    }
+
     async getUsersLikesByComments(userId, commentsIds) {
         return await Like
             .query()

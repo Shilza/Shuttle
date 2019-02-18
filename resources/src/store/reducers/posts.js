@@ -2,18 +2,27 @@ import * as ActionTypes from '../actionTypes/posts'
 import {POST_LIKE, POST_UNLIKE} from "../actionTypes/likes";
 
 const initialState = {
-    posts: undefined,
-    savedPosts: undefined,
+    usersPosts: [],
+    likedPosts: [],
+    feedPosts: [],
+    archivePosts: [],
+    savedPosts: [],
     currentPost: undefined,
     isModalOpen: false
 };
 
 const Posts = (state = initialState, {type, payload = null}) => {
     switch (type) {
-        case ActionTypes.SET_POSTS:
-            return setPosts(state, payload);
-        case ActionTypes.SET_SAVED_POSTS:
-            return setSavedPosts(state, payload);
+        case ActionTypes.ADD_POSTS:
+            return addUsersPosts(state, payload);
+        case ActionTypes.ADD_LIKED_POSTS:
+            return addLikedPosts(state, payload);
+        case ActionTypes.ADD_FEED_POSTS:
+            return addFeedPosts(state, payload);
+        case ActionTypes.ADD_ARCHIVE_POSTS:
+            return addArchivePosts(state, payload);
+        case ActionTypes.ADD_SAVED_POSTS:
+            return addSavedPosts(state, payload);
         case ActionTypes.SET_CURRENT_POST:
             return setCurrentPost(state, payload);
         case ActionTypes.REMOVE_CURRENT_POST:
@@ -35,39 +44,68 @@ const Posts = (state = initialState, {type, payload = null}) => {
     }
 };
 
-const setPosts = (state, posts) => {
-    posts.forEach(post => {
+const addArchivePosts = (state, archivePosts) => ({
+    ...state,
+    archivePosts: {
+        ...archivePosts,
+        data: prepareToSavePosts(state.archivePosts.data, archivePosts.data)
+    }
+});
+
+const addFeedPosts = (state, feedPosts) => ({
+    ...state,
+    feedPosts: {
+        ...feedPosts,
+        data: prepareToSavePosts(state.feedPosts.data, feedPosts.data)
+    }
+});
+
+const addLikedPosts = (state, likedPosts) => ({
+    ...state,
+    likedPosts: {
+        ...likedPosts,
+        data: prepareToSavePosts(state.likedPosts.data, likedPosts.data)
+    }
+});
+
+
+const addUsersPosts = (state, usersPosts) => ({
+    ...state,
+    usersPosts: {
+        ...usersPosts,
+        data: prepareToSavePosts(state.usersPosts.data, usersPosts.data)
+    }
+});
+
+
+const prepareToSavePosts = (statePosts, newPosts) => {
+    const transformedData = transformPostsMetadata(newPosts);
+    return statePosts ? statePosts.concat(transformedData) : transformedData;
+};
+
+const transformPostsMetadata = posts => {
+    return posts.map(post => {
         if (post.hasOwnProperty('__meta__')) {
             Object.keys(post.__meta__).forEach(key =>
                 post[key] = post.__meta__[key]
             );
             delete post.__meta__;
         }
-    });
 
-    return {
-        ...state,
-        posts
-    };
+        return post;
+    });
 };
 
-const setSavedPosts = (state, savedPosts) => {
-    savedPosts.forEach(post => {
-        if (post.hasOwnProperty('__meta__')) {
-            Object.keys(post.__meta__).forEach(key =>
-                post[key] = post.__meta__[key]
-            );
-            delete post.__meta__;
-        }
-    });
-
-    return {
-        ...state,
-        savedPosts
-    };
-};
+const addSavedPosts = (state, savedPosts) => ({
+    ...state,
+    savedPosts: {
+        ...savedPosts,
+        data: prepareToSavePosts(state.savedPosts.data, savedPosts.data)
+    }
+});
 
 const setCurrentPost = (state, post) => {
+    console.log('curr', post);
     return {
         ...state,
         currentPost: post,
@@ -87,27 +125,36 @@ const removePost = (state, id) => {
     return {
         ...state,
         isModalOpen: false,
-        posts: state.posts.filter(item => item.id !== id)
+        ...applyActionToPosts(state, id, posts => posts.filter(item => item.id !== id))
     };
 };
 
 const addPost = (state, post) => {
     return {
         ...state,
-        posts: [
+        usersPosts: [
             post,
-            ...state.posts
+            ...state.usersPosts
         ]
     };
 };
 
 const likePost = (state, postId) => {
     let currentPost = {...state.currentPost};
-    currentPost.isLiked = true;
-    currentPost.likes_count++;
+    if (currentPost.id === postId) {
+        currentPost.isLiked = true;
+        currentPost.likes_count++;
+    }
 
-    const newPosts = state.posts.map(post => {
-        if(post.id === postId) {
+    return {
+        ...applyActionToPosts(state, postId, setPostIsLiked),
+        currentPost
+    }
+};
+
+const setPostIsLiked = (posts, postId) => {
+    return posts.map(post => {
+        if (post.id === postId) {
             post.isLiked = true;
             post.likes_count++;
             return {...post};
@@ -115,21 +162,24 @@ const likePost = (state, postId) => {
 
         return post;
     });
-
-    return {
-        ...state,
-        posts: newPosts,
-        currentPost
-    }
 };
 
 const unlikePost = (state, postId) => {
     let currentPost = {...state.currentPost};
-    currentPost.isLiked = false;
-    currentPost.likes_count--;
+    if (currentPost.id === postId) {
+        currentPost.isLiked = false;
+        currentPost.likes_count--;
+    }
 
-    const newPosts = state.posts.map(post => {
-        if(post.id === postId) {
+    return {
+        ...applyActionToPosts(state, postId, removeLike),
+        currentPost
+    }
+};
+
+const removeLike = (posts, postId) => {
+    return posts.map(post => {
+        if (post.id === postId) {
             post.isLiked = false;
             post.likes_count--;
             return {...post};
@@ -137,11 +187,44 @@ const unlikePost = (state, postId) => {
 
         return post;
     });
+};
+
+const applyActionToPosts = (state, postId, action) => {
+    console.log(action);
+    let feedPosts = state.feedPosts;
+    if (feedPosts.data && state.feedPosts.data.find(post => post.id === postId))
+        feedPosts.data = action(state.feedPosts.data, postId);
+
+    let usersPosts = state.usersPosts;
+    if (usersPosts.data && state.usersPosts.data.find(post => post.id === postId))
+        usersPosts.data = action(state.usersPosts.data, postId);
+
+    let likedPosts = state.likedPosts;
+    if (likedPosts.data && state.likedPosts.data.find(post => post.id === postId))
+        likedPosts.data = action(state.likedPosts.data, postId).filter(post => post.isLiked);
+
+    let archivePosts = state.archivePosts;
+    if (archivePosts.data && state.archivePosts.data.find(post => post.id === postId))
+        archivePosts.data = action(state.archivePosts.data, postId);
 
     return {
         ...state,
-        posts: newPosts,
-        currentPost
+        feedPosts: {
+            ...state.feedPosts,
+            ...feedPosts
+        },
+        usersPosts: {
+            ...state.usersPosts,
+            ...usersPosts
+        },
+        likedPosts: {
+            ...state.likedPosts,
+            ...likedPosts
+        },
+        archivePosts: {
+            ...state.archivePosts,
+            ...archivePosts
+        }
     }
 };
 
@@ -149,7 +232,14 @@ const save = (state, postId) => {
     let currentPost = {...state.currentPost};
     currentPost.isSaved = true;
 
-    let posts = [...state.posts].map(post => {
+    return {
+        ...applyActionToPosts(state, postId, setPostIsSaved),
+        currentPost
+    }
+};
+
+const setPostIsSaved = (posts, postId) => {
+    return posts.map(post => {
         if (post.id === postId) {
             post.isSaved = true;
 
@@ -158,19 +248,20 @@ const save = (state, postId) => {
 
         return post;
     });
-
-    return {
-        ...state,
-        currentPost,
-        posts
-    };
 };
 
 const removeSavedPost = (state, postId) => {
     let currentPost = {...state.currentPost};
     currentPost.isSaved = false;
 
-    let posts = [...state.posts].map(post => {
+    return {
+        ...applyActionToPosts(state, postId, setPostIsNotSaved),
+        currentPost
+    }
+};
+
+const setPostIsNotSaved = (posts, postId) => {
+    return posts.map(post => {
         if (post.id === postId) {
             post.isSaved = false;
 
@@ -179,12 +270,7 @@ const removeSavedPost = (state, postId) => {
 
         return post;
     });
-
-    return {
-        ...state,
-        currentPost,
-        posts
-    };
 };
+
 
 export default Posts;

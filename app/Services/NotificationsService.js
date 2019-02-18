@@ -129,7 +129,7 @@ class NotificationsService {
         return (await Action
             .query()
             .where('receiver_id', receiverId)
-            .paginate(page, 30)).toJSON();
+            .paginate(page, 20)).toJSON();
     }
 
     static arrayUnique(array) {

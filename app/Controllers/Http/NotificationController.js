@@ -25,16 +25,7 @@ class NotificationController {
 
         const notifications = await NotificationsService.getNotifications(user.id, page);
 
-        await this.sleep(3000);
         response.json(notifications);
-    }
-
-    sleep(duration) {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                resolve()
-            }, duration);
-        })
     }
 }
 

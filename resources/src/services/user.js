@@ -31,26 +31,26 @@ export function update(editedData) {
         ));
 }
 
-export function getFollowers(id) {
+export function getFollowers(id, page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-            Http.get('/api/v1/users/followers?id=' + id)
+            Http.get(`/api/v1/users/followers?id=${id}&page=${page}`)
                 .then(({data}) => {
                     dispatch(action.setFollowers(data.followers));
-                    resolve({friendships: data.followers});
+                    resolve(data);
                 })
                 .catch(err => reject(err))
         })
     )
 }
 
-export function getFollows(id) {
+export function getFollows(id, page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-            Http.get('/api/v1/users/follows?id=' + id)
+            Http.get(`/api/v1/users/follows?id=${id}&page=${page}`)
                 .then(({data}) => {
                     dispatch(action.setFollows(data.follows));
-                    resolve({friendships: data.follows});
+                    resolve(data);
                 })
                 .catch(err => reject(err))
         })
@@ -119,13 +119,13 @@ export function setPublic() {
         ));
 }
 
-export function getBlacklisted() {
+export function getBlacklisted(page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/users/blacklist')
+                Http.get('/api/v1/users/blacklist?page=' + page)
                     .then(({data}) => {
                         dispatch(setBlacklistedUsers(data.data));
-                        resolve();
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }

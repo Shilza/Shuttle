@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {connect} from "react-redux";
 import Comment from "./Comment";
 import styles from './comment.module.css';
 import * as LikeService from "../../services/likes";
 
 const CommentsList = ({comments, dispatch}) => {
+
+    let listRef = useRef();
+
+    useEffect(() => {
+        listRef.current.scrollToTop = listRef.current.scrollHeight;
+    }, []);
 
     const like = comment => {
         const data = {
@@ -15,7 +21,7 @@ const CommentsList = ({comments, dispatch}) => {
     };
 
     return (
-        <div className={styles.commentList}>
+        <div className={styles.commentList} ref={listRef}>
             {
                 comments.map(
                     (item, index) => <Comment key={index} comment={item} like={like}/>

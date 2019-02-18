@@ -1,8 +1,8 @@
 import * as ActionTypes from '../actionTypes/comments'
 
-export function setComments(payload){
+export function addComments(payload){
     return {
-        type: ActionTypes.SET_COMMENTS,
+        type: ActionTypes.ADD_COMMENTS,
         payload
     }
 }

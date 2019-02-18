@@ -57,7 +57,7 @@ class PostsService {
         posts.data = await CompilationsService.setSavedInfo(userId, posts.data);
         posts.comments = await this.getResultedComments(userId, posts.data);
         posts.data = posts.data.map(post => {
-            delete post.comments;
+            delete post.feedComments;
 
             return post;
         });
@@ -116,16 +116,16 @@ class PostsService {
         let comments = [];
 
         const ent_id = [];
-        posts.forEach(post => post.comments.forEach(comment => ent_id.push(comment.id)));
+        posts.forEach(post => post.feedComments.forEach(comment => ent_id.push(comment.id)));
         let commentLikes = await LikesService.getCommentsLikes(userId, ent_id);
 
         let commentsOwnersIds = [];
-        posts.forEach(post => post.comments.forEach(comment => commentsOwnersIds.push(comment.owner_id)));
+        posts.forEach(post => post.feedComments.forEach(comment => commentsOwnersIds.push(comment.owner_id)));
         let commentsOwners = await this._getCommentsOwners(commentsOwnersIds);
 
         posts.forEach(post => {
             comments.push(...this._getResultedComments(
-                commentsOwners, commentLikes, post.comments)
+                commentsOwners, commentLikes, post.feedComments)
             );
         });
 
@@ -160,14 +160,17 @@ class PostsService {
         let posts = await Post
             .query()
             .whereIn('id', postIds)
-            .with('comments', builder => {
-                builder.withCount('likes').limit(3)
-            })
             .withCount('comments')
             .withCount('likes')
             .notArchived()
             .orderBy('id', 'desc')
             .paginate(page, 12);
+
+        let comments = [];
+        posts.rows.forEach(post => {
+            comments.push(post.load('feedComments'));
+        });
+        await Promise.all(comments);
 
         return posts.toJSON();
     }

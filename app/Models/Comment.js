@@ -10,7 +10,7 @@ class Comment extends Model {
     }
 
     likes () {
-        return this.hasMany('App/Models/Like', 'id', 'entity_id')
+        return this.hasMany('App/Models/Like', 'id', 'entity_id').where('type', 2);
     }
 }
 

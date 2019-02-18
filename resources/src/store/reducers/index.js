@@ -7,12 +7,13 @@ import search from "./search";
 import saved from "./saved";
 import edit from "./edit";
 import blacklist from "./blacklist";
+import notifications from "./notifications";
 
 
 const RootReducer = combineReducers({
     auth, posts, users,
     comments, search, saved,
-    edit, blacklist
+    edit, blacklist, notifications
 });
 
 

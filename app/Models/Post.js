@@ -20,11 +20,15 @@ class Post extends Model {
     }
 
     comments() {
-        return this.hasMany('App/Models/Comment')
+        return this.hasMany('App/Models/Comment');
+    }
+
+    feedComments() {
+        return this.hasMany('App/Models/Comment').limit(3);
     }
 
     likes() {
-        return this.hasMany('App/Models/Like', 'id', 'entity_id')
+        return this.hasMany('App/Models/Like', 'id', 'entity_id').where('type', 1);
     }
 
     owner() {

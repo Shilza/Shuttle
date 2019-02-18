@@ -2,12 +2,12 @@ import Http from "../Http";
 import * as action from "../store/actions/saved";
 
 
-export function getCompilations() {
+export function getCompilations(page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/compilations')
+                Http.get('/api/v1/compilations?page=' + page)
                     .then(({data}) => {
-                        dispatch(action.setCompilations(data.compilations));
+                        dispatch(action.addCompilations(data));
                         resolve();
                     })
                     .catch(err => reject(err))

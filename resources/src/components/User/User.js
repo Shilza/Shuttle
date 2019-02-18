@@ -6,12 +6,13 @@ import {connect} from "react-redux";
 import PostsUploader from "../Posts/Uploader/PostsUploader";
 import UserInfoHeader from "./UserInfoHeader/UserInfoHeader";
 import PrivacyExplainingLabel from "../ExplainingLabels/PrivacyLabel/PrivacyExplainingLabel";
+import BlacklistedExplainingLabel from "../ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel";
 
-const User = ({me, canSee}) => (
+const User = ({me, canSee, isPrivate, amBlacklisted}) => (
     <div className={styles.userPageContainer}>
         <UserInfoHeader/>
         {
-            !canSee ? <PrivacyExplainingLabel/>
+            !canSee ? ((amBlacklisted && <BlacklistedExplainingLabel/>) || (isPrivate && <PrivacyExplainingLabel/>))
                 :
                 <>
                     <StoriesList stories={
@@ -34,7 +35,9 @@ const User = ({me, canSee}) => (
 
 const mapStateToProps = state => ({
     me: state.auth.user.id === state.users.user.id,
-    canSee: state.users.user.canSee
+    canSee: state.users.user.canSee,
+    isPrivate: state.users.user.private,
+    amBlacklisted: state.users.user.amBlacklisted
 });
 
 export default connect(mapStateToProps)(User);

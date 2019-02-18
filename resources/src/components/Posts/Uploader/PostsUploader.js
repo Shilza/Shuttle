@@ -35,7 +35,6 @@ class PostsUploader extends React.Component {
                     <Modal closeModal={this.closeModal}>
                         <UploadPost media={media} upload={this.upload}/>
                     </Modal>
-
                 }
                 <Uploader loadMedia={this.loadMedia} trigger={this.props.trigger}/>
             </>

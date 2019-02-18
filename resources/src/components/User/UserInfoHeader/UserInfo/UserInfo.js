@@ -1,70 +1,94 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from './userInfo.module.css';
 import {addSmoothScrolling} from "../../../../utils/scrolling";
 import {connect} from "react-redux";
 import * as UsersService from "../../../../services/user";
 import Friendships from "./Friendships";
+import Paginator from "../../../Paginator";
 
-class UserInfo extends React.Component {
+const UserInfo = ({postsCount, canSee, followersCount, followsCount, ...props}) => {
 
-    state = {
-        isModalOpen: false,
-        friendships: undefined
-    };
+    let [isModalOpen, setIsModalOpen] = useState(false);
+    let [friendships, setFriendships] = useState([]);
+    let [isFollowers, setIsFollowers] = useState(true);
 
-    componentDidMount() {
+    useEffect(() => {
         addSmoothScrolling('userInfoPostsLink');
-    }
+    }, []);
 
-    closeFriendshipsModal = () => {
-        this.setState({isModalOpen: false});
+    const closeFriendshipsModal = () => setIsModalOpen(false);
+
+    const loadFollowers = page => {
+        return new Promise(resolve => {
+            load(UsersService.getFollowers, page, followersCount).then(data => resolve(data));
+        });
     };
 
-    loadFollowers = () => this.load(UsersService.getFollowers, this.props.followersCount);
+    const loadFollows = page => {
+        return new Promise(resolve => {
+            load(UsersService.getFollows, page, followsCount).then(data => resolve(data));
+        });
+    };
 
-    loadFollows = () => this.load(UsersService.getFollows, this.props.followsCount);
+    const load = (loadFunction, page, count) => {
+        const {dispatch, id} = props;
 
-    load = (loadFunction, count) => {
-        const {dispatch, id, canSee} = this.props;
         if (count && canSee)
-            dispatch(loadFunction(id))
-                .then(({friendships}) => this.setState({isModalOpen: true, friendships}));
+            return new Promise((resolve) => {
+                dispatch(loadFunction(id, page))
+                    .then(data => {
+                        setFriendships(friendships.concat(data.data));
+                        resolve(data);
+                    });
+            });
     };
 
-    isOpen = () => {
-        const {isModalOpen, friendships} = this.state;
+    const fetchFriendships = isFollowers ? loadFollowers : loadFollows;
 
-        return !!(isModalOpen && friendships && friendships.length);
-    };
-
-    render() {
-        const {postsCount, followersCount, followsCount} = this.props;
-        const {friendships} = this.state;
-
-        return (
-            <>
-                <ul className={styles.mainContainer}>
-                    <li className={styles.unitContainer}>
-                        <span className={styles.unitNumber}>{postsCount}</span>
-                        <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
-                    </li>
-                    <li className={styles.unitContainer}>
-                        <span className={styles.unitNumber}>{followersCount}</span>
-                        <button className={styles.simpleTextStyledItem} onClick={this.loadFollowers}>Followers</button>
-                    </li>
-                    <li className={styles.unitContainer}>
-                        <span className={styles.unitNumber}>{followsCount}</span>
-                        <button className={styles.simpleTextStyledItem} onClick={this.loadFollows}>Follows</button>
-                    </li>
-                </ul>
-                {
-                    this.isOpen() &&
-                    <Friendships friendships={friendships} closeModal={this.closeFriendshipsModal}/>
-                }
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <ul className={styles.mainContainer}>
+                <li className={styles.unitContainer}>
+                    <span className={styles.unitNumber}>{postsCount}</span>
+                    <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
+                </li>
+                <li className={styles.unitContainer}>
+                    <span className={styles.unitNumber}>{followersCount}</span>
+                    <button className={styles.simpleTextStyledItem} onClick={() => {
+                        if (followersCount && canSee) {
+                            setIsFollowers(true);
+                            setIsModalOpen(true);
+                        }
+                    }}>
+                        Followers
+                    </button>
+                </li>
+                <li className={styles.unitContainer}>
+                    <span className={styles.unitNumber}>{followsCount}</span>
+                    <button className={styles.simpleTextStyledItem} onClick={() => {
+                        if (followsCount && canSee) {
+                            setIsFollowers(false);
+                            setIsModalOpen(true);
+                        }
+                    }}>
+                        Follows
+                    </button>
+                </li>
+            </ul>
+            {
+                isModalOpen &&
+                <Paginator
+                    fetcher={fetchFriendships}
+                >
+                    {
+                        !!friendships.length &&
+                        <Friendships friendships={friendships} closeModal={closeFriendshipsModal}/>
+                    }
+                </Paginator>
+            }
+        </>
+    );
+};
 
 
 export default connect()(UserInfo);

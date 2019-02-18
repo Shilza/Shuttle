@@ -3,29 +3,28 @@ import {getBlacklisted} from "../../services/user";
 import Blacklisted from "./Blacklisted";
 import style from './blacklist.module.css';
 import {connect} from "react-redux";
+import Paginator from "../Paginator";
 
-class Blacklist extends React.Component {
+const Blacklist = ({dispatch, blacklisted}) => {
 
-    componentDidMount() {
-        this.props.dispatch(getBlacklisted());
-    }
+    const fetchBlacklisted = page => dispatch(getBlacklisted(page));
 
-    render() {
-        const {blacklisted} = this.props;
-
-        return (
-            <div className={style.blacklistContainer}>
-                <span className={style.title}>Blacklist</span>
+    return (
+        <div className={style.blacklistContainer}>
+            <span className={style.title}>Blacklist</span>
+            <Paginator
+                fetcher={fetchBlacklisted}
+            >
                 <div className={style.cardsList}>
                     {
                         blacklisted &&
                         blacklisted.map(user => <Blacklisted key={user.id} user={user}/>)
                     }
                 </div>
-            </div>
-        )
-    }
-}
+            </Paginator>
+        </div>
+    );
+};
 
 const mapStateToProps = state => ({
     blacklisted: state.blacklist.users

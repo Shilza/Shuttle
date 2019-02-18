@@ -1,16 +1,13 @@
 import Http from "../Http";
-import {addComment, removeComment, setComments} from "../store/actions/comments";
+import {addComment, removeComment, addComments} from "../store/actions/comments";
 
-export function getComments(id) {
+export function getComments(id, page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/comments?post_id=' + id)
+                Http.get(`/api/v1/comments?post_id=${id}&page=${page}`)
                     .then(({data}) => {
-                        if(data.private)
-                            return resolve({isPrivate: true});
-
-                        dispatch(setComments(data.data));
-                        resolve({isPrivate: false});
+                        dispatch(addComments(data));
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }

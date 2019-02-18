@@ -11,7 +11,7 @@
     height: 200%;
     transform: rotate(-30deg);
     width: 200%;
-    animation: blink ease 1s infinite;
+    animation: blink ease 700ms infinite;
     background: rgba(255, 255, 255, 0.13);
     background: linear-gradient(
             to right,

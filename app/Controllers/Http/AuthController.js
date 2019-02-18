@@ -16,7 +16,7 @@ class AuthController {
 
         const rules = {
             email: 'required|email|unique:users,email',
-            username: 'required|min:2|max:16|unique:users,username',
+            username: 'required|min:2|max:16|regex:^[a-z0-9]+$|unique:users,username',
             password: 'required|min:8|max:32|confirmed'
         };
 

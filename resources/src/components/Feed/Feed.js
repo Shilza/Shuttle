@@ -2,28 +2,29 @@ import React from "react";
 import {connect} from "react-redux";
 import * as FeedService from "../../services/feed";
 import FeedList from "./FeedList";
+import styles from './feed.module.css';
+import Paginator from "../Paginator";
 
-class Feed extends React.Component {
+const Feed = ({posts, page = 0, dispatch}) => {
 
-    componentDidMount() {
-        const {dispatch} = this.props;
-        dispatch(FeedService.getFeed());
-    }
+    const fetchFeedPosts = page => dispatch(FeedService.getFeed(page));
 
-    render() {
-        const {posts} = this.props;
-
-        return (
-            <>
-            {posts ? <FeedList posts={posts}/> : <span>Loading</span>}
-            </>
-        );
-    }
-}
+    return (
+        <div className={styles.feedList}>
+            <Paginator
+                fetcher={fetchFeedPosts}
+                initialPage={page}
+            >
+                <FeedList posts={posts}/>
+            </Paginator>
+        </div>
+    );
+};
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts.posts
+        posts: state.posts.feedPosts.data,
+        page: state.posts.feedPosts.page
     }
 };
 

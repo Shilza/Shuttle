@@ -16,13 +16,19 @@ class PostController {
 
         const user = await auth.getUser();
 
-        const post = await PostsService.getPostByCode(params.code, user);
-        if (!post)
-            return response.status(400).json({
-                message: 'Post does not exists'
-            });
+        const canSee = await UsersService.canSee(owner, user.id);
 
-        response.json({post});
+        if (canSee) {
+            const post = await PostsService.getPostByCode(params.code, user);
+
+            if (!post)
+                return response.status(400).json({
+                    message: 'Post does not exists'
+                });
+
+            return response.json({post});
+        } else
+            return response.json({private: true});
     }
 
     async show({request, response, auth}) {
@@ -48,7 +54,6 @@ class PostController {
 
         const owner = await User.find(ownerId);
 
-        await this.sleep(3000);
         const canSee = await UsersService.canSee(owner, user.id);
 
         if (canSee) {
@@ -56,15 +61,6 @@ class PostController {
             return response.json(posts);
         } else
             return response.json({private: true});
-
-    }
-
-    sleep(duration) {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                resolve()
-            }, duration);
-        })
     }
 
     async showArchived({request, response, auth}) {

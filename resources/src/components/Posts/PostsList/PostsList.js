@@ -8,13 +8,9 @@ import {setCurrentPost} from "../../../store/actions/posts";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const PostsList = ({posts, dispatch}) => {
-    const open = post => {
-        dispatch(setCurrentPost(post));
-        dispatch(CommentService.getComments(post.id));
-    };
+    const open = post => dispatch(setCurrentPost(post));
 
     return (
-
         <ReactCSSTransitionGroup
             transitionName={{
                 enter: transitions.enter,
@@ -27,10 +23,9 @@ const PostsList = ({posts, dispatch}) => {
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
             <div className={styles.container} id='postsList'>
-                {posts.map(post => <Post key={post.id} post={post} open={open}/>)}
+                {posts && posts.map(post => <Post key={post.id} post={post} open={open}/>)}
             </div>
         </ReactCSSTransitionGroup>
-
     );
 };
 

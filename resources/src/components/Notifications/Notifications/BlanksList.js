@@ -1,5 +1,7 @@
 import React from "react";
 import NotificationBlank from "./NotificationBlank";
+import transitions from './transitions.module.css';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const BlanksList = ({count}) => {
     const getNotificationsBlanks = () => {
@@ -11,13 +13,19 @@ const BlanksList = ({count}) => {
         return notificationsBlanks;
     };
 
+    console.log('blanks count', count);
+
     return (
-        <>
+        <ReactCSSTransitionGroup
+            transitionName={transitions}
+            transitionAppear={false}
+            transitionEnter={false}
+            transitionLeaveTimeout={500}>
             {
                 getNotificationsBlanks()
             }
-        </>
+        </ReactCSSTransitionGroup>
     );
 };
 
-export default BlanksList;
+export default React.memo(BlanksList);

@@ -5,6 +5,7 @@ const Post = use('App/Models/Post');
 const Comment = use('App/Models/Comment');
 const EntityType = use('App/Models/EntityType');
 const {validate} = use('CValidator');
+const LikesService = use('LikesService');
 
 class LikeController {
 
@@ -30,12 +31,7 @@ class LikeController {
         const entity_id = request.input('entity_id');
         const user = await auth.getUser();
 
-        const like = await Like.query()
-            .where('owner_id', user.id)
-            .where('entity_id', entity_id)
-            .where('type', type.id)
-            .first();
-
+        const like = await LikesService.isLikeExists(user.id, entity_id, type.id);
         if (like)
             return response.json({message: 'Like already exists'});
 
@@ -50,7 +46,6 @@ class LikeController {
                 await Like.create({entity_id, owner_id: user.id, type: type.id});
 
                 return response.json({message: 'Comment liked successfully'});
-
             case 'post':
                 const post = await Post.find(entity_id);
                 if (!post)

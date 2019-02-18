@@ -12,6 +12,10 @@ class Compilation extends Model {
     post () {
         return this.belongsTo('App/Models/Post', 'post_id', 'id');
     }
+
+    fourPosts() {
+        return this.belongsTo('App/Models/Post', 'post_id', 'id').limit(4);
+    }
 }
 
 module.exports = Compilation;

@@ -25,5 +25,4 @@ const removeFromBlacklist = (state, id) => ({
     users: state.users.filter(item => item.id !== id)
 });
 
-
 export default Blacklist;

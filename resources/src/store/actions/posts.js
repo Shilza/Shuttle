@@ -1,15 +1,64 @@
 import * as ActionTypes from '../actionTypes/posts'
 
-export function setPosts(payload){
+export function addPosts(payload){
     return {
-        type: ActionTypes.SET_POSTS,
+        type: ActionTypes.ADD_POSTS,
         payload
     }
 }
 
-export function setSavedPosts(payload){
+export function addSavedPosts(payload){
     return {
-        type: ActionTypes.SET_SAVED_POSTS,
+        type: ActionTypes.ADD_SAVED_POSTS,
+        payload
+    }
+}
+
+export function removeSavedPost(payload) {
+    return {
+        type: ActionTypes.REMOVE_SAVED_POST,
+        payload
+    }
+}
+
+export function addLikedPosts(payload){
+    return {
+        type: ActionTypes.ADD_LIKED_POSTS,
+        payload
+    }
+}
+
+export function removeLikedPost(payload) {
+    return {
+        type: ActionTypes.REMOVE_LIKED_POST,
+        payload
+    }
+}
+
+export function addFeedPosts(payload){
+    return {
+        type: ActionTypes.ADD_FEED_POSTS,
+        payload
+    }
+}
+
+export function removeFeedPost(payload) {
+    return {
+        type: ActionTypes.REMOVE_FEED_POST,
+        payload
+    }
+}
+
+export function addArchivePosts(payload){
+    return {
+        type: ActionTypes.ADD_ARCHIVE_POSTS,
+        payload
+    }
+}
+
+export function removeArchivePost(payload) {
+    return {
+        type: ActionTypes.REMOVE_ARCHIVE_POST,
         payload
     }
 }
@@ -44,13 +93,6 @@ export function addPost(payload) {
 export function save(payload){
     return {
         type: ActionTypes.SAVE,
-        payload
-    }
-}
-
-export function removeSavedPost(payload) {
-    return {
-        type: ActionTypes.REMOVE_SAVED_POST,
         payload
     }
 }

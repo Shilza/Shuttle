@@ -2,44 +2,34 @@ import * as PostService from "../../../../services/post";
 import React from "react";
 import {connect} from "react-redux";
 import PostsExplainingLabel from "../../../ExplainingLabels/PostsLabel/PostsExplainingLabel";
-import Posts from "../../../Posts/Posts";
+import Paginator from "../../../Paginator";
+import PostsList from "../../../Posts/PostsList/PostsList";
+import PostsModal from "../../../Posts/PostsModal/PostsModal";
 
-class PostsManager extends React.PureComponent {
+const PostsManager = ({id, dispatch, posts}) => {
 
-    state = {
-        isPrivate: false
-    };
+    const fetchUsersPosts = page => dispatch(PostService.getPosts(id, page));
 
-    componentDidMount() {
-        const {id, dispatch} = this.props;
-
-        dispatch(PostService.getPosts(id))
-            .then(({isPrivate}) => this.setState({isPrivate}));
-    }
-
-    render() {
-        const {posts} = this.props;
-        const {isPrivate} = this.state;
-
-        return (
-            <>
-                {
-                    isPrivate ? <span>Private</span> :
-                        <>
-                            {
-                                posts && !posts.length && <PostsExplainingLabel/>
-                            }
-                            <Posts posts={posts}/>
-                        </>
-                }
-            </>
-        )
-    }
-}
+    return (
+        <>
+            {
+                posts && !posts.length && <PostsExplainingLabel/>
+            }
+            <Paginator
+                fetcher={fetchUsersPosts}
+            >
+                <>
+                    <PostsList posts={posts}/>
+                    <PostsModal/>
+                </>
+            </Paginator>
+        </>
+    );
+};
 
 const mapStateToProps = state => ({
     id: state.users.user.id,
-    posts: state.posts.posts
+    posts: state.posts.usersPosts.data
 });
 
 export default connect(mapStateToProps)(PostsManager);

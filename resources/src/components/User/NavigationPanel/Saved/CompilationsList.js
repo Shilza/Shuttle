@@ -4,11 +4,8 @@ import React from "react";
 import {connect} from "react-redux";
 import {getSavedPosts} from "../../../../services/post";
 
-const CompilationsList = ({compilations, goToSavedPosts, dispatch}) => {
-    const loadPosts = (compilationName) => {
-        dispatch(getSavedPosts(compilationName));
-        goToSavedPosts();
-    };
+const CompilationsList = ({compilations, goToSavedPosts}) => {
+    const loadPosts = compilationName => goToSavedPosts(compilationName);
 
     return (
         <div className={styles.compilationsList}>
@@ -19,4 +16,4 @@ const CompilationsList = ({compilations, goToSavedPosts, dispatch}) => {
     )
 };
 
-export default connect()(CompilationsList);
+export default CompilationsList;

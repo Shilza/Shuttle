@@ -2,33 +2,83 @@ const Compilation = use('App/Models/Compilation');
 
 class CompilationsService {
 
-    async getCompilations(userId) {
-        const compilationsNames = await Compilation
+    async getCompilations(userId, page) {
+        const compilations = (await Compilation
             .query()
             .where('owner_id', userId)
             .distinct('name')
-            .pluck('name');
+            .paginate(page, 20)).toJSON();
 
-        let compilations = [];
-        for (let i = 0; i < compilationsNames.length; i++) {
-            let data = await Compilation
-                .query()
-                .select('post_id')
-                .where('owner_id', userId)
-                .where('name', compilationsNames[i])
-                .with('post')
-                .limit(4)
-                .orderBy('id', 'desc')
-                .fetch();
+        const compilationsNames = compilations.data.map(item => item.name);
+        if (compilationsNames.length) {
+            let compilationsData = [];
 
-            data = data.toJSON().map(item => item.post = item.post.src);
+            const dataToFetch = [];
+            compilationsNames.forEach(name => {
+                let data = Compilation
+                    .query()
+                    .select(['name', 'post_id'])
+                    .where('owner_id', userId)
+                    .where('name', name)
+                    .with('post')
+                    .limit(4)
+                    .orderBy('id', 'desc')
+                    .fetch();
 
-            compilations.push({
-                [compilationsNames[i]]: data
+                dataToFetch.push(data);
             });
+            await Promise.all(dataToFetch).then(data => {
+                JSON.parse(JSON.stringify(data))[0].forEach(item => {
+                    let comp = compilationsData.find(compilationsDataItem => {
+                        if (compilationsDataItem.hasOwnProperty(item.name))
+                            return true;
+                    });
+                    if (comp) {
+                        comp[item.name].push(item.post.src);
+                    }
+                    else
+                        compilationsData.push({
+                            [item.name]: [item.post.src]
+                        });
+                })
+            });
+
+            compilations.data = compilationsData;
         }
 
         return compilations;
+    }
+
+    async isCompilationExists(ownerId, compilationName) {
+        return !!(await Compilation
+            .query()
+            .select(1)
+            .where('owner_id', ownerId)
+            .where('name', compilationName)
+            .first());
+    }
+
+    async isPostExists(userId, postId) {
+        return !!(Compilation
+            .query()
+            .where('owner_id', userId)
+            .where('post_id', postId)
+            .first());
+    }
+
+    async deletePost(userId, postId) {
+        return await Compilation
+            .query()
+            .where('owner_id', userId)
+            .where('post_id', postId)
+            .delete();
+    }
+
+    async deleteCompilation(userId, compilationName) {
+        return await Compilation.query()
+            .where('owner_id', userId)
+            .where('name', compilationName)
+            .delete();
     }
 
     async getPostsIdsByCompilationName(userId, compilationName) {

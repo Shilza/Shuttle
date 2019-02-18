@@ -3,14 +3,14 @@ import {Input, Icon} from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
 export const Username = ({getFieldDecorator, fieldName = 'username', initialValue = '', onChange}) => {
-    const regExpr = /^[a-zA-Z0-9]+$/;
+    const regExpr = /^[a-z0-9]+$/;
 
     return (
         <FormItem>
             {getFieldDecorator(fieldName, {
                 rules: [
                     {required: true, message: 'Please input your username!'},
-                    {max: 16, message: 'Username must be less than 16 characters!'},
+                    {max: 12, message: 'Username must be less than 12 characters!'},
                     {min: 1, message: 'Username must be at least 2 characters!'},
                     {pattern: regExpr, message: 'Invalid username'}
                 ],

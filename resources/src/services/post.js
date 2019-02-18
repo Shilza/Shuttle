@@ -2,6 +2,7 @@ import Http from "../Http";
 import *as actions from "../store/actions/posts";
 import * as CommentService from "./comments";
 import {setCurrentPost} from "../store/actions/posts";
+import {setPostIdToBeSaved, setSaveCompilationName} from "../store/actions/saved";
 
 export function create(postData) {
     return dispatch => (
@@ -29,16 +30,13 @@ export function remove(id) {
         ));
 }
 
-export function getPosts(id) {
+export function getPosts(id, page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/posts?owner_id=' + id)
+                Http.get(`/api/v1/posts?owner_id=${id}&page=${page}`)
                     .then(({data}) => {
-                        if(data.private)
-                            return resolve({isPrivate: true});
-
-                        dispatch(actions.setPosts(data.data));
-                        resolve({isPrivate: false});
+                        dispatch(actions.addPosts(data));
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }
@@ -58,13 +56,13 @@ export function getPostByCode(code) {
         ));
 }
 
-export function getSavedPosts(compilationName) {
+export function getSavedPosts(compilationName, page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/compilations/posts?compilation=' + compilationName)
+                Http.get(`/api/v1/compilations/posts?compilation=${compilationName}&page=${page}`)
                     .then(({data}) => {
-                        dispatch(actions.setSavedPosts(data.data));
-                        resolve();
+                        dispatch(actions.addSavedPosts(data));
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }
@@ -75,7 +73,9 @@ export function save(data) {
     return dispatch => (
         new Promise((resolve, reject) => {
                 Http.post('/api/v1/posts/save', data)
-                    .then(() => dispatch(actions.save(data.post_id)))
+                    .then(() => {
+                        dispatch(actions.save(data.post_id));
+                    })
                     .catch(err => reject(err))
             }
         ));
@@ -91,24 +91,26 @@ export function removeSavedPost(postId) {
         ));
 }
 
-export function getArchived() {
+export function getArchived(page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/posts/archive')
+                Http.get('/api/v1/posts/archive?page=' + page)
                     .then(({data}) => {
-                        dispatch(actions.setPosts(data.data));
+                        dispatch(actions.addArchivePosts(data));
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }
         ));
 }
 
-export function getLiked() {
+export function getLiked(page) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.get('/api/v1/posts/liked')
+                Http.get('/api/v1/posts/liked?page=' + page)
                     .then(({data}) => {
-                        dispatch(actions.setPosts(data.data));
+                        dispatch(actions.addLikedPosts(data));
+                        resolve(data);
                     })
                     .catch(err => reject(err))
             }

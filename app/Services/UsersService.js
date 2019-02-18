@@ -6,7 +6,8 @@ const FriendshipsService = use('FriendshipsService');
 class UsersService {
 
     async canSee(user, requesterId) {
-        if (user.private && (requesterId !== user.id))
+        const isRequesterBlacklisted = await this.isBlacklisted(requesterId, user.id);
+        if (isRequesterBlacklisted || user.private && (requesterId !== user.id))
             return await FriendshipsService.isFollower(user.id, requesterId);
 
         return true;
@@ -31,34 +32,32 @@ class UsersService {
     }
 
     async isBlacklisted(blacklistedId, userId) {
-        const isBlacklisted = await Blacklist
+        return !!(await Blacklist
             .query()
             .select(1)
             .where('user_id', userId)
             .where('blacklisted_id', blacklistedId)
-            .fetch();
-
-        return !!isBlacklisted.rows.length;
+            .first());
     }
 
-    async getFollowers(user) {
+    async getFollowers(user, page) {
         let followersIds = await user.followers().fetch();
         followersIds = followersIds.toJSON().map(item => item.subscriber_id);
 
         return await User
             .query()
             .whereIn('id', followersIds)
-            .fetch();
+            .paginate(page, 18);
     }
 
-    async getFollows(user) {
+    async getFollows(user, page) {
         let followsIds = await user.follows().fetch();
         followsIds = followsIds.toJSON().map(item => item.user_id);
 
         return await User
             .query()
             .whereIn('id', followsIds)
-            .fetch();
+            .paginate(page, 30);
     }
 
     async cancelSubRequest(receiverId, subId) {

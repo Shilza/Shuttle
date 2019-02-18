@@ -12,7 +12,7 @@ class CommentsService {
             .where('post_id', postId)
             .withCount('likes')
             .orderBy('id', 'desc')
-            .paginate(page, 4);
+            .paginate(page, 12);
 
         comments.rows = await this._setOwnersInfo(comments.rows);
         comments.rows = await LikesService.setIsLikedCommentsInfo(userId, comments.rows);

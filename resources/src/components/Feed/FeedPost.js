@@ -5,22 +5,13 @@ import {connect} from "react-redux";
 import Header from "../Posts/PostsModal/PostsControl/Header";
 import Actions from "../Posts/PostsModal/PostsControl/Actions/Actions";
 import Footer from "../Posts/PostsModal/PostsControl/Footer";
+import PostMedia from "../Posts/Post/PostMedia";
 
 const FeedPost = React.memo(({post, comments, open}) => (
     <article className={styles.item}>
         <Header username={post.owner} avatar={post.avatar}/>
         <div className={styles.mediaContainer} onClick={() => open(post)}>
-            {
-                post.src.match('.mp4') ?
-                    <video src={post.src}
-                           className={styles.media}
-                    /> :
-                    <img
-                        alt="user's post"
-                        className={styles.media}
-                        src={post.src}
-                    />
-            }
+            <PostMedia src={post.src} style={styles.media}/>
         </div>
         <Actions post={post}/>
         {
@@ -33,19 +24,19 @@ const FeedPost = React.memo(({post, comments, open}) => (
     </article>
 ));
 
-function getComments(comments, props) {
+const getComments = (comments, props) => {
+    let postComments = [];
+    if (comments)
+        comments.forEach(comment => {
+            if (comment.post_id === props.post.id)
+                postComments.push(comment);
+        });
 
-    let com = [];
-    comments.forEach(comment => {
-        if (comment.post_id === props.post.id)
-            com.push(comment);
-    });
-
-    return com;
-}
+    return postComments;
+};
 
 const mapStateToProps = (state, props) => ({
-    comments: getComments(state.comments.comments, props)
+    comments: getComments(state.comments.comments.data, props),
 });
 
 export default connect(mapStateToProps)(FeedPost);

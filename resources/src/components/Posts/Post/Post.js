@@ -1,17 +1,11 @@
 import React from "react";
 import styles from './post.module.css';
 import {Icon} from "antd";
+import PostMedia from "./PostMedia";
 
 const Post = ({post, open}) => (
     <div className={styles.post} onClick={() => open(post)}>
-        {
-            post.src.match('.mp4') ?
-                <video src={post.src}/> :
-                <img
-                    alt="user's post"
-                    src={post.src}
-                />
-        }
+        <PostMedia src={post.src}/>
         <div className={styles.metaInfo}>
             <div>
                 {post.likes_count}

@@ -2,7 +2,6 @@
 
 const {validate} = use('CValidator');
 const Post = use('App/Models/Post');
-const Database = use('Database');
 const Compilation = use('App/Models/Compilation');
 const CompilationsService = use('CompilationsService');
 const LikesService = use('LikesService');
@@ -39,10 +38,24 @@ class CompilationController {
     }
 
     async showCompilations({request, response, auth}) {
-        const user = await auth.getUser();
-        const compilations = await CompilationsService.getCompilations(user.id);
+        const rules = {
+            page: 'integer'
+        };
 
-        response.json({compilations});
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
+        const user = await auth.getUser();
+        const compilations = await CompilationsService.getCompilations(user.id, page);
+
+        response.json(compilations);
     }
 
     async create({request, response, auth}) {
@@ -71,12 +84,7 @@ class CompilationController {
 
         const user = await auth.getUser();
 
-        const isSaved = await Compilation
-            .query()
-            .select(1)
-            .where('owner_id', user.id)
-            .where('post_id', post.id)
-            .first();
+        const isSaved = await CompilationsService.isSavedBy(user.id, post.id);
 
         if (isSaved)
             return response.status(400).json({
@@ -115,12 +123,7 @@ class CompilationController {
             });
 
         const user = await auth.getUser();
-        const isExists = await Compilation
-            .query()
-            .where('owner_id', user.id)
-            .where('name', request.input('old_compilation_name'))
-            .first();
-
+        const isExists = await CompilationsService.isCompilationExists(user.id, request.input('old_compilation_name'));
         if (!isExists)
             return response.status(400).json({
                 message: 'Compilation does not esists'
@@ -151,20 +154,14 @@ class CompilationController {
 
         const user = await auth.getUser();
 
-        const compilation = await Compilation
-            .query()
-            .where('name', request.input('compilation'))
-            .first();
+        const isExists = await CompilationsService.isCompilationExists(user.id, request.input('compilation'));
 
-        if (!compilation)
+        if (!isExists)
             return response.json({
                 message: 'Compilation does not exists'
             });
 
-        const isDeleted = await Compilation.query()
-            .where('owner_id', user.id)
-            .where('name', request.input('compilation'))
-            .delete();
+        const isDeleted = await CompilationsService.deleteCompilation(user.id, request.input('compilation'));
 
         if (isDeleted)
             return response.json({
@@ -190,22 +187,14 @@ class CompilationController {
 
         const user = await auth.getUser();
 
-        const post = await Compilation
-            .query()
-            .where('owner_id', user.id)
-            .where('post_id', request.input('post_id'))
-            .first();
+        const isPostExists = await CompilationsService.isPostExists(user.id, request.input('post_id'));
 
-        if (!post)
+        if (!isPostExists)
             return response.status(400).json({
                 message: 'Post does not exists'
             });
 
-        const isDeleted = await Compilation
-            .query()
-            .where('owner_id', user.id)
-            .where('post_id', request.input('post_id'))
-            .delete();
+        const isDeleted = await CompilationsService.deletePost(user.id, request.input('post_id'));
 
         if (isDeleted)
             return response.json({

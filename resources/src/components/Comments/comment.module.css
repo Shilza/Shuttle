@@ -2,7 +2,7 @@
 .commentList {
     -ms-overflow-style: none;
     overflow: scroll;
-    max-height: 320px;
+    max-height: 280px;
 }
 
 .commentList::-webkit-scrollbar { width: 0; }

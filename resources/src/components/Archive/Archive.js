@@ -3,25 +3,28 @@ import {connect} from "react-redux";
 import {getArchived} from "../../services/post";
 import styles from './archive.module.css';
 import Posts from "../Posts/Posts";
+import Paginator from "../Paginator";
 
-class Archive extends React.Component {
+const Archive = ({posts, page, dispatch}) => {
 
-    componentDidMount() {
-        this.props.dispatch(getArchived());
-    }
+    const fetchArchivedPosts = page => dispatch(getArchived(page));
 
-    render() {
-        return (
-            <div className={styles.pageContainer}>
-                <span className={styles.title}>Only you can see archived posts</span>
-                <Posts posts={this.props.posts}/>
-            </div>
-        );
-    }
-}
+    return (
+        <div className={styles.pageContainer}>
+            <span className={styles.title}>Only you can see archived posts</span>
+            <Paginator
+                fetcher={fetchArchivedPosts}
+                initialPage={page || 0}
+            >
+                <Posts posts={posts}/>
+            </Paginator>
+        </div>
+    );
+};
 
 const mapStateToProps = state => ({
-    posts: state.posts.posts
+    posts: state.posts.archivePosts.data,
+    page: state.posts.archivePosts.page
 });
 
 export default connect(mapStateToProps)(Archive);

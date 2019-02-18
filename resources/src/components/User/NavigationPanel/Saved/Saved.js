@@ -1,56 +1,75 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getCompilations} from "../../../../services/saved";
 import SavedContainer from "./SavedContainer";
 import withLoader from "../../../Loader/Loader";
-import Posts from "../../../Posts/Posts";
 import styles from './saved.module.css';
 import {Button} from "antd";
+import PostsList from "../../../Posts/PostsList/PostsList";
+import PostsModal from "../../../Posts/PostsModal/PostsModal";
+import Paginator from "../../../Paginator";
+import {getSavedPosts} from "../../../../services/post";
 
 const SavedWithLoading = withLoader(SavedContainer);
 
-class Saved extends React.PureComponent {
+const Saved = ({savedPosts, page = 0, dispatch}) => {
 
-    state = {
-        isLoading: true,
-        compilationsPage: true
+    let [isLoading, setIsLoading] = useState(true);
+    let [compilationsPage, setCompilationsPage] = useState(true);
+    let [compilationsName, setCompilationsName] = useState(undefined);
+
+    useEffect(() => {
+        fetchCompilations(1);
+    }, []);
+
+    const fetchCompilations = page => {
+        return new Promise(resolve => {
+            dispatch(getCompilations(page))
+                .then(data => {
+                    setIsLoading(false);
+                    resolve(data);
+                });
+        })
     };
 
-    componentDidMount() {
-        this.props.dispatch(getCompilations())
-            .then(() => this.setState({isLoading: false}))
-            .catch(() => this.setState({isLoading: false}));
-    }
+    const fetchCompilationPosts = page => dispatch(getSavedPosts(compilationsName, page));
 
-    goToCompilationsPage = () => this.setState({compilationsPage: true});
+    const goToCompilationsPage = () => setCompilationsPage(true);
 
-    goToSavedPosts = () => this.setState({compilationsPage: false});
+    const goToSavedPosts = compilationName => {
+        setCompilationsPage(false);
+        setCompilationsName(compilationName);
+    };
 
-    render() {
-        const {savedPosts} = this.props;
-        const {compilationsPage} = this.state;
-
-        return (
-            <>
-                {
-                    compilationsPage &&
-                    <SavedWithLoading isLoading={this.state.isLoading} goToSavedPosts={this.goToSavedPosts}/>
-                }
-                {
-                    !compilationsPage && savedPosts &&
-                    <>
-                        <Button className={styles.compilationsLabel}
-                              onClick={this.goToCompilationsPage}>Compilations</Button>
-                        <Posts posts={savedPosts}/>
-                    </>
-                }
-            </>
-        );
-    }
-}
+    return (
+        <>
+            {
+                compilationsPage &&
+                <SavedWithLoading isLoading={isLoading} goToSavedPosts={goToSavedPosts}/>
+            }
+            {
+                !compilationsPage &&
+                <>
+                    <Button className={styles.compilationsLabel}
+                            onClick={goToCompilationsPage}>Compilations</Button>
+                    <Paginator
+                        fetcher={fetchCompilationPosts}
+                        initialPage={page}
+                    >
+                        <>
+                            <PostsList posts={savedPosts}/>
+                            <PostsModal/>
+                        </>
+                    </Paginator>
+                </>
+            }
+        </>
+    );
+};
 
 const mapStateToProps = state => ({
-    savedPosts: state.posts.savedPosts,
+    savedPosts: state.posts.savedPosts.data,
+    page: state.posts.savedPosts.page
 });
 
 export default connect(mapStateToProps)(Saved);
