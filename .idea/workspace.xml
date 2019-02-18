@@ -7,70 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/AuthController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/NotificationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/NotificationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/PostController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/PostController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Compilation.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Compilation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CommentsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CommentsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CompilationsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CompilationsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/LikesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/LikesService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/NotificationsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/NotificationsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PostsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PostsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/UsersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/UsersService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/js/main.c956c76a.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/js/main.c956c76a.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Archive/Archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Blacklist/Blacklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Blacklist/Blacklist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/comment.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/comment.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/FeedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/FeedList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/LikedPosts/LikedPosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Modal/modal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Modal/modal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/BlanksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/BlanksList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/Notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/Notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/NotificationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/NotificationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/notificationBlank.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/notificationBlank.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/notifications.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/notifications.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/SavedContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/SavedContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/blacklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/blacklist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/saved.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,11 +72,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostMedia.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostMedia.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Post/PostMedia.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -194,15 +140,6 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notifications.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/store/actions/notifications.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="63" selection-start-column="63" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -280,7 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/resources/src/services/saved.js" />
         <option value="$PROJECT_DIR$/app/Services/PostsService.js" />
         <option value="$PROJECT_DIR$/app/Models/Compilation.js" />
@@ -331,6 +267,7 @@
         <option value="$PROJECT_DIR$/resources/src/services/post.js" />
         <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" />
         <option value="$PROJECT_DIR$/resources/src/components/Posts/Post/PostMedia.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -566,7 +503,7 @@
       <workItem from="1550210416408" duration="30239000" />
       <workItem from="1550295349574" duration="34558000" />
       <workItem from="1550397642547" duration="22436000" />
-      <workItem from="1550474383819" duration="43491000" />
+      <workItem from="1550474383819" duration="43699000" />
     </task>
     <servers />
   </component>
@@ -576,7 +513,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="883208000" />
+    <option name="totallyTimeSpent" value="883416000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -597,9 +534,9 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35227272" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.26461038" />
+      <window_info anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.38311687" />
       <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32954547" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.17549168" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
@@ -628,15 +565,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/src/services/likes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/services/notifications.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1025,6 +953,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
