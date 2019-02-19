@@ -6,7 +6,9 @@
     <bookmark url="file://$PROJECT_DIR$/resources/src/components/Notifications/notifications.module.css" line="2" mnemonic="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="" />
+    <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/database/migrations/1550233065149_delete_like_action_schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/1550233065149_delete_like_action_schema.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,11 +84,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1550232745511_add_like_action_schema.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="1550232745511_add_like_action_schema.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/1550232745511_add_like_action_schema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="221">
+              <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550232902545_add_comment_action_schema.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550232902545_add_comment_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550232962343_add_follows_action_schema.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550232962343_add_follows_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550233065149_delete_like_action_schema.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550233065149_delete_like_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="258" selection-start-line="11" selection-start-column="258" selection-end-line="11" selection-end-column="258" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550233134621_delete_comment_action_schema.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550233134621_delete_comment_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550233205408_delete_follows_action_schema.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550233205408_delete_follows_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -164,12 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Services/UsersService.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/LikeController.js" />
-        <option value="$PROJECT_DIR$/app/Services/LikesService.js" />
-        <option value="$PROJECT_DIR$/app/Models/Comment.js" />
-        <option value="$PROJECT_DIR$/app/Models/Post.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" />
         <option value="$PROJECT_DIR$/resources/src/store/actions/notifications.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/src/components/Posts/Post/PostMedia.js" />
@@ -215,6 +256,12 @@
         <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js" />
         <option value="$PROJECT_DIR$/resources/src/services/post.js" />
         <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550232745511_add_like_action_schema.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550232902545_add_comment_action_schema.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550232962343_add_follows_action_schema.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550233134621_delete_comment_action_schema.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550233205408_delete_follows_action_schema.js" />
+        <option value="$PROJECT_DIR$/database/migrations/1550233065149_delete_like_action_schema.js" />
       </list>
     </option>
   </component>
@@ -481,7 +528,7 @@
       <workItem from="1550295349574" duration="34558000" />
       <workItem from="1550397642547" duration="22436000" />
       <workItem from="1550474383819" duration="44544000" />
-      <workItem from="1550563890634" duration="27562000" />
+      <workItem from="1550563890634" duration="28772000" />
     </task>
     <servers />
   </component>
@@ -491,7 +538,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="911823000" />
+    <option name="totallyTimeSpent" value="913033000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -543,50 +590,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/CompilationsService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/saved.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -980,10 +983,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550233134621_delete_comment_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550233205408_delete_follows_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550232962343_add_follows_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550232902545_add_comment_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/1550232745511_add_like_action_schema.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="221">
+          <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550233065149_delete_like_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="258" selection-start-line="11" selection-start-column="258" selection-end-line="11" selection-end-column="258" />
         </state>
       </provider>
     </entry>
