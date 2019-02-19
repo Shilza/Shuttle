@@ -6,38 +6,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/src/components/Notifications/notifications.module.css" line="2" mnemonic="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/AuthController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CompilationsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CompilationsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Drawer/Drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Drawer/Drawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/FeedPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Feed/feed.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Feed/feed.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/MediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/MediaPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/UploadMediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/UploadMediaPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/VideoPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/MediaPlayer/mediaPlayer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/mediaPlayer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/NotificationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Notifications/Notifications/NotificationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Post/PostMedia.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Toolbar/Toolbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/services/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actionTypes/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actionTypes/saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/actions/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/actions/saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/saved.js" afterDir="false" />
-    </list>
+    <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,14 +70,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SavedBarCompilation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SavedBarCompilation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+            <state relative-caret-position="272">
+              <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1550232745511_add_like_action_schema.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/migrations/1550232745511_add_like_action_schema.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -152,7 +130,7 @@
       <find>archive</find>
       <find>removePost</find>
       <find>getPosts(</find>
-      <find />
+      <find>private &amp;&amp;</find>
       <find>compilations</find>
       <find>sleep</find>
       <find>CompilationController</find>
@@ -262,7 +240,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="720" />
@@ -304,6 +282,23 @@
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adojs" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
@@ -486,7 +481,7 @@
       <workItem from="1550295349574" duration="34558000" />
       <workItem from="1550397642547" duration="22436000" />
       <workItem from="1550474383819" duration="44544000" />
-      <workItem from="1550563890634" duration="27229000" />
+      <workItem from="1550563890634" duration="27562000" />
     </task>
     <servers />
   </component>
@@ -496,7 +491,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="911490000" />
+    <option name="totallyTimeSpent" value="911823000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,8 +512,8 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35227272" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.2224026" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.2224026" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.17549168" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -548,20 +543,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/src/utils/debounce.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Feed/feed.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -982,13 +963,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/ActionTypeSeeder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        <state relative-caret-position="272">
+          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/1550232745511_add_like_action_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
