@@ -8,7 +8,8 @@ class DeleteFollowsActionSchema extends Schema {
     async up() {
         await Database
             .raw(
-                'DELETE FROM actions WHERE receiver_id=OLD.user_id AND initiator_id=OLD.subscriber_id AND type=3 AND entity_id=OLD.subscriber_id'
+                'CREATE TRIGGER `delete_follows_action` BEFORE DELETE ON `friendships`' +
+                'FOR EACH ROW DELETE FROM actions WHERE receiver_id=OLD.user_id AND initiator_id=OLD.subscriber_id AND type=3 AND entity_id=OLD.subscriber_id'
             );
     }
 
