@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {getNotifications} from "../../../services/notifications";
 import Notification from "./Notification";
 import styles from './notifications.module.css';

@@ -2,8 +2,9 @@ import * as ActionTypes from '../actionTypes/saved'
 
 const initialState = {
     compilations: [],
-    saveCompilationName: undefined,
-    postIdToBeSaved: undefined
+    isSavedTimeout: false,
+    postToBeSaved: undefined,
+    isModalOpen: false
 };
 
 const Saved = (state = initialState, {type, payload = null}) => {
@@ -12,10 +13,12 @@ const Saved = (state = initialState, {type, payload = null}) => {
             return addCompilations(state, payload);
         case ActionTypes.REMOVE_COMPILATION:
             return removeCompilation(state);
-        case ActionTypes.SET_SAVE_COMPILATION_NAME:
-            return setSaveCompilationName(state, payload);
-        case ActionTypes.SET_POST_ID_TO_BE_SAVED:
-            return setPostIdToBeSaved(state, payload);
+        case ActionTypes.SET_IS_SAVED_TIMEOUT:
+            return setIsSavedTimeout(state, payload);
+        case ActionTypes.SET_POST_TO_BE_SAVED:
+            return setPostToBeSaved(state, payload);
+        case ActionTypes.SET_IS_SAVE_MODAL_OPEN:
+            return setIsModalOpen(state, payload);
         default:
             return state;
     }
@@ -29,19 +32,24 @@ const addCompilations = (state, compilations) => ({
     }
 });
 
+const setIsModalOpen = (state, isModalOpen) => ({
+    ...state,
+    isModalOpen
+});
+
 const removeCompilation = state => ({
     ...state,
     compilations: undefined
 });
 
-const setSaveCompilationName = (state, saveCompilationName) => ({
+const setIsSavedTimeout = (state, isSavedTimeout) => ({
     ...state,
-    saveCompilationName
+    isSavedTimeout
 });
 
-const setPostIdToBeSaved = (state, postIdToBeSaved) => ({
+const setPostToBeSaved = (state, postToBeSaved) => ({
     ...state,
-    postIdToBeSaved
+    postToBeSaved
 });
 
 export default Saved;

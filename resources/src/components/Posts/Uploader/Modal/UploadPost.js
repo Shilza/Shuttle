@@ -1,5 +1,5 @@
 import {Button} from "antd";
-import UploadMediaPlayer from "../../../MediaPlayer/UploadMediaPlayer";
+import UploadMediaPlayer from "../../../PostMedia/UploadMediaPlayer";
 import React, {createRef} from "react";
 import styles from './uploadPost.module.css';
 import Header from "../../PostsModal/PostsControl/Header";

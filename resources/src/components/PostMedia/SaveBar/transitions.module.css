@@ -1,0 +1,22 @@
+
+.leave {
+    opacity: 1;
+    height: 50px;
+}
+
+.leaveActive {
+    opacity: 0;
+    height: 0;
+    transition: all 500ms ease-in
+}
+
+.appear {
+    opacity: 0;
+    height: 0;
+}
+
+.appearActive {
+    opacity: 1;
+    height: 50px;
+    transition: .25s ease-out;
+}

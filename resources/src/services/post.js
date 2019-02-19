@@ -1,8 +1,8 @@
 import Http from "../Http";
 import *as actions from "../store/actions/posts";
-import * as CommentService from "./comments";
 import {setCurrentPost} from "../store/actions/posts";
-import {setPostIdToBeSaved, setSaveCompilationName} from "../store/actions/saved";
+import * as CommentService from "./comments";
+import {setIsSavedTimeout, setPostToBeSaved} from "../store/actions/saved";
 
 export function create(postData) {
     return dispatch => (
@@ -75,6 +75,11 @@ export function save(data) {
                 Http.post('/api/v1/posts/save', data)
                     .then(() => {
                         dispatch(actions.save(data.post_id));
+                        setTimeout(() => {
+                            dispatch(setPostToBeSaved(undefined));
+                            dispatch(setIsSavedTimeout(false));
+                            resolve();
+                        }, 5000);
                     })
                     .catch(err => reject(err))
             }

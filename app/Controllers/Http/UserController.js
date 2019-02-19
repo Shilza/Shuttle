@@ -9,7 +9,7 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            username: 'required|min:2|max:16'
+            username: 'string|min:2|max:12|regex:^[a-z0-9]+$'
         };
 
         const validation = await validate(request.all(), rules);
@@ -46,7 +46,7 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            username: 'required|min:2|max:16'
+            username: 'string|min:2|max:12|regex:^[a-z0-9]+$'
         };
 
         const validation = await validate(request.all(), rules);
@@ -83,7 +83,7 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            username: 'string|min:2|max:16|regex:^[a-z0-9]+$',
+            username: 'string|min:2|max:12|regex:^[a-z0-9]+$',
             bio: 'string|max:100',
             site: 'string|max:50'
         };

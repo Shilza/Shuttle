@@ -1,0 +1,36 @@
+
+.compilation {
+    outline: 0;
+    padding: 0;
+    margin: 10px;
+    text-align: center;
+}
+
+.modalContainer {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background: white;
+    border: 1px solid #efefef;
+    border-radius: 3%;
+    padding: 5% 10%;
+    overflow: hidden;
+}
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.modalContainer img {
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 500;
+}

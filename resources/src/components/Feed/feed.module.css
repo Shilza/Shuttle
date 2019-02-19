@@ -20,9 +20,10 @@
 
 .mediaContainer {
     cursor: pointer;
-}
-
-.media {
     margin-left: -15px;
     width: calc(100% + 30px);
+}
+
+.mediaContainer img, video{
+    width: 100%;
 }

@@ -2,19 +2,21 @@ import React from "react";
 import styles from './actions.module.css';
 import {connect} from "react-redux";
 import * as PostService from "../../../../../services/post";
-import {setPostIdToBeSaved, setSaveCompilationName} from "../../../../../store/actions/saved";
+import {setPostToBeSaved, setIsSavedTimeout} from "../../../../../store/actions/saved";
+import {debounce} from "../../../../../utils/debounce";
+import savedStore from '../../../../../store/index';
 
-const Save = ({post, saveCompilationName, dispatch}) => {
+const Save = ({post, dispatch}) => {
 
     const save = () => {
-        dispatch(setPostIdToBeSaved(post.id));
-        setTimeout(() => {
-            if(!saveCompilationName) {
-                dispatch(PostService.save({post_id: post.id}));
-                dispatch(setPostIdToBeSaved(undefined));
-                dispatch(setSaveCompilationName(undefined));
+        dispatch(setPostToBeSaved(post));
+        dispatch(setIsSavedTimeout(true));
+        debounce(savedStore => {
+            const saved = savedStore.getState().saved;
+            if(saved.isSavedTimeout) {
+                dispatch(PostService.save({post_id: saved.postToBeSaved.id}));
             }
-        }, 3000);
+        }, 5000)(savedStore);
     };
 
     const removeSaved = () => dispatch(PostService.removeSavedPost(post.id));
@@ -31,8 +33,4 @@ const Save = ({post, saveCompilationName, dispatch}) => {
     );
 };
 
-const mapStateToProps = state => ({
-    saveCompilationName: state.saved.saveCompilationName
-});
-
-export default connect(mapStateToProps)(Save);
+export default connect()(Save);

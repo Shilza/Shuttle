@@ -27,8 +27,9 @@ class CompilationsService {
 
                 dataToFetch.push(data);
             });
+
             await Promise.all(dataToFetch).then(data => {
-                JSON.parse(JSON.stringify(data))[0].forEach(item => {
+                JSON.parse(JSON.stringify(data)).forEach(dataEntry => dataEntry.forEach(item => {
                     let comp = compilationsData.find(compilationsDataItem => {
                         if (compilationsDataItem.hasOwnProperty(item.name))
                             return true;
@@ -40,7 +41,7 @@ class CompilationsService {
                         compilationsData.push({
                             [item.name]: [item.post.src]
                         });
-                })
+                }));
             });
 
             compilations.data = compilationsData;

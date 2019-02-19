@@ -3,7 +3,6 @@ import styles from './postsList.module.css';
 import transitions from './transitions.module.css';
 import Post from "../Post/Post";
 import {connect} from "react-redux";
-import * as CommentService from "../../../services/comments";
 import {setCurrentPost} from "../../../store/actions/posts";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 

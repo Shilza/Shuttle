@@ -1,11 +1,11 @@
 import React from "react";
-import MediaPlayer from "../../MediaPlayer/MediaPlayer";
 import styles from './postModal.module.css';
 import PostControl from "./PostsControl/PostControl";
+import PostMedia from "../../PostMedia/PostMedia";
 
-const PostModalBody = ({post}) => (
+const PostModalBody = ({post, postIdToBeSaved}) => (
     <article className={styles.postModalContainer}>
-        <MediaPlayer media={post.src}/>
+        <PostMedia media={post.src} showSavedBar={post.id === postIdToBeSaved}/>
         <PostControl post={post}/>
     </article>
 );

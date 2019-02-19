@@ -130,12 +130,15 @@ const removePost = (state, id) => {
 };
 
 const addPost = (state, post) => {
+    const data = [...state.usersPosts.data];
+    data.unshift(post);
+
     return {
         ...state,
-        usersPosts: [
-            post,
-            ...state.usersPosts
-        ]
+        usersPosts: {
+            ...state.usersPosts,
+            data
+        }
     };
 };
 

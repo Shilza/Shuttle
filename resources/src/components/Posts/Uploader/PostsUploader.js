@@ -19,8 +19,7 @@ class PostsUploader extends React.Component {
 
     upload = postData => {
         this.props.dispatch(PostService.create(postData))
-            .then(data => message.success(data.message))
-            .catch(err => message.error(err.response.data.message));
+            .then(data => message.success(data.message));
 
         this.closeModal();
     };

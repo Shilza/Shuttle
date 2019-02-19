@@ -1,6 +1,7 @@
 import * as ActionTypes from '../actionTypes/saved'
-import {SET_SAVE_COMPILATION_NAME} from "../actionTypes/saved";
-import {SET_POST_ID_TO_BE_SAVED} from "../actionTypes/saved";
+import {SET_IS_SAVED_TIMEOUT} from "../actionTypes/saved";
+import {SET_POST_TO_BE_SAVED} from "../actionTypes/saved";
+import {SET_IS_SAVE_MODAL_OPEN} from "../actionTypes/saved";
 
 export function addCompilations(payload) {
     return {
@@ -15,16 +16,23 @@ export function removeCompilation() {
     }
 }
 
-export function setSaveCompilationName(payload){
+export function setIsSavedTimeout(payload){
     return {
-        type: SET_SAVE_COMPILATION_NAME,
+        type: SET_IS_SAVED_TIMEOUT,
         payload: payload
     }
 }
 
-export function setPostIdToBeSaved(payload){
+export function setIsSaveModalOpen(payload){
     return {
-        type: SET_POST_ID_TO_BE_SAVED,
+        type: SET_IS_SAVE_MODAL_OPEN,
+        payload: payload
+    }
+}
+
+export function setPostToBeSaved(payload){
+    return {
+        type: SET_POST_TO_BE_SAVED,
         payload: payload
     }
 }

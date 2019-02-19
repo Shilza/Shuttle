@@ -1,7 +1,7 @@
 import React from "react";
 
-const PostMedia = ({src, style=""}) => (
-    <div style={{marginLeft: -15}}>
+const Media = ({src, style=""}) => (
+    <>
         {
             src.match('.mp4') ?
                 <video src={src} className={style}/> :
@@ -11,8 +11,7 @@ const PostMedia = ({src, style=""}) => (
                     className={style}
                 />
         }
-        <div style={{width: '100%', height: '50px', background: 'gray', position: 'absolute'}}/>
-    </div>
+    </>
 );
 
-export default PostMedia;
+export default Media;

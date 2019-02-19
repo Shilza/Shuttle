@@ -20,14 +20,14 @@ const Toolbar = (props) => {
                   style={feedStyle}>
                 <Icon type={'fire'}/>
             </Link>
-            <Icon type={'search'}/>
-            <PostsUploader trigger={<Icon type={'plus'}/>}/>
+            <Icon type={'search'} className={styles.pointer}/>
+            <PostsUploader trigger={<Icon type={'plus'} className={styles.pointer}/>}/>
             <Link to={'/account/notifications'} style={notificationsStyle}>
                 <Badge status="error" dot={!!props.notificationsCount}>
                     <Icon type="bell"/>
                 </Badge>
             </Link>
-            <SettingsMenu trigger={<Icon type={'align-right'}/>}/>
+            <SettingsMenu trigger={<Icon type={'align-right'} className={styles.pointer}/>}/>
         </div>
     );
 };

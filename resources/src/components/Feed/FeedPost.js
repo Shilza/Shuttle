@@ -5,24 +5,32 @@ import {connect} from "react-redux";
 import Header from "../Posts/PostsModal/PostsControl/Header";
 import Actions from "../Posts/PostsModal/PostsControl/Actions/Actions";
 import Footer from "../Posts/PostsModal/PostsControl/Footer";
-import PostMedia from "../Posts/Post/PostMedia";
+import PostMedia from "../PostMedia/PostMedia";
 
-const FeedPost = React.memo(({post, comments, open}) => (
-    <article className={styles.item}>
-        <Header username={post.owner} avatar={post.avatar}/>
-        <div className={styles.mediaContainer} onClick={() => open(post)}>
-            <PostMedia src={post.src} style={styles.media}/>
-        </div>
-        <Actions post={post}/>
-        {
-            comments &&
-            <div style={{fontSize: 10}}>
-                <CommentsList comments={comments}/>
+const FeedPost = React.memo(({post, comments, postIdToBeSaved, open}) => {
+    const openPost = event => {
+        const tag = event.target.tagName.toLowerCase();
+        if (tag === 'img' || tag === 'video')
+            open(post)
+    };
+
+    return (
+        <article className={styles.item}>
+            <Header username={post.owner} avatar={post.avatar}/>
+            <div className={styles.mediaContainer} onClick={openPost}>
+                <PostMedia media={post.src} showSavedBar={post.id === postIdToBeSaved}/>
             </div>
-        }
-        <Footer post={post}/>
-    </article>
-));
+            <Actions post={post}/>
+            {
+                comments &&
+                <div style={{fontSize: 10}}>
+                    <CommentsList comments={comments}/>
+                </div>
+            }
+            <Footer post={post}/>
+        </article>
+    );
+});
 
 const getComments = (comments, props) => {
     let postComments = [];
@@ -37,6 +45,7 @@ const getComments = (comments, props) => {
 
 const mapStateToProps = (state, props) => ({
     comments: getComments(state.comments.comments.data, props),
+    postIdToBeSaved: state.saved.postToBeSaved ? state.saved.postToBeSaved.id : undefined
 });
 
 export default connect(mapStateToProps)(FeedPost);

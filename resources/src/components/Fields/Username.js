@@ -11,7 +11,7 @@ export const Username = ({getFieldDecorator, fieldName = 'username', initialValu
                 rules: [
                     {required: true, message: 'Please input your username!'},
                     {max: 12, message: 'Username must be less than 12 characters!'},
-                    {min: 1, message: 'Username must be at least 2 characters!'},
+                    {min: 2, message: 'Username must be at least 2 characters!'},
                     {pattern: regExpr, message: 'Invalid username'}
                 ],
                 initialValue
