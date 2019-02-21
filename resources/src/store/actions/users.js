@@ -50,10 +50,9 @@ export function setPublic(){
 }
 
 
-export function setBlacklisted(payload){
+export function setBlacklisted(){
     return {
         type: ActionTypes.SET_BLACKLISTED,
-        payload
     }
 }
 

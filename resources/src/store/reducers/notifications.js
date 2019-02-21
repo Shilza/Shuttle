@@ -17,7 +17,7 @@ const addNotifications = (state, notifications) => ({
     ...state,
     notifications: {
         ...notifications,
-        data: state.notifications.data ? state.notifications.data.concat(notifications.data) : notifications.data
+        data: state.notifications.data ? [...state.notifications.data, notifications.data] : notifications.data
     }
 });
 

@@ -2,8 +2,14 @@
 .postControl {
     display: flex;
     flex-direction: column;
-    min-width: 260px;
+    width: 260px;
     margin: 20px;
+}
+
+@media (max-width: 768px) {
+    .postControl {
+        width: auto;
+    }
 }
 
 .header {
@@ -36,12 +42,6 @@
 .captionUsername {
     display: inline-flex;
     margin-right: 5px;
-}
-
-.captionTextArea {
-    display: block;
-    width: 100%;
-    border: none;
 }
 
 .footer {

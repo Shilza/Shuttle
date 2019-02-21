@@ -46,7 +46,7 @@ class UserController {
         const {validate} = use('CValidator');
 
         const rules = {
-            username: 'string|min:2|max:12|regex:^[a-z0-9]+$'
+            username: 'string|min:2|max:12'
         };
 
         const validation = await validate(request.all(), rules);

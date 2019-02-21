@@ -20,7 +20,8 @@ const Paginator = ({fetcher, initialPage = 0, isReverse = false , children, load
         });
     };
 
-    console.log(page, lastPage);
+    // console.log(page, lastPage);
+    console.log('init page', initialPage);
     return (
         <InfiniteScroll
             pageStart={0}

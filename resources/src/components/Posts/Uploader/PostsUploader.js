@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import Uploader from "./Modal/Uploader";
 import * as PostService from "../../../services/post";
@@ -6,39 +6,36 @@ import {message} from "antd/lib/index";
 import Modal from "../../Modal/Modal";
 import UploadPost from "./Modal/UploadPost";
 
-class PostsUploader extends React.Component {
+const PostsUploader = ({dispatch, trigger}) => {
 
-    state = {
-        isOpen: false,
-        media: undefined
+    let [isOpen, setIsOpen] = useState(false);
+    let [media, setMedia] = useState(false);
+
+    const closeModal = () => setIsOpen(false);
+
+    const loadMedia = event => {
+        setIsOpen(true);
+        setMedia(event.target.files[0]);
     };
 
-    closeModal = () => this.setState({isOpen: false});
-
-    loadMedia = event => this.setState({isOpen: true, media: event.target.files[0]});
-
-    upload = postData => {
-        this.props.dispatch(PostService.create(postData))
+    const upload = postData => {
+        dispatch(PostService.create(postData))
             .then(data => message.success(data.message));
 
-        this.closeModal();
+        closeModal();
     };
 
-    render() {
-        const {isOpen, media} = this.state;
-
-        return (
-            <>
-                {
-                    isOpen &&
-                    <Modal closeModal={this.closeModal}>
-                        <UploadPost media={media} upload={this.upload}/>
-                    </Modal>
-                }
-                <Uploader loadMedia={this.loadMedia} trigger={this.props.trigger}/>
-            </>
-        )
-    }
-}
+    return (
+        <>
+            {
+                isOpen &&
+                <Modal closeModal={closeModal}>
+                    <UploadPost media={media} upload={upload}/>
+                </Modal>
+            }
+            <Uploader loadMedia={loadMedia} trigger={trigger}/>
+        </>
+    )
+};
 
 export default connect()(PostsUploader);

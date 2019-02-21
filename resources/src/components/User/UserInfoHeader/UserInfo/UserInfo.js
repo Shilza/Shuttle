@@ -37,7 +37,7 @@ const UserInfo = ({postsCount, canSee, followersCount, followsCount, ...props}) 
             return new Promise((resolve) => {
                 dispatch(loadFunction(id, page))
                     .then(data => {
-                        setFriendships(friendships.concat(data.data));
+                        setFriendships([...friendships, ...data.data]);
                         resolve(data);
                     });
             });

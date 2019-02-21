@@ -1,5 +1,11 @@
 import Http from "../Http";
-import {addComment, removeComment, addComments} from "../store/actions/comments";
+import {
+    addComment,
+    removeComment,
+    addComments,
+    setIsCommentsModalOpen,
+    setSelectedComment
+} from "../store/actions/comments";
 
 export function getComments(id, page) {
     return dispatch => (
@@ -33,6 +39,8 @@ export function remove(id) {
                 Http.delete('/api/v1/comments?id=' + id)
                     .then(({data}) => {
                         dispatch(removeComment(id));
+                        dispatch(setIsCommentsModalOpen(false));
+                        dispatch(setSelectedComment(undefined));
                         resolve(data);
                     })
                     .catch(err => reject(err))

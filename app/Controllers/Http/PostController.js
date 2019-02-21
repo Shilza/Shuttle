@@ -144,7 +144,7 @@ class PostController {
 
         const postData = request.input('caption');
         let post = await Post.create({
-            ...postData,
+            caption: postData,
             owner_id: user.id,
             src: '/uploads/' + user.id + '/' + name
         });

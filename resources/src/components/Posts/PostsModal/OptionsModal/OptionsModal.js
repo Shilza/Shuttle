@@ -1,39 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 import Modal from "../../../Modal/Modal";
 import ModalBody from "./ModalBody";
 import OptionsButton from "./OptionsButton";
 
-class OptionsModal extends React.PureComponent {
+const OptionsModal = ({post}) => {
 
-    state = {
-        isOpen: false
-    };
+    let [isOpen, setIsOpen] = useState(false);
 
-    closeModal = () => {
-        this.setState({isOpen: false});
-    };
+    const closeModal = () => setIsOpen(false);
 
-    open = () => {
-        this.setState({isOpen: true});
-    };
+    const open = () => setIsOpen(true);
 
-    render() {
-        const {isOpen} = this.state;
-        const {post} = this.props;
-        const link = window.location.origin + '/p/'+ post.src.match(/.+?\/.+?\/(.+?)\.+/)[1];
+    const {id, owner_id, src} = post;
 
-        return (
-            <>
-                {
-                    isOpen &&
-                    <Modal closeModal={this.closeModal}>
-                        <ModalBody closeModal={this.closeModal} post_id={post.id} owner_id={post.owner_id} isArchived={post.archive} link={link}/>
-                    </Modal>
-                }
-                <OptionsButton open={this.open}/>
-            </>
-        );
-    }
-}
+    const link = window.location.origin + '/p/' + src.match(/.+?\/.+?\/(.+?)\.+/)[1];
+
+    return (
+        <>
+            {
+                isOpen &&
+                <Modal closeModal={closeModal}>
+                    <ModalBody closeModal={closeModal} post_id={id} owner_id={owner_id}
+                               isArchived={post.archive} link={link}/>
+                </Modal>
+            }
+            <OptionsButton open={open}/>
+        </>
+    );
+};
 
 export default OptionsModal;

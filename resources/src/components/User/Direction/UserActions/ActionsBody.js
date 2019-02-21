@@ -25,6 +25,8 @@ const ActionsBody = ({closeModal, dispatch, userId, username, blacklisted}) => {
         document.execCommand('copy');
         document.body.removeChild(el);
         message.success('Link copied to clipboard');
+
+        closeModal();
     };
 
     return (

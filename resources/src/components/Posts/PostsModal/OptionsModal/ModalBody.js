@@ -28,6 +28,8 @@ const ModalBody = ({post_id, owner_id, isArchived, link, currentUserId, dispatch
         document.execCommand('copy');
         document.body.removeChild(el);
         message.success('Link copied to clipboard');
+
+        closeModal();
     };
 
     const me = owner_id === currentUserId;

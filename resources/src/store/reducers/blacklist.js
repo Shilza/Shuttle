@@ -1,7 +1,7 @@
 import {REMOVE_FROM_BLACKLISTED_USERS, SET_BLACKLISTED_USERS} from "../actionTypes/blacklist";
 
 const initialState = {
-    users: undefined
+    users: []
 };
 
 const Blacklist = (state = initialState, {type, payload = null}) => {

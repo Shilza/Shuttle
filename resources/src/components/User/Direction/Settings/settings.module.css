@@ -13,12 +13,12 @@
      margin-bottom: 12px;
 }
 
-.settingsContainer > li:nth-child(n):hover {
-    color: #000c17;
+.linkStyle {
+    color:rgb(135, 135, 135);
 }
 
-.settingsContainer > li > span{
-    margin-right: 10px;
+.linkStyle:hover {
+    color: black;
 }
 
 .settingsButton {
@@ -44,4 +44,14 @@
     outline: none;
     margin-right: 10px;
     cursor: pointer;
+}
+
+.privateContainer {
+    composes: linkStyle;
+    display: inline-flex;
+    align-items: center;
+}
+
+.privateContainer > span {
+    margin-right: 10px;
 }

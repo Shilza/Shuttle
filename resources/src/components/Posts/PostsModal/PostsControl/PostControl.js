@@ -8,8 +8,9 @@ import CommentsList from "../../../Comments/CommentsList";
 import {connect} from "react-redux";
 import Paginator from "../../../Paginator";
 import * as CommentService from "../../../../services/comments";
+import {getComments} from "../../../../store/selectors/comments";
 
-const PostControl = ({post, dispatch, comments, page = 0}) => {
+const PostControl = ({post, dispatch, comments}) => {
 
     const fetchComments = page => dispatch(CommentService.getComments(post.id, page));
 
@@ -19,7 +20,7 @@ const PostControl = ({post, dispatch, comments, page = 0}) => {
             <Caption post={post}/>
             <Paginator
                 fetcher={fetchComments}
-                initialPage={page}
+                initialPage={0}
                 isReverse={true}
             >
                 {
@@ -32,9 +33,8 @@ const PostControl = ({post, dispatch, comments, page = 0}) => {
     );
 };
 
-const mapStateToProps = state => ({
-    comments: state.comments.comments.data,
-    page: state.comments.comments.page
+const mapStateToProps = (state, props) => ({
+    comments: getComments(state.comments.comments.data, props.post)
 });
 
 export default connect(mapStateToProps)(PostControl);

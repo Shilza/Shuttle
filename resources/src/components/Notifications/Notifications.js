@@ -15,7 +15,7 @@ const Notifications = () => (
         transitionAppearTimeout={300}
         transitionEnter={false}
         transitionLeaveTimeout={300}
-        style={{width: '100%', display: 'flex', justifyContent: 'center'}}
+        className={styles.transitionContainer}
     >
         <Tabs defaultActiveKey="2" className={styles.notificationsContainer}>
             <TabPane tab="Follows" key="1">

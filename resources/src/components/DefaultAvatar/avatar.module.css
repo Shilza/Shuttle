@@ -8,4 +8,6 @@
     font-size: 50px;
     background: rgba(125, 125, 125, 0.2);
     border-radius: 50%;
+    top: 0;
+    border: 3px solid rgba(100,100,100,.0975);
 }

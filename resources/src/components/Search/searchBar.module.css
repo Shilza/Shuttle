@@ -13,7 +13,14 @@
     align-items: center;
     font-size: 30px;
     z-index: 2;
+    overflow: scroll;
+    -ms-overflow-style: none;
 }
+
+
+.searchBar::-webkit-scrollbar { width: 0; }
+
+.searchBar { overflow: -moz-scrollbars-none; }
 
 .searchBar > span {
     font-size: 16px;
@@ -24,6 +31,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 16px;
+    margin: 0 10px 0 10px;
 }
 
 .avatar {

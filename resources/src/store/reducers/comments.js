@@ -2,7 +2,9 @@ import * as ActionTypes from '../actionTypes/comments'
 import {COMMENT_LIKE, COMMENT_UNLIKE} from "../actionTypes/likes";
 
 const initialState = {
-    comments: []
+    comments: [],
+    isModalOpen: false,
+    selectedComment: undefined
 };
 
 const Comments = (state = initialState, {type, payload = null}) => {
@@ -10,13 +12,17 @@ const Comments = (state = initialState, {type, payload = null}) => {
         case ActionTypes.ADD_COMMENTS:
             return addComments(state, payload);
         case ActionTypes.REMOVE_COMMENT:
-            return removeComment(state);
+            return removeComment(state, payload);
         case ActionTypes.ADD_COMMENT:
             return addComment(state, payload);
         case COMMENT_LIKE:
             return likeComment(state, payload);
         case COMMENT_UNLIKE:
             return unlikeComment(state, payload);
+        case ActionTypes.SET_IS_COMMENT_MODAL_OPEN:
+            return setIsModalOpen(state, payload);
+        case ActionTypes.SET_SELECTED_COMMENT:
+            return setSelectedComment(state, payload);
         default:
             return state;
     }
@@ -32,7 +38,7 @@ const addComments = (state, comments) => ({
 
 const prepareToSavePosts = (stateComments, newComments) => {
     const transformedData = transformCommentsMetadata(newComments);
-    return stateComments ? stateComments.concat(transformedData) : transformedData;
+    return stateComments ? [...stateComments, ...transformedData] : transformedData;
 };
 
 const transformCommentsMetadata = comments => {
@@ -55,26 +61,29 @@ const transformCommentsMetadata = comments => {
     });
 };
 
-const removeComment = (state, id) => {
-    return {
-        ...state,
-        comments: state.comments.filter(item => item.id !== id)
-    };
-};
+const removeComment = (state, id) => ({
+    ...state,
+    comments: {
+        ...state.comments,
+        data: state.comments.data.filter(item => item.id !== id)
+    }
+});
 
 const addComment = (state, comment) => ({
     ...state,
     comments: {
         ...state.comments,
-        data: state.comments.data.concat(comment)
+        data: [...state.comments.data, comment]
     }
 });
 
 const likeComment = (state, id) => {
-    let comments = [...state.comments.data].map(comment => {
+    let data = state.comments.data.map(comment => {
         if (comment.id === id) {
             comment.isLiked = true;
             comment.likes_count++;
+
+            return {...comment};
         }
 
         return comment;
@@ -82,23 +91,42 @@ const likeComment = (state, id) => {
 
     return {
         ...state,
-        comments
-    }
+        comments: {
+            ...state.comments,
+            data
+        }
+    };
 };
 
 const unlikeComment = (state, id) => {
-    let comments = [...state.comments.data].map(comment => {
+    let data = state.comments.data.map(comment => {
         if (comment.id === id) {
             comment.isLiked = false;
             comment.likes_count--;
+
+            return {...comment};
         }
+
         return comment;
     });
 
     return {
         ...state,
-        comments
+        comments: {
+            ...state.comments,
+            data
+        }
     }
 };
+
+const setIsModalOpen = (state, isModalOpen) => ({
+    ...state,
+    isModalOpen
+});
+
+const setSelectedComment = (state, selectedComment) => ({
+    ...state,
+    selectedComment
+});
 
 export default Comments;

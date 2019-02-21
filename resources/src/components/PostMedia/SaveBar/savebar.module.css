@@ -19,6 +19,7 @@
     outline: 0;
     background: transparent;
     color: lightskyblue;
+    cursor: pointer;
 }
 
 .compilationsList {

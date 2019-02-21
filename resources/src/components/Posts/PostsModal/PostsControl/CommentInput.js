@@ -1,64 +1,52 @@
-import {createRef} from "react";
+import React, {useRef, useState} from "react";
 import {connect} from "react-redux";
-import React from "react";
 import {Button} from "antd";
 import styles from './postControl.module.css';
 import {create} from '../../../../services/comments';
 import {isMobile} from "../../../../utils/isMobile";
 
-class CommentInput extends React.PureComponent {
+const CommentInput = React.memo(({post_id, dispatch}) => {
+    let [loading, setLoading] = useState(false);
 
-    state = {
-        inputValue: '',
-        loading: false
-    };
+    let inputRef = useRef();
 
-    inputRef = createRef();
+    const submit = event => {
+        event.preventDefault();
 
-    submit = () => {
-        const text = this.inputRef.current.value;
-        const {post_id, dispatch} = this.props;
+        const text = inputRef.current.value;
 
         if (text) {
-            this.setState({loading: true});
+            setLoading(true);
 
             dispatch(create({post_id, text}))
                 .then(() => {
-                    this.setState({inputValue: '', loading: false});
-                    this.inputRef.current.value = '';
+                    setLoading(false);
+                    inputRef.current.value = '';
                 })
-                .catch(() => this.setState({loading: false}));
+                .catch(() => setLoading(false));
         }
     };
 
-    onChangeInput = event => this.setState({inputValue: event.target.value});
-
-    render() {
-        const {loading} = this.state;
-        const {post_id} = this.props;
-
-        return (
-            <div className={styles.commentInputContainer} id={'commentInputContainer' + post_id}>
-                <input
-                    ref={this.inputRef}
-                    placeholder='Add comment'
-                       className={styles.commentInput}
-                       onChange={this.onChangeInput}
-                />
-                {
-                    !isMobile() &&
-                    <Button
-                        onClick={this.submit}
-                        size={'small'}
-                        style={{width: '100%'}}
-                        loading={loading}
-                    >
-                        Submit
-                    </Button>
-                }
-            </div>
-        );
-    }
-}
+    return (
+        <form onSubmit={submit} className={styles.commentInputContainer} id={'commentInputContainer' + post_id}>
+            <input
+                ref={inputRef}
+                placeholder='Add comment'
+                className={styles.commentInput}
+            />
+            {
+                !isMobile() &&
+                <Button
+                    size={'small'}
+                    htmlType={'submit'}
+                    style={{width: '100%'}}
+                    loading={loading}
+                >
+                    Submit
+                </Button>
+            }
+        </form>
+    );
+});
 
 export default connect()(CommentInput);

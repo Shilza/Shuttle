@@ -18,15 +18,15 @@ const SettingsBody = ({isPrivate, dispatch}) => {
     return (
         <ul className={styles.settingsContainer}>
             <li>
-                <Link to={'/posts/archive'}>Archive</Link>
+                <Link to={'/posts/archive'} className={styles.linkStyle}>Archive</Link>
             </li>
             <li>
-                <Link to={'/posts/liked'}>Liked</Link>
+                <Link to={'/posts/liked'} className={styles.linkStyle}>Liked</Link>
             </li>
             <li>
-                <Link to={'/account/blacklist'}>Blacklist</Link>
+                <Link to={'/account/blacklist'} className={styles.linkStyle}>Blacklist</Link>
             </li>
-            <li style={{display: 'inline-flex', alignItems: 'center'}}>
+            <li className={styles.privateContainer} >
                 <span>Private account</span>
                 <Switch defaultChecked={!!isPrivate} size='small' onChange={changePrivacy}/>
             </li>

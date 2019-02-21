@@ -77,10 +77,9 @@ const addUsersPosts = (state, usersPosts) => ({
     }
 });
 
-
 const prepareToSavePosts = (statePosts, newPosts) => {
     const transformedData = transformPostsMetadata(newPosts);
-    return statePosts ? statePosts.concat(transformedData) : transformedData;
+    return statePosts ? [...statePosts, ...transformedData] : transformedData;
 };
 
 const transformPostsMetadata = posts => {
@@ -104,30 +103,23 @@ const addSavedPosts = (state, savedPosts) => ({
     }
 });
 
-const setCurrentPost = (state, post) => {
-    console.log('curr', post);
-    return {
-        ...state,
-        currentPost: post,
-        isModalOpen: true
-    };
-};
+const setCurrentPost = (state, post) => ({
+    ...state,
+    currentPost: post,
+    isModalOpen: true
+});
 
-const removeCurrentPost = (state) => {
-    return {
-        ...state,
-        currentPost: undefined,
-        isModalOpen: false
-    };
-};
+const removeCurrentPost = (state) => ({
+    ...state,
+    currentPost: undefined,
+    isModalOpen: false
+});
 
-const removePost = (state, id) => {
-    return {
-        ...state,
-        isModalOpen: false,
-        ...applyActionToPosts(state, id, posts => posts.filter(item => item.id !== id))
-    };
-};
+const removePost = (state, id) => ({
+    ...state,
+    isModalOpen: false,
+    ...applyActionToPosts(state, id, posts => posts.filter(item => item.id !== id))
+});
 
 const addPost = (state, post) => {
     const data = [...state.usersPosts.data];

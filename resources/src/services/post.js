@@ -75,11 +75,9 @@ export function save(data) {
                 Http.post('/api/v1/posts/save', data)
                     .then(() => {
                         dispatch(actions.save(data.post_id));
-                        setTimeout(() => {
-                            dispatch(setPostToBeSaved(undefined));
-                            dispatch(setIsSavedTimeout(false));
-                            resolve();
-                        }, 5000);
+                        dispatch(setPostToBeSaved(undefined));
+                        dispatch(setIsSavedTimeout(false));
+                        resolve();
                     })
                     .catch(err => reject(err))
             }

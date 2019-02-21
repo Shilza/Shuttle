@@ -112,7 +112,7 @@ class NotificationsService {
         const commentsPostsIds = comments.rows.map(item => item.post_id);
 
         const postsIds = NotificationsService.arrayUnique(
-            likedPostsIds.concat(likedCommentsPostsIds, commentsPostsIds)
+            [...likedPostsIds, ...likedCommentsPostsIds, ...commentsPostsIds]
         );
 
         return await Post.query().select(['id', 'src']).whereIn('id', postsIds).fetch();

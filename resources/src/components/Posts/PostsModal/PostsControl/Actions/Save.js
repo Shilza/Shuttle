@@ -2,7 +2,7 @@ import React from "react";
 import styles from './actions.module.css';
 import {connect} from "react-redux";
 import * as PostService from "../../../../../services/post";
-import {setPostToBeSaved, setIsSavedTimeout} from "../../../../../store/actions/saved";
+import {setIsSavedTimeout, setPostToBeSaved} from "../../../../../store/actions/saved";
 import {debounce} from "../../../../../utils/debounce";
 import savedStore from '../../../../../store/index';
 

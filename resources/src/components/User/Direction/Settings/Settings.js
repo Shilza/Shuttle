@@ -14,10 +14,12 @@ const Settings = ({visible, onClose}) => (
     </Drawer>
 );
 
+const styleSettingsTitle = {marginLeft: 10};
+
 const SettingsTitle = () => (
     <div>
         <Icon type='setting'/>
-        <span style={{marginLeft: 10}}>Settings</span>
+        <span style={styleSettingsTitle}>Settings</span>
     </div>
 );
 

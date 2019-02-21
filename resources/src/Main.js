@@ -1,6 +1,6 @@
 import React from "react";
 
-const Main = ({children, location}) => (
+const Main = ({children}) => (
     <main style={{minHeight: '100%', height: 'auto'}}>
         <div style={{paddingBottom: '40px'}}>
             {children}

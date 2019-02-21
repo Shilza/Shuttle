@@ -3,6 +3,7 @@ import Modal from "../../Modal/Modal";
 import PostModalBody from "./PostModalBody";
 import {connect} from "react-redux";
 import {removeCurrentPost} from "../../../store/actions/posts";
+import CommentModal from "../../Comments/Modal/CommentsModal";
 
 const PostsModal = ({isOpen, currentPost, dispatch}) => {
 
@@ -11,15 +12,18 @@ const PostsModal = ({isOpen, currentPost, dispatch}) => {
     return (
         <>
             {
-                (isOpen && currentPost) &&
-                <Modal closeModal={closeModal}>
-                    <PostModalBody post={currentPost}/>
-                </Modal>
+                (isOpen && currentPost) && (
+                    <>
+                        <Modal closeModal={closeModal}>
+                            <PostModalBody post={currentPost}/>
+                        </Modal>
+                        <CommentModal/>
+                    </>
+                )
             }
         </>
     );
 };
-
 
 const mapStateToProps = state => ({
     isOpen: state.posts.isModalOpen,

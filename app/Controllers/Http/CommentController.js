@@ -104,7 +104,7 @@ class CommentController {
 
     async delete({request, response, auth}) {
         const rules = {
-            comment_id: 'required|integer'
+            id: 'required|integer'
         };
 
         const validation = await validate(request.all(), rules);
@@ -114,7 +114,7 @@ class CommentController {
                 message: validation.messages()[0].message
             });
 
-        const comment = await Comment.find(request.input('comment_id'));
+        const comment = await Comment.find(request.input('id'));
 
         if (!comment) {
             return response.status(400).json({

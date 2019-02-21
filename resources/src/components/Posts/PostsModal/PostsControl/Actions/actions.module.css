@@ -74,7 +74,7 @@
 .bookmarkSolid:before {
     content: '';
     position: absolute;
-    top: 12px;
+    top: 11px;
     left: 0;
     width: 10px;
     height: 10px;
@@ -88,7 +88,7 @@
 .bookmarkFlat:before {
     content: '';
     position: absolute;
-    top: 12px;
+    top: 11px;
     left: 0;
     width: 10px;
     height: 10px;

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from './post.module.css';
 import {Icon} from "antd";
-import Media from "./Media";
+import PostMedia from "../../PostMedia/PostMedia";
 
 const Post = ({post, open}) => (
     <div className={styles.post} onClick={() => open(post)}>
-        <Media src={post.src}/>
+        <PostMedia media={post.src} postId={post.id}/>
         <div className={styles.metaInfo}>
             <div>
                 {post.likes_count}

@@ -24,7 +24,7 @@ class Post extends Model {
     }
 
     feedComments() {
-        return this.hasMany('App/Models/Comment').limit(3);
+        return this.hasMany('App/Models/Comment').withCount('likes').limit(3);
     }
 
     likes() {

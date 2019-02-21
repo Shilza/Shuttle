@@ -4,6 +4,7 @@
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
+    background: #efefef;
 }
 
 .post:hover .metaInfo{

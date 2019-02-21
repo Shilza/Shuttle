@@ -26,7 +26,6 @@ const UserInfoHeader = ({user}) => (
 
 const mapStateToProps = state => ({
     user: state.users.user,
-    me: state.auth.user.id === state.users.user.id
 });
 
 export default connect(mapStateToProps)(UserInfoHeader);
