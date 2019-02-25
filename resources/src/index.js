@@ -1,4 +1,5 @@
 import './css/normalize.css';
+import './css/non-module.css';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
@@ -8,7 +9,6 @@ import Routes from "./routes";
 import Provider from "react-redux/es/components/Provider";
 import * as AuthService from './services/auth';
 import StartLoader from "./components/StartLoader/StartLoader";
-
 
 void async function () {
     if (localStorage.hasOwnProperty('accessToken')) {

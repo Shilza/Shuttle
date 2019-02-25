@@ -32,6 +32,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    color: rgba(0,0,0,1);
 }
 
 .save {
@@ -40,14 +41,6 @@
     margin-right: 15px;
 }
 
-.likesContainer {
-    display: inline-flex;
-    align-items: center;
-}
-
-.likesContainer span{
-    font-size: 0.8em;
-}
 
 .bookmark {
     color: #000;

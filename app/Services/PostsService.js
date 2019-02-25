@@ -18,7 +18,7 @@ class PostsService {
             .first();
 
         if (!post)
-            return null;
+            return false;
 
         post.isLiked = await LikesService.isPostLikedBy(user.id, post.id);
         post.isSaved = await CompilationsService.isSavedBy(user.id, post.id);
@@ -107,6 +107,15 @@ class PostsService {
         const userId = (await Post
             .query()
             .where('id', postId)
+            .pluck('owner_id'))[0];
+
+        return await User.find(userId);
+    }
+
+    async getPostsOwnerByPostCode(code) {
+        let userId = (await Post
+            .query()
+            .where('src', 'like', '%' + code + '%')
             .pluck('owner_id'))[0];
 
         return await User.find(userId);

@@ -1,4 +1,5 @@
 import * as ActionTypes from '../actionTypes/edit'
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     visible: false,
@@ -17,6 +18,8 @@ const Edit = (state = initialState, {type, payload = null}) => {
             return setBio(state, payload);
         case ActionTypes.SET_EDITED_SITE:
             return setSite(state, payload);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }

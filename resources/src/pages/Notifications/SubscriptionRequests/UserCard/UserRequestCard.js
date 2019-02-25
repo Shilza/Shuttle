@@ -1,0 +1,28 @@
+import React from "react";
+import styles from './userCard.module.css';
+import {Link} from "react-router-dom";
+import ButtonsContainer from "./ButtonsContainer";
+import DefaultAvatar from "../../../../components/DefaultAvatar/DefaultAvatar";
+
+const UserRequestCard = ({user, deleteFromSubsList}) => {
+
+    const {username, avatar} = user;
+
+    return (
+        <div className={styles.userCardContainer}>
+            <Link className={styles.avatar} to={`/${username}`}>
+                {
+                    avatar ? <img src={avatar} alt={'avatar'}/> : <DefaultAvatar fontSize={'30px'}/>
+                }
+            </Link>
+            <div className={styles.subContainer}>
+                <Link to={`/${username}`} className={styles.usernameLink}>
+                    {username}
+                </Link>
+                <ButtonsContainer id={user.id} deleteFromSubsList={deleteFromSubsList}/>
+            </div>
+        </div>
+    );
+};
+
+export default React.memo(UserRequestCard);

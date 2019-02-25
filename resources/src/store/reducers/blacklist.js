@@ -1,4 +1,5 @@
 import {REMOVE_FROM_BLACKLISTED_USERS, SET_BLACKLISTED_USERS} from "../actionTypes/blacklist";
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     users: []
@@ -10,6 +11,8 @@ const Blacklist = (state = initialState, {type, payload = null}) => {
             return setBlacklistedUsers(state, payload);
         case REMOVE_FROM_BLACKLISTED_USERS:
             return removeFromBlacklist(state, payload);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }

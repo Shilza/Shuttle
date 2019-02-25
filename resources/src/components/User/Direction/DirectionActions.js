@@ -7,14 +7,16 @@ import SettingsMenu from "./Settings/SettingsMenu";
 import {Icon} from "antd";
 import styles from './Settings/settings.module.css';
 
-const DirectionActions = ({me}) => {
+const DirectionActions = ({me, amBlacklisted}) => {
     return (
         <>
             {
                 me ? <PrivateButtons/>
                     :
                     <>
-                        <FriendshipActions/>
+                        {
+                            !amBlacklisted && <FriendshipActions/>
+                        }
                         <UserActions/>
                     </>
             }
@@ -32,5 +34,6 @@ const PrivateButtons = () => (
 );
 
 export default connect(state => ({
-    me: state.auth.user.id === state.users.user.id
+    me: state.auth.user.id === state.users.user.id,
+    amBlacklisted: state.users.user.amBlacklisted
 }))(DirectionActions);

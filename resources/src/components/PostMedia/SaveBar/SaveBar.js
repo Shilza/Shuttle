@@ -27,6 +27,7 @@ const SaveBar = ({dispatch, isModalOpen}) => {
         <ReactCSSTransitionGroup
             transitionName={transitions}
             transitionAppear={true}
+            transitionLeave={true}
             transigionEnter={false}
             transitionAppearTimeout={250}
             transitionLeaveTimeout={500}

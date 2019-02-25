@@ -38,8 +38,12 @@ Route.group(() => {
     Route.get('', 'UserController.show');
     Route.patch('', 'UserController.update');
     Route.get('/unique', 'UserController.isNameUnique');
+
     Route.get('followers', 'UserController.followers');
     Route.get('follows', 'UserController.follows');
+
+    Route.get('followersSearch', 'UserController.followersSearch');
+    Route.get('followsSearch', 'UserController.followsSearch');
 }).prefix('api/v1/users').middleware(['auth:jwt']);
 
 Route.group(() => {

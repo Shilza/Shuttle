@@ -4,6 +4,8 @@ const {validate} = use('CValidator');
 const Blacklist = use('App/Models/Blacklist');
 const User = use('App/Models/User');
 const UsersService = use('UsersService');
+const SubscriptionRequestsService = use('SubscriptionRequestsService');
+const FriendshipsService = use('FriendshipsService');
 
 class BlacklistController {
 
@@ -75,10 +77,19 @@ class BlacklistController {
                 message: 'User already blacklisted'
             });
 
+        const blacklistedId = request.input('id');
         await Blacklist.create({
             user_id: user.id,
-            blacklisted_id: request.input('id')
+            blacklisted_id: blacklistedId
         });
+
+        const isFollower = await FriendshipsService.isFollower(user.id, blacklistedId);
+        if(isFollower)
+            await FriendshipsService.delete(user.id, blacklistedId);
+
+        const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, blacklistedId);
+        if (isReqExists)
+            await SubscriptionRequestsService.delete(user.id, blacklistedId);
 
         response.json({
             message: 'Added to blacklist successful'

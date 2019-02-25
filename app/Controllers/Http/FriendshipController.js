@@ -31,6 +31,12 @@ class FriendshipController {
                 message: 'User does not exists'
             });
 
+        const requestedBlacklisted = await UsersService.isBlacklisted(user.id, owner.id);
+        if(requestedBlacklisted)
+            return response.status(400).json({
+                message: 'You are is blacklisted'
+            });
+
         if (await FriendshipsService.isFollower(owner.id, user.id))
             return response.status(400).json({
                 message: 'Already follow'
@@ -78,6 +84,12 @@ class FriendshipController {
         if (!owner)
             return response.status(400).json({
                 message: 'User does not exists'
+            });
+
+        const requestedBlacklisted = await UsersService.isBlacklisted(user.id, owner.id);
+        if(requestedBlacklisted)
+            return response.status(400).json({
+                message: 'You are is blacklisted'
             });
 
         const isFollower = await FriendshipsService.isFollower(owner.id, user.id);

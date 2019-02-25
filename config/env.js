@@ -70,7 +70,7 @@ function getClientEnvironment(publicUrl) {
       },
       {
         // Useful for determining whether we’re running in production mode.
-        // Most importantly, it switches React into the correct mode.
+        // Most importantly, it switches Followers into the correct mode.
         NODE_ENV: process.env.NODE_ENV || 'development',
         // Useful for resolving the correct path to static assets in `public`.
         // For example, <img js={process.env.PUBLIC_URL + '/img/logo.png'} />.

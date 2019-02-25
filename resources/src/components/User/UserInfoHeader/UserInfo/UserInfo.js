@@ -3,92 +3,78 @@ import styles from './userInfo.module.css';
 import {addSmoothScrolling} from "../../../../utils/scrolling";
 import {connect} from "react-redux";
 import * as UsersService from "../../../../services/user";
-import Friendships from "./Friendships";
-import Paginator from "../../../Paginator";
+import Followers from "./Followers";
+import Paginator from "../../../Paginator/Paginator";
+import Follows from "./Follows";
 
-const UserInfo = ({postsCount, canSee, followersCount, followsCount, ...props}) => {
+const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatch}) => {
 
-    let [isModalOpen, setIsModalOpen] = useState(false);
-    let [friendships, setFriendships] = useState([]);
-    let [isFollowers, setIsFollowers] = useState(true);
+    let [isFollowersModal, setIsFollowersModal] = useState(false);
+    let [isFollowsModal, setIsFollowsModal] = useState(false);
 
     useEffect(() => {
         addSmoothScrolling('userInfoPostsLink');
     }, []);
 
-    const closeFriendshipsModal = () => setIsModalOpen(false);
+    const closeFollowersModal = () => setIsFollowersModal(false);
 
-    const loadFollowers = page => {
-        return new Promise(resolve => {
-            load(UsersService.getFollowers, page, followersCount).then(data => resolve(data));
-        });
-    };
+    const closeFollowsModal = () => setIsFollowsModal(false);
 
-    const loadFollows = page => {
-        return new Promise(resolve => {
-            load(UsersService.getFollows, page, followsCount).then(data => resolve(data));
-        });
-    };
+    const openFollowsModal = () => setIsFollowsModal(true);
 
-    const load = (loadFunction, page, count) => {
-        const {dispatch, id} = props;
+    const openFollowersModal = () => setIsFollowersModal(true);
 
-        if (count && canSee)
-            return new Promise((resolve) => {
-                dispatch(loadFunction(id, page))
-                    .then(data => {
-                        setFriendships([...friendships, ...data.data]);
-                        resolve(data);
-                    });
-            });
-    };
+    const loadFollows = page => dispatch(UsersService.getFollows(id, page));
 
-    const fetchFriendships = isFollowers ? loadFollowers : loadFollows;
+    const loadFollowers = page => dispatch(UsersService.getFollowers(id, page));
 
     return (
         <>
             <ul className={styles.mainContainer}>
-                <li className={styles.unitContainer}>
-                    <span className={styles.unitNumber}>{postsCount}</span>
-                    <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
-                </li>
-                <li className={styles.unitContainer}>
-                    <span className={styles.unitNumber}>{followersCount}</span>
-                    <button className={styles.simpleTextStyledItem} onClick={() => {
-                        if (followersCount && canSee) {
-                            setIsFollowers(true);
-                            setIsModalOpen(true);
-                        }
-                    }}>
-                        Followers
-                    </button>
-                </li>
-                <li className={styles.unitContainer}>
-                    <span className={styles.unitNumber}>{followsCount}</span>
-                    <button className={styles.simpleTextStyledItem} onClick={() => {
-                        if (followsCount && canSee) {
-                            setIsFollowers(false);
-                            setIsModalOpen(true);
-                        }
-                    }}>
-                        Follows
-                    </button>
-                </li>
+                <PostsCount postsCount={postsCount}/>
+                <FollowersButton followersCount={followersCount} onClickFollowers={openFollowersModal}/>
+                <FollowsButton followsCount={followsCount} onClickFollows={openFollowsModal}/>
             </ul>
             {
-                isModalOpen &&
+                (isFollowsModal && followsCount && canSee) &&
                 <Paginator
-                    fetcher={fetchFriendships}
+                    fetcher={loadFollows}
                 >
-                    {
-                        !!friendships.length &&
-                        <Friendships friendships={friendships} closeModal={closeFriendshipsModal}/>
-                    }
+                    <Follows id={id} closeModal={closeFollowsModal}/>
+                </Paginator>
+            }
+            {
+                (isFollowersModal && followersCount && canSee) &&
+                <Paginator
+                    fetcher={loadFollowers}
+                >
+                    <Followers id={id} closeModal={closeFollowersModal}/>
                 </Paginator>
             }
         </>
     );
 };
 
+const PostsCount = ({postsCount}) =>
+    <li className={styles.unitContainer}>
+        <span className={styles.unitNumber}>{postsCount}</span>
+        <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
+    </li>;
+
+const FollowersButton = ({followersCount, onClickFollowers}) =>
+    <li className={styles.unitContainer} onClick={onClickFollowers}>
+        <span className={styles.unitNumber}>{followersCount}</span>
+        <button className={styles.simpleTextStyledItem}>
+            Followers
+        </button>
+    </li>;
+
+const FollowsButton = ({followsCount, onClickFollows}) =>
+    <li className={styles.unitContainer} onClick={onClickFollows}>
+        <span className={styles.unitNumber}>{followsCount}</span>
+        <button className={styles.simpleTextStyledItem}>
+            Follows
+        </button>
+    </li>;
 
 export default connect()(UserInfo);

@@ -7,6 +7,20 @@ export function setUser(payload){
     }
 }
 
+export function addFollowers(payload){
+    return {
+        type: ActionTypes.ADD_FOLLOWERS,
+        payload
+    }
+}
+
+export function addFollows(payload){
+    return {
+        type: ActionTypes.ADD_FOLLOWS,
+        payload
+    }
+}
+
 export function setFollowers(payload){
     return {
         type: ActionTypes.SET_FOLLOWERS,

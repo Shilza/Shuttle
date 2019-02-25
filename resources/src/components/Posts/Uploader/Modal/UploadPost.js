@@ -35,7 +35,6 @@ const UploadPost = ({upload, media, currentAuthUsername}) => {
                     <div className={styles.sideContainer}>
                         <Header username={currentAuthUsername}/>
                         <input ref={inputRef}/>
-
                         <Button type='primary' htmlType="submit" onClick={submit}>Submit</Button>
                     </div>
                 </div>

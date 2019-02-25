@@ -1,30 +1,22 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 
-class VideoPlayer extends React.Component{
-    constructor(props ){
-        super(props);
+const VideoPlayer = ({src}) => {
 
-        this.state = {
-            play: false
-        };
+    let [isPlay, setIsPlay] = useState(false);
 
-        this.playerRef = React.createRef();
-        this.play = this.play.bind(this);
-    }
+    let playerRef = useRef();
 
-    play() {
-        this.state.play ? this.playerRef.current.pause() : this.playerRef.current.play();
-        this.setState(prevState => ({ play: !prevState.play }));
-    }
+    const play = () => {
+        isPlay ? playerRef.current.pause() : playerRef.current.play();
+        setIsPlay(!isPlay);
+    };
 
-    render() {
-        return (
-            <video onClick={this.play}
-                   src={this.props.src}
-                   ref={this.playerRef}
-            />
-        );
-    }
-}
+    return (
+        <video onClick={play}
+               src={src}
+               ref={playerRef}
+        />
+    );
+};
 
-export default VideoPlayer;
+export default React.memo(VideoPlayer);

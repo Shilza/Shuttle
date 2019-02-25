@@ -10,26 +10,43 @@
     align-items: center;
     margin-left: 0;
     padding-left: 0;
+    overflow: hidden;
 }
 
-.friendshipsContainer > li:nth-child(n) {
+.friendshipsContainer > ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 5px 5px 0 5px;
+}
+
+.friendshipsContainer > ul > li:nth-child(n) {
     border-bottom: 1px solid #efefef;
-    width: 100%; padding: 8px;
+    width: 100%;
     list-style-type: none;
     cursor: pointer;
 }
 
-.friendshipsContainer > li:last-child {
+.friendshipsContainer > ul > li:last-child {
     border: none;
+}
+
+.friendshipsContainer > input {
+    padding-left: 10px;
 }
 
 .cardContainer {
     display: inline-flex;
+    align-items: center;
+    width: inherit;
+    padding: 8px;
 }
 
 .avatar {
-width: 30px;
-height: 30px;
-border-radius: 50%;
-border: 1px solid rgba(0,0,0,.0975);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid rgba(0, 0, 0, .0975);
 }

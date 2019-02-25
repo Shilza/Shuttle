@@ -1,9 +1,7 @@
 import {Icon} from "antd";
 import React from "react";
 
-const Loader = () => (
-    <Icon type="loading"/>
-);
+const Loader = () => <Icon type="loading"/>;
 
 function WithLoading(Component) {
     return function WihLoadingComponent({ isLoading, ...props }) {

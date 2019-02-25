@@ -1,16 +1,18 @@
 import React from "react";
 import styles from './friendships.module.css';
 import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
+import {Link} from "react-router-dom";
 
-const UserFriendshipCard = ({user}) => (
-    <li className={styles.cardContainer}>
-        {
-            user.avatar
-                ? <img src={user.avatar} alt='avatar' className={styles.avatar}/>
-                : <div className={styles.avatar}><DefaultAvatar fontSize={'20px'}/></div>
-        }
-        <span>{user.username}</span>
-    </li>
-);
+const UserFriendshipCard = ({avatar, username}) =>
+    <li>
+        <Link to={'/' + username} className={styles.cardContainer}>
+            {
+                avatar
+                    ? <img src={avatar} alt='avatar' className={styles.avatar}/>
+                    : <div className={styles.avatar}><DefaultAvatar fontSize={'20px'}/></div>
+            }
+            <span>{username}</span>
+        </Link>
+    </li>;
 
-export default UserFriendshipCard;
+export default React.memo(UserFriendshipCard);

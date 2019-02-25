@@ -1,43 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "antd";
 import EditBody from "./EditBody/EditBody";
 import EditTitle from "./EditTitle";
 import Drawer from "../../../Drawer/Drawer";
+import style from './edit.module.css';
 
+const Edit = () => {
 
-class Edit extends React.Component {
-    state = {visible: false};
+    let [isEditDrawerVisible, setDrawerVisible] = useState(false);
 
-    showDrawer = () => {
-        this.setState({
-            visible: true,
-        });
-    };
+    const showDrawer = () => setDrawerVisible(true);
 
-    onClose = () => {
-        this.setState({
-            visible: false,
-        });
-    };
+    const onClose = () => setDrawerVisible(false);
 
-    render() {
-        const {visible} = this.state;
+    return <>
+        <Button size='small' onClick={showDrawer} className={style.editButton}>
+            Edit
+        </Button>
+        {
+            isEditDrawerVisible &&
+            <Drawer
+                title={<EditTitle/>}
+                onClose={onClose}
+            >
+                <EditBody/>
+            </Drawer>
+        }
+    </>;
+};
 
-        return <>
-            <Button size='small' onClick={this.showDrawer} style={{marginRight: '10px'}}>
-                Edit
-            </Button>
-            {
-                visible &&
-                <Drawer
-                    title={<EditTitle/>}
-                    onClose={this.onClose}
-                >
-                    <EditBody/>
-                </Drawer>
-            }
-        </>;
-    }
-}
-
-export default Edit;
+export default React.memo(Edit);

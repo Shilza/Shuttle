@@ -1,38 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {getPostByCode} from "../../services/post";
 import {removeCurrentPost} from "../../store/actions/posts";
 import PostModalBody from "../../components/Posts/PostsModal/PostModalBody";
 
-class PostByCode extends React.Component {
+const PostByCode = ({dispatch, match, currentPost}) => {
 
-    componentDidMount() {
-        const {dispatch, match} = this.props;
+    useEffect(() => {
         dispatch(getPostByCode(match.params.code));
-    }
+        return componentWillUnmount;
+    }, []);
 
-    componentWillUnmount() {
-        this.props.dispatch(removeCurrentPost());
-    }
+    const componentWillUnmount = () => dispatch(removeCurrentPost());
 
-    render() {
-        const {currentPost} = this.props;
-
-        return (
-            <>
-                {
-                    currentPost &&
-                    <PostModalBody post={currentPost}/>
-                }
-            </>
-        )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        currentPost: state.posts.currentPost
-    }
+    return (
+        <>
+            {
+                currentPost &&
+                <PostModalBody post={currentPost}/>
+            }
+        </>
+    )
 };
+
+const mapStateToProps = state => ({
+    currentPost: state.posts.currentPost
+});
 
 export default connect(mapStateToProps)(PostByCode);

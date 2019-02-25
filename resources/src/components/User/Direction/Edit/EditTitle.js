@@ -37,7 +37,6 @@ class EditTitle extends React.Component {
     }
 
     render() {
-        console.log('re-render');
         return (
             <div className={styles.editTitle}>
                 <Icon type="left"/>

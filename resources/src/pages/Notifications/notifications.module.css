@@ -1,0 +1,12 @@
+
+.transitionContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.notificationsContainer {
+    width: 900px;
+    text-align: center;
+    margin: 14px;
+}

@@ -1,0 +1,141 @@
+main {
+    background-color: #fafafa;
+}
+
+.ant-drawer-body {
+    height: calc(100% - 55px);
+}
+
+
+.crop-blur {
+    filter: blur(3px) sepia(0.2);
+}
+
+.crop-image,
+.overlay > img {
+    width: 500px;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+.crop-image {
+    display: block;
+    position: relative;
+    pointer-events: none;
+}
+
+.overlay > img {
+    position: absolute;
+    display: block;
+}
+
+.crop-component {
+    position: relative;
+    background-color: white;
+    margin: 0 auto;
+    overflow: scroll;
+    width: 500px;
+}
+
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 999;
+    margin-left: -100px;
+    margin-top: -100px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 0 1px white;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+.overlay:hover,
+.overlay:active {
+    cursor: move;
+}
+
+.btn-crop {
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    vertical-align: bottom;
+    padding: 6px 10px;
+    z-index: 999;
+    background-color: #DE3C50;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.crop-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+}
+
+
+@media (max-width: 768px) {
+    .crop-cont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .crop-component {
+        position: absolute;
+        width: 100%;
+    }
+
+    .crop-image > img {
+        width: 100%;
+    }
+}
+
+
+
+
+.text-js {
+    opacity: 0;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cursor {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: -5px;
+    width: 2px;
+    background-color: white;
+    z-index: 1;
+    animation: flash 0.5s none infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.headline {
+    margin: 20px;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+
+.headline > h1 {
+    letter-spacing: 1.6px;
+    font-weight: 300;
+}

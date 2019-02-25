@@ -3,7 +3,6 @@ import Modal from "../../Modal/Modal";
 import PostModalBody from "./PostModalBody";
 import {connect} from "react-redux";
 import {removeCurrentPost} from "../../../store/actions/posts";
-import CommentModal from "../../Comments/Modal/CommentsModal";
 
 const PostsModal = ({isOpen, currentPost, dispatch}) => {
 
@@ -17,7 +16,6 @@ const PostsModal = ({isOpen, currentPost, dispatch}) => {
                         <Modal closeModal={closeModal}>
                             <PostModalBody post={currentPost}/>
                         </Modal>
-                        <CommentModal/>
                     </>
                 )
             }

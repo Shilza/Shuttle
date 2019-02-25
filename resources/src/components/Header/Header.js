@@ -8,15 +8,15 @@ import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 
 const Header = ({username, avatar}) => (
     <div className={styles.header}>
-        <Link to='/' style={{marginLeft: 20}}>
-            <img width='30' height='30' src={shuttle} alt={'Shuttle'}/>
+        <Link to='/' className={styles.logo}>
+            <img src={shuttle} alt={'Shuttle'}/>
         </Link>
         <Search/>
-        <Link to={'/' + username} style={{marginRight: 20}}>
+        <Link to={'/' + username} className={styles.username}>
             {
                 avatar
                     ? <img src={avatar} alt='avatar' className={styles.avatar}/>
-                    : <div className={styles.avatar}><DefaultAvatar fontSize={'20px'}/></div>
+                    : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
             }
         </Link>
     </div>

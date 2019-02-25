@@ -10,6 +10,7 @@
 .unitContainer {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 @media (max-width: 425px) {

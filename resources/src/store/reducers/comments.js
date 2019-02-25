@@ -1,5 +1,6 @@
 import * as ActionTypes from '../actionTypes/comments'
 import {COMMENT_LIKE, COMMENT_UNLIKE} from "../actionTypes/likes";
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     comments: [],
@@ -23,6 +24,8 @@ const Comments = (state = initialState, {type, payload = null}) => {
             return setIsModalOpen(state, payload);
         case ActionTypes.SET_SELECTED_COMMENT:
             return setSelectedComment(state, payload);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }

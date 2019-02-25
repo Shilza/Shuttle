@@ -2,12 +2,11 @@ import styles from './postsExplainingLabel.module.css';
 import React from "react";
 import ExplainingLabel from "../ExplainingLabel";
 
-const PostsExplainingLabel = () => (
+const PostsExplainingLabel = () =>
     <ExplainingLabel icon={<div className={styles.pictureIcon}/>} text='Posts'>
        <span>
             Pictures are not yet post
         </span>
-    </ExplainingLabel>
-);
+    </ExplainingLabel>;
 
 export default PostsExplainingLabel;

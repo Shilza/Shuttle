@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import * as UserService from "../../services/user";
 import styles from './user.module.css';
@@ -7,36 +7,28 @@ import WithLoading from "../../components/Loader/Loader";
 
 const UserPageWithLoading = WithLoading(User);
 
-class UserPage extends React.Component {
+const UserPage = ({match, dispatch}) => {
 
-    state = {
-        isLoading: true,
-        error: ''
-    };
+    let [isLoading, setIsLoading] = useState(true);
+    let [error, setError] = useState('');
 
-    componentDidMount() {
-        const {match, dispatch} = this.props;
-
+    useEffect(() => {
         dispatch(UserService.getUser(match.params.username))
-            .then(() => this.setState({isLoading: false}))
-            .catch(err => this.setState({
-                isLoading: false,
-                error: err.response.data.message
-            }));
-    }
+            .then(() => setIsLoading(false))
+            .catch(err => {
+                setIsLoading(false);
+                setError(err.response.data.message);
+            });
+    }, []);
 
-    render() {
-        const {isLoading, error} = this.state;
-
-        return (
-            <div className={styles.container}>
-                {
-                    error ? <span>{error}</span> :
-                        <UserPageWithLoading isLoading={isLoading}/>
-                }
-            </div>
-        )
-    }
-}
+    return (
+        <div className={styles.container}>
+            {
+                error ? <span>{error}</span> :
+                    <UserPageWithLoading isLoading={isLoading}/>
+            }
+        </div>
+    )
+};
 
 export default connect()(UserPage);

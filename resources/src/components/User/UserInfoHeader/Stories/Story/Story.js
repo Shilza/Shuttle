@@ -1,22 +1,20 @@
 import React from "react";
 import styles from './story.module.css';
 
-const Story = ({story}) => (
+const Story = ({story}) =>
     <div className={styles.container}>
         <img src={story.src} className={styles.cover} alt={'Story'}/>
         <span>{story.name || 'Hightlits'}</span>
-    </div>
-);
+    </div>;
 
 
-const UploadStory = () => (
+const UploadStory = () =>
     <div className={styles.container}>
             <span className={styles.addCover}>
                 +
             </span>
         <span>Add story!</span>
-    </div>
-);
+    </div>;
 
 
 export {Story, UploadStory};

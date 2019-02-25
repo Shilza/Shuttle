@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 const Toolbar = (props) => {
     let feedStyle = {color: 'rgba(0, 0, 0, .7)'};
     let notificationsStyle = {color: 'rgba(0, 0, 0, .7)'};
+
     if (window.location.href === window.location.origin + '/')
         feedStyle.color = '#096dd9';
     else if (window.location.href.includes('notifications'))
@@ -20,14 +21,14 @@ const Toolbar = (props) => {
                   style={feedStyle}>
                 <Icon type={'fire'}/>
             </Link>
-            <Icon type={'search'} className={styles.pointer}/>
-            <PostsUploader trigger={<Icon type={'plus'} className={styles.pointer}/>}/>
+            <Icon type={'search'} className={styles.icon}/>
+            <PostsUploader trigger={<Icon type={'plus'} className={styles.icon}/>}/>
             <Link to={'/account/notifications'} style={notificationsStyle}>
                 <Badge status="error" dot={!!props.notificationsCount}>
                     <Icon type="bell"/>
                 </Badge>
             </Link>
-            <SettingsMenu trigger={<Icon type={'align-right'} className={styles.pointer}/>}/>
+            <SettingsMenu trigger={<Icon type={'align-right'} className={styles.icon}/>}/>
         </div>
     );
 };

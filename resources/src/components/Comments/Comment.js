@@ -1,28 +1,18 @@
 import React from "react";
 import styles from './comment.module.css';
 import {convertTime} from "../../utils/timeConverter";
-import LikesContainer from "./LikesContainer";
-import * as LikeService from "../../services/likes";
 import {connect} from "react-redux";
 import {setIsCommentsModalOpen, setSelectedComment} from "../../store/actions/comments";
 import {Link} from "react-router-dom";
+import Like from "../Posts/PostsModal/PostsControl/Actions/Like";
 
 const Comment = ({comment, dispatch}) => {
 
-    const {isLiked, likes_count, owner, text, created_at} = comment;
+    const {isLiked, likes_count, owner, text, created_at, id} = comment;
 
     const openModal = () => {
         dispatch(setIsCommentsModalOpen(true));
         dispatch(setSelectedComment(comment));
-    };
-
-    const onLikeClick = event => {
-        event.stopPropagation();
-        const data = {
-            entity_id: comment.id,
-            type: 'comment'
-        };
-        dispatch(comment.isLiked ? LikeService.unlike(data) : LikeService.like(data));
     };
 
     return (
@@ -33,7 +23,7 @@ const Comment = ({comment, dispatch}) => {
             </div>
             <div className={styles.metaContainer}>
                 <time dateTime={created_at}>{convertTime(created_at)}</time>
-                <LikesContainer isLiked={isLiked} likesCount={likes_count} like={onLikeClick}/>
+                <Like type='comment' id={id} isLiked={isLiked} likesCount={likes_count}/>
             </div>
         </div>
     )

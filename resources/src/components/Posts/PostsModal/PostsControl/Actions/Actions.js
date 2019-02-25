@@ -12,21 +12,20 @@ const Actions = ({post}) => {
         addSmoothScrolling('postCommentLink' + post.id);
     }, []);
 
+    const {likes_count, created_at, isLiked, id} = post;
+
     return (
         <div className={styles.actionsContainer}>
             <div className={styles.actions}>
-                <div className={styles.likesContainer}>
-                    <span>{post.likes_count || ''}</span>
-                    <Like post={post}/>
-                </div>
-                <a className={styles.action} id={'postCommentLink' + post.id} href={'#commentInputContainer' + post.id}>
-                    <Icon type="message" style={{color: 'rgba(0,0,0,1)'}}/>
+                <Like type='post' id={id} isLiked={isLiked} likesCount={likes_count}/>
+                <a className={styles.action} id={'postCommentLink' + id} href={'#commentInputContainer' + id}>
+                    <Icon type="message"/>
                 </a>
                 <Save post={post}/>
             </div>
-            <time dateTime={post.created_at}>{`${convertTime(post.created_at)} ago`}</time>
+            <time dateTime={created_at}>{`${convertTime(created_at)} ago`}</time>
         </div>
     );
 };
 
-export default Actions;
+export default React.memo(Actions);

@@ -1,4 +1,8 @@
 
+.settingsTitle {
+    margin-left: 10px;
+}
+
 .settingsContainer {
     display: flex;
     flex-direction: column;
@@ -13,6 +17,12 @@
      margin-bottom: 12px;
 }
 
+.settingsContainer > li:nth-child(n) {
+    list-style-type: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
 .linkStyle {
     color:rgb(135, 135, 135);
 }
@@ -24,6 +34,7 @@
 .settingsButton {
     cursor: pointer;
     transition: 0.5s;
+    margin-top: 3px;
 }
 
 .settingsButton:hover {

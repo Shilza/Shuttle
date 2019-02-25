@@ -6,8 +6,10 @@ const FriendshipsService = use('FriendshipsService');
 class UsersService {
 
     async canSee(user, requesterId) {
-        const isRequesterBlacklisted = await this.isBlacklisted(requesterId, user.id);
-        if (isRequesterBlacklisted || user.private && (requesterId !== user.id))
+        const requesterBlacklisted = await this.isBlacklisted(requesterId, user.id);
+        if(requesterBlacklisted)
+            return false;
+        if (user.private && (requesterId !== user.id))
             return await FriendshipsService.isFollower(user.id, requesterId);
 
         return true;
@@ -46,6 +48,7 @@ class UsersService {
 
         return await User
             .query()
+            .select(['avatar', 'id', 'username'])
             .whereIn('id', followersIds)
             .paginate(page, 18);
     }

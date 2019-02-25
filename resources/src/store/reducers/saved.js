@@ -1,4 +1,5 @@
 import * as ActionTypes from '../actionTypes/saved'
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     compilations: [],
@@ -19,6 +20,8 @@ const Saved = (state = initialState, {type, payload = null}) => {
             return setPostToBeSaved(state, payload);
         case ActionTypes.SET_IS_SAVE_MODAL_OPEN:
             return setIsModalOpen(state, payload);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }

@@ -1,7 +1,9 @@
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const User = use('App/Models/User');
+const FriendshipsService = use('FriendshipsService');
+const Friendship = use('App/Models/Friendship');
 
-class SubscriptionRequestsService{
+class SubscriptionRequestsService {
 
     async getRequests(userId, page) {
         const requests = await this._getRequests(userId, page);
@@ -15,7 +17,7 @@ class SubscriptionRequestsService{
 
         requests.data = requests.data.map(item => {
             const user = subs.rows.find(user => {
-                if(user.id === item.subscriber_id)
+                if (user.id === item.subscriber_id)
                     return true;
             });
 
@@ -33,12 +35,12 @@ class SubscriptionRequestsService{
     }
 
     async isRequestExists(receiverId, subscriberId) {
-        return await SubscriptionRequest
+        return !!(await SubscriptionRequest
             .query()
             .select(1)
             .where('receiver_id', receiverId)
             .where('subscriber_id', subscriberId)
-            .first();
+            .first());
     }
 
     async getSubRequestsCount(receiverId) {
@@ -67,6 +69,26 @@ class SubscriptionRequestsService{
             .query()
             .where('receiver_id', receiverId)
             .where('subscriber_id', subscriberId)
+            .delete();
+    }
+
+    async allowAllRequests(userId) {
+        const requests = await SubscriptionRequest
+            .query()
+            .where('receiver_id', userId)
+            .pluck('subscriber_id');
+
+        let friendships = [];
+        requests.forEach(subscriber_id => {
+            friendships.push(
+                Friendship.create({user_id: userId, subscriber_id: subscriber_id})
+            );
+        });
+
+        await Promise.all(friendships);
+        await await SubscriptionRequest
+            .query()
+            .where('receiver_id', userId)
             .delete();
     }
 

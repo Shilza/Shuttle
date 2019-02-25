@@ -7,6 +7,9 @@
 }
 
 .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     border-radius: 50%;
     max-width: 100px;

@@ -7,7 +7,7 @@ import styles from './saved.module.css';
 import {Button} from "antd";
 import PostsList from "../../../Posts/PostsList/PostsList";
 import PostsModal from "../../../Posts/PostsModal/PostsModal";
-import Paginator from "../../../Paginator";
+import Paginator from "../../../Paginator/Paginator";
 import {getSavedPosts} from "../../../../services/post";
 
 const SavedWithLoading = withLoader(SavedContainer);

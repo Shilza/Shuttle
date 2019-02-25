@@ -1,5 +1,8 @@
 
 export const SET_USER = 'SET_USER';
+export const ADD_FOLLOWERS = 'ADD_FOLLOWERS';
+export const ADD_FOLLOWS = 'ADD_FOLLOWS';
+
 export const SET_FOLLOWERS = 'SET_FOLLOWERS';
 export const SET_FOLLOWS = 'SET_FOLLOWS';
 

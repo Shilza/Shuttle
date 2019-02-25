@@ -1,14 +1,8 @@
 import React from "react";
 
-class CropImage extends React.Component {
-    render() {
-        return (
-            <div className={'crop-cont'}>
-                <img src={this.props.src}
-                    className="crop-image" alt=""/>
-            </div>
-        );
-    }
-}
+const CropImage = ({src}) =>
+    <div className={'crop-cont'}>
+        <img src={src} className="crop-image" alt="cropped"/>
+    </div>;
 
-export default CropImage;
+export default React.memo(CropImage);

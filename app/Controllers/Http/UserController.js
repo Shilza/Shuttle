@@ -2,6 +2,8 @@
 
 const User = use('App/Models/User');
 const UsersService = use('UsersService');
+const FriendshipsService = use('FriendshipsService');
+const SubscriptionRequestsService = use('SubscriptionRequestsService');
 
 class UserController {
 
@@ -228,6 +230,78 @@ class UserController {
             return response.json({ private: true });
     }
 
+    async followersSearch({ request, response, auth }) {
+        const {validate} = use('CValidator');
+
+        const rules = {
+            user_id: 'required|integer',
+            username: 'string|max:12',
+            page: 'integer'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
+        const user = await User.find(request.input('user_id'));
+        if (!user)
+            return response.status(400).json({message: 'User does not exists'});
+
+        const requester = await auth.getUser();
+
+        const canSee = await UsersService.canSee(user, requester.id);
+        if(canSee) {
+            const followers = await FriendshipsService.searchFollowers(
+                user.id, page, request.input('username')
+            );
+            return response.json(followers);
+        }
+        else
+            return response.json({ private: true });
+    }
+
+    async followsSearch({request, response, auth}) {
+        const {validate} = use('CValidator');
+
+        const rules = {
+            user_id: 'required|integer',
+            username: 'string|max:12',
+            page: 'integer'
+        };
+
+        const validation = await validate(request.all(), rules);
+
+        if (validation.fails())
+            return response.status(400).json({
+                message: validation.messages()[0].message
+            });
+
+        let page = parseInt(request.input('page'), 10);
+        page = page > 0 ? page : 1;
+
+        const user = await User.find(request.input('user_id'));
+        if (!user)
+            return response.status(400).json({message: 'User does not exists'});
+
+        const requester = await auth.getUser();
+
+        const canSee = await UsersService.canSee(user, requester.id);
+        if(canSee) {
+            const follows = await FriendshipsService.searchFollows(
+                user.id, page, request.input('username')
+            );
+            return response.json(follows);
+        }
+        else
+            return response.json({ private: true });
+    }
+
     async follows({request, response, auth}) {
         const {validate} = use('CValidator');
 
@@ -288,6 +362,8 @@ class UserController {
 
         user.private = false;
         await user.save();
+
+        await SubscriptionRequestsService.allowAllRequests(user.id);
 
         response.json({
             message: 'Account is now public'

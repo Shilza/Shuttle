@@ -1,6 +1,7 @@
 import {Drawer, Icon} from 'antd';
 import React from "react";
 import SettingsBody from "./SettingsBody";
+import style from './settings.module.css';
 
 const Settings = ({visible, onClose}) => (
     <Drawer
@@ -14,12 +15,11 @@ const Settings = ({visible, onClose}) => (
     </Drawer>
 );
 
-const styleSettingsTitle = {marginLeft: 10};
 
 const SettingsTitle = () => (
     <div>
         <Icon type='setting'/>
-        <span style={styleSettingsTitle}>Settings</span>
+        <span className={style.settingsTitle}>Settings</span>
     </div>
 );
 

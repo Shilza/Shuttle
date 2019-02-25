@@ -2,7 +2,7 @@ import * as PostService from "../../../../services/post";
 import React from "react";
 import {connect} from "react-redux";
 import PostsExplainingLabel from "../../../ExplainingLabels/PostsLabel/PostsExplainingLabel";
-import Paginator from "../../../Paginator";
+import Paginator from "../../../Paginator/Paginator";
 import PostsList from "../../../Posts/PostsList/PostsList";
 import PostsModal from "../../../Posts/PostsModal/PostsModal";
 

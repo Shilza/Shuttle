@@ -124,7 +124,7 @@ class CommentController {
 
         const user = await auth.getUser();
         const post = await comment.post().fetch();
-        if (!user.isOwner(comment) && !user.isOwner(post.toJSON()))
+        if (user.isOwner(comment) || user.isOwner(post.toJSON()))
             return response.status(403).json({
                 message: 'Forbidden. Unable to delete'
             });

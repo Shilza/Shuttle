@@ -1,22 +1,23 @@
 import React from "react";
 import styles from './post.module.css';
 import {Icon} from "antd";
-import PostMedia from "../../PostMedia/PostMedia";
+import Media from "./Media";
 
-const Post = ({post, open}) => (
+const iconsStyle = {marginLeft: '10px'};
+
+const Post = ({post, open}) =>
     <div className={styles.post} onClick={() => open(post)}>
-        <PostMedia media={post.src} postId={post.id}/>
+        <Media src={post.src}/>
         <div className={styles.metaInfo}>
             <div>
                 {post.likes_count}
-            <Icon style={{marginLeft: '10px'}} type='heart'/>
+            <Icon style={iconsStyle} type='heart'/>
             </div>
             <div>
                 {post.comments_count}
-            <Icon style={{marginLeft: '10px'}} type='message'/>
+            <Icon style={iconsStyle} type='message'/>
             </div>
         </div>
-    </div>
-);
+    </div>;
 
-export default Post;
+export default React.memo(Post);

@@ -18,8 +18,10 @@ const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
         default: buttonText = 'Undefined';
     }
 
+    const buttonStyle = {marginLeft: '15px'};
+
     return (
-        <Button size={'small'} onClick={friendships}>
+        <Button size={'small'} style={buttonStyle} onClick={friendships}>
             {buttonText}
         </Button>
     );

@@ -1,16 +1,17 @@
 
-.mediaContainer img{
+
+.mediaContainer img, video{
     max-height: 500px;
     width: 500px;
 }
 
 @media (max-width: 500px) {
-    .mediaContainer img{
+    .mediaContainer img, video{
         width: 100%;
         position: relative;
     }
 
-    .mediaContainer:before img{
+    .mediaContainer:before img, video{
         content: "";
         display: block;
         padding-top: 100%;

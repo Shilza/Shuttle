@@ -129,6 +129,7 @@ class NotificationsService {
         return (await Action
             .query()
             .where('receiver_id', receiverId)
+            .orderBy('created_at', 'desc')
             .paginate(page, 20)).toJSON();
     }
 

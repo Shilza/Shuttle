@@ -3,11 +3,10 @@ import styles from './postControl.module.css';
 import React from "react";
 import CommentInput from "./CommentInput";
 
-const Footer = ({post}) => (
+const Footer = ({post}) =>
     <div className={styles.footer}>
         <CommentInput post_id={post.id}/>
         <OptionsModal post={post}/>
-    </div>
-);
+    </div>;
 
-export default Footer;
+export default React.memo(Footer);

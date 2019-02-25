@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Caption from "./Caption";
 import CommentsList from "../../../Comments/CommentsList";
 import {connect} from "react-redux";
-import Paginator from "../../../Paginator";
+import Paginator from "../../../Paginator/Paginator";
 import * as CommentService from "../../../../services/comments";
 import {getComments} from "../../../../store/selectors/comments";
 
@@ -15,9 +15,9 @@ const PostControl = ({post, dispatch, comments}) => {
     const fetchComments = page => dispatch(CommentService.getComments(post.id, page));
 
     return (
-        <div className={styles.postControl}>
+        <article className={styles.postControl}>
             <Header username={post.owner} avatar={post.avatar}/>
-            <Caption post={post}/>
+            <Caption owner={post.owner} caption={post.caption}/>
             <Paginator
                 fetcher={fetchComments}
                 initialPage={0}
@@ -29,7 +29,7 @@ const PostControl = ({post, dispatch, comments}) => {
             </Paginator>
             <Actions post={post}/>
             <Footer post={post}/>
-        </div>
+        </article>
     );
 };
 

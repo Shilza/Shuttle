@@ -36,7 +36,7 @@ export function getFollowers(id, page) {
         new Promise((resolve, reject) => {
             Http.get(`/api/v1/users/followers?id=${id}&page=${page}`)
                 .then(({data}) => {
-                    dispatch(action.setFollowers(data.followers));
+                    dispatch(action.addFollowers(data.data));
                     resolve(data);
                 })
                 .catch(err => reject(err))
@@ -49,7 +49,33 @@ export function getFollows(id, page) {
         new Promise((resolve, reject) => {
             Http.get(`/api/v1/users/follows?id=${id}&page=${page}`)
                 .then(({data}) => {
-                    dispatch(action.setFollows(data.follows));
+                    dispatch(action.addFollows(data.data));
+                    resolve(data);
+                })
+                .catch(err => reject(err))
+        })
+    )
+}
+
+export function searchFollowers(id, username, page = 0) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+            Http.get(`/api/v1/users/followersSearch?user_id=${id}&username=${username}&page=${page}`)
+                .then(({data}) => {
+                    dispatch(action.setFollowers(data.data));
+                    resolve(data);
+                })
+                .catch(err => reject(err))
+        })
+    )
+}
+
+export function searchFollows(id, username, page = 0) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+            Http.get(`/api/v1/users/followsSearch?user_id=${id}&username=${username}&page=${page}`)
+                .then(({data}) => {
+                    dispatch(action.setFollows(data.data));
                     resolve(data);
                 })
                 .catch(err => reject(err))

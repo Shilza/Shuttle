@@ -1,21 +1,21 @@
 import Welcome from '../pages/Welcome/Welcome'
 import User from '../pages/User/User'
-import Home from '../pages/Home/Home'
+import Feed from '../pages/Feed/Feed'
 import Register from '../components/Welcome/Register/Register'
 import ForgotPass from '../components/Welcome/ForgotPass/ForgotPass'
 import ResetPass from '../components/Welcome/ResetPass/ResetPass'
 import PostByCode from "../pages/PostByCode/PostByCode";
-import Archive from "../components/Archive/Archive";
-import LikedPosts from "../components/LikedPosts/LikedPosts";
-import Blacklist from "../components/Blacklist/Blacklist";
-import Notifications from "../components/Notifications/Notifications";
+import Archive from "../pages/Archive/Archive";
+import LikedPosts from "../pages/LikedPosts/LikedPosts";
+import Blacklist from "../pages/Blacklist/Blacklist";
+import Notifications from "../pages/Notifications/Notifications";
 
 export const routes = [
     {
         path: '/',
         exact: true,
         auth: true,
-        component: Home
+        component: Feed
     },
     {
         path: '/',

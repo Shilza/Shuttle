@@ -1,39 +1,38 @@
 import {Icon} from "antd";
-import React, {createRef} from "react";
+import React, {useRef, useState} from "react";
 import styles from './avatar.module.css';
 import {connect} from "react-redux";
 import {message} from "antd/lib/index";
 import {updateAvatar} from "../../../../services/user";
 
-class UploadButton extends React.Component{
+const inputStyle = {display: 'none'};
 
-    fileRef = createRef();
+const UploadButton = ({dispatch,}) => {
 
-    state = {
-        media: undefined
+    let fileRef = useRef();
+
+    let [media, setMedia] = useState(undefined);
+
+    const loadMedia = event => {
+        setMedia(event.target.files[0]);
+        uploadAvatar();
     };
 
-    loadMedia = event => {
-        this.setState({media: event.target.files[0]}, this.uploadAvatar);
-    };
-
-    uploadAvatar = () => {
+    const uploadAvatar = () => {
         let avatar = new FormData();
-        avatar.append('avatar', this.state.media);
+        avatar.append('avatar', media);
 
-        this.props.dispatch(updateAvatar(avatar))
+        dispatch(updateAvatar(avatar))
             .then(data => message.success(data.message))
             .catch(err => message.error(err.response.data.message));
     };
 
-    render() {
-        return (
-            <button className={styles.avatarActionButton} onClick={() => this.fileRef.current.click()}>
-                <Icon type='upload'/>
-                <input type='file' style={{display: 'none'}} onChange={this.loadMedia} ref={this.fileRef}/>
-            </button>
-        )
-    }
-}
+    return (
+        <button className={styles.avatarActionButton} onClick={() => fileRef.current.click()}>
+            <Icon type='upload'/>
+            <input type='file' style={inputStyle} onChange={loadMedia} ref={fileRef}/>
+        </button>
+    )
+};
 
 export default connect()(UploadButton);

@@ -1,5 +1,7 @@
 import * as ActionTypes from '../actionTypes/posts'
 import {POST_LIKE, POST_UNLIKE} from "../actionTypes/likes";
+import {SET_USER} from "../actionTypes/users";
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     usersPosts: [],
@@ -13,6 +15,8 @@ const initialState = {
 
 const Posts = (state = initialState, {type, payload = null}) => {
     switch (type) {
+        case SET_USER:
+            return removeUsersPosts(state);
         case ActionTypes.ADD_POSTS:
             return addUsersPosts(state, payload);
         case ActionTypes.ADD_LIKED_POSTS:
@@ -39,10 +43,17 @@ const Posts = (state = initialState, {type, payload = null}) => {
             return save(state, payload);
         case ActionTypes.REMOVE_SAVED_POST:
             return removeSavedPost(state, payload);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }
 };
+
+const removeUsersPosts = state => ({
+    ...state,
+    usersPosts: []
+});
 
 const addArchivePosts = (state, archivePosts) => ({
     ...state,
@@ -122,8 +133,12 @@ const removePost = (state, id) => ({
 });
 
 const addPost = (state, post) => {
-    const data = [...state.usersPosts.data];
-    data.unshift(post);
+    let data;
+    if(state.usersPosts.data) {
+        data = [...state.usersPosts.data];
+        data.unshift(post);
+    } else
+        data = [].unshift(post);
 
     return {
         ...state,
@@ -185,7 +200,6 @@ const removeLike = (posts, postId) => {
 };
 
 const applyActionToPosts = (state, postId, action) => {
-    console.log(action);
     let feedPosts = state.feedPosts;
     if (feedPosts.data && state.feedPosts.data.find(post => post.id === postId))
         feedPosts.data = action(state.feedPosts.data, postId);

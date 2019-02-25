@@ -1,6 +1,6 @@
 import React from "react";
 
-const Media = ({src, style=""}) => (
+const Media = ({src, style=""}) =>
     <>
         {
             src.match('.mp4') ?
@@ -11,7 +11,6 @@ const Media = ({src, style=""}) => (
                     className={style}
                 />
         }
-    </>
-);
+    </>;
 
-export default Media;
+export default React.memo(Media);

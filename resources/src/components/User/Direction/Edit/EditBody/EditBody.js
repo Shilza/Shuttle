@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import Bio from "./Bio";
 import Site from "./Site";
 import styles from '../edit.module.css';
-import {Button} from "antd";
 import transitions from './transitions.module.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -22,7 +21,6 @@ const EditBody = ({user}) => {
                 <Username username={user.username}/>
                 <Bio bio={user.bio}/>
                 <Site site={user.site}/>
-                <Button size='small' type={'primary'}>Save</Button>
             </ReactCSSTransitionGroup>
         </div>
     );

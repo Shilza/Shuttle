@@ -1,54 +1,53 @@
-import React, {createRef} from "react";
+import React, {useRef, useState} from "react";
 import SearchBar from './SearchBar';
 import styles from './search.module.css';
 import {connect} from "react-redux";
 import * as SearchService from "../../services/search";
 import {removeUsers} from "../../store/actions/search";
 
-class Search extends React.Component {
+const Search = ({dispatch}) => {
 
-    state = {
-        barVisible: false
-    };
-    searchBarRef = createRef();
+    let [barIsVisible, setBarIsVisible] = useState(false);
 
-    search = event => {
-        const {dispatch} = this.props;
+    let searchBarRef = useRef();
 
-        this.setState({ barVisible: true });
+    const search = event => {
+        setBarIsVisible(true);
+
         if (event.target.value)
             dispatch(SearchService.search(event.target.value));
     };
 
-    makeBarInvisible = event => {
-        if(!this.searchBarRef.current.contains(event.target)) {
-            this.setState({ barVisible: false });
-            this.props.dispatch(removeUsers());
+    const makeBarInvisible = event => {
+        if (!searchBarRef.current.contains(event.target)) {
+            setBarIsVisible(false);
+            dispatch(removeUsers());
         }
     };
 
-    render() {
-        return (
-            <div className={styles.container}>
-                <div className={styles.search}>
-                    <div className={styles.searchBox}>
-                        <input
-                            type="text"
-                            onChange={this.search}
-                        />
-                        <span/>
-                    </div>
-                </div>
-                {
-                    this.state.barVisible &&
-                    <SearchBar
-                        searchBarRef={this.searchBarRef}
-                        makeBarInvisible={this.makeBarInvisible}
-                    />
-                }
-            </div>
-        );
-    }
-}
+    return (
+        <div className={styles.container}>
+            <Searcher search={search}/>
+            {
+                barIsVisible &&
+                <SearchBar
+                    searchBarRef={searchBarRef}
+                    makeBarInvisible={makeBarInvisible}
+                />
+            }
+        </div>
+    );
+};
+
+const Searcher = ({search}) =>
+    <div className={styles.search}>
+        <div className={styles.searchBox}>
+            <input
+                type="text"
+                onChange={search}
+            />
+            <span/>
+        </div>
+    </div>;
 
 export default connect()(Search);

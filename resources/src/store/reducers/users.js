@@ -1,25 +1,30 @@
 import {
     DELETE_AVATAR, SET_BLACKLISTED,
-    SET_FOLLOWERS,
-    SET_FOLLOWS,
+    ADD_FOLLOWERS,
+    ADD_FOLLOWS,
     SET_PRIVATE,
     SET_PUBLIC, SET_UNBLACKLISTED,
     SET_USER,
-    UPDATE_AVATAR
+    UPDATE_AVATAR, SET_FOLLOWERS, SET_FOLLOWS
 } from "../actionTypes/users";
 import {FOLLOW, UNFOLLOW} from "../actionTypes/friendships";
 import {ADD_POST, REMOVE_POST} from "../actionTypes/posts";
+import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
     user: undefined,
-    followers: undefined,
-    follows: undefined,
+    followers: [],
+    follows: [],
 };
 
 const Users = (state = initialState, {type, payload = null}) => {
     switch (type) {
         case SET_USER:
             return setUser(state, payload);
+        case ADD_FOLLOWERS:
+            return addFollowers(state, payload);
+        case ADD_FOLLOWS:
+            return addFollows(state, payload);
         case SET_FOLLOWERS:
             return setFollowers(state, payload);
         case SET_FOLLOWS:
@@ -44,6 +49,8 @@ const Users = (state = initialState, {type, payload = null}) => {
             return setBlacklisted(state);
         case SET_UNBLACKLISTED:
             return setUnblacklisted(state);
+        case AUTH_LOGOUT:
+            return initialState;
         default:
             return state;
     }
@@ -60,7 +67,9 @@ const setUser = (state, user) => {
 
     return {
         ...state,
-        user
+        user,
+        follows: [],
+        followers: []
     };
 };
 
@@ -86,19 +95,25 @@ const incrementsPostsCount = state => {
     }
 };
 
-const setFollowers = (state, followers) => {
-    return {
-        ...state,
-        followers
-    };
-};
+const addFollowers = (state, followers) => ({
+    ...state,
+    followers: [...state.followers, ...followers]
+});
 
-const setFollows = (state, follows) => {
-    return {
-        ...state,
-        follows
-    };
-};
+const addFollows = (state, follows) => ({
+    ...state,
+    follows: [...state.follows, ...follows]
+});
+
+const setFollowers = (state, followers) => ({
+    ...state,
+    followers
+});
+
+const setFollows = (state, follows) => ({
+    ...state,
+    follows
+});
 
 const follow = state => {
     let user = {...state.user};

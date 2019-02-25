@@ -9,8 +9,26 @@
 }
 
 .avatar {
-    width: 30px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
     border-radius: 50%;
     border: 1px solid rgba(0,0,0,.0975);
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.username {
+    margin-right: 20px;
 }

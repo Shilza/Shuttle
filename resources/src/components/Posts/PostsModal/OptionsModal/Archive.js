@@ -30,7 +30,6 @@ const Archive = ({dispatch, post_id, isArchived}) => {
             {
                 isArchived ? <li onClick={unArchive}>Unarchive</li>
                     : <li onClick={archive}>Archive</li>
-
             }
         </>
     )

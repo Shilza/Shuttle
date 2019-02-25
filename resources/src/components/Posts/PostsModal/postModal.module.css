@@ -12,6 +12,7 @@
     .postModalContainer {
         flex-direction: column;
         height: auto;
-        /*width: auto;*/
+        min-width: 310px;
+        width: auto;
     }
 }

@@ -26,6 +26,9 @@ const SettingsBody = ({isPrivate, dispatch}) => {
             <li>
                 <Link to={'/account/blacklist'} className={styles.linkStyle}>Blacklist</Link>
             </li>
+            <li>
+                <Link to={'/account/notifications'} className={styles.linkStyle}>Notifications</Link>
+            </li>
             <li className={styles.privateContainer} >
                 <span>Private account</span>
                 <Switch defaultChecked={!!isPrivate} size='small' onChange={changePrivacy}/>

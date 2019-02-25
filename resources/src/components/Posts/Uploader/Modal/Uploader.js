@@ -22,8 +22,7 @@ const Uploader = ({loadMedia, trigger}) => {
 
 const DefaultTrigger = ({onClick}) => <Button onClick={onClick}>New</Button>;
 
-const UploadTrigger = ({
-                           onClick, trigger = <DefaultTrigger/>
-                       }) => React.cloneElement(trigger, {onClick: onClick});
+const UploadTrigger = ({onClick, trigger = <DefaultTrigger/>}) =>
+    React.cloneElement(trigger, {onClick: onClick});
 
 export default Uploader;
