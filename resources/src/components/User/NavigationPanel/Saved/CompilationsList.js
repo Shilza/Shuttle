@@ -1,6 +1,7 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import styles from './saved.module.css';
 import Compilation from "./Compilation";
-import React from "react";
 
 const CompilationsList = ({compilations, goToSavedPosts}) => {
     const loadPosts = compilationName => goToSavedPosts(compilationName);
@@ -12,6 +13,11 @@ const CompilationsList = ({compilations, goToSavedPosts}) => {
             }
         </div>
     )
+};
+
+CompilationsList.propTypes = {
+    compilations: PropTypes.arrayOf(PropTypes.object),
+    goToSavedPosts: PropTypes.func.isRequired
 };
 
 export default CompilationsList;

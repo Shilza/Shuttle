@@ -1,5 +1,8 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './saved.module.css';
+import SingleCompilation from "./SingleCompilation";
+import QuadCompilation from "./QuadCompilation";
 
 const Compilation = ({compilation, loadPosts}) => {
 
@@ -24,18 +27,9 @@ const Compilation = ({compilation, loadPosts}) => {
     )
 };
 
-const QuadCompilation = (item, index) => (
-    <div className={styles.pic} key={index}>
-        <img src={item} alt={'Compilation'}/>
-    </div>
-);
-
-const SingleCompilation = src => (
-    <div>
-        <div className={styles.singlePic}>
-            <img src={src} alt={'Compilation'}/>
-        </div>
-    </div>
-);
+Compilation.propTypes = {
+    compilation: PropTypes.object,
+    loadPosts: PropTypes.func.isRequired
+};
 
 export default Compilation;

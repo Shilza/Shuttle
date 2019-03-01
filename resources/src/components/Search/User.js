@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './searchBar.module.css'
 import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 import {Link} from "react-router-dom";
@@ -13,5 +14,10 @@ const User = ({username, avatar}) => (
         <span>{username}</span>
     </Link>
 );
+
+User.propTypes = {
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string
+};
 
 export default User;

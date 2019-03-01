@@ -1,6 +1,7 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import * as FriendshipsService from "../../../services/friendships";
 import {Button} from "antd";
-import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
@@ -25,6 +26,13 @@ const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
             {buttonText}
         </Button>
     );
+};
+
+FriendshipButton.propTypes = {
+    id: PropTypes.number.isRequired,
+    friendshipState: PropTypes.number.isRequired,
+    follow: PropTypes.func.isRequired,
+    unfollow: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

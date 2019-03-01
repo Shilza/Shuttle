@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Icon, Input } from "antd";
 import FormItem from "antd/es/form/FormItem";
 
@@ -17,6 +18,12 @@ const Confirm = ({getFieldDecorator, validator, onBlur}) => {
             )}
         </FormItem>
     );
+};
+
+Confirm.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    validator: PropTypes.func
 };
 
 export default Confirm;

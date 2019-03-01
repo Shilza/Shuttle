@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {getLiked} from "../../services/post";
 import {connect} from "react-redux";
 import styles from './likedPosts.module.css';
@@ -22,6 +23,11 @@ const LikedPosts = ({posts, page = 0, dispatch}) => {
     );
 };
 
+LikedPosts.propTypes = {
+    posts: PropTypes.array,
+    page: PropTypes.number,
+    dispatch: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     posts: state.posts.likedPosts.data,

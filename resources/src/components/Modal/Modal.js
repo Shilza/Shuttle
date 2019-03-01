@@ -1,7 +1,8 @@
-import {createPortal} from "react-dom";
-import styles from './modal.module.css';
 import React from "react";
+import PropTypes from 'prop-types';
+import {createPortal} from "react-dom";
 import CloseButton from "./CloseButton";
+import styles from './modal.module.css';
 
 const Modal = ({children, closeModal}) => {
     const closeByCoverClick = event => {
@@ -18,6 +19,11 @@ const Modal = ({children, closeModal}) => {
         </aside>,
         document.body
     );
+};
+
+Modal.propTypes = {
+    children: PropTypes.element.isRequired,
+    closeModal: PropTypes.func.isRequired
 };
 
 export default Modal;

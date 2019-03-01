@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './header.module.css';
 import {connect} from "react-redux";
 import Search from "../Search/Search";
@@ -21,6 +22,11 @@ const Header = ({username, avatar}) => (
         </Link>
     </div>
 );
+
+Header.propTypes = {
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.any // can be null
+};
 
 const mapStateToProps = state => ({
     username: state.auth.user.username,

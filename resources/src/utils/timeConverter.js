@@ -2,7 +2,7 @@ import moment from 'moment';
 
 export function convertTime(time) {
     const now = new Date().getTime();
-    const startTime =  moment(time);
+    const startTime = moment(time);
     const timeDiff = moment.duration(now - startTime);
 
     if(Math.round(timeDiff.asSeconds()) < 60)

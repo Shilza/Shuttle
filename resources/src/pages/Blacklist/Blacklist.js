@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {getBlacklisted} from "../../services/user";
 import Blacklisted from "./Blacklisted";
 import style from './blacklist.module.css';
@@ -24,6 +25,11 @@ const Blacklist = ({dispatch, blacklisted}) => {
             </Paginator>
         </div>
     );
+};
+
+Blacklist.propTypes = {
+    blackListed: PropTypes.array,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import PropTypes from 'prop-types';
 import styles from './userInfo.module.css';
 import {addSmoothScrolling} from "../../../../utils/scrolling";
 import {connect} from "react-redux";
@@ -6,6 +7,9 @@ import * as UsersService from "../../../../services/user";
 import Followers from "./Followers";
 import Paginator from "../../../Paginator/Paginator";
 import Follows from "./Follows";
+import PostsCount from "./PostsCount";
+import FollowersButton from "./FollowersButton";
+import FollowsButton from "./FollowsButton";
 
 const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatch}) => {
 
@@ -55,26 +59,13 @@ const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatc
     );
 };
 
-const PostsCount = ({postsCount}) =>
-    <li className={styles.unitContainer}>
-        <span className={styles.unitNumber}>{postsCount}</span>
-        <a className={styles.simpleTextStyledItem} id='userInfoPostsLink' href={"#postsList"}>Posts</a>
-    </li>;
-
-const FollowersButton = ({followersCount, onClickFollowers}) =>
-    <li className={styles.unitContainer} onClick={onClickFollowers}>
-        <span className={styles.unitNumber}>{followersCount}</span>
-        <button className={styles.simpleTextStyledItem}>
-            Followers
-        </button>
-    </li>;
-
-const FollowsButton = ({followsCount, onClickFollows}) =>
-    <li className={styles.unitContainer} onClick={onClickFollows}>
-        <span className={styles.unitNumber}>{followsCount}</span>
-        <button className={styles.simpleTextStyledItem}>
-            Follows
-        </button>
-    </li>;
+UserInfo.propTypes = {
+    postsCount: PropTypes.number.isRequired,
+    canSee: PropTypes.bool.isRequired,
+    followersCount: PropTypes.number.isRequired,
+    followsCount: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(UserInfo);

@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Button} from "antd";
 import styles from './postControl.module.css';
@@ -48,5 +49,10 @@ const CommentInput = React.memo(({post_id, dispatch}) => {
         </form>
     );
 });
+
+CommentInput.propTypes = {
+    post_id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(CommentInput);

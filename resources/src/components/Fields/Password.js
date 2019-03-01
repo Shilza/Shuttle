@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Input, Icon} from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
-const Password = ({getFieldDecorator, fieldName, validator}) => {
+const Password = ({getFieldDecorator, fieldName='password', validator}) => {
     return (
         <FormItem>
             {getFieldDecorator(fieldName, {
@@ -20,8 +21,10 @@ const Password = ({getFieldDecorator, fieldName, validator}) => {
     );
 };
 
-Password.defaultProps = {
-    fieldName: 'password'
+Password.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    fieldName: PropTypes.string,
+    validator: PropTypes.func
 };
 
 export default Password;

@@ -1,5 +1,6 @@
-import FeedPost from "./FeedPost";
 import React from "react";
+import PropTypes from 'prop-types';
+import FeedPost from "./FeedPost";
 import {setCurrentPost} from "../../store/actions/posts";
 import {connect} from "react-redux";
 import PostsModal from "../../components/Posts/PostsModal/PostsModal";
@@ -22,6 +23,11 @@ const FeedList = ({posts, dispatch}) => {
             <PostsModal/>
         </>
     );
+};
+
+FeedList.propTypes = {
+    posts: PropTypes.array,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(FeedList);

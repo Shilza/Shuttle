@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Input, Icon } from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
-const Email = ({getFieldDecorator, initialValue}) => {
+const Email = ({getFieldDecorator, initialValue=''}) => {
     return (
         <FormItem>
             {getFieldDecorator('email', {
@@ -18,8 +19,9 @@ const Email = ({getFieldDecorator, initialValue}) => {
     );
 };
 
-Email.defaultProps = {
-    initialValue: null
+Email.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    initialValue: PropTypes.string
 };
 
 export default Email;

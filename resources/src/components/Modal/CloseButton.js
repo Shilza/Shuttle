@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './modal.module.css';
 
 const CloseButton = ({closeModal}) =>
@@ -9,5 +10,9 @@ const CloseButton = ({closeModal}) =>
             <path d="M 10,10 L 30,30 M 30,10 L 10,30"/>
         </svg>
     </button>;
+
+CloseButton.propTypes = {
+    closeModal: PropTypes.func.isRequired
+};
 
 export default CloseButton;

@@ -1,6 +1,7 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Icon} from "antd";
-import React from "react";
 import styles from './actions.module.css';
 import * as LikeService from "../../../../../services/likes";
 
@@ -29,6 +30,14 @@ const Like = ({id, likesCount, isLiked, type, dispatch}) => {
             </button>
         </div>
     );
+};
+
+Like.propTypes = {
+    id: PropTypes.number.isRequired,
+    likesCount: PropTypes.number,
+    isLiked: PropTypes.bool.isRequired,
+    type: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(Like);

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './card.module.css';
 
 const RemoveButton = ({removeUser}) =>
@@ -8,5 +9,9 @@ const RemoveButton = ({removeUser}) =>
     >
         Remove
     </button>;
+
+RemoveButton.propTypes = {
+    removeUser: PropTypes.func.isRequired
+};
 
 export default RemoveButton;

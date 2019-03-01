@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as UserService from "../../services/user";
 import styles from './user.module.css';
@@ -29,6 +30,11 @@ const UserPage = ({match, dispatch}) => {
             }
         </div>
     )
+};
+
+UserPage.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    match: PropTypes.object
 };
 
 export default connect()(UserPage);

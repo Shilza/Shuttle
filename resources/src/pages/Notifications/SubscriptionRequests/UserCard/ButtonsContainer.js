@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import {Button} from "antd";
 import styles from './userCard.module.css';
 import {acceptSubsRequest, cancelSubsRequest} from "../../../../services/subscriptionRequests";
@@ -38,6 +39,11 @@ const ButtonsContainer = ({id, deleteFromSubsList}) => {
             </Button>
         </div>
     );
+};
+
+ButtonsContainer.propTypes = {
+    id: PropTypes.number.isRequired,
+    deleteFromSubsList: PropTypes.func.isRequired
 };
 
 export default React.memo(ButtonsContainer);

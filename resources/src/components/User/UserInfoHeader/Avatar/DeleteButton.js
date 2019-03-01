@@ -1,5 +1,6 @@
-import {Icon} from "antd";
 import React from "react";
+import PropTypes from 'prop-types';
+import {Icon} from "antd";
 import styles from './avatar.module.css';
 import {connect} from "react-redux";
 import {deleteAvatar} from "../../../../services/user";
@@ -14,6 +15,10 @@ const DeleteButton = ({dispatch}) => {
             <Icon type='delete'/>
         </button>
     )
+};
+
+DeleteButton.propTypes = {
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(DeleteButton);

@@ -41,7 +41,15 @@ const addComments = (state, comments) => ({
 
 const prepareToSavePosts = (stateComments, newComments) => {
     const transformedData = transformCommentsMetadata(newComments);
-    return stateComments ? [...stateComments, ...transformedData] : transformedData;
+    return stateComments ? concatData(stateComments, transformedData) : transformedData;
+};
+
+const concatData = (stateComments, transformedData) => {
+    transformedData = transformedData.filter(item => {
+        return stateComments.findIndex(comment => comment.id !== item.id);
+    });
+
+    return [...stateComments, ...transformedData];
 };
 
 const transformCommentsMetadata = comments => {

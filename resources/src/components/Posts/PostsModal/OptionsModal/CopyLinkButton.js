@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
 
 const CopyLinkButton = ({link, closeModal}) => {
@@ -18,6 +19,11 @@ const CopyLinkButton = ({link, closeModal}) => {
     return (
         <li onClick={copyLinkToClipboard}>Copy link</li>
     );
+};
+
+CopyLinkButton.propTypes = {
+    link: PropTypes.string.isRequired,
+    closeModal: PropTypes.func.isRequired
 };
 
 export default React.memo(CopyLinkButton);

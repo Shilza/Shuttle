@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import styles from './search.module.css';
 import {connect} from "react-redux";
@@ -49,5 +50,14 @@ const Searcher = ({search}) =>
             <span/>
         </div>
     </div>;
+
+
+Searcher.propTypes = {
+    search: PropTypes.func.isRequired
+};
+
+Search.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(Search);

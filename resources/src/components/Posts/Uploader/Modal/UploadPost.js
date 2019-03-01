@@ -1,6 +1,7 @@
+import React, {useRef} from "react";
+import PropTypes from 'prop-types';
 import {Button} from "antd";
 import UploadMediaPlayer from "../../../PostMedia/UploadMediaPlayer";
-import React, {useRef} from "react";
 import styles from './uploadPost.module.css';
 import Header from "../../PostsModal/PostsControl/Header";
 import {connect} from "react-redux";
@@ -41,6 +42,12 @@ const UploadPost = ({upload, media, currentAuthUsername}) => {
             }
         </>
     );
+};
+
+UploadPost.propTypes = {
+    upload: PropTypes.func.isRequired,
+    media: PropTypes.object,
+    currentAuthUsername: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

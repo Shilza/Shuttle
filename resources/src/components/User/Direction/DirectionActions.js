@@ -1,6 +1,7 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import FriendshipActions from "./FriendshipActions";
 import {connect} from "react-redux";
-import React from "react";
 import Edit from "./Edit/Edit";
 import UserActions from "./UserActions/UserActions";
 import SettingsMenu from "./Settings/SettingsMenu";
@@ -33,7 +34,15 @@ const PrivateButtons = () => (
     </>
 );
 
-export default connect(state => ({
+
+DirectionActions.propTypes = {
+    me: PropTypes.bool.isRequired,
+    amBlacklisted: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
     me: state.auth.user.id === state.users.user.id,
     amBlacklisted: state.users.user.amBlacklisted
-}))(DirectionActions);
+});
+
+export default connect(mapStateToProps)(DirectionActions);

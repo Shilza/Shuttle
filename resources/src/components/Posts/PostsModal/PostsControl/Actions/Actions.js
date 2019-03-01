@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import PropTypes from 'prop-types';
 import {Icon} from "antd";
 import styles from './actions.module.css';
 import Like from "./Like";
@@ -26,6 +27,15 @@ const Actions = ({post}) => {
             <time dateTime={created_at}>{`${convertTime(created_at)} ago`}</time>
         </div>
     );
+};
+
+Actions.propTypes = {
+    post: PropTypes.shape({
+        likes_count: PropTypes.number,
+        created_at: PropTypes.string.isRequired,
+        isLiked: PropTypes.bool.isRequired,
+        id: PropTypes.number.isRequired
+    }).isRequired
 };
 
 export default React.memo(Actions);

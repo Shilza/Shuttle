@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import FormItem from "antd/es/form/FormItem";
 
 export const CompilationName = ({getFieldDecorator, fieldName = 'compilationName', initialValue = ''}) => {
@@ -18,4 +19,10 @@ export const CompilationName = ({getFieldDecorator, fieldName = 'compilationName
             )}
         </FormItem>
     );
+};
+
+CompilationName.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    fieldName: PropTypes.string,
+    initialValue: PropTypes.string
 };

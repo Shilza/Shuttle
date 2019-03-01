@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import styles from './notifications.module.css';
 import {convertTime} from "../../../utils/timeConverter";
 import DefaultAvatar from "../../../components/DefaultAvatar/DefaultAvatar";
+import PostLink from "./PostLink";
 
 const Notification = ({item}) => {
     const {username, avatar, info, post_src, text, created_at} = item;
@@ -38,10 +40,15 @@ const Notification = ({item}) => {
     );
 };
 
-const PostLink = ({link, postSrc}) => (
-    <Link to={link} className={styles.postLink}>
-        <img src={postSrc} alt={'Post mini pic'}/>
-    </Link>
-);
+Notification.propTypes = {
+    item: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        avatar: PropTypes.string,
+        info: PropTypes.string,
+        post_src: PropTypes.string,
+        text: PropTypes.string,
+        created_at: PropTypes.string
+    })
+};
 
 export default Notification;

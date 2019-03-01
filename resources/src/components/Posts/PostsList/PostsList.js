@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './postsList.module.css';
 import transitions from './transitions.module.css';
 import Post from "../Post/Post";
@@ -26,6 +27,11 @@ const PostsList = ({posts, dispatch}) => {
             </div>
         </ReactCSSTransitionGroup>
     );
+};
+
+PostsList.proptTypes = {
+    posts: PropTypes.array,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(PostsList);

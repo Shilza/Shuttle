@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import UserCard from "./Card/UserCard";
 import {connect} from "react-redux";
 import {removeFromBlacklist} from "../../services/user";
@@ -27,6 +28,13 @@ const Blacklisted = ({id, avatar, username, dispatch}) => {
             <UserCard avatar={avatar} username={username} removeUser={removeUser}/>
         </ReactCSSTransitionGroup>
     );
+};
+
+Blacklisted.propTypes = {
+    id: PropTypes.number.isRequired,
+    avatar: PropTypes.string,
+    username: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(Blacklisted);

@@ -1,5 +1,6 @@
-import Modal from "../../../Modal/Modal";
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
+import Modal from "../../../Modal/Modal";
 import {connect} from "react-redux";
 import {setIsSaveModalOpen} from "../../../../store/actions/saved";
 import styles from './savedBarCompilations.module.css';
@@ -7,7 +8,7 @@ import {Button, Form} from "antd";
 import {CompilationName} from "../../../Fields/CompilationName";
 import * as PostService from "../../../../services/post";
 
-const NewCompilationModal = ({dispatch, form, postToBeSaved}) => {
+const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
 
     let [loading, setLoading] = useState(false);
 
@@ -17,9 +18,8 @@ const NewCompilationModal = ({dispatch, form, postToBeSaved}) => {
         form.validateFields((err, {compilationName}) => {
             if (!err) {
                 setLoading(true);
-                dispatch(PostService.save({post_id: postToBeSaved.id, compilation: compilationName}))
+                dispatch(PostService.save({post_id: postId, compilation: compilationName}))
                     .then(() => {
-                        setLoading(false);
                         dispatch(setIsSaveModalOpen(false));
                     });
             }
@@ -31,7 +31,7 @@ const NewCompilationModal = ({dispatch, form, postToBeSaved}) => {
             <div className={styles.modalContainer}>
                 <div className={styles.title}>New Compilation</div>
                 <div className={styles.modalBody}>
-                    <img src={postToBeSaved.src} alt={'Compilation cover'}/>
+                    <img src={postSrc} alt={'Compilation cover'}/>
                     <Form onSubmit={saveToNewCompilation} className={styles.modalBody}>
                         <CompilationName getFieldDecorator={form.getFieldDecorator}/>
                         <Button type={'primary'} htmlType="submit" loading={loading}>Ok</Button>
@@ -42,8 +42,14 @@ const NewCompilationModal = ({dispatch, form, postToBeSaved}) => {
     );
 };
 
+NewCompilationModal.propTypes = {
+    postId: PropTypes.number.isRequired,
+    postSrc: PropTypes.string.isRequired
+};
+
 const mapStateToProps = state => ({
-    postToBeSaved: state.saved.postToBeSaved
+    postId: state.saved.postToBeSaved.id,
+    postSrc: state.saved.postToBeSaved.src
 });
 
 export default connect(mapStateToProps)(Form.create()(NewCompilationModal));

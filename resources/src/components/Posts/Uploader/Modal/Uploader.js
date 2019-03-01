@@ -1,5 +1,6 @@
-import {Button} from "antd";
 import React, {createRef} from "react";
+import PropTypes from 'prop-types';
+import {Button} from "antd";
 
 const Uploader = ({loadMedia, trigger}) => {
     const fileRef = createRef();
@@ -19,10 +20,14 @@ const Uploader = ({loadMedia, trigger}) => {
     );
 };
 
-
 const DefaultTrigger = ({onClick}) => <Button onClick={onClick}>New</Button>;
 
 const UploadTrigger = ({onClick, trigger = <DefaultTrigger/>}) =>
     React.cloneElement(trigger, {onClick: onClick});
+
+Uploader.propTypes = {
+    loadMedia: PropTypes.func.isRequired,
+    trigger: PropTypes.element
+};
 
 export default Uploader;

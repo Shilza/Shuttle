@@ -1,19 +1,19 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import Compilation from "../../../User/NavigationPanel/Saved/Compilation";
 import styles from './savedBarCompilations.module.css';
 import {Icon, Spin} from "antd";
 import {connect} from "react-redux";
 import * as PostService from "../../../../services/post";
 
-const SavedBarCompilation = ({compilation, dispatch, post}) => {
+const SavedBarCompilation = ({compilation, dispatch, postId}) => {
 
     let [loading, setLoading] = useState(false);
 
     const setCompilationToSave = (event, compilationName) => {
         event.stopPropagation();
         setLoading(true);
-        dispatch(PostService.save({post_id: post.id, compilation: compilationName}))
-            .then(() => setLoading(false));
+        dispatch(PostService.save({post_id: postId, compilation: compilationName}));
     };
 
     const icon = <Icon type="loading" style={{fontSize: 24}} spin/>;
@@ -28,8 +28,14 @@ const SavedBarCompilation = ({compilation, dispatch, post}) => {
     );
 };
 
+SavedBarCompilation.propTypes = {
+    compilation: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    postId: PropTypes.number.isRequired
+};
+
 const mapStateToProps = state => ({
-    post: state.saved.postToBeSaved
+    postId: state.saved.postToBeSaved.id
 });
 
 export default connect(mapStateToProps)(SavedBarCompilation);

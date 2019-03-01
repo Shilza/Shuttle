@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import PropTypes from 'prop-types';
 import styles from './searchBar.module.css';
 import {Icon} from "antd";
 import {connect} from "react-redux";
@@ -30,6 +31,12 @@ const SearchBar = ({makeBarInvisible, users, searchBarRef}) => {
             }
         </div>
     );
+};
+
+SearchBar.propTypes = {
+    makeBarInvisible: PropTypes.func.isRequired,
+    users: PropTypes.array,
+    searchBarRef: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

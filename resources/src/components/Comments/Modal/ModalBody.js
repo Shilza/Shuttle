@@ -1,5 +1,6 @@
-import ListModal from "../../Modal/ListModal";
 import React from "react";
+import PropTypes from 'prop-types';
+import ListModal from "../../Modal/ListModal";
 
 const ModalBody = ({closeModal, canDelete, removeComment}) =>
     <ListModal>
@@ -16,5 +17,11 @@ const ModalBody = ({closeModal, canDelete, removeComment}) =>
             Cancel
         </li>
     </ListModal>;
+
+ModalBody.propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    canDelete: PropTypes.bool.isRequired,
+    removeComment: PropTypes.func.isRequired
+};
 
 export default ModalBody;

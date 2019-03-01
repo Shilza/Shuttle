@@ -21,10 +21,15 @@ const Auth = (state = initialState, {type, payload = null}) => {
     }
 };
 
-const setUser = (state, user) => ({
-    ...state,
-    user
-});
+const setUser = (state, derUser) => {
+    let user = derUser;
+    user.private = !!user.private;
+
+    return {
+        ...state,
+        user
+    }
+};
 
 const updateAvatar = (state, avatar) => {
     state = {
@@ -38,11 +43,16 @@ const updateAvatar = (state, avatar) => {
     return state;
 };
 
-const auth = (state, user) => ({
-    ...state,
-    isAuthenticated: true,
-    user
-});
+const auth = (state, derUser) => {
+    let user = derUser;
+    user.private = !!user.private;
+
+    return {
+        ...state,
+        isAuthenticated: true,
+        user
+    }
+};
 
 const logout = state => ({
     ...state,

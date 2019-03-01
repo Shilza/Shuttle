@@ -1,5 +1,6 @@
-import styles  from './explainingLabels.module.css';
 import React from "react";
+import PropTypes from 'prop-types';
+import styles  from './explainingLabels.module.css';
 
 const ExplainingLabel = ({children, icon, text}) => (
     <div className={styles.sectionContainer}>
@@ -10,5 +11,11 @@ const ExplainingLabel = ({children, icon, text}) => (
         {children}
     </div>
 );
+
+ExplainingLabel.propTypes = {
+    children: PropTypes.element.isRequired,
+    icon: PropTypes.element.isRequired,
+    text: PropTypes.string.isRequired
+};
 
 export default ExplainingLabel;

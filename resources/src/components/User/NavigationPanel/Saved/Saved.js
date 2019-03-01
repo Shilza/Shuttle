@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getCompilations} from "../../../../services/saved";
 import SavedContainer from "./SavedContainer";
@@ -65,6 +66,12 @@ const Saved = ({savedPosts, page = 0, dispatch}) => {
             }
         </>
     );
+};
+
+Saved.propTypes = {
+    savedPosts: PropTypes.array,
+    page: PropTypes.number,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

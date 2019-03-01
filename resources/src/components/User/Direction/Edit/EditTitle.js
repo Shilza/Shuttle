@@ -1,16 +1,16 @@
-import {Icon} from "antd";
 import React from "react";
+import PropTypes from 'prop-types';
+import {Icon} from "antd";
 import styles from './edit.module.css';
 import {connect} from "react-redux";
 import {update} from "../../../../services/user";
 import {message} from "antd/lib/index";
 
-class EditTitle extends React.Component {
+const EditTitle = ({dispatch, editedData, user}) => {
 
-    submit = () => {
-        const {dispatch} = this.props;
+    const submit = () => {
 
-        const editedData = this.getFilterEditedData();
+        const editedData = getFilterEditedData();
 
         if (Object.keys(editedData).length)
             dispatch(update(editedData))
@@ -20,32 +20,34 @@ class EditTitle extends React.Component {
             message.warning('Nothing to update');
     };
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return false;
-    }
-
-    getFilterEditedData() {
-        const { editedData, user } = this.props;
-
+    const getFilterEditedData = () => {
         //delete entries that have not changed
-        Object.entries(editedData).forEach( e => {
-            if(!e[1] || user[e[0]] === e[1])
+        Object.entries(editedData).forEach(e => {
+            if (!e[1] || user[e[0]] === e[1])
                 delete editedData[e[0]];
         });
 
         return editedData;
-    }
+    };
 
-    render() {
-        return (
-            <div className={styles.editTitle}>
-                <Icon type="left"/>
-                <span style={{marginLeft: 15}}>Edit profile</span>
-                <Icon className={styles.editTitleCheck} type="check" onClick={this.submit}/>
-            </div>
-        );
-    }
-}
+    return (
+        <div className={styles.editTitle}>
+            <Icon type="left"/>
+            <span style={{marginLeft: 15}}>Edit profile</span>
+            <Icon className={styles.editTitleCheck} type="check" onClick={submit}/>
+        </div>
+    );
+};
+
+EditTitle.propTypes = {
+    editedData: PropTypes.shape({
+        username: PropTypes.string,
+        bio: PropTypes.string,
+        site: PropTypes.string
+    }),
+    user: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     editedData: {

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './navigationPanel.module.css';
 import {Tabs} from 'antd';
 import Saved from "./Saved/Saved";
@@ -23,6 +24,10 @@ const NavigationPanel = ({me}) => (
         }
     </Tabs>
 );
+
+NavigationPanel.propTypes = {
+    me: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => ({
     me: state.users.user.id === state.auth.user.id

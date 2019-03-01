@@ -1,6 +1,7 @@
+import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import transitions from './transitions.module.css';
-import React, {useState} from "react";
 import styles from './savebar.module.css';
 import {Button, Drawer} from "antd";
 import SavedBarCompilationsList from "./Compilations/SavedBarCompilationsList";
@@ -28,7 +29,7 @@ const SaveBar = ({dispatch, isModalOpen}) => {
             transitionName={transitions}
             transitionAppear={true}
             transitionLeave={true}
-            transigionEnter={false}
+            transitionEnter={false}
             transitionAppearTimeout={250}
             transitionLeaveTimeout={500}
         >
@@ -57,6 +58,11 @@ const SaveBar = ({dispatch, isModalOpen}) => {
             </Drawer>
         </ReactCSSTransitionGroup>
     );
+};
+
+SaveBar.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    isModalOpen: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({

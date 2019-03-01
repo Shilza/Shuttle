@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {getNotifications} from "../../../services/notifications";
 import Notification from "./Notification";
 import styles from './notifications.module.css';
@@ -34,6 +35,12 @@ const NotificationsList = ({notificationsCount, dispatch, notifications, page}) 
     );
 };
 
+NotificationsList.propTypes = {
+    notificationsCount: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    notifications: PropTypes.array,
+    page: PropTypes.number
+};
 
 const mapStateToProps = state => ({
     notificationsCount: state.auth.user.notificationsCount,

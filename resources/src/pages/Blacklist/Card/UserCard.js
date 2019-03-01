@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './card.module.css';
 import {Icon} from "antd";
 import Username from "./Username";
@@ -23,5 +24,11 @@ const DefaultAvatar = () => (
         <Icon type='user' style={{fontSize: '50px'}}/>
     </div>
 );
+
+UserCard.propTypes = {
+    avatar: PropTypes.string,
+    username: PropTypes.string.isRequired,
+    removeUser: PropTypes.func.isRequired
+};
 
 export default UserCard;

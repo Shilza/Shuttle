@@ -1,6 +1,7 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import SavedExplainingLabel from "../../../ExplainingLabels/SavedLabel/SavedExplainingLabel";
 import CompilationsList from "./CompilationsList";
-import React from "react";
 import {connect} from "react-redux";
 
 const SavedContainer = ({compilations, goToSavedPosts}) => (
@@ -11,6 +12,11 @@ const SavedContainer = ({compilations, goToSavedPosts}) => (
         }
     </>
 );
+
+SavedContainer.propTypes = {
+    compilation: PropTypes.array,
+    goToSavedPosts: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
     compilations: state.saved.compilations.data

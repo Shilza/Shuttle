@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import Settings from "./Settings";
 
 const SettingsMenu = ({trigger}) => {
@@ -17,6 +18,10 @@ const SettingsMenu = ({trigger}) => {
             <Settings visible={settingsVisible} onClose={onClose}/>
         </>
     );
+};
+
+SettingsMenu.propTypes = {
+    trigger: PropTypes.element.isRequired
 };
 
 export default React.memo(SettingsMenu);

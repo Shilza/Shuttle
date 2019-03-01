@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './feed.module.css';
 import {connect} from "react-redux";
 import Header from "../../components/Posts/PostsModal/PostsControl/Header";
@@ -8,7 +9,7 @@ import PostMedia from "../../components/PostMedia/PostMedia";
 import CommentsList from "../../components/Comments/CommentsList";
 import {getComments} from "../../store/selectors/comments";
 
-const FeedPost = React.memo(({post, comments, open}) => {
+const FeedPost = ({post, comments, open}) => {
     const openPost = event => {
         const tag = event.target.tagName.toLowerCase();
         if (tag === 'img' || tag === 'video')
@@ -33,8 +34,13 @@ const FeedPost = React.memo(({post, comments, open}) => {
             <Footer post={post}/>
         </article>
     );
-});
+};
 
+FeedPost.propTypes = {
+    post: PropTypes.object.isRequired,
+    comments: PropTypes.array,
+    open: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state, props) => ({
     comments: getComments(state.comments.comments.data, props.post),

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import ListModal from "../../../Modal/ListModal";
 import {message} from "antd/lib/index";
 import * as UsersService from "../../../../services/user";
@@ -41,6 +42,14 @@ const ActionsBody = ({closeModal, dispatch, userId, username, blacklisted}) => {
             <li onClick={closeModal}>Cancel</li>
         </ListModal>
     );
+};
+
+ActionsBody.propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    userId: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    blacklisted: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

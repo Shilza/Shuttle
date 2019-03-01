@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import PropTypes from 'prop-types';
 
 const VideoPlayer = ({src}) => {
 
@@ -17,6 +18,10 @@ const VideoPlayer = ({src}) => {
                ref={playerRef}
         />
     );
+};
+
+VideoPlayer.propTypes = {
+    src: PropTypes.object.isRequired
 };
 
 export default React.memo(VideoPlayer);

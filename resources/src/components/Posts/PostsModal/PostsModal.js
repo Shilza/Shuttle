@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Modal from "../../Modal/Modal";
 import PostModalBody from "./PostModalBody";
 import {connect} from "react-redux";
@@ -21,6 +22,12 @@ const PostsModal = ({isOpen, currentPost, dispatch}) => {
             }
         </>
     );
+};
+
+PostsModal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    currentPost: PropTypes.object,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Uploader from "./Modal/Uploader";
 import * as PostService from "../../../services/post";
@@ -36,6 +37,11 @@ const PostsUploader = ({dispatch, trigger}) => {
             <Uploader loadMedia={loadMedia} trigger={trigger}/>
         </>
     )
+};
+
+PostsUploader.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    trigger: PropTypes.element
 };
 
 export default connect()(PostsUploader);

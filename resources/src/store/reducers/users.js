@@ -65,6 +65,8 @@ const setUser = (state, user) => {
         delete user.__meta__;
     }
 
+    user.private = !!user.private;
+
     return {
         ...state,
         user,

@@ -9,6 +9,12 @@
     align-items: center;
 }
 
+.transitionContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .editButton {
     margin: 3px 10px 0 10px;

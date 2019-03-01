@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './userPage.module.css';
 import StoriesList from "./UserInfoHeader/Stories/StoriesList/StoriesList";
 import NavigationPanel from "./NavigationPanel/NavigationPanel";
@@ -28,6 +29,13 @@ const Public = ({me}) =>
         }
         <NavigationPanel/>
     </>;
+
+User.propTypes = {
+    me: PropTypes.bool.isRequired,
+    canSee: PropTypes.bool.isRequired,
+    isPrivate: PropTypes.bool.isRequired,
+    amBlacklisted: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => ({
     me: state.auth.user.id === state.users.user.id,

@@ -1,5 +1,6 @@
-import MaterialInput from "../MaterialInput/MaterialInput";
 import React from "react";
+import PropTypes from 'prop-types';
+import MaterialInput from "../MaterialInput/MaterialInput";
 import FormItem from "antd/es/form/FormItem";
 
 export const Username = ({getFieldDecorator, fieldName = 'username', initialValue = ''}) => {
@@ -20,4 +21,10 @@ export const Username = ({getFieldDecorator, fieldName = 'username', initialValu
             )}
         </FormItem>
     );
+};
+
+Username.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    fieldName: PropTypes.string,
+    initialValue: PropTypes.string
 };

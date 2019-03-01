@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './postControl.module.css';
 import Header from "./Header";
 import Actions from "./Actions/Actions";
@@ -12,12 +13,14 @@ import {getComments} from "../../../../store/selectors/comments";
 
 const PostControl = ({post, dispatch, comments}) => {
 
-    const fetchComments = page => dispatch(CommentService.getComments(post.id, page));
+    const {owner, avatar, caption, id} = post;
+
+    const fetchComments = page => dispatch(CommentService.getComments(id, page));
 
     return (
         <article className={styles.postControl}>
-            <Header username={post.owner} avatar={post.avatar}/>
-            <Caption owner={post.owner} caption={post.caption}/>
+            <Header username={owner} avatar={avatar}/>
+            <Caption owner={owner} caption={caption}/>
             <Paginator
                 fetcher={fetchComments}
                 initialPage={0}
@@ -31,6 +34,17 @@ const PostControl = ({post, dispatch, comments}) => {
             <Footer post={post}/>
         </article>
     );
+};
+
+PostControl.propTypes = {
+    post: PropTypes.shape({
+        owner: PropTypes.string.isRequired,
+        avatar: PropTypes.string,
+        caption: PropTypes.string,
+        id: PropTypes.number.isRequired
+    }),
+    dispatch: PropTypes.func.isRequired,
+    comments: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => ({

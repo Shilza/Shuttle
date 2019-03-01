@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './postControl.module.css';
 import {Link} from "react-router-dom";
 import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
@@ -14,5 +15,10 @@ const Header = ({username, avatar}) =>
             <span className={styles.username}>{username}</span>
         </header>
     </Link>;
+
+Header.propTypes = {
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string
+};
 
 export default React.memo(Header);

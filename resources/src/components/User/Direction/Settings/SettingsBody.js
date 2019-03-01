@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './settings.module.css';
 import Logout from "./Logout";
 import { Switch } from 'antd';
@@ -36,6 +37,11 @@ const SettingsBody = ({isPrivate, dispatch}) => {
             <Logout/>
         </ul>
     )
+};
+
+SettingsBody.propTypes = {
+    isPrivate: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

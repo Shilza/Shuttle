@@ -1,5 +1,6 @@
-import styles from './avatar.module.css';
 import React from "react";
+import PropTypes from 'prop-types';
+import styles from './avatar.module.css';
 import {connect} from "react-redux";
 import UploadButton from "./UploadButton";
 import DeleteButton from "./DeleteButton";
@@ -16,6 +17,11 @@ const DirectionButtons = ({avatar, me}) =>
             </div>
         }
     </>;
+
+DirectionButtons.propTypes = {
+    avatar: PropTypes.string,
+    me: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => ({
     me: state.users.user.id === state.auth.user.id

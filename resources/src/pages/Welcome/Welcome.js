@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import PropTypes from 'prop-types';
 import Login from "../../components/Welcome/Login/Login";
 import {Card} from 'antd';
 import styles from './welcome.module.css';
@@ -22,6 +23,10 @@ const Welcome = ({children = <Login/>}) => {
             </Card>
         </div>
     );
+};
+
+Welcome.propTypes = {
+    children: PropTypes.node
 };
 
 export default Welcome;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Username from "./Username";
 import {connect} from "react-redux";
 import Bio from "./Bio";
@@ -16,7 +17,7 @@ const EditBody = ({user}) => {
                 transitionAppearTimeout={500}
                 transitionEnter={false}
                 transitionLeave={false}
-                style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+                style={styles.transitionContainer}
             >
                 <Username username={user.username}/>
                 <Bio bio={user.bio}/>
@@ -24,6 +25,10 @@ const EditBody = ({user}) => {
             </ReactCSSTransitionGroup>
         </div>
     );
+};
+
+EditBody.propTypes = {
+    user: PropTypes.object.isRequired
 };
 
 export default connect(state => ({user: state.auth.user}))(EditBody);

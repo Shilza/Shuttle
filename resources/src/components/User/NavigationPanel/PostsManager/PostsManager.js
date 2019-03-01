@@ -1,5 +1,6 @@
-import * as PostService from "../../../../services/post";
 import React from "react";
+import PropTypes from 'prop-types';
+import * as PostService from "../../../../services/post";
 import {connect} from "react-redux";
 import PostsExplainingLabel from "../../../ExplainingLabels/PostsLabel/PostsExplainingLabel";
 import Paginator from "../../../Paginator/Paginator";
@@ -25,6 +26,12 @@ const PostsManager = ({id, dispatch, posts}) => {
             </Paginator>
         </>
     );
+};
+
+PostsManager.propTypes = {
+    id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    posts: PropTypes.array
 };
 
 const mapStateToProps = state => ({

@@ -1,7 +1,8 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
 import {addToArchive, deleteFromArchive} from "../../../../services/post";
 import {connect} from "react-redux";
-import React from "react";
 
 const Archive = ({dispatch, post_id, isArchived}) => {
 
@@ -33,6 +34,12 @@ const Archive = ({dispatch, post_id, isArchived}) => {
             }
         </>
     )
+};
+
+Archive.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    post_id: PropTypes.number.isRequired,
+    isArchived: PropTypes.number.isRequired
 };
 
 export default connect()(Archive);

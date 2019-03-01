@@ -1,7 +1,8 @@
-import {Drawer, Icon} from 'antd';
 import React from "react";
+import PropTypes from 'prop-types';
+import {Drawer} from 'antd';
 import SettingsBody from "./SettingsBody";
-import style from './settings.module.css';
+import SettingsTitle from "./SettingsTitle";
 
 const Settings = ({visible, onClose}) => (
     <Drawer
@@ -16,11 +17,9 @@ const Settings = ({visible, onClose}) => (
 );
 
 
-const SettingsTitle = () => (
-    <div>
-        <Icon type='setting'/>
-        <span className={style.settingsTitle}>Settings</span>
-    </div>
-);
+Settings.propTypes = {
+    visible: PropTypes.bool.isRequired,
+    onClose: PropTypes.func
+};
 
 export default Settings;

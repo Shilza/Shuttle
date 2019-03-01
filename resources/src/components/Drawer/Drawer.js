@@ -1,5 +1,6 @@
-import {createPortal} from "react-dom";
 import React from "react";
+import PropTypes from 'prop-types';
+import {createPortal} from "react-dom";
 import styles from './drawer.module.css';
 import transitions from '../Drawer/transitions.module.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -36,6 +37,12 @@ const Drawer = ({onClose, children, title}) => {
             document.body
         )
     );
+};
+
+Drawer.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    title: PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired
 };
 
 export default Drawer;

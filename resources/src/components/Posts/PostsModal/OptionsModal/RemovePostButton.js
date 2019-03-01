@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from 'prop-types';
 import {removeCurrentPost} from "../../../../store/actions/posts";
 import {message} from "antd/lib/index";
 import * as PostService from "../../../../services/post";
@@ -17,6 +18,11 @@ const RemovePostButton = ({post_id, dispatch}) => {
     return (
         <li onClick={removePost}>Delete post</li>
     );
+};
+
+RemovePostButton.propTypes = {
+    post_id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(RemovePostButton);

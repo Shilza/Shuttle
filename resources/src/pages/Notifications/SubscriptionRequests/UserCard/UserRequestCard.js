@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './userCard.module.css';
 import {Link} from "react-router-dom";
 import ButtonsContainer from "./ButtonsContainer";
@@ -23,6 +24,14 @@ const UserRequestCard = ({user, deleteFromSubsList}) => {
             </div>
         </div>
     );
+};
+
+UserRequestCard.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired
+    }),
+    deleteFromSubsList: PropTypes.func.isRequired
 };
 
 export default React.memo(UserRequestCard);

@@ -1,8 +1,9 @@
+import React from "react";
+import PropTypes from 'prop-types';
 import Modal from "../../../Modal/Modal";
 import styles from './friendships.module.css';
 import UserFriendshipCard from "./UserFriendshipCard";
 import {connect} from "react-redux";
-import React from "react";
 import {searchFollows} from "../../../../services/user";
 
 const Follows = ({closeModal, id, dispatch, follows}) => {
@@ -28,6 +29,18 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
         </Modal>
     );
 };
+
+Follows.propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    follows: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        avatar: PropTypes.string,
+        username: PropTypes.string.isRequired
+    }))
+};
+
 const mapStateToProps = state => ({
     follows: state.users.follows
 });

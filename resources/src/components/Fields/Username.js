@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {Input, Icon} from 'antd';
 import FormItem from "antd/es/form/FormItem";
 
@@ -24,4 +25,11 @@ export const Username = ({getFieldDecorator, fieldName = 'username', initialValu
             )}
         </FormItem>
     );
+};
+
+Username.propTypes = {
+    getFieldDecorator: PropTypes.func.isRequired,
+    fieldName: PropTypes.string,
+    initialValue: PropTypes.string,
+    onChange: PropTypes.func
 };

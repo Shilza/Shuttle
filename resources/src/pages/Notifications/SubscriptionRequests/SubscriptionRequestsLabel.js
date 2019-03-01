@@ -1,6 +1,6 @@
-
-import {Badge} from 'antd';
 import React from "react";
+import PropTypes from 'prop-types';
+import {Badge} from 'antd';
 import styles from './subReq.module.css';
 import DefaultAvatar from "../../../components/DefaultAvatar/DefaultAvatar";
 
@@ -25,5 +25,11 @@ const SubscriptionRequestsLabel = ({count, openList, avatar}) => (
         }
     </>
 );
+
+SubscriptionRequestsLabel.propTypes = {
+    count: PropTypes.number,
+    openList: PropTypes.func.isRequired,
+    avatar: PropTypes.string
+};
 
 export default React.memo(SubscriptionRequestsLabel);

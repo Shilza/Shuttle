@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './actions.module.css';
 import {connect} from "react-redux";
 import * as PostService from "../../../../../services/post";
@@ -31,6 +32,11 @@ const Save = ({post, dispatch}) => {
             }
         </div>
     );
+};
+
+Save.propTypes = {
+    post: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(Save);

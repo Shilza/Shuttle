@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './avatar.module.css';
 import DirectionButtons from './DiretionButtons';
 import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
@@ -18,5 +19,9 @@ const Avatar = ({avatar}) =>
         }
         <DirectionButtons avatar={avatar}/>
     </div>;
+
+Avatar.propTypes = {
+    avatar: PropTypes.string
+};
 
 export default React.memo(Avatar);

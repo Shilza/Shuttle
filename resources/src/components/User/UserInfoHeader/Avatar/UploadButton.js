@@ -1,5 +1,6 @@
-import {Icon} from "antd";
 import React, {useRef, useState} from "react";
+import PropTypes from 'prop-types';
+import {Icon} from "antd";
 import styles from './avatar.module.css';
 import {connect} from "react-redux";
 import {message} from "antd/lib/index";
@@ -7,7 +8,7 @@ import {updateAvatar} from "../../../../services/user";
 
 const inputStyle = {display: 'none'};
 
-const UploadButton = ({dispatch,}) => {
+const UploadButton = ({dispatch}) => {
 
     let fileRef = useRef();
 
@@ -33,6 +34,10 @@ const UploadButton = ({dispatch,}) => {
             <input type='file' style={inputStyle} onChange={loadMedia} ref={fileRef}/>
         </button>
     )
+};
+
+UploadButton.propTypes = {
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(UploadButton);

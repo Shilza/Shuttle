@@ -61,7 +61,7 @@ class CompilationController {
     async create({request, response, auth}) {
         const rules = {
             post_id: 'required|integer',
-            compilation: 'string|min:2|max:12|regex:^[a-z0-9]+$:'
+            compilation: 'string|min:2|max:12|regex:^[A-z0-9]+$:'
         };
 
         const validation = await validate(request.all(), rules);

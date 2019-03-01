@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as FeedService from "../../services/feed";
 import FeedList from "./FeedList";
@@ -21,6 +22,12 @@ const Feed = ({posts, page = 0, dispatch}) => {
             </div>
         </div>
     );
+};
+
+Feed.propTypes = {
+    posts: PropTypes.array,
+    page: PropTypes.number,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

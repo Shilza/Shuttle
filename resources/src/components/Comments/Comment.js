@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from './comment.module.css';
 import {convertTime} from "../../utils/timeConverter";
 import {connect} from "react-redux";
@@ -29,5 +30,16 @@ const Comment = ({comment, dispatch}) => {
     )
 };
 
+Comment.propTypes = {
+    comment: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        isLiked: PropTypes.bool.isRequired,
+        likes_count: PropTypes.number,
+        owner: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(Comment);
