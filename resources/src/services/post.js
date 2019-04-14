@@ -120,12 +120,12 @@ export function getLiked(page) {
         ));
 }
 
-export function addToArchive(postData) {
+export function addToArchive(id) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.post('/api/v1/posts/archive', postData)
+                Http.post('/api/v1/posts/archive', {post_id: id})
                     .then(({data}) => {
-                        dispatch(actions.removePost(postData.post_id));
+                        dispatch(actions.removePost(id));
                         resolve(data.message);
                     })
                     .catch(err => reject(err.response.data.message))

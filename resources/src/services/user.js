@@ -22,8 +22,17 @@ export function update(editedData) {
         new Promise((resolve, reject) => {
                 Http.patch('/api/v1/users', editedData)
                     .then(({data}) => {
+                        const newUrl = `${window.location.origin}/${data.user.username}`;
+                        window.history.pushState({}, null, newUrl);
+
                         dispatch(setAuthUser(data.user));
-                        dispatch(action.setUser(data.user));
+                        dispatch(action.setUser(
+                            {
+                                ...data.user,
+                                canSee: true,
+                                blacklisted: false
+                            }
+                        ));
                         resolve(data.message);
                     })
                     .catch(err => reject(err.response.data.message))
