@@ -18,8 +18,9 @@ const FeedPost = ({post, comments, open}) => {
 
     const {owner, avatar, src, id} = post;
 
+
     return (
-        <article className={styles.item}>
+        <section className={styles.item}>
             <Header username={owner} avatar={avatar}/>
             <div className={styles.mediaContainer} onClick={openPost}>
                 <PostMedia media={src} postId={id}/>
@@ -32,7 +33,7 @@ const FeedPost = ({post, comments, open}) => {
                 </div>
             }
             <Footer post={post}/>
-        </article>
+        </section>
     );
 };
 
