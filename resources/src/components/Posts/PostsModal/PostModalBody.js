@@ -5,10 +5,10 @@ import PostControl from "./PostsControl/PostControl";
 import PostMedia from "../../PostMedia/PostMedia";
 
 const PostModalBody = ({post}) =>
-    <article className={styles.postModalContainer}>
+    <section className={styles.postModalContainer}>
         <PostMedia media={post.src} postId={post.id}/>
         <PostControl post={post}/>
-    </article>;
+    </section>;
 
 PostModalBody.propTypes = {
     post: PropTypes.shape({

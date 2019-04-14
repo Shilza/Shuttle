@@ -4,26 +4,26 @@ import {message} from "antd/lib/index";
 import {addToArchive, deleteFromArchive} from "../../../../services/post";
 import {connect} from "react-redux";
 
-const Archive = ({dispatch, post_id, isArchived}) => {
+const Archive = ({dispatch, post_id, isArchived, closeModal}) => {
 
-    const archive = () => {
-        dispatch(addToArchive({post_id}))
+    const dispatchAction = action => {
+        dispatch(action(post_id))
             .then(data => {
                 message.success(data);
+                closeModal();
             })
             .catch(data => {
                 message.error(data);
+                closeModal();
             });
     };
 
+    const archive = () => {
+        dispatchAction(addToArchive);
+    };
+
     const unArchive = () => {
-        dispatch(deleteFromArchive(post_id))
-            .then(data => {
-                message.success(data);
-            })
-            .catch(data => {
-                message.error(data);
-            });
+        dispatchAction(deleteFromArchive);
     };
 
     return (
@@ -39,7 +39,7 @@ const Archive = ({dispatch, post_id, isArchived}) => {
 Archive.propTypes = {
     dispatch: PropTypes.func.isRequired,
     post_id: PropTypes.number.isRequired,
-    isArchived: PropTypes.number.isRequired
+    isArchived: PropTypes.number
 };
 
 export default connect()(Archive);

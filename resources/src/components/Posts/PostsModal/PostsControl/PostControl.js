@@ -18,12 +18,11 @@ const PostControl = ({post, dispatch, comments}) => {
     const fetchComments = page => dispatch(CommentService.getComments(id, page));
 
     return (
-        <article className={styles.postControl}>
+        <section className={styles.postControl}>
             <Header username={owner} avatar={avatar}/>
             <Caption owner={owner} caption={caption}/>
             <Paginator
                 fetcher={fetchComments}
-                initialPage={0}
                 isReverse={true}
             >
                 {
@@ -32,7 +31,7 @@ const PostControl = ({post, dispatch, comments}) => {
             </Paginator>
             <Actions post={post}/>
             <Footer post={post}/>
-        </article>
+        </section>
     );
 };
 

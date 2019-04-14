@@ -14,7 +14,7 @@ const ModalBody = ({post_id, me, isArchived, link, dispatch, closeModal}) =>
         {
             me &&
             <>
-                <Archive isArchived={isArchived} post_id={post_id}/>
+                <Archive closeModal={closeModal} isArchived={isArchived} post_id={post_id}/>
                 <RemovePostButton post_id={post_id}/>
             </>
         }
