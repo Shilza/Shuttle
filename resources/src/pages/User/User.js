@@ -5,6 +5,7 @@ import * as UserService from "../../services/user";
 import styles from './user.module.css';
 import User from "../../components/User/User";
 import WithLoading from "../../components/Loader/Loader";
+import UserDoesNotExists from "../../components/ExplainingLabels/UserDoesNotExists/UserDoesNotExists";
 
 const UserPageWithLoading = WithLoading(User);
 
@@ -17,15 +18,16 @@ const UserPage = ({match, dispatch}) => {
         dispatch(UserService.getUser(match.params.username))
             .then(() => setIsLoading(false))
             .catch(err => {
-                setIsLoading(false);
                 setError(err.response.data.message);
+                setIsLoading(false);
             });
     }, []);
+
 
     return (
         <div className={styles.container}>
             {
-                error ? <span>{error}</span> :
+                error ? <UserDoesNotExists text={error}/> :
                     <UserPageWithLoading isLoading={isLoading}/>
             }
         </div>
