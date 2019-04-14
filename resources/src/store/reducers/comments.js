@@ -46,10 +46,11 @@ const prepareToSavePosts = (stateComments, newComments) => {
 
 const concatData = (stateComments, transformedData) => {
     transformedData = transformedData.filter(item => {
-        return stateComments.findIndex(comment => comment.id !== item.id);
+        return stateComments.every(comment => comment.id !== item.id);
     });
 
-    return [...stateComments, ...transformedData];
+    return [...stateComments, ...transformedData]
+        .sort((a, b ) => new Date(a.created_at) - new Date(b.created_at));
 };
 
 const transformCommentsMetadata = comments => {

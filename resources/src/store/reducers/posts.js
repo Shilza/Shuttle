@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actionTypes/posts'
 import {POST_LIKE, POST_UNLIKE} from "../actionTypes/likes";
-import {SET_USER} from "../actionTypes/users";
 import {AUTH_LOGOUT} from "../actionTypes/auth";
+import {SET_USER} from "../actionTypes/users";
 
 const initialState = {
     usersPosts: [],
