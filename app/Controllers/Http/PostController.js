@@ -16,7 +16,6 @@ class PostController {
 
         const user = await auth.getUser();
 
-
         const owner = await PostsService.getPostsOwnerByPostCode(params.code);
 
         const canSee = await UsersService.canSee(owner, user.id);
