@@ -1,13 +1,15 @@
-function resizeableImage(image_target) {
+
+export function resizeableImage(image_target) {
+
     let cropComponent
         , container
         , crop_img
         , event_state = {}
         , ratio = 1.0
         , keyZoomValue = 4.0
-        , MIN_WIDTH = 50
-        , CROP_WIDTH = 200
-        , CROP_HEIGHT = 200
+        , MINWIDTH = 50
+        , CROPWIDTH = 200
+        , CROPHEIGHT = 200
         , cropLeft = 0
         , cropTop = 0
         , cropWidth = 0
@@ -22,18 +24,6 @@ function resizeableImage(image_target) {
         };
     }
 
-    function removeHandlers() {
-        container.removeEventListener('mousedown', startMoving);
-        container.removeEventListener('touchstart', startMoving);
-        container.removeEventListener('wheel', resizing);
-
-        document.removeEventListener('mouseup', endMoving);
-        document.removeEventListener('touchend', endMoving);
-        document.removeEventListener('mousemove', moving);
-        document.removeEventListener('touchmove', moving);
-        document.removeEventListener('keypress', keyHandler);
-    }
-
     function addHandlers() {
         container.addEventListener('mousedown', startMoving, false);
         container.addEventListener('touchstart', startMoving, false);
@@ -43,10 +33,7 @@ function resizeableImage(image_target) {
     }
 
     function init() {
-        let wrapper, left, top;
-
-        if (image_target.dataset.isCrop)
-            return;
+        let wraper, left, top;
 
         image_target.dataset.isCrop = 'true';
         image_target.classList.add('crop-blur');
@@ -66,14 +53,14 @@ function resizeableImage(image_target) {
         container.classList.add('overlay');
 
         cropComponent.appendChild(container);
-        wrapper = image_target.parentNode;
-        wrapper.appendChild(cropComponent);
+        wraper = image_target.parentNode;
+        wraper.appendChild(cropComponent);
         cropComponent.appendChild(crop_img);
         cropComponent.appendChild(image_target);
         container.appendChild(crop_img);
 
-        left = image_target.offsetWidth / 2 - CROP_WIDTH / 2;
-        top = image_target.offsetHeight / 2 - CROP_HEIGHT / 2;
+        left = image_target.offsetWidth / 2 - CROPWIDTH / 2;
+        top = image_target.offsetHeight / 2 - CROPHEIGHT / 2;
 
         updateCropImage(left, top);
         addHandlers();
@@ -95,8 +82,8 @@ function resizeableImage(image_target) {
     }
 
     function updateContainer(left, top) {
-        top = top + (CROP_WIDTH / 2) + 'px';
-        left = left + (CROP_HEIGHT / 2) + 'px';
+        top = top + (CROPWIDTH / 2) + 'px';
+        left = left + (CROPHEIGHT / 2) + 'px';
 
         container.style.top = top;
         container.style.left = left;
@@ -125,24 +112,33 @@ function resizeableImage(image_target) {
             , right
             , bottom;
 
-        if ((newWidth < MIN_WIDTH) || (newWidth > w))
+        if (newWidth < MINWIDTH) {
             return;
+        } else if (newWidth > w) {
+            return;
+        }
 
         left = container.offsetLeft - (zoom / 2);
         top = container.offsetTop - (zoom / 2);
         right = left + newWidth;
         bottom = top + newHeight;
 
-        if (left < 0)
+        if (left < 0) {
             left = 0;
-        if (top < 0)
+        }
+        if (top < 0) {
             top = 0;
-        if (right > w || bottom > h)
+        }
+        if (right > w) {
             return;
+        }
+        if (bottom > h) {
+            return;
+        }
 
-        ratio = CROP_WIDTH / newWidth;
+        ratio = CROPWIDTH / newWidth;
 
-        updateCropSize(newWidth, newWidth);
+        updateCropSize(newWidth, newHeight);
         updateCropImage(left, top);
         updateContainer(left, top);
         crop();
@@ -191,6 +187,7 @@ function resizeableImage(image_target) {
             , w
             , h;
 
+        e.preventDefault();
         e.stopPropagation();
 
         currentTouch.x = e.pageX || (e.touches && e.touches[0].pageX);
@@ -220,14 +217,26 @@ function resizeableImage(image_target) {
         cropWidth = crop_img.width * ratio;
         cropHeight = crop_img.height * ratio;
 
-        resize_canvas.width = CROP_WIDTH;
-        resize_canvas.height = CROP_HEIGHT;
+        resize_canvas.width = CROPWIDTH;
+        resize_canvas.height = CROPHEIGHT;
 
         let ctx = resize_canvas.getContext('2d');
         ctx.drawImage(crop_img,
             cropLeft, cropTop,
             cropWidth, cropHeight
         );
+    }
+
+    function removeHandlers() {
+        container.removeEventListener('mousedown', startMoving);
+        container.removeEventListener('touchstart', startMoving);
+        container.removeEventListener('wheel', resizing);
+
+        document.removeEventListener('mouseup', endMoving);
+        document.removeEventListener('touchend', endMoving);
+        document.removeEventListener('mousemove', moving);
+        document.removeEventListener('touchmove', moving);
+        document.removeEventListener('keypress', keyHandler);
     }
 
     function getCroppedImage() {
@@ -244,5 +253,3 @@ function resizeableImage(image_target) {
 
     return getCroppedImage;
 }
-
-export default resizeableImage;

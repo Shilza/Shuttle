@@ -26,17 +26,17 @@ class CommentController {
         let page = parseInt(request.input('page'), 10);
         page = page > 0 ? page : 1;
 
-        const postId  = request.input('post_id');
+        const postId = request.input('post_id');
         const user = await auth.getUser();
 
         const owner = await PostsService.getPostsOwnerByPostId(postId);
 
         const canSee = await UsersService.canSee(owner, user.id);
-        if(canSee) {
+        if (canSee) {
             const comments = await CommentsService.getComments(user.id, postId, page);
             return response.json(comments);
         } else
-            return response.json({ private: true });
+            return response.json({private: true});
     }
 
     async create({request, response, auth}) {
@@ -124,15 +124,16 @@ class CommentController {
 
         const user = await auth.getUser();
         const post = await comment.post().fetch();
-        if (user.isOwner(comment) || user.isOwner(post.toJSON()))
-            return response.status(403).json({
-                message: 'Forbidden. Unable to delete'
+        if (user.isOwner(comment) || user.isOwner(post.toJSON())) {
+            await comment.delete();
+
+            return response.json({
+                message: 'Comment successfully deleted'
             });
+        }
 
-        await comment.delete();
-
-        response.json({
-            message: 'Comment successfully deleted'
+        response.status(403).json({
+            message: 'Forbidden. Unable to delete'
         });
     }
 }

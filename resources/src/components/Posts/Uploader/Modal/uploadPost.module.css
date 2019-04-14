@@ -21,6 +21,12 @@
     }
 }
 
+@media (max-width: 500px) {
+    .mainContainer {
+        width: 300px;
+    }
+}
+
 .sideContainer {
     display: flex;
     flex-direction: column;

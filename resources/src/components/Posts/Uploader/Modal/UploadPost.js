@@ -1,29 +1,35 @@
-import React, {useRef} from "react";
+import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
-import {Button} from "antd";
+import {Button, Form} from "antd";
 import UploadMediaPlayer from "../../../PostMedia/UploadMediaPlayer";
 import styles from './uploadPost.module.css';
 import Header from "../../PostsModal/PostsControl/Header";
 import {connect} from "react-redux";
-import resizeableImage from "../../../../utils/crop";
+import {resizeableImage} from "../../../../utils/crop";
+import Caption from "../../../Fields/Caption";
 
-const UploadPost = ({upload, media, currentAuthUsername}) => {
+const UploadPost = ({upload, media, form, currentAuthUsername}) => {
 
-    let inputRef = useRef();
+    let getCroppedImage;
+    useEffect(() => {
+        getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
+    }, []);
 
     const submit = () => {
-
-        const getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
         let media = getCroppedImage();
 
         fetch(media)
             .then(res => res.blob())
             .then(blob => {
-                let postData = new FormData();
-                postData.append('media', new File([blob], "media", {type: 'image/jpeg'}));
-                postData.append('caption', inputRef.current.value);
+                form.validateFields((err, {caption}) => {
+                    if (!err) {
+                        let postData = new FormData();
+                        postData.append('media', new File([blob], "media", {type: 'image/jpeg'}));
+                        postData.append('caption', caption);
 
-                upload(postData);
+                        upload(postData);
+                    }
+                });
             });
     };
 
@@ -31,14 +37,14 @@ const UploadPost = ({upload, media, currentAuthUsername}) => {
         <>
             {
                 media &&
-                <div className={styles.mainContainer}>
+                <Form className={styles.mainContainer}>
                     <UploadMediaPlayer media={media}/>
                     <div className={styles.sideContainer}>
                         <Header username={currentAuthUsername}/>
-                        <input ref={inputRef}/>
+                        <Caption getFieldDecorator={form.getFieldDecorator}/>
                         <Button type='primary' htmlType="submit" onClick={submit}>Submit</Button>
                     </div>
-                </div>
+                </Form>
             }
         </>
     );
@@ -54,4 +60,4 @@ const mapStateToProps = state => ({
     currentAuthUsername: state.auth.user.username
 });
 
-export default connect(mapStateToProps)(UploadPost);
+export default connect(mapStateToProps)(Form.create()(UploadPost));
