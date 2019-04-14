@@ -9,8 +9,9 @@ import DrawerTitle from "./DrawerTitle";
 import {setIsSavedTimeout, setPostToBeSaved} from "../../../store/actions/saved";
 import {connect} from "react-redux";
 import NewCompilationModal from "./Compilations/NewCompilationModal";
+import Link from "react-router-dom/es/Link";
 
-const SaveBar = ({dispatch, isModalOpen}) => {
+const SaveBar = ({dispatch, isModalOpen, username}) => {
 
     let [drawerVisible, setDrawerVisible] = useState(false);
 
@@ -32,15 +33,20 @@ const SaveBar = ({dispatch, isModalOpen}) => {
             transitionEnter={false}
             transitionAppearTimeout={250}
             transitionLeaveTimeout={500}
+            className={styles.transitionContainer}
         >
             <div className={styles.saveBar}>
                 <button className={styles.buttonLink} onClick={openDrawer}>
                     Choose compilation
                 </button>
-                <Button size='small'>See compilations</Button>
+                <Link to={`/${username}`}>
+                    <Button size='small'>
+                        See compilations
+                    </Button>
+                </Link>
             </div>
             <Drawer
-                height={'50%'}
+                height={350}
                 title={<DrawerTitle/>}
                 placement={'bottom'}
                 visible={drawerVisible}
@@ -66,7 +72,8 @@ SaveBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    isModalOpen: state.saved.isModalOpen
+    isModalOpen: state.saved.isModalOpen,
+    username: state.auth.user.username
 });
 
 export default connect(mapStateToProps)(SaveBar);

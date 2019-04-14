@@ -3,7 +3,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    height: 45px;
     background: whitesmoke;
 }
 
@@ -58,4 +60,13 @@
 
 .icon {
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .transitionContainer {
+        position: absolute;
+        top: calc(100% - 45px);
+        left: 0;
+        width: 500px;
+    }
 }

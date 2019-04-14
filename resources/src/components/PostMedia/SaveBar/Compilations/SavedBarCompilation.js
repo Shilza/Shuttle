@@ -21,8 +21,7 @@ const SavedBarCompilation = ({compilation, dispatch, postId}) => {
         <Spin spinning={loading} indicator={icon}>
             <div className={styles.compilation}
                  onClick={event => setCompilationToSave(event, Object.keys(compilation)[0])}>
-                <Compilation compilation={compilation} loadPosts={() => {
-                }}/>
+                <Compilation compilation={compilation} loadPosts={() => {}}/>
             </div>
         </Spin>
     );
