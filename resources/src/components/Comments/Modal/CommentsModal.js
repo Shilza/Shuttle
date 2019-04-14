@@ -6,11 +6,11 @@ import {connect} from "react-redux";
 import {setIsCommentsModalOpen} from "../../../store/actions/comments";
 import * as CommentService from "../../../services/comments";
 
-const CommentsModal = ({dispatch, selectedComment: selectedCommentId, canDelete, isModalOpen}) => {
+const CommentsModal = ({dispatch, selectedComment: selectedComment, canDelete, isModalOpen}) => {
 
     const closeModal = () => dispatch(setIsCommentsModalOpen(false));
 
-    const removeComment = () => dispatch(CommentService.remove(selectedCommentId));
+    const removeComment = () => dispatch(CommentService.remove(selectedComment.id));
 
     return (
         <>
@@ -28,7 +28,7 @@ CommentsModal.propTypes = {
     dispatch: PropTypes.func.isRequired,
     canDelete: PropTypes.bool.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
-    selectedCommentId: PropTypes.number
+    selectedComment: PropTypes.object
 };
 
 const canDelete = state => {
@@ -41,7 +41,7 @@ const canDelete = state => {
 
 const mapStateToProps = state => ({
     isModalOpen: state.comments.isModalOpen,
-    selectedCommentId: (state.comments.selectedComment ? state.comments.selectedComment.id : undefined),
+    selectedComment: state.comments.selectedComment,
     canDelete: canDelete(state)
 });
 
