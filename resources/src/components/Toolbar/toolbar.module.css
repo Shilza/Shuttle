@@ -1,6 +1,9 @@
 
 .toolbar {
     display: flex;
+    position: fixed;
+    top: 100%;
+    transform: translateY(-100%);
     justify-content: space-evenly;
     align-items: center;
     height: 45px;
