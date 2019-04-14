@@ -38,10 +38,10 @@ User.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    me: state.auth.user.id === state.users.user.id,
-    canSee: state.users.user.canSee,
-    isPrivate: state.users.user.private,
-    amBlacklisted: state.users.user.amBlacklisted
+    me: state.auth.user.id === (state.users.user && state.users.user.id),
+    canSee: !!(state.users.user && state.users.user.canSee),
+    isPrivate: !!(state.users.user && state.users.user.private),
+    amBlacklisted: !!(state.users.user && state.users.user.amBlacklisted)
 });
 
 export default connect(mapStateToProps)(User);
