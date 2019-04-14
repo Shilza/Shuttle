@@ -8,10 +8,17 @@ import style from './edit.module.css';
 const Edit = () => {
 
     let [isEditDrawerVisible, setDrawerVisible] = useState(false);
+    let [isBodyVisible, setBodtyVisible] = useState(false);
 
-    const showDrawer = () => setDrawerVisible(true);
+    const showDrawer = () => {
+        setDrawerVisible(true);
+        setBodtyVisible(true);
+    };
 
-    const onClose = () => setDrawerVisible(false);
+    const onClose = () => {
+        setBodtyVisible(false);
+        setTimeout(() => setDrawerVisible(false), 500);
+    };
 
     return <>
         <Button size='small' onClick={showDrawer} className={style.editButton}>
@@ -23,7 +30,7 @@ const Edit = () => {
                 title={<EditTitle/>}
                 onClose={onClose}
             >
-                <EditBody/>
+                <EditBody visible={isBodyVisible}/>
             </Drawer>
         }
     </>;

@@ -9,3 +9,14 @@
     opacity: 1;
     transition: 500ms ease-out;
 }
+
+.leave {
+    opacity: 1;
+    margin-bottom: 0;
+    transition: 500ms ease-in-out;
+}
+
+.leaveActive {
+    opacity: 0;
+    margin-bottom: 100%;
+}

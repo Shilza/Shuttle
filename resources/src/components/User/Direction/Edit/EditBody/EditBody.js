@@ -8,7 +8,7 @@ import styles from '../edit.module.css';
 import transitions from './transitions.module.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const EditBody = ({user}) => {
+const EditBody = ({ user, visible }) => {
     return (
         <div className={styles.editContainer}>
             <ReactCSSTransitionGroup
@@ -16,19 +16,25 @@ const EditBody = ({user}) => {
                 transitionAppear={true}
                 transitionAppearTimeout={500}
                 transitionEnter={false}
-                transitionLeave={false}
-                style={styles.transitionContainer}
+                transitionLeave={true}
+                className={styles.transitionContainer}
             >
-                <Username username={user.username}/>
-                <Bio bio={user.bio}/>
-                <Site site={user.site}/>
+                {
+                    visible &&
+                        <>
+                            <Username username={user.username}/>
+                            <Bio bio={user.bio}/>
+                            <Site site={user.site}/>
+                            </>
+                }
             </ReactCSSTransitionGroup>
         </div>
     );
 };
 
 EditBody.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    visible: PropTypes.bool.isRequired
 };
 
 export default connect(state => ({user: state.auth.user}))(EditBody);
