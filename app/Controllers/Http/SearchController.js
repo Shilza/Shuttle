@@ -22,7 +22,7 @@ class SearchController {
 
         let users = await User
             .query()
-            .where('username', 'like', '%' + request.input('username') + '%')
+            .where('username', 'like', '' + request.input('username') + '%')
             .paginate(page, 30);
 
         response.json(users);
