@@ -1,4 +1,3 @@
-
 export const autoType = (elementClass, typingSpeed) => {
     let typed = document.getElementsByClassName(elementClass)[0];
 
@@ -21,12 +20,10 @@ export const autoType = (elementClass, typingSpeed) => {
         typed.style.opacity = 1;
         typed.textContent = "";
         for (let i = 0; i < amntOfChars; i++) {
-            (function (i, char) {
-                setTimeout(function () {
-                    newString += char;
-                    typed.textContent = newString;
-                }, i * typingSpeed);
-            })(i + 1, text[i]);
+            setTimeout(function () {
+                newString += text[i];
+                typed.textContent = newString;
+            }, i * typingSpeed);
         }
     }, 1200);
 };
