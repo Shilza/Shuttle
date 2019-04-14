@@ -6,123 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f295324-5cf2-40ce-ae02-c59a84c1591f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/Comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Comments/Modal/ModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Comments/Modal/ModalBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/DefaultAvatar/DefaultAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/DefaultAvatar/DefaultAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Drawer/Drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Drawer/Drawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/ExplainingLabels/ExplainingLabel.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/ExplainingLabels/ExplainingLabel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/CompilationName.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/CompilationName.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Confirm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Bio.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Bio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Site.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Site.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Email.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Email.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/MaterialInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/MaterialInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Password.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Remember.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Remember.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Fields/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Modal/CloseButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Modal/CloseButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Modal/ListModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Modal/ListModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Modal/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Paginator/Paginator.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Paginator/Paginator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/MediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/MediaPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/PostMedia.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/PostMedia.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/DrawerTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/DrawerTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/UploadMediaPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/UploadMediaPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/PostMedia/VideoPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/PostMedia/VideoPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Post/Media.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/CopyLinkButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/CopyLinkButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/RemovePostButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/RemovePostButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Like.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Like.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Save.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Caption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/CommentInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/CommentInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/CropImage/CropImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/CropImage/CropImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/Uploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/Uploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Search/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Search/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/Toolbar/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Toolbar/Toolbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Direction.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Direction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/DirectionActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/DirectionActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/edit.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/FriendshipActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/FriendshipActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/UserActions/ActionsBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/UserActions/ActionsBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/UserActions/UserActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/UserActions/UserActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Compilation.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Compilation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/CompilationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/Saved.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/SavedContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/Saved/SavedContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/Avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/Avatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DeleteButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DeleteButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DiretionButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/DiretionButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/UploadButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Avatar/UploadButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/Story/Story.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/Story/Story.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/Followers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/Followers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/Follows.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/Follows.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserFriendshipCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserFriendshipCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfo/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Archive/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Archive/Archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklist.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklisted.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklisted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/RemoveButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/RemoveButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/UserCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/Username.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/Username.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Feed/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Feed/FeedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Feed/FeedList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/StoriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/StoriesList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/pages/Feed/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Feed/FeedPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/LikedPosts/LikedPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/LikedPosts/LikedPosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/BlanksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/BlanksList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/Notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/Notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/NotificationsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/NotificationsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/SubscriptionRequestsLabel.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/SubscriptionRequestsLabel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/ButtonsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/ButtonsContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/UserRequestCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/UserRequestCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/pages/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/pages/Welcome/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/pages/Welcome/Welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/services/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/services/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/src/utils/timeConverter.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/utils/timeConverter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/src/store/reducers/posts.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -147,31 +44,27 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Shuttle@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Shuttle@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Shuttle@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="Shuttle: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NewCompilationModal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js">
+      <file leaf-file-name="crop.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/utils/crop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comments.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/comments.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="46" selection-start-line="46" selection-end-line="52" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-680">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -179,8 +72,8 @@
       <file leaf-file-name="posts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+            <state relative-caret-position="153">
+              <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -188,32 +81,67 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/pages/User/User.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="629">
+                <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/services/user.js">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="187">
+              <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js">
+      <file leaf-file-name="transitions.module.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="221">
+              <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostControl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Caption.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Caption.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Confirm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Confirm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Email.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Email.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -221,32 +149,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="CompilationName.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/CompilationName.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/webpack.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="349" column="34" lean-forward="true" selection-start-line="349" selection-start-column="34" selection-end-line="349" selection-end-column="34" />
+            <state relative-caret-position="221">
+              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -264,23 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conca</find>
-      <find>concat</find>
-      <find>concat(</find>
-      <find>scroll</find>
-      <find>this.state</find>
-      <find>fetchComments</find>
-      <find>comments</find>
-      <find>delete</find>
-      <find>import CommentsModal</find>
-      <find>import CommentModal from</find>
-      <find>OptionsModal</find>
-      <find>import PostMedia</find>
-      <find>LikesContainer</find>
-      <find>pr</find>
-      <find>orderB</find>
-      <find>copyLinkToClipboard</find>
-      <find>setIsFoll</find>
       <find>CommentModal</find>
       <find>import CommentModal</find>
       <find>getFollowers</find>
@@ -294,6 +184,23 @@
       <find>this</find>
       <find>babel</find>
       <find>babel-</find>
+      <find>PropTypes.bool</find>
+      <find>searchbar</find>
+      <find>choose compilation</find>
+      <find>see compilati</find>
+      <find>.crop-cont</find>
+      <find>typingSpeed</find>
+      <find>savedbar</find>
+      <find>see com</find>
+      <find>CropImage</find>
+      <find>crop-cont</find>
+      <find>react</find>
+      <find>var</find>
+      <find>remove</find>
+      <find>border</find>
+      <find>CommentsModal</find>
+      <find>delete</find>
+      <find>article</find>
     </findStrings>
     <replaceStrings>
       <replace>counter</replace>
@@ -301,6 +208,7 @@
       <replace>0.16</replace>
       <replace>search</replace>
       <replace>18px</replace>
+      <replace>let</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -312,57 +220,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklisted.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Blacklist/Blacklist.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/Username.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/UserCard.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Blacklist/Card/RemoveButton.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Feed/FeedPost.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Feed/FeedList.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Feed/Feed.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/LikedPosts/LikedPosts.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/SubscriptionRequestsLabel.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/UserRequestCard.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/ButtonsContainer.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/NotificationsList.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/Notification.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/BlanksList.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/FriendshipActions.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/PostMedia.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/MediaPlayer.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/users.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/DefaultAvatar/DefaultAvatar.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/Uploader.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Search/SearchBar.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/auth.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/PostLink.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/Welcome/Welcome.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Modal/ListModal.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/Posts.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Like.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Comments/Comment.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/CompilationController.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilationsList.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/comments.js" />
-        <option value="$PROJECT_DIR$/resources/src/store/reducers/posts.js" />
-        <option value="$PROJECT_DIR$/resources/src/pages/User/User.js" />
-        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js" />
-        <option value="$PROJECT_DIR$/config/.babelrc" />
-        <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/resources/src/index.js" />
-        <option value="$PROJECT_DIR$/config/webpack.config.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/MaterialInput/MaterialInput.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/Edit.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/EditBody.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/ExplainingLabels/UserDoesNotExists/styles.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/ExplainingLabels/UserDoesNotExists/UserDoesNotExists.js" />
+        <option value="$PROJECT_DIR$/resources/src/pages/User/User.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/User.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/user.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/NavigationPanel/PostsManager/PostsManager.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Search/searchBar.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilationsList.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Toolbar/toolbar.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/services/comments.js" />
+        <option value="$PROJECT_DIR$/resources/src/pages/Feed/FeedPost.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/selectors/comments.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Modal/modal.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Modal/Modal.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Paginator/Paginator.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Comments/CommentsList.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/saved.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/SearchController.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/PostController.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/Bio.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/uploadPost.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js" />
+        <option value="$PROJECT_DIR$/resources/src/utils/autoType.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/savebar.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/uploader.module.css" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/Uploader.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/StoriesList.js" />
+        <option value="$PROJECT_DIR$/resources/src/utils/crop.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js" />
+        <option value="$PROJECT_DIR$/resources/src/css/non-module.css" />
+        <option value="$PROJECT_DIR$/resources/src/store/reducers/comments.js" />
+        <option value="$PROJECT_DIR$/resources/src/Main.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/CommentController.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Comments/Comment.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js" />
+        <option value="$PROJECT_DIR$/resources/src/services/post.js" />
+        <option value="$PROJECT_DIR$/resources/src/store/reducers/posts.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js" />
+        <option value="$PROJECT_DIR$/resources/src/components/Fields/Caption.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css" />
       </list>
     </option>
   </component>
@@ -410,25 +318,7 @@
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="presentation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
@@ -454,38 +344,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Comments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Posts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Posts" type="462c0819:PsiDirectoryNode" />
-              <item name="PostsList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -493,20 +351,30 @@
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
+              <item name="Edit" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adojs" type="b2602c69:ProjectViewProjectNode" />
               <item name="adojs" type="462c0819:PsiDirectoryNode" />
-              <item name="start" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Direction" type="462c0819:PsiDirectoryNode" />
+              <item name="Edit" type="462c0819:PsiDirectoryNode" />
+              <item name="EditBody" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -529,19 +397,19 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\adojs" />
-      <recent name="D:\adojs\resources\src\components\Paginator" />
-      <recent name="D:\adojs\resources\src\pages" />
-      <recent name="D:\adojs\resources\src\components\Notifications\SubscriptionRequests\UserCard" />
-      <recent name="D:\adojs\resources\src\components\Comments\Modal" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\adojs\resources\src\pages" />
       <recent name="D:\adojs\resources\src\components\PostMedia" />
       <recent name="D:\adojs\resources\src\components\Notifications\Notifications" />
       <recent name="D:\adojs\resources\src\components\Blacklist" />
       <recent name="D:\adojs\resources\src\components\User\Direction\Edit\EditBody" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\adojs" />
+      <recent name="D:\adojs\resources\src\components\Paginator" />
+      <recent name="D:\adojs\resources\src\pages" />
+      <recent name="D:\adojs\resources\src\components\Notifications\SubscriptionRequests\UserCard" />
+      <recent name="D:\adojs\resources\src\components\Comments\Modal" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -660,7 +528,102 @@
       <workItem from="1551258469248" duration="2078000" />
       <workItem from="1551378710337" duration="6265000" />
       <workItem from="1551429215489" duration="12150000" />
+      <workItem from="1551534529888" duration="592000" />
+      <workItem from="1552133168999" duration="479000" />
+      <workItem from="1554623187780" duration="1196000" />
+      <workItem from="1554705695674" duration="3000" />
+      <workItem from="1554897183400" duration="217000" />
+      <workItem from="1555134461955" duration="25190000" />
+      <workItem from="1555161296466" duration="553000" />
+      <workItem from="1555165283285" duration="17000" />
+      <workItem from="1555166812986" duration="645000" />
+      <workItem from="1555217695093" duration="11101000" />
     </task>
+    <task id="LOCAL-00001" summary="Fix search user by username in database">
+      <created>1555230972967</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555230973007</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix access to deleting comments">
+      <created>1555231092148</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231092148</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix image cropping">
+      <created>1555231217766</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231217766</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix modal background scrolling">
+      <created>1555231247528</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231247528</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First page auto typing fix">
+      <created>1555231276691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231276691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Comments fixing">
+      <created>1555231301117</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231301117</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Material input ref forwarding">
+      <created>1555231326222</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231326222</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add Loader component to Paginator">
+      <created>1555231356902</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231356902</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix PostsModal">
+      <created>1555231384404</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231384404</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix SaveBar">
+      <created>1555231403126</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231403126</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Search ui fixes">
+      <created>1555231422977</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231422977</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Edit window fixes">
+      <created>1555231454171</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1555231454171</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -669,7 +632,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1022979000" />
+    <option name="totallyTimeSpent" value="1062972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -689,10 +652,11 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35227272" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.39285713" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28971255" />
+      <window_info active="true" anchor="bottom" x="22" y="287" width="1322" height="163" id="Terminal" order="9" visible="true" weight="0.30194804" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33736762" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.17549168" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.16868381" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -705,7 +669,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32954547" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,304 +677,259 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix search user by username in database" />
+    <MESSAGE value="Fix access to deleting comments" />
+    <MESSAGE value="Fix image cropping" />
+    <MESSAGE value="Fix modal background scrolling" />
+    <MESSAGE value="First page auto typing fix" />
+    <MESSAGE value="Comments fixing" />
+    <MESSAGE value="Material input ref forwarding" />
+    <MESSAGE value="Add Loader component to Paginator" />
+    <MESSAGE value="Fix PostsModal" />
+    <MESSAGE value="Fix SaveBar" />
+    <MESSAGE value="Search ui fixes" />
+    <MESSAGE value="Edit window fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit window fixes" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/UserRequestCard.js">
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/PostController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="35" />
+        <state relative-caret-position="238">
+          <caret line="122" column="23" lean-forward="true" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/SubscriptionRequests/UserCard/ButtonsContainer.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/NavigationPanel/NavigationPanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="35" />
+        <state relative-caret-position="467">
+          <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/NotificationBlank.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/postModal.module.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/Notification.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/uploadPost.module.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-397">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/BlanksList.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/UploadMediaPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/PostByCode/PostByCode.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Edit/Site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="26" selection-start-line="26" selection-end-line="30" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Edit/Username.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/utils/autoType.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/transitions.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/savebar.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/UserInfoHeader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/FriendshipActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="43" column="103" selection-start-line="43" selection-start-column="103" selection-end-line="43" selection-end-column="103" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/PostMedia.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/MediaPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Feed/FeedPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="69" column="18" lean-forward="true" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#223#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/DefaultAvatar/DefaultAvatar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        <state relative-caret-position="629">
+          <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/PostsUploader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state relative-caret-position="188">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/uploader.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/Uploader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        <state relative-caret-position="357">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Search/SearchBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="41" column="11" lean-forward="true" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Settings/Settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Settings/SettingsBody.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/auth.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/UserInfoHeader/Stories/StoriesList/StoriesList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="56" column="26" lean-forward="true" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/NotificationsList.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="263">
+          <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Notifications/Notifications/PostLink.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/Modal/UploadPost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Welcome/Welcome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        <state relative-caret-position="212">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/css/non-module.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="146">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/Archive/Archive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Modal/ListModal.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Uploader/CropImage/CropImage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="139" column="7" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CommentController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="131" column="15" lean-forward="true" selection-start-line="131" selection-start-column="15" selection-end-line="131" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/ModalBody.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        <state relative-caret-position="272">
+          <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/OptionsModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+        <state relative-caret-position="238">
+          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/LikedPosts/LikedPosts.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Post/Post.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="272">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/pages/Archive/Archive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1020,168 +938,154 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/Posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        <state relative-caret-position="85">
+          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Like.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="204">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Comments/Comment.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostModalBody.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="42" column="2" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
+        <state relative-caret-position="74">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/Actions/Actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Comments/Modal/CommentsModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/CompilationController.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Comments/Comment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="n#!!block;n#showPosts#0;n#CompilationController#0" />
-            <element signature="n#!!block;n#showCompilations#0;n#CompilationController#0" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilation.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/OptionsModal/Archive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="204">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/SaveBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/SavedBarCompilationsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/services/post.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+        <state relative-caret-position="217">
+          <caret line="125" column="63" selection-start-line="125" selection-start-column="63" selection-end-line="125" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/PostMedia/SaveBar/Compilations/NewCompilationModal.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/utils/crop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/comments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="46" selection-start-line="46" selection-end-line="52" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/store/actions/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/services/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/pages/User/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-680">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/src/store/reducers/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+        <state relative-caret-position="153">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsList/PostsList.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Posts/PostsModal/PostsControl/PostControl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="221">
+          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Email.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/CompilationName.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        <state relative-caret-position="221">
+          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/src/index.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Confirm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+    <entry file="das://72cf660a-cbf9-4987-84d6-bda2b63ef11f/schema/shuttle/table/adonis_schema">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/webpack.config.js">
+    <entry file="file://$PROJECT_DIR$/resources/src/components/Fields/Caption.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="349" column="34" lean-forward="true" selection-start-line="349" selection-start-column="34" selection-end-line="349" selection-end-column="34" />
+        <state relative-caret-position="289">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/presentation/mobile/notificationsStub.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="629">
+            <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/src/components/User/Direction/Edit/EditBody/transitions.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
         </state>
       </provider>
     </entry>

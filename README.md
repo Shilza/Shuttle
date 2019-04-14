@@ -1,31 +1,37 @@
-# Adonis React auth application
+# Shuttle
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Social network ReactJS application
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+## Install & setup
 
-## Setup
+1. git clone https://github.com/Shilza/Shuttle
+2. npm install
+3. Create MySQL database with 'Shopper' name
+4. Create .env file with custom settings. You can find example in the root directory of Shuttle project with name '.env.example'  
+5. adonis migration:run
+6. adonis seed
+7. npm start
+8. npm front-start
 
-Use the adonis command to install the blueprint
+## Features
 
-```bash
-adonis new yardstick
-```
+* Posts uploading
+* Comments creation
+* Liking posts and comments
+* News feed checking
+* Account privacy management
+* Blacklisting users
+* Manage blacklist
+* Archive posts
+* Editing account public data
+* Getting list of followers
+* Getting list of liked posts
+* View notifications
+* Subscription request management
+* Saving posts to named compilations
+* Searching users by nickname
+* Getting unique post's link
+* Avatar uploading
 
-or manually clone the repo and then run `npm install`.
+## Shuttle inside
 
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```

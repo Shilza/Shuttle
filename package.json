@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "node ace test",
-    "react-start": "node scripts/start.js",
-    "react-test": "node scripts/test.js",
-    "react-build": "node scripts/build.js"
+    "front-start": "node scripts/start.js",
+    "front-test": "node scripts/test.js",
+    "front-build": "node scripts/build.js"
   },
   "keywords": [
     "adonisjs",
@@ -75,11 +75,11 @@
     "postcss-preset-env": "6.3.1",
     "postcss-safe-parser": "4.0.1",
     "prop-types": "^15.7.2",
-    "react": "latest",
+    "react": "^16.8.6",
     "react-addons-css-transition-group": "^15.6.2",
     "react-app-polyfill": "^0.2.0",
     "react-dev-utils": "^7.0.0",
-    "react-dom": "latest",
+    "react-dom": "^16.8.6",
     "react-infinite-scroller": "^1.2.4",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
@@ -157,6 +157,14 @@
     "presets": [
       "react-app"
     ],
-    "plugins": [["import", { "libraryName": "antd", "style": true }]]
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": true
+        }
+      ]
+    ]
   }
 }
