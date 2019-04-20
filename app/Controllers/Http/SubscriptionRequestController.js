@@ -1,7 +1,5 @@
 'use strict';
 
-const SubscriptionRequest = use('App/Models/SubscriptionRequest');
-const User = use('App/Models/User');
 const {validate} = use('CValidator');
 const SubscriptionRequestsService = use('SubscriptionRequestsService');
 const FriendshipsService = use('FriendshipsService');

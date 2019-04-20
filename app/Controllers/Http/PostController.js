@@ -6,8 +6,6 @@ const Feed = use('App/Models/Feed');
 const Friendship = use('App/Models/Friendship');
 const {validate} = use('CValidator');
 const PostsService = use('PostsService');
-const CompilationsService = use('CompilationsService');
-const LikesService = use('LikesService');
 const UsersService = use('UsersService');
 
 class PostController {

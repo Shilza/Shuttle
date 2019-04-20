@@ -3,7 +3,6 @@
 const Comment = use('App/Models/Comment');
 const Post = use('App/Models/Post');
 const {validate} = use('CValidator');
-const LikesService = use('LikesService');
 const CommentsService = use('CommentsService');
 const UsersService = use('UsersService');
 const PostsService = use('PostsService');
@@ -74,7 +73,7 @@ class CommentController {
         response.json({comment});
     }
 
-    async update({request, response}) {
+    async update({request, response, auth}) {
         const rules = {
             id: 'required|integer',
             text: 'required|string|min:1|max:1000'
@@ -93,12 +92,18 @@ class CommentController {
                 message: 'Comment does not exists'
             });
 
-        comment.text = request.input('text');
-        comment.save();
+        const user = await auth.getUser();
+        if (user.isOwner(comment)) {
+            comment.text = request.input('text');
+            comment.save();
 
-        response.json({
-            message: 'Comment successfully updated',
-            comment
+            return response.json({
+                message: 'Comment successfully updated'
+            });
+        }
+
+        response.status(403).json({
+            message: 'Forbidden. Unable to update'
         });
     }
 

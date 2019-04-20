@@ -4,7 +4,6 @@ const {validate} = use('CValidator');
 const Post = use('App/Models/Post');
 const Compilation = use('App/Models/Compilation');
 const CompilationsService = use('CompilationsService');
-const LikesService = use('LikesService');
 const PostsService = use('PostsService');
 
 class CompilationController {

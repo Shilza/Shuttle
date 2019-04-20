@@ -1,5 +1,4 @@
 'use strict';
-const SubscriptionRequestsService = use('SubscriptionRequestsService');
 const {validate} = use('CValidator');
 const NotificationsService = use('NotificationsService');
 

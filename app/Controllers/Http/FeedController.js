@@ -2,7 +2,6 @@
 
 const {validate} = use('CValidator');
 const PostsService = use('PostsService');
-const LikesService = use('LikesService');
 
 class FeedController {
 
