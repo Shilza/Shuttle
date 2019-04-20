@@ -6,7 +6,6 @@ export function resizeableImage(image_target) {
         , crop_img
         , event_state = {}
         , ratio = 1.0
-        , keyZoomValue = 4.0
         , MINWIDTH = 50
         , CROPWIDTH = 200
         , CROPHEIGHT = 200
@@ -28,8 +27,6 @@ export function resizeableImage(image_target) {
         container.addEventListener('mousedown', startMoving, false);
         container.addEventListener('touchstart', startMoving, false);
         container.addEventListener('wheel', resizing, false);
-
-        document.addEventListener('keypress', keyHandler, false);
     }
 
     function init() {
@@ -144,16 +141,6 @@ export function resizeableImage(image_target) {
         crop();
     }
 
-    function keyHandler(e) {
-        e.preventDefault();
-
-        const charCode = String.fromCharCode(e.charCode);
-        if (charCode === '+')
-            imgZoom(keyZoomValue);
-        else if (charCode === '-')
-            imgZoom(-keyZoomValue);
-    }
-
     function resizing(e) {
         e.preventDefault();
         imgZoom(e.deltaY > 0 ? 1 : -1);
@@ -236,7 +223,6 @@ export function resizeableImage(image_target) {
         document.removeEventListener('touchend', endMoving);
         document.removeEventListener('mousemove', moving);
         document.removeEventListener('touchmove', moving);
-        document.removeEventListener('keypress', keyHandler);
     }
 
     function getCroppedImage() {
@@ -245,7 +231,7 @@ export function resizeableImage(image_target) {
         try {
             return resize_canvas.toDataURL('image/png', 1.0);
         } catch (e) {
-            alert(e);
+            console.error(e);
         } finally {
             removeHandlers();
         }

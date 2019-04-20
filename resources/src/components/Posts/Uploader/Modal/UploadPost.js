@@ -8,9 +8,10 @@ import {connect} from "react-redux";
 import {resizeableImage} from "../../../../utils/crop";
 import Caption from "../../../Fields/Caption";
 
+let getCroppedImage;
+
 const UploadPost = ({upload, media, form, currentAuthUsername}) => {
 
-    let getCroppedImage;
     useEffect(() => {
         getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
     }, []);
@@ -60,4 +61,4 @@ const mapStateToProps = state => ({
     currentAuthUsername: state.auth.user.username
 });
 
-export default connect(mapStateToProps)(Form.create()(UploadPost));
+export default Form.create()(connect(mapStateToProps)(UploadPost));
