@@ -21,7 +21,7 @@ class FriendshipsService {
         followers.data = await User
             .query()
             .whereIn('id', followers.data.map(item => item.subscriber_id))
-            .where('username', 'like', '%' + username + '%')
+            .where('username', 'like', username + '%')
             .select(['id', 'username', 'avatar'])
             .fetch();
 
@@ -38,7 +38,7 @@ class FriendshipsService {
         followers.data = await User
             .query()
             .whereIn('id', followers.data.map(item => item.user_id))
-            .where('username', 'like', '%' + username + '%')
+            .where('username', 'like', username + '%')
             .select(['id', 'username', 'avatar'])
             .fetch();
 
