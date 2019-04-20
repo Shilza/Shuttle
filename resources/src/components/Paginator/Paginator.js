@@ -1,15 +1,9 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
-import {Icon} from "antd";
+import Loader from "./Loader/Loader";
 
-const Loader = () => (
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }} >
-        <Icon type={'loading'}/>
-    </div>
-);
-
-const Paginator = ({fetcher, initialPage = 0, isReverse = false, children, loader = <Loader/>}) => {
+const Paginator = ({fetcher, initialPage = 0, isReverse = false, children, loader = <Loader key='loader'/>}) => {
 
     let [page, setPage] = useState(initialPage);
     let [lastPage, setLastPage] = useState(0);
