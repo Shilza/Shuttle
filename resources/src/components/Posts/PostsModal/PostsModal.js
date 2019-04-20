@@ -13,11 +13,9 @@ const PostsModal = ({isOpen, currentPost, dispatch}) => {
         <>
             {
                 (isOpen && currentPost) && (
-                    <>
-                        <Modal closeModal={closeModal}>
-                            <PostModalBody post={currentPost}/>
-                        </Modal>
-                    </>
+                    <Modal closeModal={closeModal}>
+                        <PostModalBody post={currentPost}/>
+                    </Modal>
                 )
             }
         </>

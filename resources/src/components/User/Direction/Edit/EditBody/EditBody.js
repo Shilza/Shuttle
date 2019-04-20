@@ -8,7 +8,7 @@ import styles from '../edit.module.css';
 import transitions from './transitions.module.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const EditBody = ({ user, visible }) => {
+const EditBody = ({user, visible}) => {
     return (
         <div className={styles.editContainer}>
             <ReactCSSTransitionGroup
@@ -21,11 +21,11 @@ const EditBody = ({ user, visible }) => {
             >
                 {
                     visible &&
-                        <>
-                            <Username username={user.username}/>
-                            <Bio bio={user.bio}/>
-                            <Site site={user.site}/>
-                            </>
+                    <>
+                        <Username username={user.username}/>
+                        <Bio bio={user.bio}/>
+                        <Site site={user.site}/>
+                    </>
                 }
             </ReactCSSTransitionGroup>
         </div>

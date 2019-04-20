@@ -19,11 +19,9 @@ const PostsManager = ({id, dispatch, posts}) => {
             <Paginator
                 fetcher={fetchUsersPosts}
             >
-                <>
-                    <PostsList posts={posts}/>
-                    <PostsModal/>
-                </>
+                <PostsList posts={posts}/>
             </Paginator>
+            <PostsModal/>
         </>
     );
 };

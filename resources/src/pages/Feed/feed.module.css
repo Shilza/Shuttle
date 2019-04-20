@@ -12,8 +12,7 @@
 .list {
     display: flex;
     flex-direction: column;
-    max-width: 550px;
-    width: 90%;
+    width: 500px;
     margin: 10px;
 }
 

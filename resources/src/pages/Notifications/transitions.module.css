@@ -11,10 +11,10 @@
 }
 
 .appear {
-    margin-top: 100%;
+    transform: translateY(60%);
 }
 
 .appearActive {
-    margin-top: 0;
+    transform: translateY(0);
     transition: .3s ease-out;
 }
