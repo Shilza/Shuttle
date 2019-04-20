@@ -7,10 +7,7 @@ import {connect} from "react-redux";
 const PostMedia = ({media, showBar}) =>
     <div>
         <MediaPlayer media={media}/>
-        {
-            showBar &&
-            <SaveBar/>
-        }
+        <SaveBar showBar={showBar}/>
     </div>;
 
 PostMedia.propTypes = {

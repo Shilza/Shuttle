@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import NewCompilationModal from "./Compilations/NewCompilationModal";
 import Link from "react-router-dom/es/Link";
 
-const SaveBar = ({dispatch, isModalOpen, username}) => {
+const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
 
     let [drawerVisible, setDrawerVisible] = useState(false);
 
@@ -28,23 +28,26 @@ const SaveBar = ({dispatch, isModalOpen, username}) => {
     return (
         <ReactCSSTransitionGroup
             transitionName={transitions}
-            transitionAppear={true}
+            transitionAppear={false}
             transitionLeave={true}
-            transitionEnter={false}
-            transitionAppearTimeout={250}
-            transitionLeaveTimeout={500}
+            transitionEnter={true}
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
             className={styles.transitionContainer}
         >
-            <div className={styles.saveBar}>
-                <button className={styles.buttonLink} onClick={openDrawer}>
-                    Choose compilation
-                </button>
-                <Link to={`/${username}`}>
-                    <Button size='small'>
-                        See compilations
-                    </Button>
-                </Link>
-            </div>
+            {
+                showBar &&
+                <div className={styles.saveBar}>
+                    <button className={styles.buttonLink} onClick={openDrawer}>
+                        Choose compilation
+                    </button>
+                    <Link to={`/${username}`}>
+                        <Button size='small'>
+                            See compilations
+                        </Button>
+                    </Link>
+                </div>
+            }
             <Drawer
                 height={350}
                 title={<DrawerTitle/>}

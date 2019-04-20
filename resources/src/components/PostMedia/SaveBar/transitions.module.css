@@ -7,16 +7,16 @@
 .leaveActive {
     opacity: 0;
     height: 0;
-    transition: all 500ms ease-in
+    transition: all 400ms ease-in
 }
 
-.appear {
+.enter {
     opacity: 0;
     height: 0;
 }
 
-.appearActive {
+.enterActive {
     opacity: 1;
     height: 50px;
-    transition: .25s ease-out;
+    transition: 400ms ease-out;
 }
