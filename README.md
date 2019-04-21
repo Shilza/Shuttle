@@ -6,7 +6,7 @@ Social network ReactJS application
 
 1. git clone https://github.com/Shilza/Shuttle
 2. npm install
-3. Create MySQL database with 'Shopper' name
+3. Create MySQL database
 4. Create .env file with custom settings. You can find example in the root directory of Shuttle project with name .env.example
 5. adonis migration:run
 6. adonis seed
