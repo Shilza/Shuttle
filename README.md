@@ -10,8 +10,8 @@ Social network ReactJS application
 4. Create .env file with custom settings. You can find example in the root directory of Shuttle project with name .env.example
 5. adonis migration:run
 6. adonis seed
-7. npm start
-8. npm front-start
+7. npm run start
+8. npm run front-start
 
 ## Features
 

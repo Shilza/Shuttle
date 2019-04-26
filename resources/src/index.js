@@ -1,5 +1,5 @@
 import './css/normalize.css';
-import './css/non-module.css';
+import './css/styles.css';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
