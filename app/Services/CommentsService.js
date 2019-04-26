@@ -1,8 +1,6 @@
 const User = use('App/Models/User');
 const Comment = use('App/Models/Comment');
 const LikesService = use('LikesService');
-const PostsService = use('PostsService');
-const UsersService = use('UsersService');
 
 class CommentsService {
 

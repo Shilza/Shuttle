@@ -112,7 +112,7 @@ class PostController {
         const Helpers = use('Helpers');
         const uuidv4 = require('uuid/v4');
 
-        const postImage = request.file('media', {
+        const postMedia = request.file('media', {
             types: ['image', 'video'],
             size: '10mb',
             subtypes: ['jpg', 'jpeg', 'mp4']
@@ -131,16 +131,16 @@ class PostController {
 
         const user = await auth.getUser();
 
-        const extension = postImage.type === 'image' ? 'jpg' : 'mp4';
+        const extension = postMedia.type === 'image' ? 'jpg' : 'mp4';
         const name = uuidv4() + '.' + extension;
         const path = Helpers.publicPath('uploads') + '/' + user.id;
 
-        await postImage.move(path, {
+        await postMedia.move(path, {
             name, overwrite: true
         });
 
-        if (!postImage.moved())
-            return postImage.error();
+        if (!postMedia.moved())
+            return postMedia.error();
 
         const postData = request.input('caption');
         let post = await Post.create({

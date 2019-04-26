@@ -72,7 +72,7 @@ class SubscriptionRequestController {
         });
     }
 
-    async delete({request, response, auth}) {
+    async deny({request, response, auth}) {
         const rules = {
             user_id: 'required|integer'
         };

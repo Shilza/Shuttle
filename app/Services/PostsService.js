@@ -5,7 +5,6 @@ const Post = use('App/Models/Post');
 const User = use('App/Models/User');
 const LikesService = use('LikesService');
 const CompilationsService = use('CompilationsService');
-const UsersService = use('UsersService');
 
 class PostsService {
 
@@ -184,17 +183,8 @@ class PostsService {
         return posts.toJSON();
     }
 
-    async _getPostsOwners(ids) {
-        let postsOwners = await User
-            .query()
-            .select('id', 'username', 'avatar')
-            .whereIn('id', ids)
-            .fetch();
-
-        return postsOwners.toJSON();
-    }
-
     async _getPostsOwners(postsIds) {
+        console.log('owners2');
         const owners = await User
             .query()
             .select(['id', 'username', 'avatar'])
