@@ -30,9 +30,7 @@ main {
 }
 
 @media (max-width: 768px) {
-    .crop-image,
-    .overlay > img {
-        height: auto;
+    .crop-image {
         width: 100%;
     }
 }

@@ -1,19 +1,37 @@
 
+.mediaContainer {
+    height: 100%;
+}
 
-.mediaContainer img, video{
+.mediaContainer > img, video {
     max-height: 500px;
     width: 500px;
 }
 
 @media (max-width: 500px) {
-    .mediaContainer img, video{
+    .mediaContainer > img {
         width: 100%;
         position: relative;
     }
 
-    .mediaContainer:before img, video{
+    .mediaContainer > video {
+        width: 100%;
+    }
+
+    .mediaContainer:before > img, video{
         content: "";
         display: block;
         padding-top: 100%;
+    }
+}
+
+.video {
+    position: relative;
+    width: 500px;
+}
+
+@media (max-width: 500px) {
+    .video {
+        width: 100%;
     }
 }

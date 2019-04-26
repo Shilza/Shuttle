@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
+import styles from './mediaPlayer.module.css';
 
 const VideoPlayer = ({src}) => {
 
@@ -16,12 +17,14 @@ const VideoPlayer = ({src}) => {
         <video onClick={play}
                src={src}
                ref={playerRef}
+               className={styles.video}
+               loop='loop'
         />
     );
 };
 
 VideoPlayer.propTypes = {
-    src: PropTypes.object.isRequired
+    src: PropTypes.string.isRequired
 };
 
 export default React.memo(VideoPlayer);

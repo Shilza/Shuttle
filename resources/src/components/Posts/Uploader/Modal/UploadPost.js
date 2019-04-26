@@ -7,43 +7,57 @@ import Header from "../../PostsModal/PostsControl/Header";
 import {connect} from "react-redux";
 import {resizeableImage} from "../../../../utils/crop";
 import Caption from "../../../Fields/Caption";
+import {isMobile} from "../../../../utils/isMobile";
 
 let getCroppedImage;
 
 const UploadPost = ({upload, media, form, currentAuthUsername}) => {
 
     useEffect(() => {
-        getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
+        if(media.type.match('image') && !isMobile())
+            getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
     }, []);
 
-    const submit = () => {
-        let media = getCroppedImage();
+    const submit = event => {
+        event.preventDefault();
+        if(media.type.match('image') && !isMobile()) {
+            let media = getCroppedImage();
 
-        fetch(media)
-            .then(res => res.blob())
-            .then(blob => {
-                form.validateFields((err, {caption}) => {
-                    if (!err) {
-                        let postData = new FormData();
-                        postData.append('media', new File([blob], "media", {type: 'image/jpeg'}));
-                        postData.append('caption', caption);
-
-                        upload(postData);
-                    }
+            fetch(media)
+                .then(res => res.blob())
+                .then(blob => {
+                    uploadPost(blob, 'image/jpeg');
                 });
-            });
+        }
+        else if (media.type.match('image'))
+            uploadPost(media, 'image/jpeg');
+        else
+            uploadPost(media, 'video/mp4');
+    };
+
+    const uploadPost = (media, type) => {
+        form.validateFields((err, {caption}) => {
+            if (!err) {
+                let postData = new FormData();
+
+                postData.append('media', new File([media], "media", {type}));
+                postData.append('caption', caption);
+
+                upload(postData);
+            }
+        });
     };
 
     return (
         <>
             {
                 media &&
-                <Form className={styles.mainContainer}>
+                <Form className={styles.mainContainer} onSubmit={submit}>
                     <UploadMediaPlayer media={media}/>
                     <div className={styles.sideContainer}>
                         <Header username={currentAuthUsername}/>
                         <Caption getFieldDecorator={form.getFieldDecorator}/>
-                        <Button type='primary' htmlType="submit" onClick={submit}>Submit</Button>
+                        <Button type='primary' htmlType="submit">Submit</Button>
                     </div>
                 </Form>
             }
