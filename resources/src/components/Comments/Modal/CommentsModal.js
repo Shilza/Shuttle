@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {setIsCommentsModalOpen} from "../../../store/actions/comments";
 import * as CommentService from "../../../services/comments";
 
-const CommentsModal = ({dispatch, selectedComment: selectedComment, canDelete, isModalOpen}) => {
+const CommentsModal = ({dispatch, selectedComment, canDelete, isModalOpen}) => {
 
     const closeModal = () => dispatch(setIsCommentsModalOpen(false));
 
