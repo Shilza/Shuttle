@@ -112,7 +112,7 @@ Route.group(() => {
     Route.get('/preview', 'SubscriptionRequestController.preview');
     Route.get('', 'SubscriptionRequestController.show');
     Route.post('', 'SubscriptionRequestController.accept');
-    Route.delete('', 'SubscriptionRequestController.delete');
+    Route.delete('', 'SubscriptionRequestController.deny');
 }).prefix('api/v1/subRequests').middleware(['auth:jwt']);
 
 
