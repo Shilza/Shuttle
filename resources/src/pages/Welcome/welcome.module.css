@@ -1,47 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .welcome {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, rgba(3, 192, 253, .55), rgba(155, 35, 181, 0.5));
+    background-color: #fafafa;
+    /*background: linear-gradient(135deg, rgba(3, 192, 253, .55), rgba(155, 35, 181, 0.5));*/
+}
+
+.companyInfo {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    align-self: flex-start;
+    margin: 12% 50px 20px 50px;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    color: black;
+    margin: 0 0 0 10px;
 }
 
 .card {
     width: 320px;
     border-radius: 2%;
-    right: 8%;
 }
 
 @media (max-width: 768px) {
     .welcome {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
     }
 
-    .welcome > img {
-        display: none;
-    }
-
-    .card {
-        right: 0;
+    .companyInfo {
+        margin: 10px 20px 40px 20px;
     }
 }
 
 .logo {
-    width: 600px;
-    height: 406px;
-}
-
-@media (max-width:1440px) {
-    .logo {
-        width: 450px;
-        height: 310px;
-    }
+    width: 450px;
+    height: 310px;
 }
 
 
