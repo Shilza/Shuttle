@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Input } from "antd";
+import {Input} from "antd";
 import FormItem from "antd/es/form/FormItem";
 
-const { TextArea } = Input;
+const {TextArea} = Input;
 
-const Caption = ({ getFieldDecorator, initialValue='' }) => {
+const Caption = ({getFieldDecorator, initialValue = ''}) => {
     return (
         <FormItem>
             {getFieldDecorator('caption', {
@@ -13,7 +13,12 @@ const Caption = ({ getFieldDecorator, initialValue='' }) => {
                     {max: 1000, message: 'Caption must be less than 1000 characters!'},
                 ], initialValue
             })(
-                <TextArea rows={4} placeholder="Caption"/>
+                <TextArea
+                    autosize={{
+                        minRows: 4, maxRows: 6
+                    }}
+                    placeholder="Caption"
+                />
             )}
         </FormItem>
     );
