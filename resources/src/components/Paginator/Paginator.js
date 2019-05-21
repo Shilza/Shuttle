@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
 import Loader from "./Loader/Loader";
 
-const Paginator = ({fetcher, initialPage = 0, isReverse = false, children, loader = <Loader key='loader'/>}) => {
+const Paginator = ({fetcher, initialPage = 0, useWindow = true, isReverse = false, children, loader = <Loader key='loader'/>}) => {
 
     let [page, setPage] = useState(initialPage);
     let [lastPage, setLastPage] = useState(0);
@@ -14,7 +14,7 @@ const Paginator = ({fetcher, initialPage = 0, isReverse = false, children, loade
     }, []);
 
     const fetchData = () => {
-        fetcher(page + 1).then(({page, lastPage}) => {
+        fetcher(page + 1).then(({page, lastPage} ) => {
             setPage(page);
             setLastPage(lastPage);
         });
@@ -27,6 +27,7 @@ const Paginator = ({fetcher, initialPage = 0, isReverse = false, children, loade
             hasMore={page < lastPage}
             loader={loader}
             isReverse={isReverse}
+            useWindow={useWindow}
         >
             {children}
         </InfiniteScroll>
@@ -38,7 +39,8 @@ Paginator.propTypes = {
     initialPage: PropTypes.number,
     isReverse: PropTypes.bool,
     children: PropTypes.node.isRequired,
-    loader: PropTypes.node
+    loader: PropTypes.node,
+    useWindow: PropTypes.bool
 };
 
 export default Paginator;
