@@ -184,7 +184,6 @@ class PostsService {
     }
 
     async _getPostsOwners(postsIds) {
-        console.log('owners2');
         const owners = await User
             .query()
             .select(['id', 'username', 'avatar'])
