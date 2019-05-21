@@ -5,6 +5,7 @@ import * as FeedService from "../../services/feed";
 import FeedList from "./FeedList";
 import styles from './feed.module.css';
 import Paginator from "../../components/Paginator/Paginator";
+import FeedExplainingLabel from "../../components/ExplainingLabels/FeedLabel/FeedLabel";
 
 const Feed = ({posts, page = 0, dispatch}) => {
 
@@ -19,6 +20,10 @@ const Feed = ({posts, page = 0, dispatch}) => {
                 >
                     <FeedList posts={posts}/>
                 </Paginator>
+                {
+                    posts && posts.length === 0 &&
+                    <FeedExplainingLabel/>
+                }
             </div>
         </div>
     );
