@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 const SavedBarCompilationsList = ({dispatch, postId, compilations}) => {
     useEffect(() => {
         if(!compilations)
-            dispatch(getCompilations(1));
+            dispatch(getCompilations());
     }, []);
 
     return (

@@ -10,10 +10,10 @@
 }
 
 .compilationsContainer {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 300px;
 }
 
 .buttonLink {
@@ -28,6 +28,8 @@
     width: 100%;
     overflow: scroll;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     -ms-overflow-style: none;
 }
 

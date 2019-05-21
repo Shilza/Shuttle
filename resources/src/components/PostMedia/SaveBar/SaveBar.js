@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import transitions from './transitions.module.css';
@@ -14,6 +14,11 @@ import Link from "react-router-dom/es/Link";
 const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
 
     let [drawerVisible, setDrawerVisible] = useState(false);
+
+    useEffect(() => {
+        if(!showBar)
+            closeDrawer();
+    }, [showBar]);
 
     const closeDrawer = () => {
         setDrawerVisible(false);
