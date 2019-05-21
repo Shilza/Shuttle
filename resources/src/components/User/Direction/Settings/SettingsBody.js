@@ -13,7 +13,9 @@ const SettingsBody = ({isPrivate, dispatch}) => {
     const changePrivacy = checked => {
         dispatch(checked ? setPrivate() : setPublic())
             .then(data => message.success(data))
-            .catch(data => message.success(data));
+            .catch(data => {
+                message.success(data)
+            });
     };
 
     return (
