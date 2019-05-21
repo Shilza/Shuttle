@@ -6,6 +6,8 @@ import styles from './notifications.module.css';
 import {connect} from "react-redux";
 import BlanksList from "./BlanksList";
 import Paginator from "../../../components/Paginator/Paginator";
+import NotificationsExplainingLabel
+    from "../../../components/ExplainingLabels/NotificationsLabel/NotificationsExplainingLabel";
 
 
 const NotificationsList = ({notificationsCount, dispatch, notifications, page}) => {
@@ -15,21 +17,23 @@ const NotificationsList = ({notificationsCount, dispatch, notifications, page}) 
     return (
         <>
             {
-                !!notificationsCount &&
-                <div className={styles.notificationsList}>
-                    <span className={styles.title}>Notifications</span>
-                    {
-                        !notifications && <BlanksList count={notificationsCount}/>
-                    }
-                    <Paginator
-                        fetcher={fetchNotifications}
-                        initialPage={page}
-                    >
+                notificationsCount !== 0 ?
+                    <div className={styles.notificationsList}>
+                        <span className={styles.title}>Notifications</span>
                         {
-                            !!notifications && notifications.map((item, index) => <Notification key={index} item={item}/>)
+                            !notifications && <BlanksList count={notificationsCount}/>
                         }
-                    </Paginator>
-                </div>
+                        <Paginator
+                            fetcher={fetchNotifications}
+                            initialPage={page}
+                        >
+                            {
+                                !!notifications && notifications.map((item, index) => <Notification key={index}
+                                                                                                    item={item}/>)
+                            }
+                        </Paginator>
+                    </div>
+                    : <NotificationsExplainingLabel/>
             }
         </>
     );
