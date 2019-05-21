@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getPostByCode} from "../../services/post";
 import {removeCurrentPost} from "../../store/actions/posts";
 import PostModalBody from "../../components/Posts/PostsModal/PostModalBody";
+import styles from './styles.module.css';
 
 const PostByCode = ({dispatch, match, currentPost}) => {
 
@@ -15,12 +16,12 @@ const PostByCode = ({dispatch, match, currentPost}) => {
     const componentWillUnmount = () => dispatch(removeCurrentPost());
 
     return (
-        <>
+        <div className={styles.container}>
             {
                 currentPost &&
                 <PostModalBody post={currentPost}/>
             }
-        </>
+        </div>
     )
 };
 
