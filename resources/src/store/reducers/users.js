@@ -10,6 +10,7 @@ import {
 import {FOLLOW, UNFOLLOW} from "../actionTypes/friendships";
 import {ADD_POST, REMOVE_POST} from "../actionTypes/posts";
 import {AUTH_LOGOUT} from "../actionTypes/auth";
+import {getUnique} from "../../utils/getUnique";
 
 const initialState = {
     user: undefined,
@@ -99,12 +100,12 @@ const incrementsPostsCount = state => {
 
 const addFollowers = (state, followers) => ({
     ...state,
-    followers: [...state.followers, ...followers]
+    followers: getUnique([...state.followers, ...followers])
 });
 
 const addFollows = (state, follows) => ({
     ...state,
-    follows: [...state.follows, ...follows]
+    follows: getUnique([...state.follows, ...follows])
 });
 
 const setFollowers = (state, followers) => ({
