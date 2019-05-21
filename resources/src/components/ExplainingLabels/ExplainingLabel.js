@@ -13,7 +13,7 @@ const ExplainingLabel = ({children, icon, text}) => (
 );
 
 ExplainingLabel.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
     icon: PropTypes.element.isRequired,
     text: PropTypes.string.isRequired
 };
