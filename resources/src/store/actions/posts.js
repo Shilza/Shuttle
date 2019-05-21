@@ -14,6 +14,12 @@ export function addSavedPosts(payload){
     }
 }
 
+export function removeSavedPosts(){
+    return {
+        type: ActionTypes.REMOVE_SAVED_POSTS
+    }
+}
+
 export function removeSavedPost(payload) {
     return {
         type: ActionTypes.REMOVE_SAVED_POST,

@@ -27,6 +27,8 @@ const Posts = (state = initialState, {type, payload = null}) => {
             return addArchivePosts(state, payload);
         case ActionTypes.ADD_SAVED_POSTS:
             return addSavedPosts(state, payload);
+        case ActionTypes.REMOVE_SAVED_POSTS:
+            return removeSavedPosts(state);
         case ActionTypes.SET_CURRENT_POST:
             return setCurrentPost(state, payload);
         case ActionTypes.REMOVE_CURRENT_POST:
@@ -112,6 +114,11 @@ const addSavedPosts = (state, savedPosts) => ({
         ...savedPosts,
         data: prepareToSavePosts(state.savedPosts.data, savedPosts.data)
     }
+});
+
+const removeSavedPosts = state => ({
+    ...state,
+    savedPosts: []
 });
 
 const setCurrentPost = (state, post) => ({
