@@ -8,7 +8,7 @@ const CommentsList = ({comments}) => {
 
     useEffect(() => {
         scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
-    }, []);
+    });
 
     return (
         <div ref={scrollRef} className={styles.commentsList}>
