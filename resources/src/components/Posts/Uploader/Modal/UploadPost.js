@@ -1,36 +1,26 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {Button, Form} from "antd";
 import UploadMediaPlayer from "../../../PostMedia/UploadMediaPlayer";
 import styles from './uploadPost.module.css';
 import Header from "../../PostsModal/PostsControl/Header";
 import {connect} from "react-redux";
-import {resizeableImage} from "../../../../utils/crop";
 import Caption from "../../../Fields/Caption";
-import {isMobile} from "../../../../utils/isMobile";
 
-let getCroppedImage;
 
 const UploadPost = ({upload, media, form, currentAuthUsername}) => {
 
-    useEffect(() => {
-        if(media.type.match('image') && !isMobile())
-            getCroppedImage = resizeableImage(document.querySelector('.crop-image'));
-    }, []);
+    let [croppedMedia, setCroppedMedia] = useState();
 
     const submit = event => {
         event.preventDefault();
-        if(media.type.match('image') && !isMobile()) {
-            let media = getCroppedImage();
-
-            fetch(media)
+        if (media.type.match('image')) {
+            fetch(croppedMedia)
                 .then(res => res.blob())
                 .then(blob => {
                     uploadPost(blob, 'image/jpeg');
                 });
         }
-        else if (media.type.match('image'))
-            uploadPost(media, 'image/jpeg');
         else
             uploadPost(media, 'video/mp4');
     };
@@ -53,7 +43,7 @@ const UploadPost = ({upload, media, form, currentAuthUsername}) => {
             {
                 media &&
                 <Form className={styles.mainContainer} onSubmit={submit}>
-                    <UploadMediaPlayer media={media}/>
+                    <UploadMediaPlayer media={media} setCroppedMedia={setCroppedMedia} />
                     <div className={styles.sideContainer}>
                         <Header username={currentAuthUsername}/>
                         <Caption getFieldDecorator={form.getFieldDecorator}/>
