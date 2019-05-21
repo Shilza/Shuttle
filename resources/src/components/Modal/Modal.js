@@ -7,7 +7,7 @@ import styles from './modal.module.css';
 const Modal = ({children, closeModal}) => {
     useEffect(() => {
         document.body.style.overflow = "hidden";
-        return () => document.body.style.overflow = "visible";
+        return () => { document.body.style.overflow = "visible" };
     }, []);
 
     const closeByCoverClick = event => {
