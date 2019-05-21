@@ -19,14 +19,12 @@ class Bio extends React.Component {
         const {bio, form} = this.props;
 
         return (
-            <>
-                <Form onChange={this.checkValidation}>
-                    <BioField
-                        getFieldDecorator={form.getFieldDecorator}
-                        initialValue={bio}
-                    />
-                </Form>
-            </>
+            <Form onChange={this.checkValidation}>
+                <BioField
+                    getFieldDecorator={form.getFieldDecorator}
+                    initialValue={bio}
+                />
+            </Form>
         );
     }
 }

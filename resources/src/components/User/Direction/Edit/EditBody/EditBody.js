@@ -5,32 +5,14 @@ import {connect} from "react-redux";
 import Bio from "./Bio";
 import Site from "./Site";
 import styles from '../edit.module.css';
-import transitions from './transitions.module.css';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const EditBody = ({user, visible}) => {
-    return (
-        <div className={styles.editContainer}>
-            <ReactCSSTransitionGroup
-                transitionName={transitions}
-                transitionAppear={true}
-                transitionAppearTimeout={500}
-                transitionEnter={false}
-                transitionLeave={true}
-                className={styles.transitionContainer}
-            >
-                {
-                    visible &&
-                    <>
-                        <Username username={user.username}/>
-                        <Bio bio={user.bio}/>
-                        <Site site={user.site}/>
-                    </>
-                }
-            </ReactCSSTransitionGroup>
-        </div>
-    );
-};
+const EditBody = ({user}) => (
+    <div className={styles.editContainer}>
+        <Username username={user.username}/>
+        <Bio bio={user.bio}/>
+        <Site site={user.site}/>
+    </div>
+);
 
 EditBody.propTypes = {
     user: PropTypes.object.isRequired,

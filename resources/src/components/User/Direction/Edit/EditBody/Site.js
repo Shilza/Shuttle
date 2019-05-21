@@ -19,14 +19,12 @@ class Site extends React.Component {
         const {site, form} = this.props;
 
         return (
-            <>
-                <Form onChange={this.checkValidation}>
-                    <SiteField
-                        getFieldDecorator={form.getFieldDecorator}
-                        initialValue={site}
-                    />
-                </Form>
-            </>
+            <Form onChange={this.checkValidation}>
+                <SiteField
+                    getFieldDecorator={form.getFieldDecorator}
+                    initialValue={site}
+                />
+            </Form>
         );
     }
 }

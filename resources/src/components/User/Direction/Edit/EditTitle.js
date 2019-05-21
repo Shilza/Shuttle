@@ -6,10 +6,9 @@ import {connect} from "react-redux";
 import {update} from "../../../../services/user";
 import {message} from "antd/lib/index";
 
-const EditTitle = ({dispatch, editedData, user}) => {
+const EditTitle = ({dispatch, editedData, user, onClose}) => {
 
     const submit = () => {
-
         const editedData = getFilterEditedData();
 
         if (Object.keys(editedData).length)
@@ -22,9 +21,9 @@ const EditTitle = ({dispatch, editedData, user}) => {
 
     const getFilterEditedData = () => {
         //delete entries that have not changed
-        Object.entries(editedData).forEach(e => {
-            if (!e[1] || user[e[0]] === e[1])
-                delete editedData[e[0]];
+        Object.entries(editedData).forEach(item => {
+            if (!item[1] || user[item[0]] === item[1])
+                delete editedData[item[0]];
         });
 
         return editedData;
@@ -32,7 +31,7 @@ const EditTitle = ({dispatch, editedData, user}) => {
 
     return (
         <div className={styles.editTitle}>
-            <Icon type="left"/>
+            <Icon type="left" onClick={onClose}/>
             <span style={{marginLeft: 15}}>Edit profile</span>
             <Icon className={styles.editTitleCheck} type="check" onClick={submit}/>
         </div>
