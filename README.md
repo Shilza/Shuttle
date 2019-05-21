@@ -13,6 +13,17 @@ Social network ReactJS application
 7. npm run start
 8. npm run front-start
 
+## Stack
+
+* AdonisJS
+* Lucid ORM
+* MySQL
+* ReactJS
+* Redux
+* Axios
+* CSS-modules
+* Ant-design
+
 ## Features
 
 * Posts uploading
