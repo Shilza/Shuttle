@@ -20,6 +20,10 @@
     .actions {
         order: -1;
     }
+
+    .actionsContainer {
+        border-top: 0;
+    }
 }
 
 .action {
@@ -41,17 +45,16 @@
     margin-right: 15px;
 }
 
-
 .bookmark {
+    position: relative;
     color: #000;
-    position: absolute;
-    width: 14px;
-    height: 18px;
-    border-radius: 1px 1px 0 0;
-    border-top: solid 2px currentColor;
-    border-left: solid 2px currentColor;
-    border-right: solid 2px currentColor;
+    width: 16px;
+    height: 22px;
     margin-top: 4px;
+    border-radius: 1px 1px 0 0;
+    border-top: solid 1px currentColor;
+    border-left: solid 1px currentColor;
+    border-right: solid 1px currentColor;
     transition: all 0.4s ease;
 }
 
@@ -67,9 +70,9 @@
 .bookmarkSolid:before {
     content: '';
     position: absolute;
-    top: 11px;
-    left: 0;
-    width: 10px;
+    top: 15px;
+    left: 2px;
+    width: 11px;
     height: 10px;
     border-top: solid 1px currentColor;
     border-left: solid 1px currentColor;
@@ -81,12 +84,12 @@
 .bookmarkFlat:before {
     content: '';
     position: absolute;
-    top: 11px;
-    left: 0;
-    width: 10px;
+    top: 15px;
+    left: 2px;
+    width: 11px;
     height: 10px;
-    border-top: solid 2px currentColor;
-    border-left: solid 2px currentColor;
+    border-top: solid 1px currentColor;
+    border-left: solid 1px currentColor;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }

@@ -14,7 +14,7 @@ const Save = ({post, dispatch}) => {
         dispatch(setIsSavedTimeout(true));
         debounce(savedStore => {
             const saved = savedStore.getState().saved;
-            if(saved.isSavedTimeout) {
+            if(saved.isSavedTimeout && saved.postToBeSaved) {
                 dispatch(PostService.save({post_id: saved.postToBeSaved.id}));
             }
         }, 5000)(savedStore);
