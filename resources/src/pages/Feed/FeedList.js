@@ -5,7 +5,7 @@ import {setCurrentPost} from "../../store/actions/posts";
 import {connect} from "react-redux";
 import PostsModal from "../../components/Posts/PostsModal/PostsModal";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import transitions from '../../components/Drawer/transitions.module.css';
+import transitions from './transitions.module.css';
 
 const FeedList = ({posts, dispatch}) => {
     const open = post => dispatch(setCurrentPost(post));

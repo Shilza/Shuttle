@@ -24,6 +24,7 @@ const PostControl = ({post, dispatch, comments}) => {
             <Paginator
                 fetcher={fetchComments}
                 isReverse={true}
+                useWindow={false}
             >
                 {
                     comments && <CommentsList comments={comments}/>

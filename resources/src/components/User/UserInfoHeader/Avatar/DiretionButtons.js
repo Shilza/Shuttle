@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import styles from './avatar.module.css';
 import {connect} from "react-redux";
-import UploadButton from "./UploadButton";
+import {UploadButton} from "./UploadButton";
 import DeleteButton from "./DeleteButton";
 
 const DirectionButtons = ({avatar, me}) =>
