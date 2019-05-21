@@ -40,17 +40,19 @@ const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatc
                 <FollowsButton followsCount={followsCount} onClickFollows={openFollowsModal}/>
             </ul>
             {
-                (isFollowsModal && followsCount && canSee) &&
+                (isFollowsModal && !!followsCount && canSee) &&
                 <Paginator
                     fetcher={loadFollows}
+                    useWindow={false}
                 >
                     <Follows id={id} closeModal={closeFollowsModal}/>
                 </Paginator>
             }
             {
-                (isFollowersModal && followersCount && canSee) &&
+                (isFollowersModal && !!followersCount && canSee) &&
                 <Paginator
                     fetcher={loadFollowers}
+                    useWindow={false}
                 >
                     <Followers id={id} closeModal={closeFollowersModal}/>
                 </Paginator>

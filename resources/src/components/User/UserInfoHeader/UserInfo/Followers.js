@@ -18,7 +18,7 @@ const Followers = ({closeModal, id, dispatch, followers}) =>  {
         <Modal closeModal={closeModal}>
             <div className={styles.friendshipsContainer}>
                 <input onChange={search}/>
-                <ul>
+                <ul className={styles.list}>
                     {
                         followers.map(user => <UserFriendshipCard key={user.id}
                                                                   avatar={user.avatar}
