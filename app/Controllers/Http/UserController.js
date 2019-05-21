@@ -164,7 +164,7 @@ class UserController {
         const profilePic = request.file('avatar', {
             types: ['image'],
             size: '10mb',
-            extnames: ['jpg', 'jpeg']
+            subtypes: ['jpg', 'jpeg']
         });
 
         const name = uuidv1() + '.' + profilePic.extname;
