@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './searchBar.module.css';
 import {Icon} from "antd";
 import {connect} from "react-redux";
-import User from "./User";
+import {UsersList} from "./UsersList/UsersList";
 
 const SearchBar = ({makeBarInvisible, users, searchBarRef}) => {
 
@@ -14,20 +14,16 @@ const SearchBar = ({makeBarInvisible, users, searchBarRef}) => {
 
     const componentWillUnmount = () => document.removeEventListener('mousedown', makeBarInvisible);
 
-
     return (
         <div className={styles.searchBar} ref={searchBarRef}>
             {
                 users ?
                     (
                         users.length
-                            ? users.map(user =>
-                                <User key={user.id} username={user.username} avatar={user.avatar}/>
-                            )
-                            : <span>Nothing to show</span>
+                            ? <UsersList users={users}/>
+                            : <div className={styles.nothingToShow}>Nothing to show</div>
                     )
-                    :
-                    <Icon type="loading"/>
+                    : <Icon type="loading"/>
             }
         </div>
     );
