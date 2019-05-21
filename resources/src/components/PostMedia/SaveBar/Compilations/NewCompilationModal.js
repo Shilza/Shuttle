@@ -12,6 +12,10 @@ const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
 
     let [loading, setLoading] = useState(false);
 
+    const closeModal = () => {
+        dispatch(setIsSaveModalOpen(false));
+    };
+
     const saveToNewCompilation = event => {
         event.preventDefault();
 
@@ -20,14 +24,14 @@ const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
                 setLoading(true);
                 dispatch(PostService.save({post_id: postId, compilation: compilationName}))
                     .then(() => {
-                        dispatch(setIsSaveModalOpen(false));
+                        closeModal();
                     });
             }
         });
     };
 
     return (
-        <Modal closeModal={() => dispatch(setIsSaveModalOpen(false))}>
+        <Modal closeModal={closeModal}>
             <div className={styles.modalContainer}>
                 <div className={styles.title}>New Compilation</div>
                 <div className={styles.modalBody}>
@@ -48,8 +52,8 @@ NewCompilationModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    postId: state.saved.postToBeSaved.id,
-    postSrc: state.saved.postToBeSaved.src
+    postId: state.saved.postToBeSaved && state.saved.postToBeSaved.id,
+    postSrc: state.saved.postToBeSaved && state.saved.postToBeSaved.src
 });
 
 export default connect(mapStateToProps)(Form.create()(NewCompilationModal));
