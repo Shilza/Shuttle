@@ -1,11 +1,14 @@
 
 .header {
+    position: sticky;
+    top: 0;
     height: 50px;
     border-bottom: 1px solid #efefef;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .avatar {

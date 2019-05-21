@@ -4,13 +4,13 @@ import styles from './header.module.css';
 import {connect} from "react-redux";
 import Search from "../Search/Search";
 import {Link} from "react-router-dom";
-import shuttle from './shuttle.png';
+import shuttle from '../../images/logo.png';
 import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 
 const Header = ({username, avatar}) => (
     <div className={styles.header}>
         <Link to='/' className={styles.logo}>
-            <img src={shuttle} alt={'Shuttle'}/>
+            <img src={shuttle} alt={'Shuttle logo'}/>
         </Link>
         <Search/>
         <Link to={'/' + username} className={styles.username}>
