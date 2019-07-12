@@ -16,7 +16,6 @@ const EditBody = ({user}) => (
 
 EditBody.propTypes = {
     user: PropTypes.object.isRequired,
-    visible: PropTypes.bool.isRequired
 };
 
 export default connect(state => ({user: state.auth.user}))(EditBody);
