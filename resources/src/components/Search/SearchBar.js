@@ -9,10 +9,8 @@ const SearchBar = ({makeBarInvisible, users, searchBarRef}) => {
 
     useEffect(() => {
         document.addEventListener('mousedown', makeBarInvisible);
-        return componentWillUnmount;
+        return () => document.removeEventListener('mousedown', makeBarInvisible);
     }, []);
-
-    const componentWillUnmount = () => document.removeEventListener('mousedown', makeBarInvisible);
 
     return (
         <div className={styles.searchBar} ref={searchBarRef}>
