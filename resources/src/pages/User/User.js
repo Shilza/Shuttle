@@ -9,34 +9,37 @@ import UserDoesNotExists from "../../components/ExplainingLabels/UserDoesNotExis
 
 const UserPageWithLoading = WithLoading(User);
 
-const UserPage = ({match, dispatch}) => {
+const UserPage = ({currentUser, match, dispatch}) => {
 
-    let [isLoading, setIsLoading] = useState(true);
-    let [error, setError] = useState('');
+  let [isLoading, setIsLoading] = useState(true);
+  let [error, setError] = useState('');
 
-    useEffect(() => {
-        dispatch(UserService.getUser(match.params.username))
-            .then(() => setIsLoading(false))
-            .catch(err => {
-                setError(err.response.data.message);
-                setIsLoading(false);
-            });
-    }, []);
+  useEffect(() => {
+    if(currentUser !== match.params.username)
+      dispatch(UserService.getUser(match.params.username))
+        .then(() => setIsLoading(false))
+        .catch(err => {
+          setError(err.response.data.message);
+          setIsLoading(false);
+        });
+  });
 
-
-    return (
-        <div className={styles.container}>
-            {
-                error ? <UserDoesNotExists text={error}/> :
-                    <UserPageWithLoading isLoading={isLoading}/>
-            }
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      {
+        error ? <UserDoesNotExists text={error}/> :
+          <UserPageWithLoading isLoading={isLoading}/>
+      }
+    </div>
+  )
 };
 
 UserPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    match: PropTypes.object
+  dispatch: PropTypes.func.isRequired,
+  currentUser: PropTypes.string,
+  match: PropTypes.object
 };
 
-export default connect()(UserPage);
+export default connect(state => ({
+  currentUser: state.user && state.user.user && state.users.user.username
+}))(UserPage);
