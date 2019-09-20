@@ -31,6 +31,8 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
+    "@adonisjs/websocket": "^1.0.12",
+    "@adonisjs/websocket-client": "^1.0.9",
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.11.6",

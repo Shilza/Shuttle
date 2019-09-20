@@ -1,0 +1,71 @@
+
+.container {
+  display: flex;
+  margin: 15px 0;
+  transition-duration: 300ms;
+}
+
+.unreadContainer {
+  composes: container;
+  background: #cce5ff;
+  border-radius: 5px;
+}
+
+.infoContainer {
+  width: 100%;
+  margin-left: 10px;
+  border-bottom: solid 1px #e7e8ec;
+  padding-bottom: 10px;
+  color: currentColor;
+}
+
+.infoContainer:hover {
+  color: currentColor;
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(100, 100, 100, .0975);
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.myMessageIsUnread {
+  position: relative;
+  padding-left: 20px;
+}
+
+.myMessageIsUnread::after {
+  position: absolute;
+  content: '';
+  left: 5px;
+  top: 10px;
+  background: #2f57f9;
+  opacity: 0.6;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}

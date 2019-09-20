@@ -1,0 +1,70 @@
+
+.container {
+  display: flex;
+}
+
+.container + .container {
+  margin-top: 5px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(100, 100, 100, .0975);
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.text {
+  position: relative;
+  border: 1px solid #efefef;
+  padding: 5px 10px;
+  margin-left: 38px;
+  border-radius: 25px;
+  max-width: 70%;
+  word-break: break-all;
+}
+
+.text::after {
+  content: '';
+  background: #2f54eb;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.avatar ~ .text {
+  margin-left: 8px;
+}
+
+.myText {
+  composes: text;
+  background: #efefef;
+  margin-left: auto;
+  width: fit-content;
+}
+
+.myTextUnread {
+  position: absolute;
+  right: calc(100% + 15px);
+  top: 40%;
+  content: '';
+  background: #2f57f9;
+  opacity: 0.6;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.myText + .myText {
+  margin-top: 5px;
+}

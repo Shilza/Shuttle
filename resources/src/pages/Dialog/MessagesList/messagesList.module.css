@@ -1,0 +1,15 @@
+
+
+.messages {
+  padding: 10px;
+  min-height: calc(100vh - 155px);
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+
+.mobileMessages {
+  composes: messages;
+  min-height: calc(100vh - 198px);
+  margin-bottom: 58px;
+}

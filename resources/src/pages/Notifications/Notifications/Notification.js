@@ -8,7 +8,9 @@ import PostLink from "./PostLink";
 
 const Notification = ({item}) => {
     const {username, avatar, info, post_src, text, created_at} = item;
+
     let postLink;
+
     if (post_src)
         postLink = `/p/${post_src.match(/.+?\/.+?\/(.+?)\.+/)[1]}`;
 

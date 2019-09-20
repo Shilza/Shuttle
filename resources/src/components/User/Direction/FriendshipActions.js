@@ -5,6 +5,8 @@ import {Button} from "antd";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
+const buttonStyle = {marginLeft: '15px', width: '100%'};
+
 const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
 
     const friendships = () => (friendshipState !== 0) ?
@@ -18,8 +20,6 @@ const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
         case 2: buttonText = 'Unfollow'; break;
         default: buttonText = 'Undefined';
     }
-
-    const buttonStyle = {marginLeft: '15px'};
 
     return (
         <Button size={'small'} style={buttonStyle} onClick={friendships}>

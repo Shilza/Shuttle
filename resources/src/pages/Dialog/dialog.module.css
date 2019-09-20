@@ -1,0 +1,14 @@
+
+.container {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  min-height: calc(100vh - 96px);
+  background: #fff;
+}
+
+.explainingContainer {
+  composes: container;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,44 @@
+
+.container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 650px;
+  transform: translateY(49px);
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid #efefef;
+  background: #fdfdfd;
+  z-index: 1;
+}
+
+.arrowLeft {
+  margin-right: 12px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(100, 100, 100, .0975);
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.username {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.isTyping {
+  margin-left: 10px;
+}

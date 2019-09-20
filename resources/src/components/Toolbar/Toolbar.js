@@ -5,11 +5,16 @@ import {Link} from "react-router-dom";
 import {Badge, Icon} from "antd";
 import SettingsMenu from "../User/Direction/Settings/SettingsMenu";
 import PostsUploader from "../Posts/Uploader/PostsUploader";
+import {setIsSearchFocused} from "../../store/actions/search"
 import {connect} from "react-redux";
 
-const Toolbar = ({notificationsCount}) => {
+const Toolbar = ({notificationsCount, dispatch}) => {
     let feedStyle = {color: 'rgba(0, 0, 0, .7)'};
     let notificationsStyle = {color: 'rgba(0, 0, 0, .7)'};
+
+    const openSearch = () => {
+      dispatch( setIsSearchFocused(true));
+    }
 
     if (window.location.href === window.location.origin + '/')
         feedStyle.color = '#096dd9';
@@ -22,7 +27,7 @@ const Toolbar = ({notificationsCount}) => {
                   style={feedStyle}>
                 <Icon type={'fire'}/>
             </Link>
-            <Icon type={'search'} className={styles.icon}/>
+            <Icon type={'search'} className={styles.icon} onClick={openSearch}/>
             <PostsUploader trigger={<Icon type={'plus'} className={styles.icon}/>}/>
             <Link to={'/account/notifications'} style={notificationsStyle}>
                 <Badge status="error" dot={!!notificationsCount}>

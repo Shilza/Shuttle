@@ -1,0 +1,33 @@
+
+.container {
+  position: fixed;
+  top: 0;
+  background: #fff;
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  border-top: 1px solid #efefef;
+  padding: 10px;
+  z-index: 99;
+}
+
+.messageInput {
+  padding: 5px 8px;
+  border: 1px solid #efefef;
+  border-radius: 25px;
+}
+
+.sendButton {
+  border: none;
+  background: transparent;
+  color: #2f54eb;
+  font-weight: bold;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  font-size: 18px;
+}

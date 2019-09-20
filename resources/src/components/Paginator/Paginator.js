@@ -14,7 +14,7 @@ const Paginator = ({fetcher, initialPage = 0, useWindow = true, isReverse = fals
     }, []);
 
     const fetchData = () => {
-        fetcher(page + 1).then(({page, lastPage} ) => {
+        fetcher(page + 1).then(({page, lastPage}) => {
             setPage(page);
             setLastPage(lastPage);
         });

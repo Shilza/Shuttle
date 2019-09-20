@@ -2,7 +2,8 @@ import * as ActionTypes from '../actionTypes/search'
 import {AUTH_LOGOUT} from "../actionTypes/auth";
 
 const initialState = {
-    users: undefined
+    users: undefined,
+    isSearchFocused: false
 };
 
 const Search = (state = initialState, {type, payload = null}) => {
@@ -11,6 +12,8 @@ const Search = (state = initialState, {type, payload = null}) => {
             return setUsers(state, payload);
         case ActionTypes.REMOVE_USERS:
             return removeUsers(state);
+        case ActionTypes.IS_SEARCH_FOCUSED:
+            return setIsSearchFocused(state, payload);
         case AUTH_LOGOUT:
             return initialState;
         default:
@@ -24,6 +27,11 @@ const setUsers = (state, users) => {
         users
     };
 };
+
+const setIsSearchFocused = (state, isSearchFocused) => ({
+    ...state,
+    isSearchFocused
+});
 
 const removeUsers = state => {
     return {

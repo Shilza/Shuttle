@@ -1,63 +1,90 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import styles from './search.module.css';
 import {connect} from "react-redux";
 import * as SearchService from "../../services/search";
-import {removeUsers} from "../../store/actions/search";
+import {removeUsers, setIsSearchFocused} from "../../store/actions/search";
 
-const Search = ({dispatch}) => {
+const Search = ({dispatch, isSearchFocused}) => {
 
-    let [barIsVisible, setBarIsVisible] = useState(false);
+  let [isBarVisible, setBarIsVisible] = useState(false);
 
-    let searchBarRef = useRef();
+  let searchBarRef = useRef();
+  let searchRef = useRef();
 
-    const search = event => {
-        setBarIsVisible(true);
+  useEffect(() => {
+    if (isSearchFocused)
+      searchRef.current.focus();
+  }, [isSearchFocused]);
 
-        if (event.target.value)
-            dispatch(SearchService.search(event.target.value));
-    };
+  const search = event => {
+    setBarIsVisible(true);
+    dispatch(setIsSearchFocused(true));
 
-    const makeBarInvisible = event => {
-        if (!searchBarRef.current.contains(event.target)) {
-            setBarIsVisible(false);
-            dispatch(removeUsers());
-        }
-    };
+    if (event.target.value)
+      dispatch(SearchService.search(event.target.value));
+  };
 
-    return (
-        <div className={styles.container}>
-            <Searcher search={search}/>
-            {
-                barIsVisible &&
-                <SearchBar
-                    searchBarRef={searchBarRef}
-                    makeBarInvisible={makeBarInvisible}
-                />
-            }
-        </div>
-    );
+  const makeBarInvisible = event => {
+    if (!searchBarRef.current.contains(event.target)) {
+      setBarIsVisible(false);
+      closeSearchInput();
+      dispatch(removeUsers());
+    }
+  };
+
+  const closeSearchInput = () => {
+    dispatch(setIsSearchFocused(false));
+  }
+
+  const openSearchInput = () => {
+    dispatch(setIsSearchFocused(true));
+  }
+
+  return (
+    <div className={styles.container}>
+      <SearchInput
+        search={search}
+        searchRef={searchRef}
+        onBlur={closeSearchInput}
+        onFocus={openSearchInput}
+      />
+      {
+        isBarVisible &&
+        <SearchBar
+          searchBarRef={searchBarRef}
+          makeBarInvisible={makeBarInvisible}
+        />
+      }
+    </div>
+  );
 };
 
-const Searcher = ({search}) =>
-    <div className={styles.search}>
-        <div className={styles.searchBox}>
-            <input
-                type="text"
-                onChange={search}
-            />
-            <span/>
-        </div>
-    </div>;
+const SearchInput = ({search, onBlur, onFocus, searchRef}) =>
+  <div className={styles.search}>
+    <div className={styles.searchBox}>
+      <input
+        type="text"
+        onChange={search}
+        ref={searchRef}
+        onBlur={onBlur}
+        onFocus={onFocus}
+      />
+      <span/>
+    </div>
+  </div>;
 
 
-Searcher.propTypes = {
-    search: PropTypes.func.isRequired
+SearchInput.propTypes = {
+  search: PropTypes.func.isRequired
 };
 
 Search.propTypes = {
-    dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  isSearchFocused: PropTypes.bool.isRequired
 };
 
-export default connect()(Search);
+export default connect((state) => ({
+  isSearchFocused: state.search.isSearchFocused
+}))(Search);

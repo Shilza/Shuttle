@@ -1,36 +1,46 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './header.module.css';
-import {connect} from "react-redux";
-import Search from "../Search/Search";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+
+import Search from "../Search/Search";
 import shuttle from '../../images/logo.png';
+import plane from './plane.svg';
 import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 
-const Header = ({username, avatar}) => (
-    <div className={styles.header}>
-        <Link to='/' className={styles.logo}>
-            <img src={shuttle} alt={'Shuttle logo'}/>
-        </Link>
-        <Search/>
-        <Link to={'/' + username} className={styles.username}>
-            {
-                avatar
-                    ? <img src={avatar} alt='avatar' className={styles.avatar}/>
-                    : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
-            }
-        </Link>
+import styles from './header.module.css';
+
+const Header = ({username, avatar, countOfUnreadMessages}) => (
+  <div className={styles.header}>
+    <Link to='/' className={styles.logo}>
+      <img src={shuttle} alt={'Shuttle logo'}/>
+    </Link>
+    <Search/>
+    <div className={styles.rightContainer}>
+      <Link to={'/u/messages'} className={styles.messagesLink} countofunreadmessages={countOfUnreadMessages}>
+        <img src={plane} alt={'messages'} className={styles.messagesIcon}/>
+      </Link>
+      <Link to={'/' + username} className={styles.username}>
+        {
+          avatar
+            ? <img src={avatar} alt='avatar' className={styles.avatar}/>
+            : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
+        }
+      </Link>
     </div>
+  </div>
 );
 
 Header.propTypes = {
-    username: PropTypes.string.isRequired,
-    avatar: PropTypes.any // can be null
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.any,
+  countOfUnreadMessages: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
-    username: state.auth.user.username,
-    avatar: state.auth.user.avatar
+  username: state.auth.user.username,
+  avatar: state.auth.user.avatar,
+  countOfUnreadMessages: state.auth.user.unreadDialogs && state.auth.user.unreadDialogs.length,
 });
 
 export default connect(mapStateToProps)(Header);

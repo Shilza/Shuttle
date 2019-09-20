@@ -8,3 +8,10 @@
     font-size: 20px;
     margin-right: auto;
 }
+
+.friendshipMessageContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+  margin: 10px 0;
+}

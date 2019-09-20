@@ -12,3 +12,11 @@ export function removeUsers() {
         type: ActionTypes.REMOVE_USERS,
     }
 }
+
+
+export function setIsSearchFocused(payload) {
+  return {
+      type: ActionTypes.IS_SEARCH_FOCUSED,
+      payload
+  }
+}

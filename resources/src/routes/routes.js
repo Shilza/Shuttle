@@ -9,6 +9,8 @@ import Archive from "../pages/Archive/Archive";
 import LikedPosts from "../pages/LikedPosts/LikedPosts";
 import Blacklist from "../pages/Blacklist/Blacklist";
 import Notifications from "../pages/Notifications/Notifications";
+import Messages from "../pages/Dialogs/Dialogs";
+import Dialog from "../pages/Dialog/Dialog"
 
 export const routes = [
     {
@@ -82,5 +84,17 @@ export const routes = [
         exact: true,
         auth: true,
         component: Notifications
+    },
+    {
+      path: '/u/messages',
+      exact: true,
+      auth: true,
+      component: Messages
+    },
+    {
+      path: '/u/messages/:username',
+      exact: true,
+      auth: true,
+      component: Dialog
     }
 ];
