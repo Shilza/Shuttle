@@ -23,6 +23,7 @@ const providers = [
     '@adonisjs/auth/providers/AuthProvider',
     '@adonisjs/validator/providers/ValidatorProvider',
     '@adonisjs/mail/providers/MailProvider',
+    '@adonisjs/websocket/providers/WsProvider',
     path.join(__dirname, '..', 'providers', 'CValidatorProvider'),
     path.join(__dirname, '..', 'providers', 'PostsServiceProvider'),
     path.join(__dirname, '..', 'providers', 'LikesServiceProvider'),

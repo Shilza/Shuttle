@@ -44,6 +44,10 @@ class PostsService {
 
         posts.rows = await this._setOwnersInfo(posts.rows);
         posts.rows = await LikesService.setIsLikedPostsInfo(userId, posts.rows);
+        posts.rows = posts.rows.map(item => {
+          item.isSaved = true;
+          return item;
+        });
 
         return posts;
     }

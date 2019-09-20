@@ -10,6 +10,8 @@ const fs = require('fs');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
+const proxyTarget = `http://127.0.0.1:${process.env.PORT}`;
+
 module.exports = function (proxy, allowedHost) {
     return {
         // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
@@ -83,12 +85,12 @@ module.exports = function (proxy, allowedHost) {
         public: allowedHost,
         proxy: {
             '/api/': {
-                target: 'http://127.0.0.1:3333',
+                target: proxyTarget,
                 secure: false,
                 changeOrigin: true
             },
             '/uploads/': {
-                target: 'http://127.0.0.1:3333',
+                target: proxyTarget,
                 secure: false,
                 changeOrigin: true
             }

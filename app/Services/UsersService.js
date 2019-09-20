@@ -2,6 +2,8 @@ const User = use('App/Models/User');
 const Blacklist = use('App/Models/Blacklist');
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const FriendshipsService = use('FriendshipsService');
+const Dialog = use('App/Models/Dialog');
+const Database = use('Database');
 
 class UsersService {
 
@@ -69,6 +71,19 @@ class UsersService {
             .where('receiver_id', receiverId)
             .where('subscriber_id', subId)
             .delete();
+    }
+
+    async unreadDialogs(receiverId) {
+      const subQuery = Database
+        .raw('SELECT MAX(id) FROM dialogs WHERE receiver_id = ? AND `read`=false GROUP BY least(owner_id,receiver_id), greatest(owner_id,receiver_id)', [receiverId])
+
+      const dialogs = await Dialog
+        .query()
+        .whereIn('id', subQuery)
+        .orderBy('created_at', 'desc')
+        .pluck('owner_id');
+
+      return dialogs;
     }
 }
 

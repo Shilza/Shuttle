@@ -120,6 +120,12 @@ Route.get('api/v1/notifications', 'NotificationController.show').middleware(['au
 Route.get('api/v1/feed', 'FeedController.show').middleware(['auth:jwt']);
 Route.get('api/v1/search', 'SearchController.search');
 
+Route.group(() => {
+  Route.get('', 'DialogController.showAll');
+  Route.get('/:peerUsername', 'DialogController.show');
+}).prefix('api/v1/dialogs').middleware(['auth:jwt']);
+
+
 Route.get('*', ({view}) => view.render('index'));
 
 

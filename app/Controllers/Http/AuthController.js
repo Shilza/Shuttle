@@ -2,6 +2,7 @@
 
 const User = use('App/Models/User');
 const NotificationsService = use('NotificationsService');
+const UsersService = use('UsersService');
 
 class AuthController {
 
@@ -96,12 +97,11 @@ class AuthController {
         try {
             const user = await auth.getUser();
             user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
+            user.unreadDialogs = await UsersService.unreadDialogs(user.id);
             return response.json({user});
         } catch (error) {
             response.status(400).json('You are not logged in');
         }
-
-        response.json(user);
     }
 
     /**
