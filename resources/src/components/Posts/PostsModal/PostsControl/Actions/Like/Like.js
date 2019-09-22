@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Icon} from "antd";
-import styles from './actions.module.css';
-import * as LikeService from "../../../../../services/likes";
+
+import * as LikeService from "services/likes";
+
+import styles from './like.module.css';
 
 const Like = ({id, likesCount, isLiked, type, dispatch}) => {
 
@@ -23,9 +25,9 @@ const Like = ({id, likesCount, isLiked, type, dispatch}) => {
             <button className={styles.action} onClick={like}>
                 {
                     isLiked ?
-                        <Icon type="heart" style={{color: 'rgba(255,0,0,1)'}}/>
+                        <Icon type="heart" className={styles.redHeart}/>
                         :
-                        <Icon type="heart" style={{color: 'rgba(0,0,0,1)'}}/>
+                        <Icon type="heart" className={styles.heart}/>
                 }
             </button>
         </div>

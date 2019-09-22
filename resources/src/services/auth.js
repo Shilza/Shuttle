@@ -44,7 +44,6 @@ export function me() {
                 Http.post('/api/v1/auth/me')
                     .then(({data}) => {
                         dispatch(action.authLogin(data.user));
-
                         resolve(data);
                     })
                     .catch(err => reject(err))

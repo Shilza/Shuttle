@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as UserService from "../../services/user";
 import styles from './user.module.css';
-import User from "../../components/User/User";
-import WithLoading from "../../components/Loader/Loader";
-import UserDoesNotExists from "../../components/ExplainingLabels/UserDoesNotExists/UserDoesNotExists";
+import User from "components/User/User";
+import WithLoading from "components/Loader/Loader";
+import UserDoesNotExists from "components/ExplainingLabels/UserDoesNotExists/UserDoesNotExists";
 
 const UserPageWithLoading = WithLoading(User);
 

@@ -15,12 +15,19 @@
   padding: 5px 8px;
   border: 1px solid #efefef;
   border-radius: 25px;
+  width: 100%;
+  transition: 130ms;
+}
+
+.messageInput:focus {
+  outline: none;
+  border-color: rgba(32, 142, 255, 0.77);
 }
 
 .sendButton {
   border: none;
   background: transparent;
-  color: #2f54eb;
+  color: rgba(32, 142, 255, 0.9);
   font-weight: bold;
 }
 

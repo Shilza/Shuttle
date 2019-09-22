@@ -1,23 +1,32 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
+import PropTypes from "prop-types"
+import {useThrottle} from 'use-throttle';
 
 import {isMobile} from "../../../utils/isMobile"
+
 import styles from './footer.module.css';
-import PropTypes from "prop-types"
 
-
-const containerStyle = {transform: `translateY(calc(${isMobile() ? '100vh - 98px' : '100vh - 54px'}))`}
+const containerStyle = {transform: `translateY(calc(${isMobile() ? '100vh - 98px' : '100vh - 54px'}))`};
 
 const Footer = ({sendMessage, typing}) => {
   let inputRef = useRef(null);
   const [isSendButtonVisible, setIsSendButtonVisible] = useState(false);
+  const [messageText, setMessageText] = useState('');
+  const throttledMessageText = useThrottle(messageText, 1200);
+
+  useEffect(() => {
+    if (throttledMessageText.length > 0)
+      typing();
+  }, [throttledMessageText]);
 
   const onInputChange = (event) => {
-    typing();
-    if (!isSendButtonVisible && event.target.value.length > 0)
+    const value = event.target.value;
+    if (!isSendButtonVisible && value.length > 0)
       setIsSendButtonVisible(true);
     else if (event.target.value.length === 0)
       setIsSendButtonVisible(false);
-  }
+    setMessageText(value);
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -25,8 +34,9 @@ const Footer = ({sendMessage, typing}) => {
       sendMessage(inputRef.current.value);
       inputRef.current.value = '';
       setIsSendButtonVisible(false);
+      inputRef.current.focus();
     }
-  }
+  };
 
   return (
     <form className={styles.container} onSubmit={onSubmit} style={containerStyle}>

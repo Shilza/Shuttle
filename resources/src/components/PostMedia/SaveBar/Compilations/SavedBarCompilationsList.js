@@ -1,38 +1,43 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
-import {getCompilations} from "../../../../services/saved";
-import SavedBarCompilation from "./SavedBarCompilation";
-import styles from '../savebar.module.css';
 import {connect} from "react-redux";
 
-const SavedBarCompilationsList = ({dispatch, postId, compilations}) => {
-    useEffect(() => {
-        if(!compilations)
-            dispatch(getCompilations());
-    }, []);
+import {getCompilations} from "services/saved";
+import SavedBarCompilation from "./SavedBarCompilation";
+import SavedExplainingLabel from "components/ExplainingLabels/SavedLabel/SavedExplainingLabel";
 
-    return (
-        <div className={styles.compilationsList}>
-            {
-                compilations && compilations.map((item, index) =>
-                    <SavedBarCompilation
-                        key={index}
-                        compilation={item}
-                    />
-                )
-            }
-        </div>
-    );
+import styles from '../savebar.module.css';
+
+const SavedBarCompilationsList = ({dispatch, compilations}) => {
+  useEffect(() => {
+    dispatch(getCompilations());
+  }, []);
+
+  return (
+    <div className={styles.compilationsList}>
+      {
+        compilations && (
+          compilations.length === 0
+            ? <SavedExplainingLabel text={'Here will displayed your photos compilations'}/>
+            : compilations.map((item, index) =>
+              <SavedBarCompilation
+                key={index}
+                compilation={item}
+              />
+            )
+        )
+      }
+    </div>
+  );
 };
 
 SavedBarCompilationsList.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    postId: PropTypes.number,
-    compilations: PropTypes.array
+  dispatch: PropTypes.func.isRequired,
+  compilations: PropTypes.array
 };
 
 const mapStateToProps = state => ({
-    compilations: state.saved.compilations.data,
+  compilations: state.saved.compilations.data,
 });
 
 export default connect(mapStateToProps)(SavedBarCompilationsList);

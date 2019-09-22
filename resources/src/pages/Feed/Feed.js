@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import * as FeedService from "../../services/feed";
-import FeedList from "./FeedList";
+import FeedList from "./FeedList/FeedList";
 import styles from './feed.module.css';
 import Paginator from "../../components/Paginator/Paginator";
 import FeedExplainingLabel from "../../components/ExplainingLabels/FeedLabel/FeedLabel";

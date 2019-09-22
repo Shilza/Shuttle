@@ -35,10 +35,13 @@ const Message = ({username, avatar, text, my, read, withAvatar = false}) => {
 
 Message.propTypes = {
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
   text: PropTypes.string.isRequired,
   my: PropTypes.bool.isRequired,
-  read: PropTypes.number.isRequired,
+  read: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.number
+  ]),
   withAvatar: PropTypes.bool
 };
 

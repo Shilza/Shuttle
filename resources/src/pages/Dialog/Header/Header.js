@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import {Link} from "react-router-dom"
 import {withRouter} from "react-router"
 import {Icon} from "antd"
 
-import DefaultAvatar from "../../../components/DefaultAvatar/DefaultAvatar"
+import DefaultAvatar from "components/DefaultAvatar/DefaultAvatar"
+import Typing from "components/Typing/Typing";
 
 import styles from './header.module.css';
-
 
 const Header = ({username, avatar, isTyping, history}) => (
   <div className={styles.container}>
@@ -23,31 +23,15 @@ const Header = ({username, avatar, isTyping, history}) => (
       }
     </Link>
     {
-      isTyping && <Typing/>
+      isTyping && <Typing className={styles.isTyping}/>
     }
   </div>
 );
-
-const Typing = () => {
-
-  const [countOfDots, setCountOfDots] = useState(3);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setCountOfDots(countOfDots === 3 ? 1 : countOfDots + 1)
-    }, 300);
-    return () => clearTimeout(id);
-  });
-
-  return (
-    <span className={styles.isTyping}>is typing {'.'.repeat(countOfDots)}</span>
-  )
-}
 
 Header.propTypes = {
   username: PropTypes.string.isRequired,
   isTyping: PropTypes.bool.isRequired,
   avatar: PropTypes.string
-}
+};
 
 export default withRouter(Header);

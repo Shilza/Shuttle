@@ -1,22 +1,24 @@
 import Http from "../Http";
 import * as action from "../store/actions/likes";
 
-export function like(data) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/like', data)
-                    .then(() => dispatch(action.like(data)))
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const like = (data) => dispatch =>
+  new Promise((resolve, reject) => {
+      dispatch(action.like(data));
+      Http.post('/api/v1/like', data)
+        .catch(err => {
+          dispatch(action.unlike(data));
+          reject(err);
+        })
+    }
+  );
 
-export function unlike(data) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/unlike', data)
-                    .then(() => dispatch(action.unlike(data)))
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const unlike = (data) => dispatch =>
+  new Promise((resolve, reject) => {
+      dispatch(action.unlike(data));
+      Http.post('/api/v1/unlike', data)
+        .catch(err => {
+          dispatch(action.like(data));
+          reject(err);
+        });
+    }
+  );

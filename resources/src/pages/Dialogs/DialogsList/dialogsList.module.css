@@ -1,5 +1,4 @@
 
-
 .searchContainer {
   color: #9a9a9a;
   display: flex;
@@ -7,7 +6,7 @@
   border: 1px solid #e7e7e7;
   padding: 6px 12px;
   border-radius: 6px;
-  margin-bottom: 15px;
+  margin: 0 15px 15px;
 }
 
 .searchContainer input {

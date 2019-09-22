@@ -12,7 +12,7 @@ const Settings = ({visible, onClose}) => (
         onClose={onClose}
         visible={visible}
     >
-        <SettingsBody/>
+        <SettingsBody close={onClose}/>
     </Drawer>
 );
 

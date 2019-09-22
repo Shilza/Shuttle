@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import * as FriendshipsService from "../../../services/friendships";
 import {Button} from "antd";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-const buttonStyle = {marginLeft: '15px', width: '100%'};
+import * as FriendshipsService from "services/friendships";
 
 const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
 
@@ -22,7 +21,7 @@ const FriendshipButton = ({id, friendshipState, follow, unfollow}) => {
     }
 
     return (
-        <Button size={'small'} style={buttonStyle} onClick={friendships}>
+        <Button size={'small'} onClick={friendships}>
             {buttonText}
         </Button>
     );

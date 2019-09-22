@@ -1,10 +1,12 @@
 import React, {useEffect, useState, useRef} from "react";
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
-import styles from './search.module.css';
 import {connect} from "react-redux";
-import * as SearchService from "../../services/search";
-import {removeUsers, setIsSearchFocused} from "../../store/actions/search";
+
+import SearchBar from './SearchBar/SearchBar';
+import * as SearchService from "services/search";
+import {removeUsers, setIsSearchFocused} from "store/actions/search";
+
+import styles from './search.module.css';
 
 const Search = ({dispatch, isSearchFocused}) => {
 
@@ -36,11 +38,15 @@ const Search = ({dispatch, isSearchFocused}) => {
 
   const closeSearchInput = () => {
     dispatch(setIsSearchFocused(false));
-  }
+  };
 
   const openSearchInput = () => {
     dispatch(setIsSearchFocused(true));
-  }
+  };
+
+  const closeBar = () => {
+    setBarIsVisible(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -55,6 +61,7 @@ const Search = ({dispatch, isSearchFocused}) => {
         <SearchBar
           searchBarRef={searchBarRef}
           makeBarInvisible={makeBarInvisible}
+          closeBar={closeBar}
         />
       }
     </div>

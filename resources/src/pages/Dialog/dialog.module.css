@@ -3,7 +3,7 @@
   position: relative;
   max-width: 650px;
   margin: 0 auto;
-  min-height: calc(100vh - 96px);
+  min-height: calc(100vh - 150px);
   background: #fff;
 }
 

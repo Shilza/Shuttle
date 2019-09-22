@@ -1,7 +1,9 @@
-import Http from "../../../Http"
 import {useCallback, useReducer, useRef} from "react"
+import Http from "Http"
 
-const initialState = {messages: []};
+const initialState = {
+  messages: []
+};
 
 const READ_MESSAGES = 'READ_MESSAGES';
 const ADD_MESSAGES = 'ADD_MESSAGES';
@@ -22,7 +24,9 @@ function reducer(state, action) {
     case ADD_MESSAGES:
       return {messages: [...action.payload, ...state.messages]};
     case ADD_MESSAGE:
-      return {messages: [...state.messages, action.payload]};
+      return !state.messages.some(item => item.id === action.payload.id)
+        ? {messages: [...state.messages, action.payload]}
+        : {messages: state.messages};
     default:
       throw new Error();
   }
@@ -31,9 +35,10 @@ function reducer(state, action) {
 const useMessages = (username) => {
   const [{messages}, dispatch] = useReducer(reducer, initialState);
   let newMessageHandler = useRef(null);
+  let isFirstRender = useRef(true);
 
-  const getMessages = (page) => {
-    return new Promise((resolve) => {
+  const getMessages = (page) =>
+    new Promise((resolve) => {
       Http.get(`/api/v1/dialogs/${username}?page=${page}`)
         .then(({data}) => {
           dispatch({
@@ -41,9 +46,11 @@ const useMessages = (username) => {
             payload: data.data
           });
           resolve(data);
+          if (isFirstRender.current)
+            window.scrollTo(0, document.body.scrollHeight);
+          isFirstRender.current = false;
         });
     });
-  }
 
   const readAllMessages = () => {
     dispatch({
@@ -53,7 +60,7 @@ const useMessages = (username) => {
 
   const onNewMessage = (messageHandler) => {
     newMessageHandler.current = messageHandler;
-  }
+  };
 
   const addMessage = useCallback((message) => {
     dispatch({
@@ -70,6 +77,6 @@ const useMessages = (username) => {
     readAllMessages,
     onNewMessage
   }
-}
+};
 
 export default useMessages;

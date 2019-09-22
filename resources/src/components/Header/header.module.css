@@ -33,12 +33,13 @@
 }
 
 .username {
-  margin-right: 20px;
+  margin: 0 10px 0 5px;
 }
 
 .rightContainer {
   display: flex;
   align-items: center;
+  margin-right: 10px;
 }
 
 .messagesLink {

@@ -1,16 +1,18 @@
-import Welcome from '../pages/Welcome/Welcome'
-import User from '../pages/User/User'
-import Feed from '../pages/Feed/Feed'
-import Register from '../components/Welcome/Register/Register'
-import ForgotPass from '../components/Welcome/ForgotPass/ForgotPass'
-import ResetPass from '../components/Welcome/ResetPass/ResetPass'
-import PostByCode from "../pages/PostByCode/PostByCode";
-import Archive from "../pages/Archive/Archive";
-import LikedPosts from "../pages/LikedPosts/LikedPosts";
-import Blacklist from "../pages/Blacklist/Blacklist";
-import Notifications from "../pages/Notifications/Notifications";
-import Messages from "../pages/Dialogs/Dialogs";
-import Dialog from "../pages/Dialog/Dialog"
+import {lazy} from "react";
+
+const Welcome = lazy(() => import('pages/Welcome'));
+const User = lazy(() => import('pages/User'));
+const Feed = lazy(() => import('pages/Feed'));
+const Register = lazy(() => import('components/Welcome/Register/Register'));
+const ForgotPass = lazy(() => import('components/Welcome/ForgotPass/ForgotPass'));
+const ResetPass = lazy(() => import('components/Welcome/ResetPass/ResetPass'));
+const PostByCode = lazy(() => import('pages/PostByCode'));
+const Archive = lazy(() => import('pages/Archive'));
+const LikedPosts = lazy(() => import('pages/LikedPosts'));
+const Blacklist = lazy(() => import('pages/Blacklist'));
+const Notifications = lazy(() => import('pages/Notifications'));
+const Dialogs = lazy(() => import('pages/Dialogs'));
+const Dialog = lazy(() => import('pages/Dialog'));
 
 export const routes = [
     {
@@ -89,12 +91,18 @@ export const routes = [
       path: '/u/messages',
       exact: true,
       auth: true,
-      component: Messages
+      component: Dialogs
     },
     {
       path: '/u/messages/:username',
       exact: true,
       auth: true,
       component: Dialog
+    },
+    {
+      path: '*',
+      exact: true,
+      auth: false,
+      component: Welcome
     }
 ];

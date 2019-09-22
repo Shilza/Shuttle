@@ -2,15 +2,15 @@ import React, {useEffect, useMemo} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
-import MessagesExplainingLabel from "../../components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
+import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
+import Loader from "components/Paginator/Loader/Loader"
 
 import ws from "../../Ws"
 import {types as WsTypes} from "../../Ws"
-import Loader from "../../components/Paginator/Loader/Loader"
 import useDialogs from "./utils/useDialogs"
 import DialogsList from "./DialogsList/DialogsList"
 
-import styles from './messages.module.css';
+import styles from './dialogs.module.css';
 
 
 const Dialogs = ({myId}) => {
@@ -24,7 +24,7 @@ const Dialogs = ({myId}) => {
     const webSocketCallback = (data) => {
       switch (data.type) {
         case WsTypes.MESSAGE:
-          addMessage(data);
+          addMessage(data.message);
           break;
         case WsTypes.CONNECTION:
           readAllMessages(data.receiver_id);
@@ -42,10 +42,9 @@ const Dialogs = ({myId}) => {
 
     if (wsThread) {
       wsThread.on('message', webSocketCallback);
-
       return () => wsThread.off('message', webSocketCallback);
     }
-  }, [ws.getSubscription(topicName)]);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -68,7 +67,7 @@ const Dialogs = ({myId}) => {
 
 Dialogs.propTypes = {
   myId: PropTypes.number.isRequired,
-}
+};
 
 export default connect((state) => ({
   myId: state.auth.user.id

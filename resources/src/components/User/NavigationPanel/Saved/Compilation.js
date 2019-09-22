@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './saved.module.css';
+
 import SingleCompilation from "./SingleCompilation";
 import QuadCompilation from "./QuadCompilation";
 
-const Compilation = ({compilation, loadPosts = () => {}}) => {
+import styles from './saved.module.css';
+
+const Compilation = ({compilation, loadPosts}) => {
 
     const compilationImages = [...Object.values(compilation)[0]];
     const compilationName = Object.keys(compilation)[0];
     const isQuad = compilationImages.length === 4;
 
+    const load = () => loadPosts(compilationName);
+
     return (
-        <div onClick={() => loadPosts(compilationName)}>
+        <div onClick={load}>
             <div className={styles.compilationContainer}>
                 {
                     isQuad ?
@@ -23,6 +27,10 @@ const Compilation = ({compilation, loadPosts = () => {}}) => {
             <span className={styles.compilationName}>{compilationName}</span>
         </div>
     )
+};
+
+Compilation.defaultProps = {
+  loadPosts: () => {}
 };
 
 Compilation.propTypes = {

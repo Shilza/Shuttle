@@ -1,12 +1,14 @@
 import React, {useCallback} from "react";
 import PropTypes from 'prop-types';
-import styles from './direction.module.css';
-import DirectionActions from "./DirectionActions";
-import FriendshipActions from "./FriendshipActions"
 import {connect} from "react-redux"
 import {Button} from "antd"
 import {compose} from "redux"
 import {withRouter} from "react-router"
+
+import DirectionActions from "./DirectionActions/DirectionActions";
+import FriendshipActions from "./FriendshipActions/FriendshipActions"
+
+import styles from './direction.module.css';
 
 const Direction = ({username, me, amBlacklisted, history}) => {
 

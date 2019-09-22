@@ -11,7 +11,12 @@
 
 .friendshipMessageContainer {
   display: flex;
-  justify-content: space-evenly;
-  width: 200px;
+  width: 250px;
   margin: 10px 0;
+  flex-wrap: wrap;
+  justify-content: center
+}
+
+.friendshipMessageContainer button {
+  margin: 5px;
 }

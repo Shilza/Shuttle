@@ -8,6 +8,7 @@ import Loader from "../../../components/Paginator/Loader/Loader"
 import Message from "../Message/Message"
 
 import styles from "./messagesList.module.css"
+import StartMessagingLabel from "../../../components/ExplainingLabels/StartMessagingLabel/StartMessagingLabel";
 
 const MessagesList = ({dialogs, user, myId, getMessages}) => {
 
@@ -17,7 +18,7 @@ const MessagesList = ({dialogs, user, myId, getMessages}) => {
       return true;
 
     return prevMessage && prevMessage.owner_id !== messages[index].owner_id
-  }
+  };
 
   return (
     <div className={isMobile() ? styles.mobileMessages : styles.messages}>
@@ -28,6 +29,11 @@ const MessagesList = ({dialogs, user, myId, getMessages}) => {
         byWindow
       >
         {
+          dialogs.length === 0 ?
+            <div className={styles.explainingContainer}>
+              <StartMessagingLabel/>
+            </div>
+            :
           dialogs.map((dialog, index) =>
             <Message
               my={dialog.owner_id === myId}

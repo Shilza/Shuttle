@@ -7,8 +7,9 @@ import {connect} from "react-redux";
 import {message} from "antd/lib/index";
 import {setPrivate, setPublic} from "../../../../services/user";
 import {Link} from "react-router-dom";
+import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
 
-const SettingsBody = ({isPrivate, countOfUnreadMessages, dispatch}) => {
+const SettingsBody = ({isPrivate, username, avatar, countOfUnreadMessages, close, dispatch}) => {
 
   const changePrivacy = checked => {
     dispatch(checked ? setPrivate() : setPublic())
@@ -20,6 +21,16 @@ const SettingsBody = ({isPrivate, countOfUnreadMessages, dispatch}) => {
 
   return (
     <ul className={styles.settingsContainer}>
+      <li>
+        <Link to={'/' + username} onClick={close} className={styles.user}>
+          {
+            avatar
+              ? <img src={avatar} alt='avatar' className={styles.avatar}/>
+              : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
+          }
+          <span>{username}</span>
+        </Link>
+      </li>
       <li>
         <Link to={'/posts/archive'} className={styles.linkStyle}>Archive</Link>
       </li>
@@ -47,12 +58,17 @@ const SettingsBody = ({isPrivate, countOfUnreadMessages, dispatch}) => {
 };
 
 SettingsBody.propTypes = {
+  close: PropTypes.func.isRequired,
   isPrivate: PropTypes.bool.isRequired,
+  username: PropTypes.string,
+  avatar: PropTypes.string,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   isPrivate: state.auth.user.private,
+  username: state.auth.user.username,
+  avatar: state.auth.user.avatar,
   countOfUnreadMessages: state.auth.user.unreadDialogs && state.auth.user.unreadDialogs.length
 });
 

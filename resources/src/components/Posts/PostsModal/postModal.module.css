@@ -8,7 +8,7 @@
     width: max-content;
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 810px) {
     .postModalContainer {
         flex-direction: column;
         height: auto;

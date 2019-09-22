@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 import {Icon} from "antd";
 import styles from './actions.module.css';
-import Like from "./Like";
+import Like from "./Like/Like";
 import {addSmoothScrolling} from "../../../../../utils/scrolling";
 import {convertTime} from "../../../../../utils/timeConverter";
 import Save from "./Save";

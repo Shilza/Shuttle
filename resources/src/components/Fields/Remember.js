@@ -15,7 +15,7 @@ const Remember = ({getFieldDecorator, remember, onChange}) => (
 
 Remember.propTypes = {
     getFieldDecorator: PropTypes.func.isRequired,
-    remember: PropTypes.string,
+    remember: PropTypes.bool,
     onChange: PropTypes.func
 };
 

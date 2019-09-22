@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from "react";
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import transitions from './transitions.module.css';
-import styles from './savebar.module.css';
+import {Link} from "react-router-dom";
 import {Button, Drawer} from "antd";
+import {connect} from "react-redux";
+
 import SavedBarCompilationsList from "./Compilations/SavedBarCompilationsList";
 import DrawerTitle from "./DrawerTitle";
-import {setIsSavedTimeout, setPostToBeSaved} from "../../../store/actions/saved";
-import {connect} from "react-redux";
+import {setIsSavedTimeout, setPostToBeSaved} from "store/actions/saved";
 import NewCompilationModal from "./Compilations/NewCompilationModal";
-import Link from "react-router-dom/es/Link";
+
+import styles from './savebar.module.css';
+import transitions from './transitions.module.css';
+
 
 const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
 
@@ -54,7 +57,7 @@ const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
                 </div>
             }
             <Drawer
-                height={350}
+                height={'90%'}
                 title={<DrawerTitle/>}
                 placement={'bottom'}
                 visible={drawerVisible}

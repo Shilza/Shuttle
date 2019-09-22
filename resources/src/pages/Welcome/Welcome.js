@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Login from "../../components/Welcome/Login/Login";
 import {Card} from 'antd';
+import Login from "components/Welcome/Login/Login";
 import styles from './welcome.module.css';
-import logo from '../../images/logo.png';
+import logo from 'images/logo.png';
 
 const Welcome = ({children = <Login/>}) => (
     <div className={styles.welcome}>

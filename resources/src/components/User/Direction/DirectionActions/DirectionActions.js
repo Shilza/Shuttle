@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {Edit} from "./Edit/Edit";
-import UserActions from "./UserActions/UserActions";
-import SettingsMenu from "./Settings/SettingsMenu";
 import {Icon} from "antd";
-import styles from './Settings/settings.module.css';
+
+import Edit from "../Edit/Edit";
+import UserActions from "../UserActions/UserActions";
+import SettingsMenu from "../Settings/SettingsMenu";
+
+import styles from '../Settings/settings.module.css';
 
 const DirectionActions = ({me}) => (
   <>

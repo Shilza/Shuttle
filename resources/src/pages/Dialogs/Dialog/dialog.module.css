@@ -1,14 +1,25 @@
 
 .container {
   display: flex;
-  margin: 15px 0;
+  margin-top: 10px;
+  padding: 10px 15px;
   transition-duration: 300ms;
 }
 
 .unreadContainer {
   composes: container;
-  background: #cce5ff;
-  border-radius: 5px;
+  position: relative;
+}
+
+.unreadContainer::after {
+  position: absolute;
+  content: '';
+  background: red;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  left: 12px;
+  top: 8px;
 }
 
 .infoContainer {
@@ -62,7 +73,7 @@
   position: absolute;
   content: '';
   left: 5px;
-  top: 10px;
+  top: 8px;
   background: #2f57f9;
   opacity: 0.6;
   width: 8px;

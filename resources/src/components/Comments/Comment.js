@@ -5,7 +5,7 @@ import {convertTime} from "../../utils/timeConverter";
 import {connect} from "react-redux";
 import {setIsCommentsModalOpen, setSelectedComment} from "../../store/actions/comments";
 import {Link} from "react-router-dom";
-import Like from "../Posts/PostsModal/PostsControl/Actions/Like";
+import Like from "../Posts/PostsModal/PostsControl/Actions/Like/Like";
 
 const Comment = ({comment, dispatch}) => {
 

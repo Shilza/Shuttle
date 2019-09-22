@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
+import {isMobile} from "../../utils/isMobile";
+
 import Search from "../Search/Search";
 import shuttle from '../../images/logo.png';
 import plane from './plane.svg';
@@ -20,13 +22,16 @@ const Header = ({username, avatar, countOfUnreadMessages}) => (
       <Link to={'/u/messages'} className={styles.messagesLink} countofunreadmessages={countOfUnreadMessages}>
         <img src={plane} alt={'messages'} className={styles.messagesIcon}/>
       </Link>
-      <Link to={'/' + username} className={styles.username}>
-        {
-          avatar
-            ? <img src={avatar} alt='avatar' className={styles.avatar}/>
-            : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
-        }
-      </Link>
+      {
+        !isMobile() &&
+        <Link to={'/' + username} className={styles.username}>
+          {
+            avatar
+              ? <img src={avatar} alt='avatar' className={styles.avatar}/>
+              : <div className={styles.avatar}><DefaultAvatar fontSize={'16px'}/></div>
+          }
+        </Link>
+      }
     </div>
   </div>
 );

@@ -29,9 +29,7 @@ const NotificationsList = ({notificationsCount, dispatch, notifications, page}) 
             >
               {
                 !!notifications && notifications.map((item, index) =>
-                  <Notification key={index}
-                                item={item}
-                  />
+                  <Notification key={index} item={item}/>
                 )
               }
             </Paginator>

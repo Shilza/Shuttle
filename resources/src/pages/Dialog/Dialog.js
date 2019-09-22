@@ -10,8 +10,7 @@ import Loader from "../../components/Paginator/Loader/Loader"
 
 import {readDialog} from "../../store/actions/auth"
 import Http from "../../Http"
-import ws from "../../Ws"
-import {types as WsTypes} from "../../Ws"
+import ws, {types as WsTypes} from "../../Ws"
 import {connect} from "react-redux"
 import useMessages from "./utils/useMessages"
 
@@ -27,6 +26,7 @@ const Dialog = ({myId, dispatch, match}) => {
   let timerRef = useRef(null);
 
   const {messages, getMessages, addMessage, readAllMessages, onNewMessage} = useMessages(username);
+  const topicName = `dialogs:${myId}`;
 
   useEffect(() => {
     Http.get('/api/v1/users?username=' + username)
@@ -34,35 +34,36 @@ const Dialog = ({myId, dispatch, match}) => {
         setDialogUser(data);
         dispatch(readDialog(data.id));
       });
-  }, []);
 
-  useEffect(() => {
     onNewMessage(() => {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
       });
     });
-    window.scrollTo(0, document.body.scrollHeight);
+  }, []);
 
-    if (dialogUser) {
-      const topicName = `dialogs:${myId}`
-      let wsThread = ws.getSubscription(topicName);
+  useEffect(() => {
+    let wsThread = ws.getSubscription(topicName);
+    if (dialogUser && myId && wsThread) {
 
       wsThread.emit('message', {
         type: WsTypes.CONNECTION,
         receiverId: dialogUser.id
-      })
+      });
 
       const webSocketCallback = (data) => {
         switch (data.type) {
           case WsTypes.MESSAGE:
-            addMessage(data.message);
-            if (data.message.receiver_id === myId)
-              wsThread.emit('message', {
-                type: WsTypes.READ,
-                receiverId: dialogUser.id
-              });
+            if (data.message.owner_id === dialogUser.id || data.message.owner_id === myId) {
+              addMessage(data.message);
+              if(data.message.receiver_id === myId) {
+                wsThread.emit('message', {
+                  type: WsTypes.READ,
+                  receiverId: dialogUser.id
+                });
+              }
+            }
             break;
           case WsTypes.CONNECTION:
             readAllMessages();
@@ -71,20 +72,19 @@ const Dialog = ({myId, dispatch, match}) => {
             readAllMessages();
             break;
           case WsTypes.IS_TYPING:
-            if(data.owner_id === dialogUser.id) {
-              const time = Date.now()
+            if (data.owner_id === dialogUser.id) {
+              const time = Date.now();
               setIsTyping(true);
-              if(timerRef.current)
-                clearInterval(timerRef.current)
+              if (timerRef.current)
+                clearInterval(timerRef.current);
               timerRef.current = setTimeout(() => {
-                if(time + 1500 <= Date.now()) {
-                  console.log('SET FALSE');
+                if (time + 1500 <= Date.now())
                   setIsTyping(false)
-                }
               }, 1600);
             }
             break;
-          default: break;
+          default:
+            break;
         }
       };
 
@@ -94,7 +94,7 @@ const Dialog = ({myId, dispatch, match}) => {
 
       return () => wsThread.off('message', webSocketCallback);
     }
-  }, [dialogUser]);
+  }, [dialogUser, myId, ws.getSubscription(topicName)]);
 
   const sendMessage = useCallback((message) => {
     dialog.current.emit('message', {
@@ -138,7 +138,7 @@ const Dialog = ({myId, dispatch, match}) => {
       }
     </div>
   )
-}
+};
 
 Dialog.propTypes = {
   myId: PropTypes.number.isRequired,

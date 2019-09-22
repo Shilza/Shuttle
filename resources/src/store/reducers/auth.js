@@ -73,7 +73,7 @@ const readDialog = (state, id) => ({
 
 const addUnreadDialog = (state, id) => {
   let unreadDialogs;
-  if(state.user.unreadDialogs.some(dialog => dialog === id))
+  if (state.user.unreadDialogs.some(dialog => dialog === id))
     unreadDialogs = state.user.unreadDialogs;
   else
     unreadDialogs = [...state.user.unreadDialogs, id];

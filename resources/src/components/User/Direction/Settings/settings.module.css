@@ -88,3 +88,21 @@
 .privateContainer > span {
   margin-right: 10px;
 }
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .0975);
+  margin-right: 8px;
+}

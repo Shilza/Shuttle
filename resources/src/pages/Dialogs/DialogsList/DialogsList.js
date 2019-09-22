@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 import Dialog from "../Dialog/Dialog"
 
-import styles from "./messagesList.module.css"
+import styles from "./dialogsList.module.css"
 
 
 const DialogsList = React.memo(({dialogs, myId, search}) => (
@@ -24,6 +24,7 @@ const DialogsList = React.memo(({dialogs, myId, search}) => (
             myId={myId}
             read={item.read}
             createdAt={item.created_at}
+            isTyping={item.isTyping}
           />
       ))
     }
