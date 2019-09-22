@@ -6,174 +6,175 @@ const UsersService = use('UsersService');
 
 class AuthController {
 
-    /**
-     * @param request
-     * @param response
-     * @returns {Promise<*>}
-     */
-    async register({request, response}) {
-        const Event = use('Event');
-        const {validate} = use('CValidator');
+  /**
+   * @param request
+   * @param response
+   * @returns {Promise<*>}
+   */
+  async register({request, response}) {
+    const Event = use('Event');
+    const {validate} = use('CValidator');
 
-        const rules = {
-            email: 'required|email|unique:users,email',
-            username: 'required|min:2|max:12|regex:^[a-z0-9]+$|unique:users,username',
-            password: 'required|min:8|max:32|confirmed'
-        };
+    const rules = {
+      email: 'required|email|unique:users,email',
+      username: 'required|min:2|max:12|regex:^[a-z0-9]+$|unique:users,username',
+      password: 'required|min:8|max:32|confirmed'
+    };
 
-        const validation = await validate(request.all(), rules);
+    const validation = await validate(request.all(), rules);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        let userData = request.only(['username', 'email', 'password']);
+    let userData = request.only(['username', 'email', 'password']);
 
-        const user = await User.create(userData);
-        Event.fire('user::register', user);
+    const user = await User.create(userData);
+    Event.fire('user::register', user);
 
-        response.json({message: 'Registered successfully. Please, log in'});
+    response.json({message: 'Registered successfully. Please, log in'});
+  }
+
+  /**
+   * @param request
+   * @param response
+   * @param auth
+   * @returns {Promise<*>}
+   */
+  async login({request, response, auth}) {
+    const {validate} = use('CValidator');
+    const Hash = use('Hash');
+    const Config = use('Config');
+    const moment = require('moment');
+
+    const rules = {
+      username: 'required|min:2|max:16',
+      password: 'required|min:8|max:32'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const user = await User
+      .query()
+      .where('username', request.input('username'))
+      .first();
+
+    if (!user)
+      return response.status(400).json({
+        message: 'User does not exists'
+      });
+
+    const isPassword = await Hash.verify(request.input('password'), user.password);
+
+    if (!isPassword)
+      return response.status(400)
+        .json({message: 'Incorrect login or password'});
+
+    const jwt = await auth
+      .withRefreshToken()
+      .generate(user);
+
+    jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
+    jwt.user = user;
+    jwt.user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
+    jwt.user.unreadDialogs = await UsersService.unreadDialogs(user.id);
+
+    response.json(jwt);
+  }
+
+  /**
+   * @param request
+   * @param response
+   * @param auth
+   * @returns {Promise<*>}
+   */
+  async me({request, response, auth}) {
+    try {
+      const user = await auth.getUser();
+      user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
+      user.unreadDialogs = await UsersService.unreadDialogs(user.id);
+      return response.json({user});
+    } catch (error) {
+      response.status(400).json({message: 'Something went wrong. You are not logged in'});
     }
+  }
 
-    /**
-     * @param request
-     * @param response
-     * @param auth
-     * @returns {Promise<*>}
-     */
-    async login({request, response, auth}) {
-        const {validate} = use('CValidator');
-        const Hash = use('Hash');
-        const Config = use('Config');
-        const moment = require('moment');
+  /**
+   * @param request
+   * @param response
+   * @param auth
+   * @returns {Promise<*>}
+   */
+  async refresh({request, response, auth}) {
+    const Config = use('Config');
+    const moment = require('moment');
+    const {validate} = use('CValidator');
 
-        const rules = {
-            username: 'required|min:2|max:16',
-            password: 'required|min:8|max:32'
-        };
+    const rules = {
+      refreshToken: 'required|string',
+    };
 
-        const validation = await validate(request.all(), rules);
+    const validation = await validate(request.all(), rules);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        const user = await User
-            .query()
-            .where('username', request.input('username'))
-            .first();
+    const jwt = await auth
+      .newRefreshToken()
+      .generateForRefreshToken(request.input('refreshToken'));
+    jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
 
-        if (!user)
-            return response.status(400).json({
-                message: 'User does not exists'
-            });
+    response.json(jwt);
+  }
 
-        const isPassword = await Hash.verify(request.input('password'), user.password);
+  /**
+   * @param request
+   * @param response
+   * @param auth
+   * @returns {Promise<*>}
+   */
+  async logout({request, response, auth}) {
+    const {validate} = use('CValidator');
 
-        if (!isPassword)
-            return response.status(400)
-                .json({message: 'Incorrect login or password'});
+    const rules = {
+      refreshToken: 'required|string',
+    };
 
-        const jwt = await auth
-            .withRefreshToken()
-            .generate(user);
+    const validation = await validate(request.all(), rules);
 
-        jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
-        jwt.user = user;
-        jwt.user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        response.json(jwt);
-    }
+    await auth
+      .authenticator('jwt')
+      .revokeTokens(request.input('refreshToken'), true);
 
-    /**
-     * @param request
-     * @param response
-     * @param auth
-     * @returns {Promise<*>}
-     */
-    async me({request, response, auth}) {
-        try {
-            const user = await auth.getUser();
-            user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
-            user.unreadDialogs = await UsersService.unreadDialogs(user.id);
-            return response.json({user});
-        } catch (error) {
-            response.status(400).json('You are not logged in');
-        }
-    }
+    return response.json({message: 'Logout successfully'});
+  }
 
-    /**
-     * @param request
-     * @param response
-     * @param auth
-     * @returns {Promise<*>}
-     */
-    async refresh({request, response, auth}) {
-        const Config = use('Config');
-        const moment = require('moment');
-        const {validate} = use('CValidator');
+  /**
+   * @param request
+   * @param response
+   * @param auth
+   * @returns {Promise<void>}
+   */
+  async revokeAll({request, response, auth}) {
+    await auth
+      .authenticator('jwt')
+      .revokeTokens();
 
-        const rules = {
-            refreshToken: 'required|string',
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        const jwt = await auth
-            .newRefreshToken()
-            .generateForRefreshToken(request.input('refreshToken'));
-        jwt.expiresIn = Number(moment().format('X')) + Config.get('app.jwt.ttl');
-
-        response.json(jwt);
-    }
-
-    /**
-     * @param request
-     * @param response
-     * @param auth
-     * @returns {Promise<*>}
-     */
-    async logout({request, response, auth}) {
-        const {validate} = use('CValidator');
-
-        const rules = {
-            refreshToken: 'required|string',
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        await auth
-            .authenticator('jwt')
-            .revokeTokens(request.input('refreshToken'), true);
-
-        return response.json({message: 'Logout successfully'});
-    }
-
-    /**
-     * @param request
-     * @param response
-     * @param auth
-     * @returns {Promise<void>}
-     */
-    async revokeAll({request, response, auth}) {
-        await auth
-            .authenticator('jwt')
-            .revokeTokens();
-
-        response.json({message: 'All tokens revoked successfully'});
-    }
+    response.json({message: 'All tokens revoked successfully'});
+  }
 }
 
 module.exports = AuthController;

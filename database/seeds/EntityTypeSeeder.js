@@ -11,14 +11,12 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
-const Factory = use('Factory');
 const EntityType = use('App/Models/EntityType');
-
 
 class EntityTypeSeeder {
     async run() {
-        await EntityType.create({type: 'post'});
-        await EntityType.create({type: 'comment'});
+        await EntityType.create({id: 1, type: 'post'});
+        await EntityType.create({id: 2, type: 'comment'});
     }
 }
 

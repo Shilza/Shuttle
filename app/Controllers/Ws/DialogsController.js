@@ -2,6 +2,7 @@
 
 const Ws = use('Ws');
 const Dialog = use('App/Models/Dialog');
+const UsersService = use('UsersService');
 
 const TOPIC_NAME = 'dialogs';
 
@@ -21,76 +22,79 @@ class DialogsController {
   }
 
   async onMessage({receiverId: receiver_id, type, message}) {
+    if (!await UsersService.isBlacklisted(this.user.id, receiver_id)) {
+      const topic = Ws
+        .getChannel(`${TOPIC_NAME}:*`)
+        .topic(`${TOPIC_NAME}:${receiver_id}`);
 
-    const topic = Ws
-      .getChannel(`${TOPIC_NAME}:*`)
-      .topic(`${TOPIC_NAME}:${receiver_id}`);
+      switch (type) {
+        case CONNECTION:
+          await Dialog
+            .query()
+            .where('receiver_id', this.user.id)
+            .where('owner_id', receiver_id)
+            .where('read', false)
+            .update({read: true});
 
-    switch (type) {
-      case CONNECTION:
-        await Dialog
-          .query()
-          .where('receiver_id', this.user.id)
-          .where('owner_id', receiver_id)
-          .where('read', false)
-          .update({read: true})
-
-        if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
-          topic.broadcast('message', {
-              type: CONNECTION,
-              receiver_id: this.user.id
-            }
-          )
-        break;
-      case READ:
-        await Dialog
-          .query()
-          .where('receiver_id', this.user.id)
-          .where('owner_id', receiver_id)
-          .where('read', false)
-          .update({read: true});
-
-        if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
-          topic.broadcast('message', {
-              type: READ
-            }
-          )
-        break;
-      case MESSAGE:
-        const owner_id = this.user.id
-
-        const msg = await Dialog.create({
-          owner_id,
-          receiver_id,
-          message
-        });
-
-        this.socket.broadcastToAll(`message`, {
-          type: MESSAGE,
-          message: msg
-        });
-
-        if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
-          topic
-            .broadcast('message', {
-              type: MESSAGE,
-              message: {
-                ...msg.toJSON(),
-                user: {
-                  id: this.user.id,
-                  avatar: this.user.avatar,
-                  username: this.user.username
-                }
+          if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
+            topic.broadcast('message', {
+                type: CONNECTION,
+                receiver_id: this.user.id
               }
-            });
-        break;
-      case IS_TYPING:
-        if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
-          topic
-            .broadcast('message', {
-              type: IS_TYPING,
-              owner_id: this.user.id
-            })
+            );
+          break;
+        case READ:
+          await Dialog
+            .query()
+            .where('receiver_id', this.user.id)
+            .where('owner_id', receiver_id)
+            .where('read', false)
+            .update({read: true});
+
+          if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
+            topic.broadcast('message', {
+                type: READ
+              }
+            );
+          break;
+        case MESSAGE:
+          const owner_id = this.user.id;
+
+          const msg = await Dialog.create({
+            owner_id,
+            receiver_id,
+            message
+          });
+
+          this.socket.broadcastToAll(`message`, {
+            type: MESSAGE,
+            message: msg
+          });
+
+          if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
+            topic
+              .broadcast('message', {
+                type: MESSAGE,
+                message: {
+                  ...msg.toJSON(),
+                  user: {
+                    id: this.user.id,
+                    avatar: this.user.avatar,
+                    username: this.user.username
+                  }
+                }
+              });
+          break;
+        case IS_TYPING:
+          if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
+            topic
+              .broadcast('message', {
+                type: IS_TYPING,
+                owner_id: this.user.id
+              });
+          break;
+        default: break;
+      }
     }
   }
 
@@ -105,4 +109,4 @@ class DialogsController {
   }
 }
 
-module.exports = DialogsController
+module.exports = DialogsController;

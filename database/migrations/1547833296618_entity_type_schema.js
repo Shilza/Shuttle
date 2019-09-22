@@ -6,7 +6,7 @@ const Schema = use('Schema')
 class EntityTypeSchema extends Schema {
   up () {
     this.create('entity_types', (table) => {
-      table.integer('id').notNullable().primary();
+      table.integer('id').unsigned().notNullable().primary();
       table.string('type').notNullable().unique();
     })
   }
