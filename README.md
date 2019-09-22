@@ -43,6 +43,7 @@ Social network ReactJS application
 * Searching users by nickname
 * Getting unique post's link
 * Avatar uploading
+* Messaging
 
 ## Shuttle inside
 This section shows the Shuttle user interface on desktop and mobile devices
