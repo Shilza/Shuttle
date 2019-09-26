@@ -1,0 +1,21 @@
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container + .container {
+  margin-top: 6px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  border: 1px solid #efefef;
+}
+
+.username {
+  font-weight: 700;
+}

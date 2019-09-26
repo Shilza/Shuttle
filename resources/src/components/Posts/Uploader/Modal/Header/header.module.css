@@ -1,0 +1,23 @@
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  min-height: 40px;
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.next {
+  border: 0;
+  background: transparent;
+  color: #1e90ff;
+  margin-left: auto;
+}

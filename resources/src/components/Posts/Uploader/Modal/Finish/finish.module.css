@@ -1,0 +1,40 @@
+
+.container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.media {
+  position: static;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.caption {
+  border: 0;
+  margin-left: 5px;
+  padding: 2px 2px 5px 2px;
+  width: 100%;
+  outline: none;
+}
+
+.button {
+  color: #000;
+  background: transparent;
+  padding: 2px 8px;
+  width: 100%;
+  border: 1px solid #efefef;
+  margin: 5px 0 ;
+  border-radius: 5px;
+}
