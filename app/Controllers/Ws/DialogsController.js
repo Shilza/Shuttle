@@ -3,6 +3,7 @@
 const Ws = use('Ws');
 const Dialog = use('App/Models/Dialog');
 const UsersService = use('UsersService');
+const {validate} = use('CValidator');
 
 const TOPIC_NAME = 'dialogs';
 
@@ -10,6 +11,7 @@ const MESSAGE = 1;
 const CONNECTION = 2;
 const READ = 3;
 const IS_TYPING = 4;
+const ERROR = 5;
 
 class DialogsController {
   constructor({socket, request, auth}) {
@@ -59,6 +61,28 @@ class DialogsController {
           break;
         case MESSAGE:
           const owner_id = this.user.id;
+
+          const rules = {
+            receiver_id: 'required|integer',
+            message: 'required|string|min:0|max:1000'
+          };
+
+          const validation = await validate({receiver_id, message}, rules);
+
+          if (validation.fails()) {
+            this.socket.emit('message', {
+              type: ERROR,
+              error: validation.messages()[0].message
+            });
+            break;
+          }
+
+          await Dialog
+            .query()
+            .where('receiver_id', this.user.id)
+            .where('owner_id', receiver_id)
+            .where('read', false)
+            .update({read: true});
 
           const msg = await Dialog.create({
             owner_id,

@@ -3,6 +3,7 @@
 const Post = use('App/Models/Post');
 const User = use('App/Models/User');
 const Feed = use('App/Models/Feed');
+const Mark = use('App/Models/Mark');
 const Friendship = use('App/Models/Friendship');
 const {validate} = use('CValidator');
 const PostsService = use('PostsService');
@@ -10,317 +11,343 @@ const UsersService = use('UsersService');
 
 class PostController {
 
-    async showPostByCode({request, response, auth, params}) {
+  async showPostByCode({request, response, auth, params}) {
 
-        const user = await auth.getUser();
+    const user = await auth.getUser();
 
-        const owner = await PostsService.getPostsOwnerByPostCode(params.code);
+    const owner = await PostsService.getPostsOwnerByPostCode(params.code);
 
-        const canSee = await UsersService.canSee(owner, user.id);
+    if(!owner)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
 
-        if (canSee) {
-            const post = await PostsService.getPostByCode(params.code, user);
+    const canSee = await UsersService.canSee(owner, user.id);
 
-            if (!post)
-                return response.status(400).json({
-                    message: 'Post does not exists'
-                });
+    if (canSee) {
+      const post = await PostsService.getPostByCode(params.code, user);
 
-            return response.json({post});
-        } else
-            return response.json({private: true});
-    }
-
-    async show({request, response, auth}) {
-
-        const rules = {
-            owner_id: 'required|integer',
-            page: 'integer'
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        let page = parseInt(request.input('page'), 10);
-        page = page > 0 ? page : 1;
-
-        const user = await auth.getUser();
-
-        const ownerId = parseInt(request.input('owner_id'), 10);
-
-        const owner = await User.find(ownerId);
-
-        const canSee = await UsersService.canSee(owner, user.id);
-
-        if (canSee) {
-            const posts = await PostsService.getPostsByOwner(ownerId, user.id, page);
-            return response.json(posts);
-        } else
-            return response.json({private: true});
-    }
-
-    async showArchived({request, response, auth}) {
-
-        const rules = {
-            page: 'integer'
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        let page = parseInt(request.input('page'), 10);
-        page = page > 0 ? page : 1;
-
-        const user = await auth.getUser();
-        const posts = await PostsService.getArchivedPosts(user, page);
-
-        response.json(posts);
-    }
-
-    async showLikedPosts({request, response, auth}) {
-        const rules = {
-            page: 'integer'
-        };
-
-        const validation = await validate(request.all(), rules);
-
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
-
-        let page = parseInt(request.input('page'), 10);
-        page = page > 0 ? page : 1;
-
-        const user = await auth.getUser();
-
-        const likedPosts = await PostsService.getLikedPosts(user.id, page);
-
-        response.json(likedPosts);
-    }
-
-    async create({request, response, auth}) {
-
-        const Helpers = use('Helpers');
-        const uuidv4 = require('uuid/v4');
-
-        const postMedia = request.file('media', {
-            types: ['image', 'video'],
-            size: '10mb',
-            subtypes: ['jpg', 'jpeg', 'mp4']
+      if (!post)
+        return response.status(400).json({
+          message: 'Post does not exists'
         });
 
-        const rules = {
-            caption: 'string|max:1000'
-        };
+      return response.json({post});
+    } else
+      return response.json({private: true});
+  }
 
-        const validation = await validate(request.all(), rules);
+  async show({request, response, auth}) {
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const rules = {
+      owner_id: 'required|integer',
+      page: 'integer'
+    };
 
-        const user = await auth.getUser();
+    const validation = await validate(request.all(), rules);
 
-        const extension = postMedia.type === 'image' ? 'jpg' : 'mp4';
-        const name = uuidv4() + '.' + extension;
-        const path = Helpers.publicPath('uploads') + '/' + user.id;
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        await postMedia.move(path, {
-            name, overwrite: true
-        });
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
 
-        if (!postMedia.moved())
-            return postMedia.error();
+    const user = await auth.getUser();
 
-        const postData = request.input('caption');
-        let post = await Post.create({
-            caption: postData,
-            owner_id: user.id,
-            src: '/uploads/' + user.id + '/' + name
-        });
+    const ownerId = parseInt(request.input('owner_id'), 10);
 
-        post.owner = user.username;
-        post.isLiked = false;
-        post.likes_count = 0;
-        post.comments_count = 0;
+    const owner = await User.find(ownerId);
 
-        this.contentDistribution(post.id, user.id);
+    const canSee = await UsersService.canSee(owner, user.id);
 
-        response.json({
-            message: 'Post successfully created',
-            post
-        });
-    }
+    if (canSee) {
+      const posts = await PostsService.getPostsByOwner(ownerId, user.id, page);
+      return response.json(posts);
+    } else
+      return response.json({private: true});
+  }
 
-    async contentDistribution(post_id, id) {
-        let friends = await Friendship
-            .query()
-            .where('user_id', id)
-            .pluck('subscriber_id');
-        friends.push(id);
+  async showArchived({request, response, auth}) {
 
-        const bulkFeed = friends.map(id => {
-            return {
-                receiver_id: id,
-                post_id
-            }
-        });
+    const rules = {
+      page: 'integer'
+    };
 
-        await Feed
-            .query()
-            .from('feeds')
-            .insert(bulkFeed);
-    }
+    const validation = await validate(request.all(), rules);
 
-    async update({request, response, auth}) {
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        const rules = {
-            id: 'required|integer',
-            caption: 'string|max:1000'
-        };
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
 
-        const validation = await validate(request.all(), rules);
+    const user = await auth.getUser();
+    const posts = await PostsService.getArchivedPosts(user, page);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    response.json(posts);
+  }
 
-        const post = await Post.find(request.input('id'));
+  async showLikedPosts({request, response, auth}) {
+    const rules = {
+      page: 'integer'
+    };
 
-        if (!post)
-            return response.status(400).json({
-                message: 'Post does not exists'
-            });
+    const validation = await validate(request.all(), rules);
 
-        const user = await auth.getUser();
-        if (!user.isOwner(post))
-            return response.status(403).json({
-                message: 'Forbidden. Unable to update'
-            });
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        post.merge(request.all());
-        post.save();
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
 
-        response.json({message: 'Post updated successfully'});
-    }
+    const user = await auth.getUser();
 
-    async delete({request, response, auth}) {
+    const likedPosts = await PostsService.getLikedPosts(user.id, page);
 
-        const rules = {
-            id: 'required|integer',
-        };
+    response.json(likedPosts);
+  }
 
-        const validation = await validate(request.all(), rules);
+  async create({request, response, auth}) {
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const Helpers = use('Helpers');
+    const uuidv4 = require('uuid/v4');
 
-        const post = await Post.find(request.input('id'));
+    const postMedia = request.file('media', {
+      types: ['image', 'video'],
+      size: '10mb',
+      subtypes: ['jpg', 'jpeg', 'mp4']
+    });
 
-        if (!post)
-            return response.status(400).json({
-                message: 'Post does not exists'
-            });
+    const rules = {
+      caption: 'string|max:1000',
+    };
 
-        const user = await auth.getUser();
-        if (!user.isOwner(post))
-            return response.status(403).json({
-                message: 'Forbidden. Unable to delete'
-            });
+    const validation = await validate(request.all(), rules);
 
-        await post.delete();
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        response.json({message: 'Post deleted successfully'});
-    }
 
-    async addToArchive({request, response, auth}) {
-        const rules = {
-            post_id: 'required|integer'
-        };
+    const marks = JSON.parse(request.input('marks'));
+    if (!Array.isArray(marks))
+      return response.status(400).json({
+        message: 'Marks should be an array'
+      });
 
-        const validation = await validate(request.all(), rules);
+    if(marks.length > 10)
+      return response.status(400).json({
+        message: 'Marks count should be less than 10'
+      });
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const user = await auth.getUser();
 
-        const user = await auth.getUser();
+    const extension = postMedia.type === 'image' ? 'jpg' : 'mp4';
+    const name = uuidv4() + '.' + extension;
+    const path = Helpers.publicPath('uploads') + '/' + user.id;
 
-        const post = await Post
-            .query()
-            .where('id', request.input('post_id'))
-            .where('owner_id', user.id)
-            .first();
+    await postMedia.move(path, {
+      name, overwrite: true
+    });
 
-        if (!post)
-            return response.status(400).json({
-                message: 'Post does not exists'
-            });
+    if (!postMedia.moved())
+      return postMedia.error();
 
-        if (post.archive)
-            return response.status(400).json({
-                message: 'Post already archived'
-            });
+    const postData = request.input('caption');
+    let post = await Post.create({
+      caption: postData,
+      owner_id: user.id,
+      src: '/uploads/' + user.id + '/' + name
+    });
 
-        post.archive = true;
-        await post.save();
+    post.owner = user.username;
+    post.isLiked = false;
+    post.likes_count = 0;
+    post.comments_count = 0;
 
-        response.json({
-            message: 'Successfully added to the archive'
-        });
-    }
+    const marksPromises = marks.map(mark =>
+       Mark.create({
+         post_id: post.id,
+         ...mark
+       })
+    );
 
-    async deleteFromArchive({request, response, auth}) {
-        const rules = {
-            post_id: 'required|integer'
-        };
+    post.marks = await Promise.all(marksPromises);
 
-        const validation = await validate(request.all(), rules);
+    this.contentDistribution(post.id, user.id);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    response.json({
+      message: 'Post successfully created',
+      post
+    });
+  }
 
-        const user = await auth.getUser();
+  async contentDistribution(post_id, id) {
+    let friends = await Friendship
+      .query()
+      .where('user_id', id)
+      .pluck('subscriber_id');
+    friends.push(id);
 
-        const post = await Post
-            .query()
-            .where('id', request.input('post_id'))
-            .where('owner_id', user.id)
-            .first();
+    const bulkFeed = friends.map(id => {
+      return {
+        receiver_id: id,
+        post_id
+      }
+    });
 
-        if (!post)
-            return response.status(400).json({
-                message: 'Post does not exists'
-            });
+    await Feed
+      .query()
+      .from('feeds')
+      .insert(bulkFeed);
+  }
 
-        if (!post.archive)
-            return response.status(400).json({
-                message: 'Post already available'
-            });
+  async update({request, response, auth}) {
 
-        post.archive = false;
-        await post.save();
+    const rules = {
+      id: 'required|integer',
+      caption: 'string|max:1000'
+    };
 
-        response.json({
-            message: 'Successfully unarchived'
-        });
-    }
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const post = await Post.find(request.input('id'));
+
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
+    const user = await auth.getUser();
+    if (!user.isOwner(post))
+      return response.status(403).json({
+        message: 'Forbidden. Unable to update'
+      });
+
+    post.merge(request.all());
+    post.save();
+
+    response.json({message: 'Post updated successfully'});
+  }
+
+  async delete({request, response, auth}) {
+
+    const rules = {
+      id: 'required|integer',
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const post = await Post.find(request.input('id'));
+
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
+    const user = await auth.getUser();
+    if (!user.isOwner(post))
+      return response.status(403).json({
+        message: 'Forbidden. Unable to delete'
+      });
+
+    await post.delete();
+
+    response.json({message: 'Post deleted successfully'});
+  }
+
+  async addToArchive({request, response, auth}) {
+    const rules = {
+      post_id: 'required|integer'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const user = await auth.getUser();
+
+    const post = await Post
+      .query()
+      .where('id', request.input('post_id'))
+      .where('owner_id', user.id)
+      .first();
+
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
+    if (post.archive)
+      return response.status(400).json({
+        message: 'Post already archived'
+      });
+
+    post.archive = true;
+    await post.save();
+
+    response.json({
+      message: 'Successfully added to the archive'
+    });
+  }
+
+  async deleteFromArchive({request, response, auth}) {
+    const rules = {
+      post_id: 'required|integer'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const user = await auth.getUser();
+
+    const post = await Post
+      .query()
+      .where('id', request.input('post_id'))
+      .where('owner_id', user.id)
+      .first();
+
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
+    if (!post.archive)
+      return response.status(400).json({
+        message: 'Post already available'
+      });
+
+    post.archive = false;
+    await post.save();
+
+    response.json({
+      message: 'Successfully unarchived'
+    });
+  }
 }
 
 module.exports = PostController;

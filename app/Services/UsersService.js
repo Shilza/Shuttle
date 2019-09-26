@@ -77,13 +77,11 @@ class UsersService {
       const subQuery = Database
         .raw('SELECT MAX(id) FROM dialogs WHERE receiver_id = ? AND `read`=false GROUP BY least(owner_id,receiver_id), greatest(owner_id,receiver_id)', [receiverId])
 
-      const dialogs = await Dialog
+      return await Dialog
         .query()
         .whereIn('id', subQuery)
         .orderBy('created_at', 'desc')
         .pluck('owner_id');
-
-      return dialogs;
     }
 }
 
