@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import * as FeedService from "../../services/feed";
+
+import * as FeedService from "services/feed";
 import FeedList from "./FeedList/FeedList";
+import Paginator from "components/Paginator/Paginator";
+import FeedExplainingLabel from "components/ExplainingLabels/FeedLabel/FeedLabel";
+
 import styles from './feed.module.css';
-import Paginator from "../../components/Paginator/Paginator";
-import FeedExplainingLabel from "../../components/ExplainingLabels/FeedLabel/FeedLabel";
 
 const Feed = ({posts, page = 0, dispatch}) => {
 

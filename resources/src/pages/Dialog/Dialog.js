@@ -1,17 +1,18 @@
 import React, {useCallback, useEffect, useRef, useState} from "react"
 import PropTypes from "prop-types"
+import {connect} from "react-redux"
 
 import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
 
 import MessagesList from "./MessagesList/MessagesList"
-import BlacklistedExplainingLabel from "../../components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel"
-import Loader from "../../components/Paginator/Loader/Loader"
+import BlacklistedExplainingLabel from "components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel"
+import Loader from "components/Paginator/Loader/Loader"
 
-import {readDialog} from "../../store/actions/auth"
+import {readDialog} from "store/actions/auth"
 import Http from "../../Http"
 import ws, {types as WsTypes} from "../../Ws"
-import {connect} from "react-redux"
+
 import useMessages from "./utils/useMessages"
 
 import styles from './dialog.module.css';
@@ -25,7 +26,7 @@ const Dialog = ({myId, dispatch, match}) => {
   let dialog = useRef(null);
   let timerRef = useRef(null);
 
-  const {messages, getMessages, addMessage, readAllMessages, onNewMessage} = useMessages(username);
+  const {messages, getMessages, addMessage, readAllMessages, onNewMessage, isFirstLoading} = useMessages(username);
   const topicName = `dialogs:${myId}`;
 
   useEffect(() => {
@@ -62,6 +63,7 @@ const Dialog = ({myId, dispatch, match}) => {
                   type: WsTypes.READ,
                   receiverId: dialogUser.id
                 });
+                readAllMessages();
               }
             }
             break;
@@ -129,6 +131,7 @@ const Dialog = ({myId, dispatch, match}) => {
                     user={dialogUser}
                     myId={myId}
                     getMessages={getMessages}
+                    isFirstLoading={isFirstLoading}
                   />
                   <Footer sendMessage={sendMessage} typing={typing}/>
                 </>

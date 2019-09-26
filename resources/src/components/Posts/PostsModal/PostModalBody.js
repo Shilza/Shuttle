@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './postModal.module.css';
+
 import PostControl from "./PostsControl/PostControl";
 import PostMedia from "../../PostMedia/PostMedia";
 
+import styles from './postModal.module.css';
+
 const PostModalBody = ({post}) =>
     <section className={styles.postModalContainer}>
-        <PostMedia media={post.src} postId={post.id}/>
+        <PostMedia media={post.src} postId={post.id} marks={post.marks}/>
         <PostControl post={post}/>
     </section>;
 

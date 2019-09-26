@@ -1,16 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import {isMobile} from "../../../utils/isMobile"
-import TopPagination from "../../../components/TopPagination/TopPagination"
-import Loader from "../../../components/Paginator/Loader/Loader"
+import {isMobile} from "utils/isMobile"
+import TopPagination from "components/TopPagination/TopPagination"
+import Loader from "components/Paginator/Loader/Loader"
+import StartMessagingLabel from "components/ExplainingLabels/StartMessagingLabel/StartMessagingLabel"
 
 import Message from "../Message/Message"
 
 import styles from "./messagesList.module.css"
-import StartMessagingLabel from "../../../components/ExplainingLabels/StartMessagingLabel/StartMessagingLabel";
 
-const MessagesList = ({dialogs, user, myId, getMessages}) => {
+
+const MessagesList = ({dialogs, user, myId, getMessages, isFirstLoading}) => {
 
   const isNeedAvatar = (messages, index) => {
     const prevMessage = messages[index - 1];
@@ -29,22 +30,21 @@ const MessagesList = ({dialogs, user, myId, getMessages}) => {
         byWindow
       >
         {
-          dialogs.length === 0 ?
+          !isFirstLoading && dialogs.length === 0 ?
             <div className={styles.explainingContainer}>
               <StartMessagingLabel/>
             </div>
             :
-          dialogs.map((dialog, index) =>
-            <Message
-              my={dialog.owner_id === myId}
-              avatar={user && user.avatar}
-              username={user && user.username}
-              withAvatar={isNeedAvatar(dialogs, index)}
-              text={dialog.message}
-              read={dialog.read}
-              key={dialog.id}
-            />
-          )
+            dialogs.map((dialog, index) => <Message
+                  my={dialog.owner_id === myId}
+                  avatar={user && user.avatar}
+                  username={user && user.username}
+                  withAvatar={isNeedAvatar(dialogs, index)}
+                  text={dialog.message}
+                  read={dialog.read}
+                  key={dialog.id}
+                />
+            )
         }
       </TopPagination>
     </div>
@@ -58,7 +58,8 @@ MessagesList.propTypes = {
     username: PropTypes.string
   }),
   myId: PropTypes.number.isRequired,
-  getMessages: PropTypes.func.isRequired
+  getMessages: PropTypes.func.isRequired,
+  isFirstLoading: PropTypes.bool.isRequired
 };
 
 export default MessagesList;

@@ -75,7 +75,8 @@ const useMessages = (username) => {
     addMessage,
     getMessages,
     readAllMessages,
-    onNewMessage
+    onNewMessage,
+    isFirstLoading: isFirstRender.current
   }
 };
 

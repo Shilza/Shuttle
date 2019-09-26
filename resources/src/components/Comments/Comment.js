@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './comment.module.css';
-import {convertTime} from "../../utils/timeConverter";
-import {connect} from "react-redux";
-import {setIsCommentsModalOpen, setSelectedComment} from "../../store/actions/comments";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import Linkify from 'linkifyjs/react'
+
+import {convertTime} from "utils/timeConverter";
+import {setIsCommentsModalOpen, setSelectedComment} from "store/actions/comments";
 import Like from "../Posts/PostsModal/PostsControl/Actions/Like/Like";
+
+import styles from './comment.module.css';
 
 const Comment = ({comment, dispatch}) => {
 
@@ -20,7 +23,7 @@ const Comment = ({comment, dispatch}) => {
         <div className={styles.comment} onClick={openModal}>
             <div>
                 <Link to={'/' + owner} onClick={e => e.stopPropagation()} className={styles.username}>{owner}</Link>
-                <span>{text}</span>
+                <Linkify>{text}</Linkify>
             </div>
             <div className={styles.metaContainer}>
                 <time dateTime={created_at}>{convertTime(created_at)}</time>

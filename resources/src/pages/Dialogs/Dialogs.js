@@ -4,10 +4,11 @@ import {connect} from "react-redux"
 
 import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
 import Loader from "components/Paginator/Loader/Loader"
+import useDialogs from "utils/useDialogs"
 
 import ws from "../../Ws"
 import {types as WsTypes} from "../../Ws"
-import useDialogs from "./utils/useDialogs"
+
 import DialogsList from "./DialogsList/DialogsList"
 
 import styles from './dialogs.module.css';

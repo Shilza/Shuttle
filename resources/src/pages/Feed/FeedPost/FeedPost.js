@@ -13,7 +13,7 @@ import {getComments} from "store/selectors/comments";
 import styles from '../feed.module.css';
 
 const FeedPost = ({post, comments, open}) => {
-  const {owner, avatar, src, id} = post;
+  const {owner, avatar, src, marks, id} = post;
 
   const openPost = event => {
     const tag = event.target.tagName.toLowerCase();
@@ -25,11 +25,11 @@ const FeedPost = ({post, comments, open}) => {
     <section className={styles.item}>
       <Header username={owner} avatar={avatar}/>
       <div className={styles.mediaContainer} onClick={openPost}>
-        <PostMedia media={src} postId={id}/>
+        <PostMedia media={src} postId={id} marks={marks}/>
       </div>
       <Actions post={post}/>
       {
-        comments &&
+        comments && comments.length > 0 &&
         <div className={styles.comments}>
           <CommentsList comments={comments}/>
         </div>

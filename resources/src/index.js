@@ -7,16 +7,21 @@ import {render} from 'react-dom';
 import {Provider} from "react-redux";
 
 import App from "./app/App";
+import ErrorBoundary from "./app/ErrorBoundary";
 import store from "./store";
-import ws from "./Ws";
+import * as ws from "./Ws";
 import * as serviceWorker from './serviceWorker';
 
 render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
+  <ErrorBoundary>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </ErrorBoundary>,
   document.getElementById('root')
 );
+
+ws.start();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

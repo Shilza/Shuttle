@@ -1,18 +1,13 @@
 import React from "react"
-import {Icon} from "antd"
 import PropTypes from "prop-types"
+
+import SearchInput from "components/SearchInput/SearchInput";
 
 import Dialog from "../Dialog/Dialog"
 
-import styles from "./dialogsList.module.css"
-
-
 const DialogsList = React.memo(({dialogs, myId, search}) => (
   <>
-    <div className={styles.searchContainer}>
-      <Icon type='search'/>
-      <input placeholder='Search' maxLength='32' onChange={search}/>
-    </div>
+    <SearchInput search={search}/>
     {
       dialogs.map(((item, index) =>
           <Dialog

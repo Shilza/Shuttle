@@ -1,68 +1,78 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {Button, Form} from "antd";
-import UploadMediaPlayer from "../../../PostMedia/UploadMediaPlayer";
-import styles from './uploadPost.module.css';
-import Header from "../../PostsModal/PostsControl/Header";
 import {connect} from "react-redux";
-import Caption from "../../../Fields/Caption";
 
+import UploadMediaPlayer from "components/PostMedia/UploadMediaPlayer";
 
-const UploadPost = ({upload, media, form, currentAuthUsername}) => {
+import {convertImageToBlob} from "utils/convertImageToBlob";
 
-    let [croppedMedia, setCroppedMedia] = useState();
+import Filters from "./Filters";
+import Container from "./Container";
+import Header from "./Header";
+import Finish from "./Finish";
 
-    const submit = event => {
-        event.preventDefault();
-        if (media.type.match('image')) {
-            fetch(croppedMedia)
-                .then(res => res.blob())
-                .then(blob => {
-                    uploadPost(blob, 'image/jpeg');
-                });
-        }
-        else
-            uploadPost(media, 'video/mp4');
-    };
+const FILTERS = 'FILTERS';
+const FINISH = 'FINISH';
+const CROP = 'CROP';
 
-    const uploadPost = (media, type) => {
-        form.validateFields((err, {caption}) => {
-            if (!err) {
-                let postData = new FormData();
+const UploadPost = ({upload, media}) => {
 
-                postData.append('media', new File([media], "media", {type}));
-                postData.append('caption', caption);
+  let [croppedMedia, setCroppedMedia] = useState();
+  let [location, setLocation] = useState(CROP);
 
-                upload(postData);
-            }
-        });
-    };
+  const uploadPost = async (data) => {
+    const type = media.type.match('image') ? 'image/jpeg' : 'video/mp4';
+    let resultMedia = media.type.match('image') ? await convertImageToBlob(data.image) : media;
+    let postData = new FormData();
+    postData.append('media', new File([resultMedia], "media", {type}));
+    postData.append('caption', data.caption);
+    postData.append('marks', JSON.stringify(data.marks));
+    upload(postData);
+  };
 
-    return (
-        <>
+  const gotoFilters = () => {
+    setLocation(FILTERS);
+  };
+
+  const goToCrop = () => {
+    setLocation(CROP);
+  };
+
+  const goFinish = () => {
+    setLocation(FINISH);
+  };
+
+  if (media) {
+    switch (location) {
+      case CROP:
+        return (
+          <Container style={{height: 'fit-content'}}>
             {
-                media &&
-                <Form className={styles.mainContainer} onSubmit={submit}>
-                    <UploadMediaPlayer media={media} setCroppedMedia={setCroppedMedia} />
-                    <div className={styles.sideContainer}>
-                        <Header username={currentAuthUsername}/>
-                        <Caption getFieldDecorator={form.getFieldDecorator}/>
-                        <Button type='primary' htmlType="submit">Submit</Button>
-                    </div>
-                </Form>
+              media.type.match('image')
+                ? <Header title={'New post'} goNext={gotoFilters} nextButtonText={'Next'}/>
+                : <Header title={'New post'} goNext={goFinish} nextButtonText={'Post'}/>
             }
-        </>
-    );
+            <UploadMediaPlayer media={media} setCroppedMedia={setCroppedMedia}/>
+          </Container>
+        );
+      case FILTERS:
+        return <Filters media={croppedMedia} upload={uploadPost} goBack={goToCrop}/>;
+      case FINISH:
+        return <Finish upload={uploadPost} goBack={goToCrop} media={media} video/>;
+      default:
+        break;
+    }
+  }
 };
 
 UploadPost.propTypes = {
-    upload: PropTypes.func.isRequired,
-    media: PropTypes.object,
-    currentAuthUsername: PropTypes.string.isRequired
+  upload: PropTypes.func.isRequired,
+  media: PropTypes.object,
+  currentAuthUsername: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
-    currentAuthUsername: state.auth.user.username
+  currentAuthUsername: state.auth.user.username
 });
 
-export default Form.create()(connect(mapStateToProps)(UploadPost));
+export default connect(mapStateToProps)(UploadPost);

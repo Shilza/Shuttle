@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
-import {isMobile} from "../../utils/isMobile";
+import {isMobile} from "utils/isMobile";
+import shuttle from 'images/logo.png';
+import plane from 'images/plane.svg';
 
 import Search from "../Search/Search";
-import shuttle from '../../images/logo.png';
-import plane from './plane.svg';
 import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
 
 import styles from './header.module.css';

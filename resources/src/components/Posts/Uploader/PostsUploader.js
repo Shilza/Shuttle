@@ -9,39 +9,39 @@ import UploadPost from "./Modal/UploadPost";
 
 const PostsUploader = ({dispatch, trigger}) => {
 
-    let [isOpen, setIsOpen] = useState(false);
-    let [media, setMedia] = useState(false);
+  let [isOpen, setIsOpen] = useState(false);
+  let [media, setMedia] = useState(false);
 
-    const closeModal = () => setIsOpen(false);
+  const closeModal = () => setIsOpen(false);
 
-    const loadMedia = event => {
-        setIsOpen(true);
-        setMedia(event.target.files[0]);
-    };
+  const loadMedia = event => {
+    setIsOpen(true);
+    setMedia(event.target.files[0]);
+  };
 
-    const upload = postData => {
-        dispatch(PostService.create(postData))
-            .then(data => message.success(data.message));
+  const upload = postData => {
+    dispatch(PostService.create(postData))
+      .then(data => message.success(data.message));
 
-        closeModal();
-    };
+    closeModal();
+  };
 
-    return (
-        <>
-            {
-                isOpen &&
-                <Modal closeModal={closeModal}>
-                    <UploadPost media={media} upload={upload}/>
-                </Modal>
-            }
-            <Uploader loadMedia={loadMedia} trigger={trigger}/>
-        </>
-    )
+  return (
+    <>
+      {
+        isOpen &&
+        <Modal closeModal={closeModal}>
+          <UploadPost media={media} upload={upload}/>
+        </Modal>
+      }
+      <Uploader loadMedia={loadMedia} trigger={trigger}/>
+    </>
+  )
 };
 
 PostsUploader.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    trigger: PropTypes.element
+  dispatch: PropTypes.func.isRequired,
+  trigger: PropTypes.element
 };
 
 export default connect()(PostsUploader);

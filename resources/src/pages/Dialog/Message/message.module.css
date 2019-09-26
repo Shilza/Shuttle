@@ -56,7 +56,7 @@
 .myTextUnread {
   position: absolute;
   right: calc(100% + 15px);
-  top: 40%;
+  top: calc(100% - 18px - 2%);
   content: '';
   background: #2f57f9;
   opacity: 0.6;
@@ -67,4 +67,17 @@
 
 .myText + .myText {
   margin-top: 5px;
+}
+
+.imgContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 70%;
+  margin-left: 0;
+  width: fit-content;
+}
+
+.myImgContainer {
+  composes: imgContainer;
+  margin-left: auto;
 }

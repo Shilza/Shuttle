@@ -2,6 +2,8 @@ import Ws from "@adonisjs/websocket-client";
 import store from 'store';
 import {addUnreadDialog} from "./store/actions/auth";
 
+let ws = Ws('ws://localhost:3333');
+
 const selectCurrentUserId = (state) => state.auth.user.id;
 
 let currentUserId;
@@ -34,6 +36,8 @@ export const types = {
   IS_TYPING: 4
 };
 
-const ws = Ws('ws://localhost:3333');
+export const start = () => {
+
+};
 
 export default ws;

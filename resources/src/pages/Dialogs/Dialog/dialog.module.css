@@ -28,6 +28,7 @@
   border-bottom: solid 1px #e7e8ec;
   padding-bottom: 10px;
   color: currentColor;
+  max-width: calc(100% - 65px);
 }
 
 .infoContainer:hover {
@@ -64,7 +65,15 @@
   border: 1px solid rgba(0, 0, 0, .05);
 }
 
+.text {
+  word-break: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .myMessageIsUnread {
+  composes: text;
   position: relative;
   padding-left: 20px;
 }

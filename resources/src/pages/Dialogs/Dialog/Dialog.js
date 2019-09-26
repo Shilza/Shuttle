@@ -24,7 +24,7 @@ const Dialog = ({ownerId, username, avatar, text, read, myId, createdAt, isTypin
       {
         isTyping
         ? <Typing/>
-        : <div className={!read && ownerId === myId ? styles.myMessageIsUnread: ''}>{text}</div>
+        : <div className={!read && ownerId === myId ? styles.myMessageIsUnread : styles.text}>{text}</div>
       }
     </Link>
   </div>

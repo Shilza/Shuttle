@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types"
 import {useThrottle} from 'use-throttle';
 
-import {isMobile} from "../../../utils/isMobile"
+import {isMobile} from "utils/isMobile"
 
 import styles from './footer.module.css';
 
