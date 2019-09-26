@@ -1,0 +1,16 @@
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.reloadButton {
+  color: #1e90ff;
+  font-size: 1.2rem;
+  border: 0;
+  background: transparent;
+}
