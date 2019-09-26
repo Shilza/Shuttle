@@ -1,0 +1,16 @@
+
+.button {
+  border: 0;
+  height: 20px;
+  background: transparent;
+  margin-top: 4px;
+}
+
+.plane {
+  width: 20px;
+}
+
+.drawer {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}

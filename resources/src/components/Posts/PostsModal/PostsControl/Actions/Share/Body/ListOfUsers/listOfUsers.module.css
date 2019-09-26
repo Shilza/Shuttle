@@ -1,0 +1,13 @@
+
+.container {
+  width: 100%;
+  margin:0;
+  padding: 0 5px;
+  height: 350px;
+  overflow: auto;
+}
+
+.mobileContainer {
+  composes: container;
+  height: calc(100% - 110px);
+}
