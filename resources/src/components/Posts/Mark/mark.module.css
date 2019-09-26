@@ -1,0 +1,12 @@
+
+.mark {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.mark:hover {
+  color: #fff;
+}
