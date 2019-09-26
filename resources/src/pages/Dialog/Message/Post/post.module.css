@@ -1,0 +1,86 @@
+
+.container {
+  display: flex;
+  width: min-content;
+  flex-direction: column;
+  max-width: 70%;
+  min-width: 230px;
+  background: #fff;
+  border: 1px solid #efefef;
+  margin: 5px 0 5px 0;
+  border-radius: 15px;
+  overflow: hidden;
+  color: #000;
+  transition: 60ms;
+}
+
+.container:hover {
+  color: #000;
+  background: #d4d4d4;
+}
+
+.myContainer {
+  composes: container;
+  background: #efefef;
+  margin: 5px 0 5px auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  padding: 2px 10px;
+}
+
+.avatar {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #d6d6d6;
+}
+
+.username {
+  font-weight: 700;
+}
+
+.media {
+  position: relative;
+  object-fit: cover;
+  min-height: 150px;
+  width: 100%;
+}
+
+.media::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  content: attr(error);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #d6d6d6;
+}
+
+.caption {
+  padding: 8px 12px;
+  word-break: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
