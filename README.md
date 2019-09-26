@@ -44,6 +44,7 @@ Social network ReactJS application
 * Getting unique post's link
 * Avatar uploading
 * Messaging
+* Marking a friends in photo
 
 ## Shuttle inside
 This section shows the Shuttle user interface on desktop and mobile devices
