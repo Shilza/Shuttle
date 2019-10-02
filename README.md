@@ -75,6 +75,15 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### Edit profile
 ![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/editProfile.jpg)
 
+#### Marks
+![Posts marks](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/marks.png)
+
+#### Dialogs
+![Dialogs](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/dialogs.png)
+
+#### Messages
+![Dialogs](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/messages.png)
+
 #### Notifications preloader
 ![Notifications preloader mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/notificationsStub.jpg)
 
