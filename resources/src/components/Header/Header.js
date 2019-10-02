@@ -8,7 +8,7 @@ import shuttle from 'images/logo.png';
 import plane from 'images/plane.svg';
 
 import Search from "../Search/Search";
-import DefaultAvatar from "../DefaultAvatar/DefaultAvatar";
+import DefaultAvatar from "../DefaultAvatar";
 
 import styles from './header.module.css';
 

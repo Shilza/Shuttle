@@ -1,16 +1,12 @@
 
 .container {
-  position: fixed;
-  top: 0;
   width: 100%;
   max-width: 650px;
-  transform: translateY(49px);
   display: flex;
   align-items: center;
   padding: 5px 10px;
   border-bottom: 1px solid #efefef;
   background: #fdfdfd;
-  z-index: 1;
 }
 
 .arrowLeft {

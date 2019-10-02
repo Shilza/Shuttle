@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import * as PostService from "../../../../services/post";
 import {connect} from "react-redux";
-import PostsExplainingLabel from "../../../ExplainingLabels/PostsLabel/PostsExplainingLabel";
-import Paginator from "../../../Paginator/Paginator";
-import PostsList from "../../../Posts/PostsList/PostsList";
-import PostsModal from "../../../Posts/PostsModal/PostsModal";
+import * as PostService from "services/post";
+import PostsExplainingLabel from "components/ExplainingLabels/PostsLabel/PostsExplainingLabel";
+import Paginator from "components/Paginator/Paginator";
+import PostsList from "components/Posts/PostsList/PostsList";
+import PostsModal from "components/Posts/PostsModal/PostsModal";
 
 const PostsManager = ({id, dispatch, posts}) => {
 

@@ -1,13 +1,14 @@
 import * as React from "react";
 import PropTypes from 'prop-types';
-import {removeCurrentPost} from "../../../../store/actions/posts";
 import {message} from "antd/lib/index";
-import * as PostService from "../../../../services/post";
+
+import {removeCurrentPost} from "store/actions/posts";
+import * as PostService from "services/post";
 import {connect} from "react-redux";
 
-const RemovePostButton = ({post_id, dispatch}) => {
+const RemovePostButton = ({postId, dispatch}) => {
     const removePost = () => {
-        dispatch(PostService.remove(post_id))
+        dispatch(PostService.remove(postId))
             .then(data => {
                 message.success(data.message);
                 dispatch(removeCurrentPost());
@@ -21,7 +22,7 @@ const RemovePostButton = ({post_id, dispatch}) => {
 };
 
 RemovePostButton.propTypes = {
-    post_id: PropTypes.number.isRequired,
+    postId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 

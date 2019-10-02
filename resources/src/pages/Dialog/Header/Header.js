@@ -4,8 +4,8 @@ import {Link} from "react-router-dom"
 import {withRouter} from "react-router"
 import {Icon} from "antd"
 
-import DefaultAvatar from "components/DefaultAvatar/DefaultAvatar"
-import Typing from "components/Typing/Typing";
+import DefaultAvatar from "components/DefaultAvatar"
+import Typing from "components/Typing";
 
 import styles from './header.module.css';
 

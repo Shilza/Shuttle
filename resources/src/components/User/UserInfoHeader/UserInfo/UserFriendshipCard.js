@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './friendships.module.css';
-import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
 import {Link} from "react-router-dom";
+
+import DefaultAvatar from "components/DefaultAvatar";
+import styles from './friendships.module.css';
 
 const UserFriendshipCard = ({avatar, username, closeModal}) =>
   <li>

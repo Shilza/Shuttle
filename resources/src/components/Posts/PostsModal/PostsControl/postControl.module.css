@@ -1,62 +1,101 @@
 
 .postControl {
-    display: flex;
-    flex-direction: column;
-    width: 260px;
-    margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  margin: 16px 16px 14px 16px;
 }
 
 @media (max-width: 810px) {
-    .postControl {
-        width: auto;
-    }
+  .postControl {
+    width: auto;
+  }
 }
 
 .header {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10px;
-    align-items: center;
-    border-bottom: 1px solid #efefef;
-    order: -2;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+  order: -2;
 }
 
 .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid rgba(0,0,0,.0975);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .0975);
 }
 
 .username {
-    margin: 0 10px 0 10px;
-    color: #262626;
+  margin: 0 10px 0 10px;
+  color: #262626;
 }
 
 .caption {
-    display: inline-block;
-    align-items: center;
-    padding: 2%;
+  display: inline-block;
+  align-items: center;
+  padding: 5px 5px 0 5px;
+  max-height: 190px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+}
+
+.caption::-webkit-scrollbar {
+  width: 2px;
+}
+
+.caption::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 1px;
 }
 
 .captionUsername {
-    display: inline-flex;
-    margin-right: 5px;
+  display: inline-flex;
+  margin-right: 5px;
+  margin-bottom: 0;
 }
 
 .footer {
-    display: inline-flex;
-    margin-top: 10px;
-    align-items: flex-end;
+  display: inline-flex;
+  margin-top: 5px;
+  align-items: flex-end;
 }
 
 .commentInputContainer {
-    width: 100%;
+  width: 100%;
+}
+
+.submitButton {
+  width: 100%;
 }
 
 .commentInput {
-    border: none;
-    width: 100%;
-    outline: 0
+  border: none;
+  width: 100%;
+  outline: 0
 }
 
+.commentsList {
+  -ms-overflow-style: none;
+  overflow-y: auto;
+  max-height: 280px;
+}
+
+.commentsList::-webkit-scrollbar {
+  width: 2px;
+}
+
+.commentsList::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 1px;
+}
+
+@media all and (max-width: 768px) {
+  .commentsList {
+    max-height: 300px;
+  }
+}

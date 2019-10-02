@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 import {getCompilations} from "services/saved";
-import SavedBarCompilation from "./SavedBarCompilation";
 import SavedExplainingLabel from "components/ExplainingLabels/SavedLabel/SavedExplainingLabel";
+import SavedBarCompilation from "./SavedBarCompilation";
 
 import styles from '../savebar.module.css';
 

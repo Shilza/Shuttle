@@ -2,9 +2,9 @@ import React, {useEffect, useState, useRef} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import SearchBar from './SearchBar/SearchBar';
 import * as SearchService from "services/search";
 import {removeUsers, setIsSearchFocused} from "store/actions/search";
+import SearchBar from './SearchBar/SearchBar';
 
 import styles from './search.module.css';
 

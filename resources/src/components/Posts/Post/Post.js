@@ -1,25 +1,28 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './post.module.css';
 import {Icon} from "antd";
+
 import Media from "./Media";
 
-const iconsStyle = {marginLeft: '10px'};
+import camera from './icons/camera.svg';
+import styles from './post.module.css';
 
-const Post = ({post, open}) =>
+const Post = ({post, open}) => (
     <div className={styles.post} onClick={() => open(post)}>
         <Media src={post.src}/>
         <div className={styles.metaInfo}>
             <div>
                 {post.likes_count}
-                <Icon style={iconsStyle} type='heart'/>
+                <Icon className={styles.icon} type='heart'/>
             </div>
             <div>
                 {post.comments_count}
-                <Icon style={iconsStyle} type='message'/>
+                <Icon className={styles.icon} type='message'/>
             </div>
         </div>
-    </div>;
+      {post.src.match('.mp4') && <img src={camera} alt={'Video'} className={styles.videoCamera}/>}
+    </div>
+);
 
 Post.propTypes = {
     post: PropTypes.shape({

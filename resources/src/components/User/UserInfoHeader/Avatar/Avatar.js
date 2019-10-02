@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import styles from './avatar.module.css';
 import DirectionButtons from './DiretionButtons';
-import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
+import DefaultAvatar from "components/DefaultAvatar";
 
 const Avatar = ({avatar}) =>
     <div className={styles.avatarContainer}>

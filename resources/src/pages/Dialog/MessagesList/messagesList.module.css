@@ -1,18 +1,51 @@
 
-.messages {
+.container {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container::-webkit-scrollbar {
+  width: 2px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 1px;
+}
+
+.absoluteWrapper {
+  position: absolute;
+  overflow-x: visible;
   padding: 10px;
-  min-height: calc(100vh - 155px);
-  margin: 46px 0 15px 0;
+  width: 100%;
+}
+
+.messages {
+  height: calc(100vh - 155px);
+  overflow-y: auto;
 }
 
 .mobileMessages {
   composes: messages;
-  min-height: calc(100vh - 198px);
-  margin-bottom: 58px;
+  height: calc(100vh - 198px);
 }
 
 .explainingContainer {
   composes: container from '../dialog.module.css';
   display: flex;
   align-items: center;
+}
+
+.date {
+  position: sticky;
+  top: 5px;
+  left: 0;
+  padding: 3px 10px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.33);
+  color: #fff;
+  margin: 20px auto;
+  width: fit-content;
+  z-index: 3;
 }

@@ -1,50 +1,36 @@
 
 .heart {
-    color: rgba(0,0,0,1);
-    cursor: pointer;
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
 
 .heartActive {
-    color: rgba(255,0,0,1);
-    cursor: pointer;
-}
-
-.commentsList {
-    -ms-overflow-style: none;
-    overflow: scroll;
-    max-height: 280px;
-}
-
-.commentsList::-webkit-scrollbar { width: 0; }
-
-@media all and (max-width: 768px) {
-    .commentsList {
-        max-height: 300px;
-    }
+  color: rgba(255, 0, 0, 1);
+  cursor: pointer;
 }
 
 .comment {
-    display: inline-block;
-    align-items: center;
-    width: 100%;
-    padding: 2%;
-    cursor: pointer;
+  display: inline-block;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+  cursor: pointer;
 }
 
 .username {
-    display: inline-flex;
-    margin-right: 5px;
-    font-weight: 600
+  display: inline-flex;
+  margin-right: 5px;
+  font-weight: 600
 }
 
 .metaContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em;
 }
 
 .likesCount {
-    margin-right: 5px;
+  margin-right: 5px;
 }

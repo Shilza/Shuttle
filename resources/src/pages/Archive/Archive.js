@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 import {getArchived} from "services/post";
-import Paginator from "components/Paginator/Paginator";
-import Posts from "components/Posts/Posts";
+import Paginator from "components/Paginator";
+import Posts from "components/Posts";
 
 import styles from './archive.module.css';
 

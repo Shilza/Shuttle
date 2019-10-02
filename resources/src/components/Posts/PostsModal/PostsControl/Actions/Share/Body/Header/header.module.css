@@ -5,11 +5,12 @@
   border-bottom: 1px solid #efefef;
 }
 
-.image {
+.media {
   width: 42px;
   height: 42px;
   border-radius: 10px;
   border: 1px solid #efefef;
+  object-fit: cover;
 }
 
 .input {

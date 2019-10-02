@@ -11,7 +11,7 @@ import Like from "./Like";
 
 import styles from './actions.module.css';
 
-const Actions = ({post}) => {
+const Actions = ({post, className}) => {
 
   useEffect(() => {
     addSmoothScrolling('postCommentLink' + post.id);
@@ -20,7 +20,7 @@ const Actions = ({post}) => {
   const {likes_count, created_at, isLiked, id} = post;
 
   return (
-    <div className={styles.actionsContainer}>
+    <div className={`${styles.actionsContainer} ${className}`}>
       <div className={styles.actions}>
         <Like type='post' id={id} isLiked={isLiked} likesCount={likes_count}/>
         <a className={styles.action} id={'postCommentLink' + id} href={'#commentInputContainer' + id}>
@@ -39,7 +39,8 @@ Actions.propTypes = {
     likes_count: PropTypes.number,
     created_at: PropTypes.string.isRequired,
     isLiked: PropTypes.bool.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    className: PropTypes.string
   }).isRequired
 };
 

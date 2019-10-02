@@ -1,13 +1,11 @@
-import {useEffect, useReducer, useRef} from "react"
+import {useReducer, useRef} from "react"
 import Http from "Http"
 
 const initialState = {
-  dialogs: [],
-  isLoading: true
+  dialogs: []
 };
 
 const SET_DIALOGS = 'SET_DIALOGS';
-const SET_IS_LOADING = 'SET_IS_LOADING';
 const SET_IS_TYPING = 'SET_IS_TYPING';
 const READ_MESSAGES = 'READ_MESSAGES';
 
@@ -15,8 +13,6 @@ function reducer(state, action) {
   switch (action.type) {
     case SET_DIALOGS:
       return {...state, dialogs: action.payload};
-    case SET_IS_LOADING:
-      return {...state, isLoading: action.payload};
     case SET_IS_TYPING:
       return {
         ...state, dialogs: state.dialogs.map(dialog => {
@@ -44,26 +40,27 @@ function reducer(state, action) {
 }
 
 const setDialogs = (payload) => ({type: SET_DIALOGS, payload});
-const setIsLoading = (payload) => ({type: SET_IS_LOADING, payload});
 const setTyping = (payload) => ({type: SET_IS_TYPING, payload});
 const readMessages = (payload) => ({type: READ_MESSAGES, payload});
 
 const useDialogs = () => {
-  const [{dialogs, isLoading}, dispatch] = useReducer(reducer, initialState);
+  const [{dialogs}, dispatch] = useReducer(reducer, initialState);
   let defaultDialogs = useRef([]);
   let typing = useRef([]);
+  let firstLoading = useRef(false);
 
-  useEffect(() => {
-    Http.get('/api/v1/dialogs')
+  const fetchDialogs = (page) =>
+    Http.get(`/api/v1/dialogs?page=${page}`)
       .then(({data}) => {
-        defaultDialogs.current = data.data;
-        dispatch(setDialogs(data.data));
-        dispatch(setIsLoading(false));
-      });
-  }, []);
+        if(!firstLoading.current)
+          firstLoading.current = true;
 
-  const search = (event) => {
-    const username = event.target.value;
+        defaultDialogs.current = [...defaultDialogs.current, ...data.data];
+        dispatch(setDialogs([...dialogs, ...data.data]));
+        return data;
+      });
+
+  const search = (username) => {
     if (username.length > 0) {
       const searchedDialogs = defaultDialogs.current.map(item => {
           if (item.user && item.user.username && item.user.username.startsWith(username))
@@ -126,11 +123,12 @@ const useDialogs = () => {
 
   return {
     dialogs,
-    isLoading,
     addMessage,
     search,
     readAllMessages,
     setIsTyping,
+    fetchDialogs,
+    firstLoading: firstLoading.current,
     defaultDialogs: defaultDialogs.current
   }
 };

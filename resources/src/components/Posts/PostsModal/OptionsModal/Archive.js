@@ -1,45 +1,50 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
-import {addToArchive, deleteFromArchive} from "../../../../services/post";
 import {connect} from "react-redux";
 
-const Archive = ({dispatch, post_id, isArchived, closeModal}) => {
+import {addToArchive, deleteFromArchive} from "services/post";
+import {removeCurrentPost} from "store/actions/posts";
 
-    const dispatchAction = action => {
-        dispatch(action(post_id))
-            .then(data => {
-                message.success(data);
-                closeModal();
-            })
-            .catch(data => {
-                message.error(data);
-                closeModal();
-            });
-    };
+const Archive = ({dispatch, postId, isArchived, closeModal}) => {
 
-    const archive = () => {
-        dispatchAction(addToArchive);
-    };
+  const dispatchAction = action => {
+    dispatch(action(postId))
+      .then(data => {
+        message.success(data);
+      })
+      .catch(data => {
+        message.error(data);
+      })
+      .finally(() => {
+        removeCurrentPost();
+        closeModal();
+      });
+  };
 
-    const unArchive = () => {
-        dispatchAction(deleteFromArchive);
-    };
+  const archive = () => {
+    dispatchAction(addToArchive);
+  };
 
-    return (
-        <>
-            {
-                isArchived ? <li onClick={unArchive}>Unarchive</li>
-                    : <li onClick={archive}>Archive</li>
-            }
-        </>
-    )
+  const unArchive = () => {
+    dispatchAction(deleteFromArchive);
+  };
+
+  return (
+    <>
+      {
+        isArchived ? <li onClick={unArchive}>Unarchive</li>
+          : <li onClick={archive}>Archive</li>
+      }
+    </>
+  )
 };
 
 Archive.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    post_id: PropTypes.number.isRequired,
-    isArchived: PropTypes.number
+  dispatch: PropTypes.func.isRequired,
+  postId: PropTypes.number.isRequired,
+  isArchived: PropTypes.number,
+  closeButton: PropTypes.func
 };
 
 export default connect()(Archive);

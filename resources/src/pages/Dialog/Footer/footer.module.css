@@ -1,18 +1,15 @@
 
 .container {
-  position: fixed;
-  top: 0;
   background: #fff;
   width: 100%;
   max-width: 650px;
   display: flex;
   border-top: 1px solid #efefef;
   padding: 10px;
-  z-index: 99;
 }
 
 .messageInput {
-  padding: 5px 8px;
+  padding: 5px 38px 5px 8px;
   border: 1px solid #efefef;
   border-radius: 25px;
   width: 100%;
@@ -37,4 +34,26 @@
   justify-content: center;
   margin: 0 10px;
   font-size: 18px;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.emojiIcon {
+  position: absolute;
+  right: 8px;
+  top: 45%;
+  transform: translateY(-50%);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  outline: 0;
+  cursor: pointer;
+}
+
+.emojiIcon > img {
+  width: 20px;
 }

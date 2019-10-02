@@ -20,7 +20,7 @@ export function create(postData) {
 export function remove(id) {
     return dispatch => (
         new Promise((resolve, reject) => {
-                Http.delete('/api/v1/posts?id=' + id,)
+                Http.delete('/api/v1/posts?id=' + id)
                     .then(({data}) => {
                         dispatch(actions.removePost(id));
                         resolve(data);

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Routes from "routes";
 import * as AuthService from "services/auth";
 
-import StartLoader from "components/StartLoader/StartLoader";
+import StartLoader from "components/StartLoader";
 
 const App = ({isAuthenticated, dispatch}) => {
   const [error, setError] = useState(null);

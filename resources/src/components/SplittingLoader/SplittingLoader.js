@@ -1,7 +1,7 @@
 import React from "react";
+import {Icon} from "antd";
 
 import styles from './splittingLoader.module.css';
-import {Icon} from "antd";
 
 const SplittingLoader = () => (
   <div className={styles.container}>

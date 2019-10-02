@@ -66,6 +66,7 @@ Route.group(() => {
 Route.group(() => {
     Route.get('', 'PostController.show');
     Route.get('/liked', 'PostController.showLikedPosts');
+    Route.get('/marked', 'PostController.showMarkedPosts');
     Route.get('/:code', 'PostController.showPostByCode');
     Route.post('', 'PostController.create');
     Route.patch('', 'PostController.update');

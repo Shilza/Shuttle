@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import ListModal from "../../../Modal/ListModal";
+import ListModal from "../../../Modal/ListsModal/ListModal";
 import {message} from "antd/lib/index";
 import * as UsersService from "../../../../services/user";
 import {connect} from "react-redux";

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import {convertImageToBlob} from "utils/convertImageToBlob";
 
-import Header from "../Header";
+import Header from "components/Posts/Header";
 import Finish from "../Finish";
-import Container from "../Container";
+import Container from "components/Posts//Container";
 import Settings from "./Settings";
 import FilteredImage from "./FilteredImage";
 

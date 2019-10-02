@@ -3,11 +3,9 @@ import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
 import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
-import Loader from "components/Paginator/Loader/Loader"
 import useDialogs from "utils/useDialogs"
 
-import ws from "../../Ws"
-import {types as WsTypes} from "../../Ws"
+import ws, {types as WsTypes} from "../../Ws"
 
 import DialogsList from "./DialogsList/DialogsList"
 
@@ -15,7 +13,16 @@ import styles from './dialogs.module.css';
 
 
 const Dialogs = ({myId}) => {
-  const {dialogs, isLoading, defaultDialogs, addMessage, readAllMessages, search, setIsTyping} = useDialogs();
+  const {
+    dialogs,
+    addMessage,
+    readAllMessages,
+    search,
+    setIsTyping,
+    firstLoading,
+    fetchDialogs,
+    defaultDialogs
+  } = useDialogs();
 
   const topicName = useMemo(() => `dialogs:${myId}`, [myId]);
 
@@ -50,17 +57,17 @@ const Dialogs = ({myId}) => {
   return (
     <div className={styles.container}>
       {
-        isLoading ? <Loader/> :
-          <>
-            {
-              defaultDialogs.length === 0 ?
-                <div className={styles.labelContainer}>
-                  <MessagesExplainingLabel/>
-                </div>
-                :
-                <DialogsList dialogs={dialogs} search={search} myId={myId}/>
-            }
-          </>
+        firstLoading && defaultDialogs.length === 0 ?
+          <div className={styles.labelContainer}>
+            <MessagesExplainingLabel/>
+          </div>
+          :
+          <DialogsList
+            dialogs={dialogs}
+            search={search}
+            fetchDialogs={fetchDialogs}
+            myId={myId}
+          />
       }
     </div>
   )

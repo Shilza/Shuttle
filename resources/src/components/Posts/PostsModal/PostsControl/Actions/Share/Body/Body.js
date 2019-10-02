@@ -18,7 +18,7 @@ const Body = ({src, myId, close, dispatch}) => {
 
   const [message, setMessage] = useState('');
   const [isDone, setIsDone] = useState(false);
-  const {dialogs, search} = useDialogs();
+  const {dialogs, search, fetchDialogs} = useDialogs();
 
   const postCode = useMemo(() => src.split('/')[3].split('.')[0], [src]);
 
@@ -51,7 +51,12 @@ const Body = ({src, myId, close, dispatch}) => {
     <div className={isMobile() ? styles.mobileContainer : styles.container} style={{paddingBottom: isDone && '46px'}}>
       <Header src={src} onInputChange={onInputChange}/>
       <SearchInput search={search} className={styles.search}/>
-      <ListOfUsers dialogs={dialogs} postCode={postCode} send={send}/>
+      <ListOfUsers
+        dialogs={dialogs}
+        postCode={postCode}
+        fetchDialogs={fetchDialogs}
+        send={send}
+      />
       {
         isDone && <button className={styles.doneButton} onClick={onDoneClick}>Done</button>
       }

@@ -1,21 +1,25 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Media = ({src}) =>
-    <>
-        {
-            src.match('.mp4') ?
-                <video src={src}/> :
-                <img
-                    alt="user's post"
-                    src={src}
-                />
-        }
-    </>;
+import styles from './post.module.css';
+
+const Media = React.memo(({src}) =>
+  <>
+    {
+      src.match('.mp4') ?
+        <video src={src} className={styles.media}/> :
+        <img
+          alt="user's post"
+          src={src}
+          className={styles.media}
+        />
+    }
+  </>
+);
 
 Media.propTypes = {
-    src: PropTypes.string.isRequired,
-    style: PropTypes.string
+  src: PropTypes.string.isRequired,
+  style: PropTypes.string
 };
 
-export default React.memo(Media);
+export default Media;

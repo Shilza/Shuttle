@@ -1,10 +1,12 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 import {createPortal} from "react-dom";
-import CloseButton from "./CloseButton";
+import CloseButton from "./ClsoeButton";
 import styles from './modal.module.css';
 
 const Modal = ({children, closeModal}) => {
+  const id = `f${(~~(Math.random()*1e8)).toString(16)}`;
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -21,12 +23,12 @@ const Modal = ({children, closeModal}) => {
   }, []);
 
   const closeByCoverClick = event => {
-    if (event.target.id === 'modalCover')
+    if (event.target.id === `modalCover${id}`)
       closeModal();
   };
 
   return createPortal(
-    <aside className={styles.modalCover} id='modalCover' onClick={closeByCoverClick}>
+    <aside className={styles.modalCover} id={`modalCover${id}`} onClick={closeByCoverClick}>
       <CloseButton closeModal={closeModal}/>
       <div className={styles.modalContent}>
         {children}

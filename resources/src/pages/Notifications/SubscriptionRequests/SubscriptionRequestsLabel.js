@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {Badge} from 'antd';
+
+import DefaultAvatar from "components/DefaultAvatar";
 import styles from './subReq.module.css';
-import DefaultAvatar from "../../../components/DefaultAvatar/DefaultAvatar";
 
 const SubscriptionRequestsLabel = ({count, openList, avatar}) => (
     <>

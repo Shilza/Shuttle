@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './styles.module.css'
-import DefaultAvatar from "../../DefaultAvatar/DefaultAvatar";
+
+import DefaultAvatar from "components/DefaultAvatar";
 import {Link} from "react-router-dom";
+import styles from './styles.module.css'
 
 const User = ({username, avatar, bio, closeBar}) => (
   <Link to={'/' + username} onClick={closeBar} className={styles.user}>

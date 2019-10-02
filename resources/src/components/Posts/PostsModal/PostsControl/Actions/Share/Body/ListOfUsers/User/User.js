@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 
-import DefaultAvatar from "components/DefaultAvatar/DefaultAvatar";
+import DefaultAvatar from "components/DefaultAvatar";
 
 import styles from './user.module.css';
 

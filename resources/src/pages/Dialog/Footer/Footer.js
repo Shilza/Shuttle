@@ -1,16 +1,17 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types"
 import {useThrottle} from 'use-throttle';
 
-import {isMobile} from "utils/isMobile"
+import EmojiPicker from "./EmojiPicker";
 
+import emojiIcon from './icons/smile.svg';
 import styles from './footer.module.css';
 
-const containerStyle = {transform: `translateY(calc(${isMobile() ? '100vh - 98px' : '100vh - 54px'}))`};
 
 const Footer = ({sendMessage, typing}) => {
   let inputRef = useRef(null);
   const [isSendButtonVisible, setIsSendButtonVisible] = useState(false);
+  const [isEmoji, setIsEmoji] = useState(false);
   const [messageText, setMessageText] = useState('');
   const throttledMessageText = useThrottle(messageText, 1200);
 
@@ -38,25 +39,47 @@ const Footer = ({sendMessage, typing}) => {
     }
   };
 
+  const toggleEmoji = () => {
+    setIsEmoji(!isEmoji);
+  };
+
+  const addEmoji = useCallback((emoji) => {
+    if (inputRef.current.value.length < 1000) {
+      inputRef.current.value += emoji.native;
+      if (!isSendButtonVisible)
+        setIsSendButtonVisible(true);
+    }
+  }, []);
+
   return (
-    <form className={styles.container} onSubmit={onSubmit} style={containerStyle}>
-      <input
-        type='text'
-        placeholder='Enter your message'
-        ref={inputRef}
-        className={styles.messageInput}
-        onChange={onInputChange}
-      />
-      {
-        isSendButtonVisible &&
-        <button
-          className={styles.sendButton}
-          type='submit'
-        >
-          Send
-        </button>
-      }
-    </form>
+    <>
+      <form className={styles.container} onSubmit={onSubmit}>
+        <div className={styles.inputContainer}>
+          <input
+            type='text'
+            placeholder='Enter your message'
+            ref={inputRef}
+            className={styles.messageInput}
+            onChange={onInputChange}
+          />
+          {
+            <button type={'button'} className={styles.emojiIcon} onClick={toggleEmoji}>
+              <img src={emojiIcon} alt={'Emoji'}/>
+            </button>
+          }
+        </div>
+        {
+          isSendButtonVisible &&
+          <button
+            className={styles.sendButton}
+            type='submit'
+          >
+            Send
+          </button>
+        }
+      </form>
+      {isEmoji && <EmojiPicker addEmoji={addEmoji}/>}
+    </>
   );
 };
 

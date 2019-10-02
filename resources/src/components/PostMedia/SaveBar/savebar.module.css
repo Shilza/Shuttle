@@ -58,16 +58,6 @@
   outline: none;
 }
 
-.drawerTitle {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.icon {
-  cursor: pointer;
-}
-
 @media (min-width: 768px) {
   .transitionContainer {
     position: absolute;

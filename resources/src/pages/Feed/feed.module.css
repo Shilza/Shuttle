@@ -1,38 +1,13 @@
 
-.comments {
-    font-size: 10px;
-}
-
 .container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 10px;
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background: white;
-    border: 1px solid #e6e6e6;
-    padding: 15px;
-    margin-bottom: 40px;
-}
-
-.mediaContainer {
-    cursor: pointer;
-    margin-left: -15px;
-    width: calc(100% + 30px);
-    position: relative;
-}
-
-.mediaContainer img, video {
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 10px;
 }

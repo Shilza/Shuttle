@@ -1,36 +1,32 @@
 
-.container {
+.wrapper {
   display: flex;
+  align-items: center;
 }
 
-.container + .container {
+.wrapper + .wrapper {
   margin-top: 5px;
 }
 
-.avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(100, 100, 100, .0975);
+.myWrapper {
+  composes: wrapper;
+  position: relative;
+  left: 50px;
 }
 
-.avatar img {
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  border: 1px solid rgba(0, 0, 0, .05);
+.container {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
 }
 
 .text {
   position: relative;
   border: 1px solid #efefef;
   padding: 5px 10px;
-  margin-left: 38px;
   border-radius: 25px;
   max-width: 70%;
+  width: fit-content;
   word-break: break-all;
 }
 
@@ -42,10 +38,6 @@
   border-radius: 50%;
 }
 
-.avatar ~ .text {
-  margin-left: 8px;
-}
-
 .myText {
   composes: text;
   background: #efefef;
@@ -53,7 +45,7 @@
   width: fit-content;
 }
 
-.myTextUnread {
+.unreadBadge {
   position: absolute;
   right: calc(100% + 15px);
   top: calc(100% - 18px - 2%);
@@ -65,19 +57,13 @@
   border-radius: 50%;
 }
 
-.myText + .myText {
-  margin-top: 5px;
+.myTime {
+  font-size: 0.7rem;
+  margin-left: 20px;
 }
 
-.imgContainer {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 70%;
-  margin-left: 0;
-  width: fit-content;
-}
-
-.myImgContainer {
-  composes: imgContainer;
-  margin-left: auto;
+.time {
+  composes: myTime;
+  position: relative;
+  left: 50px;
 }

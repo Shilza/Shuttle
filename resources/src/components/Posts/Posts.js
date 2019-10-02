@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import PostsModal from "./PostsModal/PostsModal";
-import PostsList from "./PostsList/PostsList";
+
+import PostsModal from "./PostsModal";
+import PostsList from "./PostsList";
 
 const Posts = ({posts}) => (
-    <>
-        <PostsList posts={posts}/>
-        <PostsModal/>
-    </>
+  <>
+    <PostsList posts={posts}/>
+    <PostsModal/>
+  </>
 );
 
 Posts.propTypes = {
-    posts: PropTypes.array
+  posts: PropTypes.array
 };
 
 export default Posts;

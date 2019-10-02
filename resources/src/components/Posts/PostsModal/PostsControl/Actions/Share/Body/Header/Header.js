@@ -5,7 +5,11 @@ import styles from "./header.module.css";
 
 const Header = ({src, onInputChange}) => (
   <div className={styles.container}>
-    <img className={styles.image} src={src} alt='Post'/>
+    {
+      src.match('.mp4')
+      ? <video src={src} className={styles.media}/>
+      : <img className={styles.media} src={src} alt='Post'/>
+    }
     <input
       className={styles.input}
       onChange={onInputChange}

@@ -13,12 +13,10 @@ const Routes = () => (
     <Suspense fallback={<SplittingLoader/>}>
       <Switch>
         {
-          routes.map((route, i) => {
-              if (route.auth)
-                return <PrivateRoute key={i} {...route}/>;
-              else
-                return <PublicRoute key={i} {...route}/>;
-            }
+          routes.map((route, i) =>
+            route.auth
+              ? <PrivateRoute key={i} {...route}/>
+              : <PublicRoute key={i} {...route}/>
           )}
       </Switch>
     </Suspense>

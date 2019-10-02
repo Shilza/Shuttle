@@ -1,82 +1,89 @@
 
 .notificationsList {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border: 1px solid #efefef;
-    border-radius: 8px;
-    padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #efefef;
+  border-radius: 8px;
+  padding: 15px 10px;
 
 }
 
 .notificationsList img {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.media {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
 }
 
 .postLink {
-    margin-left: auto;
-    margin-right: 10px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .notificationCard {
-    padding: 15px 5px 15px 5px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+  padding: 15px 5px 15px 5px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .comment {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .avatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50px;
-    min-width: 50px;
-    border-radius: 50%;
-    border: 1px solid rgba(100,100,100,.0975);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(100, 100, 100, .0975);
 }
 
 .avatar img {
-    border-radius: 50%;
-    min-height: 50px;
-    min-width: 50px;
-    border: 1px solid rgba(0,0,0,.05);
+  border-radius: 50%;
+  min-height: 50px;
+  min-width: 50px;
+  border: 1px solid rgba(0, 0, 0, .05);
 }
 
 @media (max-width: 350px) {
-    .infoContainer {
-        width: 150px;
-    }
+  .infoContainer {
+    width: 150px;
+  }
 }
 
 .infoWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 1em;
 }
 
 .infoContainer span {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .timeContainer {
-    font-size: 0.8em;
-    color: lightgrey;
+  font-size: 0.8em;
+  color: lightgrey;
 }
 
 .usernameLink {
-    color: black;
-    font-weight: 500;
+  color: black;
+  font-weight: 500;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 1.2em;
-    margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 5px;
 }

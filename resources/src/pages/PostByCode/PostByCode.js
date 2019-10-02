@@ -6,7 +6,7 @@ import {getPostByCode} from "services/post";
 import {removeCurrentPost} from "store/actions/posts";
 import PostModalBody from "components/Posts/PostsModal/PostModalBody";
 
-import styles from './styles.module.css';
+import styles from './postByCode.module.css';
 
 const PostByCode = ({dispatch, match, currentPost}) => {
 

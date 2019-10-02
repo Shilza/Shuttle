@@ -2,11 +2,11 @@ import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-autosize-textarea';
 
-import Header from "../Header";
-import Container from "../Container";
+import Header from "components/Posts/Header";
+import Container from "components/Posts/Container";
+import Marks from "components/Posts/Marks";
 
 import styles from './finish.module.css';
-import Marks from "../Marks/Marks";
 
 const Finish = ({upload, media, goBack, video = false}) => {
   let inputRef = useRef(null);
@@ -29,7 +29,7 @@ const Finish = ({upload, media, goBack, video = false}) => {
   return (
     <>
       {
-        isMarks ? <Marks goBack={goToFinish} image={media} marks={marks}/>
+        isMarks ? <Marks goBack={goToFinish} media={media} marks={marks} video={video}/>
           :
           <Container>
             <Header goNext={uploadWithCaption} goBack={goBack} title={'New post'} nextButtonText={'Post'}/>

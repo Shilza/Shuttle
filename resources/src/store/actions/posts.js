@@ -102,3 +102,5 @@ export function save(payload){
         payload
     }
 }
+
+export const updatePost = payload => ({type: ActionTypes.UPDATE_POST, payload});

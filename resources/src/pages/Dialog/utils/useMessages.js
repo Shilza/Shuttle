@@ -1,5 +1,48 @@
 import {useCallback, useReducer, useRef} from "react"
+
 import Http from "Http"
+import {getImagesUrl} from "utils/getImagesUrl";
+
+const getPostCode = (text) => {
+  const postMatches = text.match(/^https?:\/\/([^/?#]+)(?:[/?#]|$)/i);
+  let post = postMatches && postMatches.length >= 2;
+  return post ? text.split('/')[4] : null;
+};
+
+const getPost = async (text) => {
+  let post = null;
+  if (text) {
+    const postCode = getPostCode(text);
+    if (postCode && postCode.length === 36) {
+      await Http.get(`/api/v1/posts/${postCode}`)
+        .then(({data}) => {
+          post = data.post;
+        })
+        .catch(err => {
+          post = {error: err.message}
+        });
+    }
+  }
+  return post;
+};
+
+const prepareMessage = async (message) => {
+  let {message: text} = message;
+  let post = await getPost(text);
+
+  let images = await getImagesUrl(text);
+  if (Array.isArray(images))
+    Object.is(images[0], undefined)
+      ? images = null
+      : text = text.replace(/https?:\/\/[^"' ]+\.(?:png|jpg|jpeg|gif|mp4).*?(?=( |$))/g, '');
+
+  return {
+    ...message,
+    post,
+    images,
+    text
+  }
+};
 
 const initialState = {
   messages: []
@@ -40,15 +83,18 @@ const useMessages = (username) => {
   const getMessages = (page) =>
     new Promise((resolve) => {
       Http.get(`/api/v1/dialogs/${username}?page=${page}`)
-        .then(({data}) => {
-          dispatch({
-            type: ADD_MESSAGES,
-            payload: data.data
-          });
-          resolve(data);
-          if (isFirstRender.current)
-            window.scrollTo(0, document.body.scrollHeight);
-          isFirstRender.current = false;
+        .then(async ({data}) => {
+          Promise.all(data.data.map(message => prepareMessage(message)))
+            .then(messages => {
+              dispatch({
+                type: ADD_MESSAGES,
+                payload: messages
+              });
+              if (isFirstRender.current)
+                window.scrollTo(0, document.body.scrollHeight);
+              isFirstRender.current = false;
+              resolve(data);
+            });
         });
     });
 
@@ -63,11 +109,13 @@ const useMessages = (username) => {
   };
 
   const addMessage = useCallback((message) => {
-    dispatch({
-      type: ADD_MESSAGE,
-      payload: message
+    prepareMessage(message).then(message => {
+      dispatch({
+        type: ADD_MESSAGE,
+        payload: message
+      });
+      newMessageHandler.current();
     });
-    newMessageHandler.current();
   }, []);
 
   return {

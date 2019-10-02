@@ -6,43 +6,54 @@ const TopPagination = (props) => {
     loadMoreButton = <button>Load more</button>,
     loader = <span>loading...</span>,
     threshold = 200,
+    toBottom = false,
     byWindow,
     fetcher,
     withScrollHandler,
     getScrollParent,
     className,
-    children
-  } = props
+    children,
+    ...rest
+  } = props;
 
   const [{isFetching, page, lastPage}, setState] = useState({
     isFetching: false,
     page: 0,
     lastPage: 0
-  })
+  });
 
-  let scrollContainer = useRef(null)
+  let scrollContainer = useRef(null);
 
   const hasMore = page < lastPage;
 
   useEffect(() => {
-    setState({isFetching: true})
-    fetcher(page + 1).then(({page, lastPage}) => {
-      setState({isFetching: false, page, lastPage})
-    })
+    setState({isFetching: true});
+    const returnedValue = fetcher(page + 1);
+    if (returnedValue instanceof Promise)
+      returnedValue.then(({page, lastPage}) => {
+        setState({isFetching: false, page, lastPage});
+        if (typeof toBottom === 'boolean' && toBottom)
+          scrollContainer.current.scrollTo(0, scrollContainer.current.scrollHeight);
+        else if(toBottom && toBottom.current && typeof toBottom.current.scrollTo === 'function')
+          toBottom.current.scrollTo(0, toBottom.current.scrollHeight);
+      });
+    else
+      setState({isFetching: false});
 
-    if (typeof getScrollParent !== 'undefined')
-      getScrollParent(scrollContainer)
-  }, [])
+    if (typeof getScrollParent !== 'undefined') {
+      getScrollParent(scrollContainer);
+    }
+  }, []);
 
   const loadMore = () => {
     if (hasMore) {
-      setState({isFetching: true})
+      setState({isFetching: true});
       fetcher(page + 1).then(({page, lastPage}) => {
           setState({isFetching: false, page, lastPage})
         }
       )
     }
-  }
+  };
 
   const handleScroll = (() => {
     const toTop = byWindow ? window.scrollY - threshold : scrollContainer.current.scrollTop;
@@ -53,8 +64,9 @@ const TopPagination = (props) => {
   return (
     <div
       ref={scrollContainer}
-      onWheel={withScrollHandler ? handleScroll : null}
       className={className}
+      onScroll={handleScroll}
+      {...rest}
     >
       {
         (hasMore && !withScrollHandler && !isFetching)
@@ -79,7 +91,11 @@ TopPagination.propTypes = {
   withScrollHandler: PropTypes.bool,
   getScrollParent: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  toBottom: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
+  ])
 };
 
 export default TopPagination;

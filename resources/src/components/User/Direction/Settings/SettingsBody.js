@@ -5,9 +5,10 @@ import Logout from "./Logout";
 import {Switch} from 'antd';
 import {connect} from "react-redux";
 import {message} from "antd/lib/index";
-import {setPrivate, setPublic} from "../../../../services/user";
 import {Link} from "react-router-dom";
-import DefaultAvatar from "../../../DefaultAvatar/DefaultAvatar";
+
+import {setPrivate, setPublic} from "services/user";
+import DefaultAvatar from "components/DefaultAvatar";
 
 const SettingsBody = ({isPrivate, username, avatar, countOfUnreadMessages, close, dispatch}) => {
 

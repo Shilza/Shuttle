@@ -7,8 +7,8 @@ import UploadMediaPlayer from "components/PostMedia/UploadMediaPlayer";
 import {convertImageToBlob} from "utils/convertImageToBlob";
 
 import Filters from "./Filters";
-import Container from "./Container";
-import Header from "./Header";
+import Container from "../../Container";
+import Header from "../../Header";
 import Finish from "./Finish";
 
 const FILTERS = 'FILTERS';
@@ -48,9 +48,9 @@ const UploadPost = ({upload, media}) => {
         return (
           <Container style={{height: 'fit-content'}}>
             {
-              media.type.match('image')
-                ? <Header title={'New post'} goNext={gotoFilters} nextButtonText={'Next'}/>
-                : <Header title={'New post'} goNext={goFinish} nextButtonText={'Post'}/>
+              media.type.match('.mp4')
+              ? <Header title={'New post'} goNext={goFinish} nextButtonText={'Post'}/>
+              : <Header title={'New post'} goNext={gotoFilters} nextButtonText={'Next'}/>
             }
             <UploadMediaPlayer media={media} setCroppedMedia={setCroppedMedia}/>
           </Container>

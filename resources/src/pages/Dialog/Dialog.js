@@ -2,15 +2,15 @@ import React, {useCallback, useEffect, useRef, useState} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
-import Header from "./Header/Header"
-import Footer from "./Footer/Footer"
-
-import MessagesList from "./MessagesList/MessagesList"
+import {readDialog} from "store/actions/auth"
 import BlacklistedExplainingLabel from "components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel"
 import Loader from "components/Paginator/Loader/Loader"
 
-import {readDialog} from "store/actions/auth"
-import Http from "../../Http"
+import Header from "./Header"
+import Footer from "./Footer"
+import MessagesList from "./MessagesList"
+
+import Http from "Http"
 import ws, {types as WsTypes} from "../../Ws"
 
 import useMessages from "./utils/useMessages"
@@ -35,13 +35,6 @@ const Dialog = ({myId, dispatch, match}) => {
         setDialogUser(data);
         dispatch(readDialog(data.id));
       });
-
-    onNewMessage(() => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      });
-    });
   }, []);
 
   useEffect(() => {
@@ -113,6 +106,15 @@ const Dialog = ({myId, dispatch, match}) => {
     })
   }, [dialog, dialogUser]);
 
+  const getScrollParent = (ref) => {
+    onNewMessage(() => {
+      ref.current.scrollTo({
+        top: ref.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+  };
+
   return (
     <div className={styles.container}>
       {
@@ -132,6 +134,7 @@ const Dialog = ({myId, dispatch, match}) => {
                     myId={myId}
                     getMessages={getMessages}
                     isFirstLoading={isFirstLoading}
+                    getScrollParent={getScrollParent}
                   />
                   <Footer sendMessage={sendMessage} typing={typing}/>
                 </>

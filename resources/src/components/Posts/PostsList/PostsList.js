@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './postsList.module.css';
-import transitions from './transitions.module.css';
-import Post from "../Post/Post";
 import {connect} from "react-redux";
-import {setCurrentPost} from "../../../store/actions/posts";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Post from "../Post/Post";
+import {setCurrentPost} from "store/actions/posts";
+import transitions from './transitions.module.css';
+import styles from './postsList.module.css';
 
 const PostsList = ({posts, dispatch}) => {
     const open = post => dispatch(setCurrentPost(post));

@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
-import styles from './userInfo.module.css';
-import {addSmoothScrolling} from "../../../../utils/scrolling";
 import {connect} from "react-redux";
-import * as UsersService from "../../../../services/user";
+
+import {addSmoothScrolling} from "utils/scrolling";
+import * as UsersService from "services/user";
+import Paginator from "components/Paginator/Paginator";
+
 import Followers from "./Followers";
-import Paginator from "../../../Paginator/Paginator";
 import Follows from "./Follows";
 import PostsCount from "./PostsCount";
 import FollowersButton from "./FollowersButton";
 import FollowsButton from "./FollowsButton";
+
+import styles from './userInfo.module.css';
 
 const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatch}) => {
 

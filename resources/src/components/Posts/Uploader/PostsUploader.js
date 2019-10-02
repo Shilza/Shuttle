@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import Uploader from "./Modal/Uploader";
-import * as PostService from "../../../services/post";
 import {message} from "antd/lib/index";
-import Modal from "../../Modal/Modal";
+
+import Modal from "components/Modal/Modal";
+import * as PostService from "services/post";
+import Uploader from "./Modal/Uploader";
 import UploadPost from "./Modal/UploadPost";
 
 const PostsUploader = ({dispatch, trigger}) => {
