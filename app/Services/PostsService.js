@@ -3,10 +3,68 @@
 const Feed = use('App/Models/Feed');
 const Post = use('App/Models/Post');
 const User = use('App/Models/User');
+const Mark = use('App/Models/Mark');
 const LikesService = use('LikesService');
 const CompilationsService = use('CompilationsService');
 
 class PostsService {
+
+  async getMarkedPosts(userId, page) {
+    const user = await User.find(userId);
+    let markedPostsIds = await Mark
+      .query()
+      .select(['post_id'])
+      .where('username', user.username)
+      .paginate(page, 12);
+
+    const ids = JSON.parse(JSON.stringify(markedPostsIds.rows)).map(item => item.post_id);
+
+    let posts = await Post
+      .query()
+      .whereIn('id', ids)
+      .withCount('comments')
+      .withCount('likes')
+      .with('marks')
+      .notArchived()
+      .orderBy('created_at', 'desc')
+      .fetch();
+
+    posts.rows = await this._setOwnersInfo(posts.rows);
+    posts.rows = await LikesService.setIsLikedPostsInfo(userId, posts.rows);
+    posts.rows = await CompilationsService.setSavedInfo(userId, posts.rows);
+
+    markedPostsIds.rows = posts.rows;
+    return markedPostsIds;
+  }
+
+  async removeMarksByPostId(postId) {
+    return Mark
+      .query()
+      .where('post_id', postId)
+      .delete();
+  }
+
+  async getPostById(userId, postId) {
+    let post =  await Post
+      .query()
+      .where('id', postId)
+      .withCount('comments')
+      .withCount('likes')
+      .with('marks')
+      .first();
+
+    if (!post)
+      return false;
+
+    post.isLiked = await LikesService.isPostLikedBy(userId, post.id);
+    post.isSaved = await CompilationsService.isSavedBy(userId, post.id);
+
+    const owner = await User.find(post.owner_id);
+    post.owner = owner.username;
+    post.avatar = owner.avatar;
+
+    return post;
+  }
 
   async getPostByCode(code, user) {
     let post = await Post
@@ -60,12 +118,6 @@ class PostsService {
     posts.data = await this._setOwnersInfo(posts.data);
     posts.data = await LikesService.setIsLikedPostsInfo(userId, posts.data);
     posts.data = await CompilationsService.setSavedInfo(userId, posts.data);
-    posts.comments = await this.getResultedComments(userId, posts.data);
-    posts.data = posts.data.map(post => {
-      delete post.feedComments;
-
-      return post;
-    });
 
     return posts;
   }
@@ -186,12 +238,6 @@ class PostsService {
       .notArchived()
       .orderBy('id', 'desc')
       .paginate(page, 12);
-
-    let comments = [];
-    posts.rows.forEach(post => {
-      comments.push(post.load('feedComments'));
-    });
-    await Promise.all(comments);
 
     return posts.toJSON();
   }

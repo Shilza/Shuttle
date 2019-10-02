@@ -9,8 +9,8 @@ class MarksSchema extends Schema {
       table.increments();
       table.integer('post_id').unsigned().notNullable().references('id').inTable('posts').onDelete('cascade');
       table.string('username', 16).notNullable();
-      table.integer('top').notNullable();
-      table.integer('left').notNullable();
+      table.integer('top');
+      table.integer('left');
       table.timestamp('created_at');
     })
   }

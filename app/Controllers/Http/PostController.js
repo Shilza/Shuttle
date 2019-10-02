@@ -113,6 +113,38 @@ class PostController {
     response.json(likedPosts);
   }
 
+  async showMarkedPosts({request, response, auth}) {
+    const rules = {
+      page: 'integer',
+      user_id: 'integer'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
+
+
+    const user = await auth.getUser();
+
+    const ownerId = parseInt(request.input('user_id'), 10);
+
+    const owner = await User.find(ownerId);
+
+    const canSee = await UsersService.canSee(owner, user.id);
+
+    if (canSee) {
+      const posts = await PostsService.getMarkedPosts(request.input('user_id'), page);
+      return response.json(posts);
+    } else
+      return response.json({private: true});
+  }
+
   async create({request, response, auth}) {
 
     const Helpers = use('Helpers');
@@ -236,10 +268,19 @@ class PostController {
         message: 'Forbidden. Unable to update'
       });
 
-    post.merge(request.all());
+    const data = request.all();
+    const receivedMarks = data.marks;
+
+    await PostsService.removeMarksByPostId(post.id);
+
+    await Promise.all(receivedMarks.map(mark => Mark.create({...mark, post_id: post.id})));
+
+    delete data.marks;
+
+    post.merge(data);
     post.save();
 
-    response.json({message: 'Post updated successfully'});
+    response.json({message: 'Post updated successfully', post: await PostsService.getPostById(user.id, post.id)});
   }
 
   async delete({request, response, auth}) {
