@@ -1,0 +1,15 @@
+
+.container {
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
+  font-weight: 700;
+  border-bottom: 1px solid #efefef;
+}

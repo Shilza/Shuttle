@@ -1,0 +1,8 @@
+
+.slidingPane {
+  cursor: grab;
+}
+
+.slidingPane:active {
+  cursor: grabbing;
+}

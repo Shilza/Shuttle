@@ -1,0 +1,19 @@
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .5em;
+  line-height: 1;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+}
+
+.closeIcon {
+  width: 25px;
+  height: 25px;
+  fill: transparent;
+  stroke: white;
+  stroke-linecap: round;
+}

@@ -1,0 +1,20 @@
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  height: 496px;
+  margin: auto;
+  width: max-content;
+  overflow-y: auto;
+  max-height: 95vh;
+}
+
+@media all and (max-width: 810px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    min-width: 310px;
+    width: auto;
+  }
+}

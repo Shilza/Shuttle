@@ -1,0 +1,10 @@
+
+.drawerTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  cursor: pointer;
+}

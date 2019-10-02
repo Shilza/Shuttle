@@ -1,0 +1,15 @@
+
+.container {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-100%);
+  left: 652px;
+}
+
+@media (max-width: 1366px){
+  .container {
+    left: calc(100% - 10px);
+    top: calc(100% - 54px);
+    transform: translate(-100%, -100%);
+  }
+}

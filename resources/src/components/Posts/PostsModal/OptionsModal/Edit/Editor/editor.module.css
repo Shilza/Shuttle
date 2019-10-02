@@ -1,0 +1,22 @@
+
+.container {
+  padding: 0 10px;
+}
+
+.button {
+  color: #000;
+  background: transparent;
+  padding: 2px 8px;
+  width: 100%;
+  border: 1px solid #efefef;
+  margin: 5px 0 ;
+  border-radius: 5px;
+}
+
+.caption {
+  border: 0;
+  margin: 8px;
+  padding: 4px 8px;
+  width: 100%;
+  outline: none;
+}

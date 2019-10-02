@@ -1,0 +1,9 @@
+.singleImgContainer {
+  max-width: 70%;
+  width: fit-content;
+}
+
+.mySingleImgContainer {
+  composes: singleImgContainer;
+  margin-left: auto;
+}

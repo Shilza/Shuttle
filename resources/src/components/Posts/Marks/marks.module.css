@@ -1,0 +1,22 @@
+
+.container {
+  position: relative;
+  height: fit-content;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.media {
+  position: static;
+  height: 100%;
+  width: 100%;
+}
+
+.searchInput {
+  margin: 6px 10px;
+}
+
+.markedUsersContainer {
+  max-height: 600px;
+  overflow-y: auto;
+}

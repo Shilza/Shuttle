@@ -1,0 +1,36 @@
+
+
+.videoContainer {
+  height: min-content;
+}
+
+.video {
+  position: relative;
+  width: 498px;
+  object-fit: contain;
+}
+
+@media (max-width: 500px) {
+  .video {
+    width: 100%;
+  }
+}
+
+.videoPlayButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.sound {
+  position: absolute;
+  top: calc(100% - 34px);
+  left: calc(100% - 30px);
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.53);
+  border-radius: 50%;
+}
