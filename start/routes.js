@@ -94,6 +94,7 @@ Route.group(() => {
 Route.group(() => {
     Route.post('follow', 'FriendshipController.follow');
     Route.post('unfollow', 'FriendshipController.unfollow');
+    Route.delete('follower', 'FriendshipController.deleteFollower');
 }).prefix('api/v1/friendships').middleware(['auth:jwt']);
 
 Route.group(() => {
@@ -119,6 +120,7 @@ Route.group(() => {
 
 Route.get('api/v1/notifications', 'NotificationController.show').middleware(['auth:jwt']);
 Route.get('api/v1/feed', 'FeedController.show').middleware(['auth:jwt']);
+Route.get('api/v1/privateSearch', 'SearchController.privateSearch').middleware(['auth:jwt']);
 Route.get('api/v1/search', 'SearchController.search');
 
 Route.group(() => {

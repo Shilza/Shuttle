@@ -3,6 +3,7 @@
 const User = use('App/Models/User');
 const UsersService = use('UsersService');
 const FriendshipsService = use('FriendshipsService');
+const NotificationsService = use('NotificationsService');
 const SubscriptionRequestsService = use('SubscriptionRequestsService');
 
 class UserController {
@@ -143,6 +144,7 @@ class UserController {
         .withCount('follows')
         .first();
       updatedUser.unreadDialogs = await UsersService.unreadDialogs(updatedUser.id);
+      updatedUser.notificationsCount = await NotificationsService.getNotificationsCount(updatedUser.id);
 
       return response.json({
         message: 'Updated successfully',

@@ -10,7 +10,7 @@ class ActionsSchema extends Schema {
             table.integer('initiator_id').unsigned().notNullable().references('id').inTable('users').onDelete('cascade');
             table.integer('type').unsigned().notNullable().references('id').inTable('action_types');
             table.integer('entity_id').notNullable();
-            table.boolean('is_read').defaultTo(false);
+            table.boolean('read').defaultTo(false);
             table.timestamp('created_at');
         })
     }

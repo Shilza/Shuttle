@@ -271,6 +271,16 @@ class PostController {
     const data = request.all();
     const receivedMarks = data.marks;
 
+    if (!Array.isArray(receivedMarks))
+      return response.status(400).json({
+        message: 'Marks should be an array'
+      });
+
+    if(receivedMarks.length > 10)
+      return response.status(400).json({
+        message: 'Marks count should be less than 10'
+      });
+
     await PostsService.removeMarksByPostId(post.id);
 
     await Promise.all(receivedMarks.map(mark => Mark.create({...mark, post_id: post.id})));
@@ -278,7 +288,7 @@ class PostController {
     delete data.marks;
 
     post.merge(data);
-    post.save();
+    await post.save();
 
     response.json({message: 'Post updated successfully', post: await PostsService.getPostById(user.id, post.id)});
   }

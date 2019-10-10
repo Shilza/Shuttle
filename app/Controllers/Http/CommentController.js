@@ -68,6 +68,7 @@ class CommentController {
         });
 
         comment.owner = user.username;
+        comment.avatar = user.avatar;
         comment.isLiked = false;
 
         response.json({comment});

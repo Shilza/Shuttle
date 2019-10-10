@@ -23,6 +23,7 @@ class NotificationController {
         const user = await auth.getUser();
 
         const notifications = await NotificationsService.getNotifications(user.id, page);
+        await NotificationsService.read(user.id);
 
         response.json(notifications);
     }
