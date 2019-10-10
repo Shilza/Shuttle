@@ -5,19 +5,16 @@ import ModalBody from "./ModalBody";
 import OptionsButton from "./OptionsButton";
 
 const OptionsModal = ({post}) => {
-  let [isOpen, setIsOpen] = useState(false);
+  let [isModalOpen, setIsModalOpen] = useState(false);
 
-  const closeModal = () => setIsOpen(false);
-  const open = () => setIsOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  const open = () => setIsModalOpen(true);
 
   return (
     <>
-      {
-        isOpen &&
-        <Modal closeModal={closeModal}>
-          <ModalBody closeModal={closeModal} post={post}/>
-        </Modal>
-      }
+      <Modal visible={isModalOpen} onClose={closeModal}>
+        <ModalBody closeModal={closeModal} post={post}/>
+      </Modal>
       <OptionsButton open={open}/>
     </>
   );

@@ -6,6 +6,20 @@
   width: 100%;
 }
 
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 2px;
+}
+
+.searchContainer {
+  position: relative;
+}
+
 .media {
   position: static;
   height: 100%;

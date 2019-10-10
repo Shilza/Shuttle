@@ -33,6 +33,7 @@
 
 .explainingContainer {
   composes: container from '../dialog.module.css';
+  min-height: calc(100vh - 220px);
   display: flex;
   align-items: center;
 }

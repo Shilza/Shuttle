@@ -9,7 +9,7 @@ const ListModal = ({children}) => (
 );
 
 ListModal.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
+  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.bool])).isRequired
 };
 
 export default ListModal;

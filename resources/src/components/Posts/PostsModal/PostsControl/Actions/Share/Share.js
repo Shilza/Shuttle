@@ -27,13 +27,14 @@ const Share = React.memo(({src, className}) => {
         <img src={plane} alt={'Share post'} className={styles.plane}/>
       </button>
       {
-        isMobile() ?
-          <Drawer onClose={close} visible={isVisible} placement='bottom' height='90%' className={styles.drawer}>
+        isMobile()
+          ? <Drawer onClose={close} visible={isVisible} placement='bottom' height='90%' className={styles.drawer}>
             <Body src={src} close={close}/>
           </Drawer>
-          :
-          isVisible && <Modal closeModal={close}>
-            <Body src={src} close={close}/>
+          : <Modal visible={isVisible} onClose={close}>
+            <div className={styles.bodyWrapper}>
+              <Body src={src} close={close}/>
+            </div>
           </Modal>
       }
     </>

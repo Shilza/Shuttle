@@ -1,41 +1,27 @@
-import React from "react";
+import React, {useCallback} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
 import Modal from "components/Modal/Modal";
-import {removeCurrentPost} from "store/actions/posts";
 
 import PostModalBody from "./PostModalBody";
 
-const PostsModal = ({isOpen, currentPost, dispatch}) => {
+const PostsModal = ({visible, onClose, post}) => {
 
-  const closeModal = () => {
-    window.history.pushState({}, null, `${window.location.origin}/${currentPost.owner}`);
-    dispatch(removeCurrentPost());
-  };
+  const closeModal = useCallback(() => {
+    onClose();
+  }, [onClose]);
 
   return (
-    <>
-      {
-        (isOpen && currentPost) && (
-          <Modal closeModal={closeModal}>
-            <PostModalBody post={currentPost} closeModal={closeModal}/>
-          </Modal>
-        )
-      }
-    </>
+    <Modal visible={post && visible} onClose={closeModal}>
+      <PostModalBody post={post} closeModal={closeModal}/>
+    </Modal>
   );
 };
 
 PostsModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  currentPost: PropTypes.object,
-  dispatch: PropTypes.func.isRequired
+  visible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  isOpen: state.posts.isModalOpen,
-  currentPost: state.posts.currentPost
-});
-
-export default connect(mapStateToProps)(PostsModal);
+export default PostsModal;

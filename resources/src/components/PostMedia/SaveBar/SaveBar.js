@@ -7,13 +7,12 @@ import {connect} from "react-redux";
 
 import SavedBarCompilationsList from "./Compilations/SavedBarCompilationsList";
 import DrawerTitle from "./DrawerTitle";
-import {setIsSavedTimeout, setPostToBeSaved} from "store/actions/saved";
 import NewCompilationModal from "./Compilations/NewCompilationModal";
 
 import styles from './savebar.module.css';
 import transitions from './transitions.module.css';
 
-const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
+const SaveBar = ({dispatch, isModalOpen, showBar, isVideo, username}) => {
   let [drawerVisible, setDrawerVisible] = useState(false);
 
   useEffect(() => {
@@ -23,12 +22,12 @@ const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
 
   const closeDrawer = () => {
     setDrawerVisible(false);
-    dispatch(setPostToBeSaved(undefined));
+    dispatch.saved.setPostToBeSaved(undefined);
   };
 
   const openDrawer = () => {
     setDrawerVisible(true);
-    dispatch(setIsSavedTimeout(false));
+    dispatch.saved.setIsSavedTimeout(false);
   };
 
   return (
@@ -39,12 +38,12 @@ const SaveBar = ({dispatch, isModalOpen, showBar, username}) => {
       transitionEnter={true}
       transitionEnterTimeout={400}
       transitionLeaveTimeout={400}
-      className={styles.transitionContainer}
+      className={!isVideo ? styles.transitionContainer : ''}
     >
       {
         showBar &&
-        <div className={styles.saveBar}>
-          <button className={styles.buttonLink} onClick={openDrawer}>
+        <div className={isVideo ? styles.staticSaveBar : styles.saveBar}>
+          <button className={isVideo ? styles.staticButtonLink : styles.buttonLink} onClick={openDrawer}>
             Choose compilation
           </button>
           <Link to={`/${username}`}>
@@ -79,6 +78,7 @@ SaveBar.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   showBar: PropTypes.bool,
+  isVideo: PropTypes.bool,
   username: PropTypes.string
 };
 

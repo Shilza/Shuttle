@@ -1,37 +1,45 @@
 
 .userCardContainer {
-    display: flex;
-    margin: 10px 10px 15px 10px;
-    width: 280px;
-    border: 1px solid #efefef;
-    border-radius: 10px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 10px 15px 10px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  padding: 10px 20px;
 }
 
 .subContainer {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 5px auto auto;
 }
 
 .actionButtons {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  width: 140px;
+
 }
 
 .avatar {
-    height: 50px;
-    width: 50px;
-    color: black;
+  height: 50px;
+  width: 50px;
+  color: black;
 }
 
 .avatar img {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 
 .usernameLink {
-    color: black;
-    font-weight: 500;
+  color: black;
+  font-weight: 500;
+}
+
+.usernameLink:hover {
+  color: black;
 }

@@ -1,4 +1,8 @@
 
+.bodyWrapper {
+  max-height: 95vh;
+}
+
 .button {
   border: 0;
   height: 20px;

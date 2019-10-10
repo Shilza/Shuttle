@@ -1,7 +1,7 @@
 
 
 .comments {
-  font-size: 10px;
+  font-size: 0.85em;
   max-height: 200px;
   overflow-y: auto;
 }

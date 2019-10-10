@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Drawer} from 'react-pretty-drawer';
@@ -12,9 +12,20 @@ import SaveBar from "./SaveBar";
 import MarkedUsers from "../Posts/Marks/MarkedUsers/MarkedUsers";
 import styles from './postMedia.module.css';
 
-const PostMedia = ({media, showBar, marks, closeModal, fullWidth, autoPlay, withPlayButton, playByClick}) => {
+const PostMedia = ({media, showBar, marks, closeModal, fullWidth, muted, autoPlay}) => {
+
+  const isVideo = !!media.match('.mp4');
 
   const [isMarksShown, setIsMarksShown] = useState(false);
+  const [isMarksButtonShow, setIsMarksButtonShow] = useState(true);
+  let timer = useRef(null);
+
+  useEffect(() => {
+    if(isVideo)
+      timer.current = setTimeout(() => {
+        setIsMarksButtonShow(false)
+      }, 2000);
+  }, []);
 
   const showMarks = () => {
     setIsMarksShown(true);
@@ -24,24 +35,38 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, autoPlay, with
     setIsMarksShown(false);
   };
 
+  const onMouseMove = () => {
+    if(isVideo) {
+      setIsMarksButtonShow(true);
+      clearInterval(timer.current);
+      timer.current = setTimeout(() => {
+        setIsMarksButtonShow(false);
+      }, 2000);
+    }
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onMouseMove={onMouseMove} onMouseOver={onMouseMove}>
       <MediaPlayer
         media={media}
-        playByClick={playByClick}
-        withPlayButton={withPlayButton}
         autoPlay={autoPlay}
+        muted={muted}
         fullWidth={fullWidth}
       />
-      <SaveBar showBar={showBar}/>
+      <SaveBar showBar={showBar} isVideo={isVideo}/>
       {
         !showBar && marks && marks.length > 0 &&
         <>
-          <button onClick={isMarksShown ? hideMarks : showMarks} className={styles.showMarksButton}>
-            {isMarksShown ? 'Hide marks' : 'Show marks'}
-          </button>
           {
-            isMarksShown && !media.match('.mp4') &&
+            isMarksButtonShow &&
+            <button onClick={isMarksShown ? hideMarks : showMarks}
+                    className={isVideo ? styles.showMarksButtonVideo : styles.showMarksButton}
+            >
+              {isMarksShown ? 'Hide marks' : 'Show marks'}
+            </button>
+          }
+          {
+            isMarksShown && !isVideo &&
             marks.map(mark =>
               <Mark
                 key={mark.id}
@@ -54,7 +79,7 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, autoPlay, with
           {
             isMobile() ?
               <Drawer
-                visible={isMarksShown && media.match('.mp4')}
+                visible={isMarksShown && isVideo}
                 placement={'bottom'}
                 onClose={hideMarks}
                 zIndex={10000}
@@ -67,8 +92,8 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, autoPlay, with
                   closeModal={closeModal}
                 />
               </Drawer>
-              : isMarksShown && media.match('.mp4') &&
-              <Modal closeModal={hideMarks}>
+              :
+              <Modal visible={isMarksShown && isVideo} onClose={hideMarks}>
                 <div className={styles.computerMarksContainer}>
                   <MarkedUsers
                     users={marks}
@@ -86,17 +111,14 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, autoPlay, with
 
 PostMedia.defaultProps = {
   autoPlay: false,
-  withPlayButton: false,
-  fullWidth: false,
-  playByClick: true
+  fullWidth: false
 };
 
 PostMedia.propTypes = {
   media: PropTypes.string.isRequired,
   showBar: PropTypes.bool.isRequired,
-  playByClick: PropTypes.bool,
-  withPlayButton: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  muted: PropTypes.bool,
   marks: PropTypes.array,
 };
 

@@ -11,7 +11,7 @@ export const Bio = ({getFieldDecorator, fieldName = 'bio', initialValue = ''}) =
             ],
             initialValue
         })(
-            <MaterialInput defaultValue={initialValue} label={'Bio'}/>
+            <MaterialInput label={'Bio'}/>
         )}
     </FormItem>
 );

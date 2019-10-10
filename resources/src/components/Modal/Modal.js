@@ -4,15 +4,23 @@ import {createPortal} from "react-dom";
 import CloseButton from "./ClsoeButton";
 import styles from './modal.module.css';
 
-const Modal = ({children, closeModal}) => {
-  const id = `f${(~~(Math.random()*1e8)).toString(16)}`;
+const Modal = ({children, onClose, zIndex = 999, visible = false}) => (
+  <>
+    {
+      visible && <Window zIndex={zIndex} onClose={onClose}>{children}</Window>
+    }
+  </>
+);
+
+const Window = ({children, zIndex, onClose}) => {
+  const id = `f${(~~(Math.random() * 1e8)).toString(16)}`;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
     const listener = event => {
       if (event.keyCode === 27)
-        closeModal();
+        onClose();
     };
     document.addEventListener('keydown', listener);
 
@@ -23,14 +31,15 @@ const Modal = ({children, closeModal}) => {
   }, []);
 
   const closeByCoverClick = event => {
-    if (event.target.id === `modalCover${id}`)
-      closeModal();
+    const targetId = event.target.id;
+    if (targetId === `modalCover${id}` || targetId === `modalContent${id}`)
+      onClose();
   };
 
   return createPortal(
-    <aside className={styles.modalCover} id={`modalCover${id}`} onClick={closeByCoverClick}>
-      <CloseButton closeModal={closeModal}/>
-      <div className={styles.modalContent}>
+    <aside style={{zIndex}} className={styles.modalCover} id={`modalCover${id}`} onClick={closeByCoverClick}>
+      <CloseButton closeModal={onClose}/>
+      <div className={styles.modalContent} id={`modalContent${id}`}>
         {children}
       </div>
     </aside>,
@@ -40,7 +49,9 @@ const Modal = ({children, closeModal}) => {
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
-  closeModal: PropTypes.func.isRequired
+  onClose: PropTypes.func,
+  visible: PropTypes.bool.isRequired,
+  zIndex: PropTypes.number
 };
 
 export default Modal;

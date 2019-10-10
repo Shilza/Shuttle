@@ -1,29 +1,26 @@
 import * as React from "react";
 import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
-
-import {removeCurrentPost} from "store/actions/posts";
-import * as PostService from "services/post";
 import {connect} from "react-redux";
 
-const RemovePostButton = ({postId, dispatch}) => {
-    const removePost = () => {
-        dispatch(PostService.remove(postId))
-            .then(data => {
-                message.success(data.message);
-                dispatch(removeCurrentPost());
-            })
-            .catch(err => message.error(err.response.data.message));
-    };
+const RemovePostButton = ({postId, closeModal, dispatch}) => {
+  const removePost = () => {
+    dispatch.posts.removeAsync(postId)
+      .then((data) => {
+        message.success(data.message);
+      })
+      .catch(err => message.error(err.response.data.message))
+      .finally(closeModal);
+  };
 
-    return (
-        <li onClick={removePost}>Delete post</li>
-    );
+  return (
+    <li onClick={removePost}>Delete post</li>
+  );
 };
 
 RemovePostButton.propTypes = {
-    postId: PropTypes.number.isRequired,
-    dispatch: PropTypes.func.isRequired
+  postId: PropTypes.number.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default connect()(RemovePostButton);

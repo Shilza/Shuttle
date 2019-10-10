@@ -4,6 +4,10 @@
   height: auto;
 }
 
-.children {
+.mobileChildren {
   padding-bottom: 40px
+}
+
+.children {
+  height: 100%;
 }

@@ -1,45 +1,49 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 import {Icon} from "antd";
 
 import * as LikeService from "services/likes";
 
 import styles from './like.module.css';
 
-const Like = ({id, likesCount, isLiked, type, dispatch}) => {
+const Like = ({id, likesCount, isLiked, onLike, type}) => {
 
-    const like = event => {
-        event.stopPropagation();
+  const like = event => {
+    event.stopPropagation();
 
-        const data = {
-            entity_id: id,
-            type
-        };
-        dispatch(isLiked ? LikeService.unlike(data) : LikeService.like(data));
+    const data = {
+      entity_id: id,
+      type
     };
+    if (isLiked) {
+      onLike({id, liked: false});
+      LikeService.unlike(data).catch(() => onLike({id, liked: true}));
+    } else {
+      onLike({id, liked: true});
+      LikeService.like(data).catch(() => onLike({id, liked: false}));
+    }
+  };
 
-    return (
-        <div>
-            {!!likesCount && <span>{likesCount}</span>}
-            <button className={styles.action} onClick={like}>
-                {
-                    isLiked ?
-                        <Icon type="heart" className={styles.redHeart}/>
-                        :
-                        <Icon type="heart" className={styles.heart}/>
-                }
-            </button>
-        </div>
-    );
+  return (
+    <div>
+      {!!likesCount && <span>{likesCount}</span>}
+      <button className={styles.action} onClick={like}>
+        {
+          isLiked
+            ? <Icon type="heart" className={styles.redHeart}/>
+            : <Icon type="heart" className={styles.heart}/>
+        }
+      </button>
+    </div>
+  );
 };
 
 Like.propTypes = {
-    id: PropTypes.number.isRequired,
-    likesCount: PropTypes.number,
-    isLiked: PropTypes.bool.isRequired,
-    type: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
+  id: PropTypes.number.isRequired,
+  likesCount: PropTypes.number,
+  isLiked: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
+  onLike: PropTypes.func.isRequired
 };
 
-export default connect()(Like);
+export default Like;

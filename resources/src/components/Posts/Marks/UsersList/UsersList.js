@@ -1,29 +1,35 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import Paginator from "components/Paginator";
 import User from "../User";
 
 import styles from "./usersList.module.css";
 
-const UsersList = ({users, addUser}) => (
+const UsersList = ({users, addUser, fetcher}) => (
   <>
     {
-      users.length > 0 &&
+      fetcher &&
       <div className={styles.container}>
-        <div className={styles.list}>
-          {
-            users.map(user =>
-              <User
-                user={user}
-                key={user.id}
-                onClick={(event) => {
-                  event.preventDefault();
-                  addUser(user);
-                }}
-              />
-            )
-          }
-        </div>
+        <Paginator fetcher={fetcher}>
+          <div className={styles.list}>
+            {
+              users.map(user =>
+                <User
+                  user={user}
+                  key={user.id}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    addUser(user);
+                  }}
+                />
+              )
+            }
+          </div>
+        </Paginator>
+        {
+          users.length === 0 && <div className={styles.nothingToShow}>Nothing to show</div>
+        }
       </div>
     }
   </>
@@ -31,7 +37,8 @@ const UsersList = ({users, addUser}) => (
 
 UsersList.propTypes = {
   users: PropTypes.array,
-  addUser: PropTypes.func.isRequired
+  addUser: PropTypes.func.isRequired,
+  fetcher: PropTypes.func,
 };
 
 export default UsersList;

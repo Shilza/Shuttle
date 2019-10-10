@@ -8,13 +8,13 @@ import User from "./User";
 
 import styles from './listOfUsers.module.css'
 
-const ListOfUsers = React.memo(({dialogs, fetchDialogs, send}) => (
-  <Paginator fetcher={fetchDialogs}>
+const ListOfUsers = React.memo(({users, fetcher, send}) => {
+  const ul = () => (
     <ul className={isMobile() ? styles.mobileContainer : styles.container}>
       {
-        dialogs.map(({id, user}) =>
+        users.map((user) =>
           <User
-            key={id}
+            key={user.id}
             avatar={user.avatar}
             username={user.username}
             id={user.id}
@@ -23,13 +23,23 @@ const ListOfUsers = React.memo(({dialogs, fetchDialogs, send}) => (
         )
       }
     </ul>
-  </Paginator>
-));
+  );
+
+  return (
+    <>
+      {
+        fetcher
+          ? <Paginator fetcher={fetcher}>{ul()}</Paginator>
+          : <>{ul()}</>
+      }
+    </>
+  )
+});
 
 ListOfUsers.propTypes = {
-  dialogs: PropTypes.array,
+  users: PropTypes.array,
   send: PropTypes.func.isRequired,
-  fetchDialogs: PropTypes.func.isRequired
+  fetcher: PropTypes.func,
 };
 
 export default ListOfUsers;

@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import VideoPlayer from "../UploadMediaPlayer/VideoPlayer/VideoPlayer";
+import VideoPlayer from "../VideoPlayer";
 import styles from './mediaPlayer.module.css';
 
-const MediaPlayer = ({media, toggleMuted, fullWidth, autoPlay, withPlayButton, playByClick}) => (
+const MediaPlayer = ({media, toggleMuted, fullWidth, muted, autoPlay}) => (
   <div className={styles.mediaContainer}>
     {
       media.match('.mp4')
         ? <VideoPlayer
           src={media}
-          playByClick={playByClick}
-          withPlayButton={withPlayButton}
           autoPlay={autoPlay}
+          muted={muted}
           toggleMuted={toggleMuted}
         />
         : <LazyLoadImage
@@ -29,16 +28,14 @@ const MediaPlayer = ({media, toggleMuted, fullWidth, autoPlay, withPlayButton, p
 
 MediaPlayer.defaultProps = {
   autoPlay: false,
-  withPlayButton: false,
   fullWidth: false,
-  playByClick: true
 };
 
 MediaPlayer.propTypes = {
   media: PropTypes.string.isRequired,
-  playByClick: PropTypes.bool,
-  withPlayButton: PropTypes.bool,
-  fullWidth: PropTypes.bool
+  fullWidth: PropTypes.bool,
+  autoPlay: PropTypes.bool,
+  muted: PropTypes.bool
 };
 
 export default React.memo(MediaPlayer);

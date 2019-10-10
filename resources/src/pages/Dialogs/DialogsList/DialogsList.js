@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import SearchInput from "components/SearchInput/SearchInput";
 import Paginator from "components/Paginator";
 
-import Dialog from "../Dialog/Dialog"
+import Dialog from "../Dialog"
 
 const DialogsList = React.memo(({dialogs, myId, fetchDialogs, search}) => (
   <>

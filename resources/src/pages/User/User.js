@@ -1,25 +1,26 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import * as UserService from "../../services/user";
-import styles from './user.module.css';
-import User from "components/User/User";
 import WithLoading from "components/Loader/Loader";
 import UserDoesNotExists from "components/ExplainingLabels/UserDoesNotExists/UserDoesNotExists";
+import User from './User/index';
+
+import styles from './user.module.css';
 
 const UserPageWithLoading = WithLoading(User);
 
 const UserPage = ({currentUser, match, dispatch}) => {
 
-  let [isLoading, setIsLoading] = useState(true);
+  let [isLoading, setIsLoading] = useState(currentUser !== match.params.username);
   let [error, setError] = useState('');
 
   useEffect(() => {
-    if(currentUser !== match.params.username)
-      dispatch(UserService.getUser(match.params.username))
-        .then(() => setIsLoading(false))
+    if (currentUser !== match.params.username)
+      dispatch.users.getUser(match.params.username)
         .catch(err => {
           setError(err.response.data.message);
+        })
+        .finally(() => {
           setIsLoading(false);
         });
   });
@@ -27,8 +28,9 @@ const UserPage = ({currentUser, match, dispatch}) => {
   return (
     <div className={styles.container}>
       {
-        error ? <UserDoesNotExists text={error}/> :
-          <UserPageWithLoading isLoading={isLoading}/>
+        error
+          ? <UserDoesNotExists text={error}/>
+          : <UserPageWithLoading isLoading={isLoading}/>
       }
     </div>
   )
@@ -41,5 +43,5 @@ UserPage.propTypes = {
 };
 
 export default connect(state => ({
-  currentUser: state.user && state.user.user && state.users.user.username
+  currentUser: state.users.user && state.users.user.username
 }))(UserPage);

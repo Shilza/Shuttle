@@ -3,31 +3,25 @@ import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
 import {connect} from "react-redux";
 
-import {addToArchive, deleteFromArchive} from "services/post";
-import {removeCurrentPost} from "store/actions/posts";
-
 const Archive = ({dispatch, postId, isArchived, closeModal}) => {
 
   const dispatchAction = action => {
-    dispatch(action(postId))
-      .then(data => {
-        message.success(data);
+    action(postId)
+      .then(({data}) => {
+        message.success(data.message);
       })
-      .catch(data => {
-        message.error(data);
+      .catch(err => {
+        message.error(err.response.data.message);
       })
-      .finally(() => {
-        removeCurrentPost();
-        closeModal();
-      });
+      .finally(closeModal);
   };
 
   const archive = () => {
-    dispatchAction(addToArchive);
+    dispatchAction(dispatch.posts.addToArchiveAsync);
   };
 
   const unArchive = () => {
-    dispatchAction(deleteFromArchive);
+    dispatchAction(dispatch.posts.removeFromArchiveAsync);
   };
 
   return (

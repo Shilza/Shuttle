@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
+import moment from "moment";
 
-import {convertTime} from "utils/timeConverter";
 import DefaultAvatar from "components/DefaultAvatar";
 import PostLink from "./PostLink";
 
 import styles from './notifications.module.css';
+
 
 const Notification = ({item}) => {
   const {username, avatar, info, post_src, text, created_at} = item;
@@ -34,7 +35,7 @@ const Notification = ({item}) => {
           }
         </div>
         <span className={styles.timeContainer}>
-          <time>{convertTime(created_at)}</time> ago
+          <time>{moment(new Date(created_at), "YYYYMMDD").fromNow()}</time>
         </span>
       </div>
       {

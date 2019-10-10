@@ -1,41 +1,42 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 import PropTypes from 'prop-types';
-import {getNotifications} from "../../../services/notifications";
+import {connect} from "react-redux";
+import Paginator from "components/Paginator/Paginator";
+import NotificationsExplainingLabel from "components/ExplainingLabels/NotificationsLabel/NotificationsExplainingLabel";
+import BlanksList from "./BlanksList";
 import Notification from "./Notification";
 import styles from './notifications.module.css';
-import {connect} from "react-redux";
-import BlanksList from "./BlanksList";
-import Paginator from "../../../components/Paginator/Paginator";
-import NotificationsExplainingLabel
-  from "../../../components/ExplainingLabels/NotificationsLabel/NotificationsExplainingLabel";
 
 
-const NotificationsList = ({notificationsCount, dispatch, notifications, page}) => {
+const NotificationsList = ({notificationsCount, dispatch, notifications}) => {
 
-  const fetchNotifications = page => dispatch(getNotifications(page));
+  const [firstLoading, setFirstLoading] = useState(false);
+
+  const fetchNotifications = useCallback((page) =>
+    dispatch.notifications.get(page).then(data => {
+      if (!firstLoading)
+        setFirstLoading(true);
+      return data;
+    }), []);
 
   return (
     <>
-      {
-        notificationsCount !== 0 ?
-          <div className={styles.notificationsList}>
-            <span className={styles.title}>Notifications</span>
-            {
-              !notifications && <BlanksList count={notificationsCount}/>
-            }
-            <Paginator
-              fetcher={fetchNotifications}
-              initialPage={page}
-            >
-              {
-                !!notifications && notifications.map((item, index) =>
-                  <Notification key={index} item={item}/>
-                )
-              }
-            </Paginator>
-          </div>
-          : <NotificationsExplainingLabel/>
-      }
+      <div className={notifications.length > 0 ? styles.notificationsList : ''}>
+        {
+          notifications.length > 0 && <span className={styles.title}>Notifications</span>
+        }
+        {
+          <BlanksList count={notificationsCount}/>
+        }
+        <Paginator fetcher={fetchNotifications}>
+          {
+            !!notifications && notifications.map((item, index) =>
+              <Notification key={index} item={item}/>
+            )
+          }
+        </Paginator>
+      </div>
+      {firstLoading && notifications.length === 0 && <NotificationsExplainingLabel/>}
     </>
   );
 };
@@ -44,13 +45,11 @@ NotificationsList.propTypes = {
   notificationsCount: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   notifications: PropTypes.array,
-  page: PropTypes.number
 };
 
 const mapStateToProps = state => ({
   notificationsCount: state.auth.user.notificationsCount,
-  notifications: state.notifications.notifications.data,
-  page: state.notifications.notifications.page
+  notifications: state.notifications
 });
 
 export default connect(mapStateToProps)(NotificationsList);

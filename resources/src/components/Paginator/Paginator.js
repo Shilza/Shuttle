@@ -9,14 +9,22 @@ const Paginator = ({fetcher, children, initialPage, useWindow, isReverse, loader
   let [lastPage, setLastPage] = useState(0);
   let lastFetchedPage = useRef(0);
 
+  const resetState = () => {
+    lastFetchedPage.current = 0;
+    setPage(initialPage);
+    setLastPage(0);
+  };
+
   useEffect(() => {
-    if (initialPage === 0)
+    if (initialPage === 0) {
+      resetState();
       fetchData();
-  }, []);
+    }
+  }, [fetcher]);
 
   const fetchData = () => {
-    const newPage = page + 1;
-    if (lastFetchedPage.current !== newPage) {
+    const newPage = lastFetchedPage.current + 1;
+    if (lastFetchedPage.current !== newPage && lastPage !== 0 ? newPage <= lastPage : true) {
       lastFetchedPage.current = newPage;
       fetcher(newPage).then(({page, lastPage}) => {
         setPage(page);

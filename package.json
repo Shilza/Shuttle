@@ -34,6 +34,7 @@
     "@adonisjs/websocket": "^1.0.12",
     "@adonisjs/websocket-client": "^1.0.9",
     "@babel/core": "7.1.6",
+    "@rematch/core": "^1.2.0",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.11.6",
     "axios": "^0.18.0",
@@ -41,7 +42,7 @@
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
-    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-import": "^1.12.2",
     "babel-plugin-named-asset-import": "^0.3.0",
     "babel-preset-react-app": "^7.0.0",
     "bfj": "6.1.1",
@@ -98,7 +99,6 @@
     "react-spring": "^8.0.27",
     "react-use-gesture": "^6.0.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -114,7 +114,8 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-export-default-from": "^7.5.2"
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "css-has-pseudo": "^1.0.0"
   },
   "autoload": {
     "App": "./app"
@@ -178,6 +179,7 @@
         "import",
         {
           "libraryName": "antd",
+          "libraryDirectory": "es",
           "style": true
         }
       ],

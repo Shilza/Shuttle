@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import UserCard from "../Card/UserCard";
 import {connect} from "react-redux";
-import {removeFromBlacklist} from "../../../services/user";
-import transitions from '../transitions.module.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import UserCard from "../Card/UserCard";
+import transitions from '../transitions.module.css';
 
 const Blacklisted = ({id, avatar, username, dispatch}) => {
-    const removeUser = () => dispatch(removeFromBlacklist(id));
+    const removeUser = () => dispatch.blacklist.removeFromBlacklistAsync(id);
 
     return (
         <ReactCSSTransitionGroup

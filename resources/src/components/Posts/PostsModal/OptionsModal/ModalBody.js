@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import ListModal from "components/Modal/ListsModal/ListModal";
+import ListModal from "components/Modal/ListsModal";
 import Archive from "./Archive";
 import RemovePostButton from "./RemovePostButton";
 import CopyLinkButton from "./CopyLinkButton";
@@ -22,7 +22,7 @@ const ModalBody = ({post, me, closeModal}) => {
         <>
           <Archive closeModal={closeModal} isArchived={archive} postId={id}/>
           <Edit closeModal={closeModal} post={post}/>
-          <RemovePostButton postId={id}/>
+          <RemovePostButton postId={id} closeModal={closeModal}/>
         </>
       }
       <li onClick={closeModal}>Cancel</li>

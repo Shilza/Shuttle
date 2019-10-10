@@ -2,10 +2,9 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {Icon, Spin} from "antd";
 import {connect} from "react-redux";
-
-import * as PostService from "services/post";
-import Compilation from "components/User/NavigationPanel/Saved/Compilation";
+import Compilation from "pages/User/User/NavigationPanel/Saved/Compilation";
 import styles from './savedBarCompilations.module.css';
+
 
 const SavedBarCompilation = ({compilation, dispatch, postId}) => {
 
@@ -14,7 +13,7 @@ const SavedBarCompilation = ({compilation, dispatch, postId}) => {
   const setCompilationToSave = (event, compilationName) => {
     event.stopPropagation();
     setLoading(true);
-    dispatch(PostService.save({post_id: postId, compilation: compilationName}))
+    dispatch.posts.saveAsync({post_id: postId, compilation: compilationName})
       .then(() => setLoading(false));
   };
 

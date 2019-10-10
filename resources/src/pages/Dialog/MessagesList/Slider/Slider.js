@@ -2,8 +2,6 @@ import React from "react";
 import {animated, useSpring} from "react-spring";
 import {useGestureResponder} from "react-gesture-responder";
 
-import styles from "./slider.module.css";
-
 const Slider = ({children}) => {
   const [{x}, set] = useSpring(() => ({x: 0}));
 
@@ -28,7 +26,7 @@ const Slider = ({children}) => {
     <animated.div
       {...bind}
       style={{transform: x.interpolate(x => `translateX(${addResistance(x)}px)`)}}
-      className={styles.slidingPane}>
+      >
       {children}
     </animated.div>
   )

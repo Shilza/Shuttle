@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
 import Header from "components/Posts/PostsModal/PostsControl/Header";
 import Actions from "components/Posts/PostsModal/PostsControl/Actions";
@@ -9,44 +8,18 @@ import PostMedia from "components/PostMedia";
 import CommentsList from "components/Comments/CommentsList";
 import TopPagination from "components/TopPagination";
 import Loader from "components/Paginator/Loader";
-import Http from "Http";
-import {getComments} from "store/selectors/comments";
-
-import Caption from "./Caption/Caption";
+import Caption from "components/Posts/Caption";
+import useComments from "utils/useComments";
 
 import styles from './feedPost.module.css';
 
-
-const useComments = (id, commentsCount) => {
-
-  const [comments, setComments] = useState([]);
-
-  const fetchComments = (page = 1) => {
-    if (commentsCount > 0)
-      return Http.get(`/api/v1/comments?post_id=${id}&page=${page}`)
-        .then(({data}) => {
-          setComments([...data.data, ...comments]);
-          return data;
-        });
-  };
-
-  const onComment = (comment) => {
-    setComments([...comments, comment]);
-  };
-
-  return {
-    comments,
-    fetchComments,
-    onComment
-  }
-};
 
 const FeedPost = ({post}) => {
   const {owner, avatar, src, marks, id, caption, comments_count} = post;
   const [firstIntersect, setFirstIntersect] = useState(false);
   let containerRef = useRef(null);
   let commentsScrollParentRef = useRef(null);
-  const {comments, fetchComments, onComment} = useComments(id, comments_count);
+  const {comments, fetchComments, onComment, onCommentRemove, setCommentLiked} = useComments(id, comments_count);
 
   useEffect(() => {
     const callback = (entries) => {
@@ -61,7 +34,12 @@ const FeedPost = ({post}) => {
 
   const getScrollParentRef = useCallback((ref) => {
     commentsScrollParentRef.current = ref.current;
-  }, []);
+  }, [commentsScrollParentRef]);
+
+  const onCom = useCallback((comment) => {
+    onComment(comment);
+    commentsScrollParentRef.current.scrollTo(0, commentsScrollParentRef.current.scrollHeight);
+  }, [commentsScrollParentRef, onComment]);
 
   return (
     <section className={styles.post} ref={containerRef}>
@@ -71,8 +49,8 @@ const FeedPost = ({post}) => {
           media={src}
           postId={id}
           marks={marks}
-          playByClick={false}
           autoPlay
+          muted
         />
       </div>
       <Caption caption={caption} username={owner}/>
@@ -88,14 +66,18 @@ const FeedPost = ({post}) => {
           toBottom
         >
           {
-            comments && <CommentsList comments={comments}/>
+            comments &&
+            <CommentsList
+              comments={comments}
+              onRemove={onCommentRemove}
+              setCommentLiked={setCommentLiked}
+            />
           }
         </TopPagination>
       }
       <Footer
         post={post}
-        onComment={onComment}
-        scrollParent={commentsScrollParentRef.current}
+        onComment={onCom}
       />
     </section>
   );
@@ -103,11 +85,6 @@ const FeedPost = ({post}) => {
 
 FeedPost.propTypes = {
   post: PropTypes.object.isRequired,
-  comments: PropTypes.array
 };
 
-const mapStateToProps = (state, props) => ({
-  comments: getComments(state.comments.comments.data, props.post),
-});
-
-export default connect(mapStateToProps)(FeedPost);
+export default FeedPost;

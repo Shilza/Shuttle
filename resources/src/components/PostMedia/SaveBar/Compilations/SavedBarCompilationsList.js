@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-
-import {getCompilations} from "services/saved";
 import SavedExplainingLabel from "components/ExplainingLabels/SavedLabel/SavedExplainingLabel";
 import SavedBarCompilation from "./SavedBarCompilation";
 
@@ -10,7 +8,7 @@ import styles from '../savebar.module.css';
 
 const SavedBarCompilationsList = ({dispatch, compilations}) => {
   useEffect(() => {
-    dispatch(getCompilations());
+    dispatch.saved.fetchCompilations(1);
   }, []);
 
   return (
@@ -37,7 +35,7 @@ SavedBarCompilationsList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  compilations: state.saved.compilations.data,
+  compilations: state.saved.compilations,
 });
 
 export default connect(mapStateToProps)(SavedBarCompilationsList);

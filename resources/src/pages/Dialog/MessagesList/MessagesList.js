@@ -13,7 +13,7 @@ import Slider from "./Slider"
 import styles from "./messagesList.module.css"
 
 
-const MessagesList = ({dialogs, getScrollParent, user, myId, getMessages, isFirstLoading}) => {
+const MessagesList = ({messages, getScrollParent, user, myId, getMessages, deleteMsg, isFirstLoading}) => {
 
   let lastMessage = useRef(null);
 
@@ -41,6 +41,9 @@ const MessagesList = ({dialogs, getScrollParent, user, myId, getMessages, isFirs
           text = momentCur.format("D MMMM YYYY");
       }
     } else {
+      if (moment(created_at).format("D MMMM") === moment().format("D MMMM"))
+        text = "today";
+      else
       text = moment(created_at).format("D MMMM")
     }
     lastMessage.current = created_at;
@@ -61,25 +64,27 @@ const MessagesList = ({dialogs, getScrollParent, user, myId, getMessages, isFirs
         <div className={isMobile() ? styles.mobileMessages : styles.messages}>
           <div className={styles.absoluteWrapper}>
             {
-              !isFirstLoading && dialogs.length === 0 ?
+              !isFirstLoading && messages.length === 0 ?
                 <div className={styles.explainingContainer}>
                   <StartMessagingLabel/>
                 </div>
                 :
-                dialogs.map((message, index) => (
+                messages.map((message, index) => (
                     <>
                       {messageDate(message.created_at)}
                       <Message
                         key={message.id}
+                        id={message.id}
                         my={message.owner_id === myId}
                         avatar={user && user.avatar}
                         username={user && user.username}
-                        withAvatar={isNeedAvatar(dialogs, index)}
+                        withAvatar={isNeedAvatar(messages, index)}
                         text={message.text}
                         read={message.read}
                         time={message.created_at}
                         images={message.images}
                         post={message.post}
+                        deleteMsg={deleteMsg}
                       />
                     </>
                   )
@@ -93,7 +98,7 @@ const MessagesList = ({dialogs, getScrollParent, user, myId, getMessages, isFirs
 };
 
 MessagesList.propTypes = {
-  dialogs: PropTypes.array.isRequired,
+  messages: PropTypes.array.isRequired,
   user: PropTypes.shape({
     avatar: PropTypes.string,
     username: PropTypes.string
@@ -101,6 +106,7 @@ MessagesList.propTypes = {
   myId: PropTypes.number.isRequired,
   getMessages: PropTypes.func.isRequired,
   isFirstLoading: PropTypes.bool.isRequired,
+  deleteMsg: PropTypes.func.isRequired,
   getScrollParent: PropTypes.func.isRequired
 };
 

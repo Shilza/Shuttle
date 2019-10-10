@@ -1,37 +1,25 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {getLiked} from "../../services/post";
 import {connect} from "react-redux";
 import styles from './likedPosts.module.css';
-import Paginator from "../../components/Paginator/Paginator";
-import Posts from "../../components/Posts/Posts";
+import Paginator from "components/Paginator";
+import Posts from "components/Posts";
 
-const LikedPosts = ({posts, page = 0, dispatch}) => {
-
-    const fetchLikedPosts = page => dispatch(getLiked(page));
-
-    return (
-        <div className={styles.pageContainer}>
-            <span className={styles.title}>LikedPosts</span>
-            <Paginator
-                fetcher={fetchLikedPosts}
-                initialPage={page}
-            >
-                <Posts posts={posts}/>
-            </Paginator>
-        </div>
-    );
-};
+const LikedPosts = ({posts, dispatch}) => (
+  <div className={styles.pageContainer}>
+    <span className={styles.title}>LikedPosts</span>
+    <Paginator fetcher={dispatch.posts.fetchLiked}>
+      <Posts posts={posts}/>
+    </Paginator>
+  </div>
+);
 
 LikedPosts.propTypes = {
-    posts: PropTypes.array,
-    page: PropTypes.number,
-    dispatch: PropTypes.func.isRequired
+  posts: PropTypes.array
 };
 
 const mapStateToProps = state => ({
-    posts: state.posts.likedPosts.data,
-    page: state.posts.likedPosts.page,
+  posts: state.posts.liked
 });
 
 export default connect(mapStateToProps)(LikedPosts);

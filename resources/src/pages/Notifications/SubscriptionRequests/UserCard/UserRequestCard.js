@@ -31,7 +31,7 @@ const UserRequestCard = ({user, deleteFromSubsList}) => {
 UserRequestCard.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired
+    avatar: PropTypes.string
   }),
   deleteFromSubsList: PropTypes.func.isRequired
 };

@@ -1,16 +1,15 @@
 import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
-import {Button} from "antd";
 
-import {create} from 'services/comments';
+import Loader from "components/Paginator/Loader";
+import * as CommentsService from 'services/comments';
 import {isMobile} from "utils/isMobile";
-import Http from "Http";
 
 import styles from '../postControl.module.css';
 
-const CommentInput = React.memo(({post_id, scrollParent, onComment, dispatch}) => {
+const CommentInput = React.memo(({post_id, onComment}) => {
   let [loading, setLoading] = useState(false);
+  let [isButtonVisible, setIsButtonVisible] = useState(false);
 
   let inputRef = useRef();
 
@@ -21,23 +20,20 @@ const CommentInput = React.memo(({post_id, scrollParent, onComment, dispatch}) =
 
     if (text) {
       setLoading(true);
-      let promise;
-      if (onComment)
-        promise = Http.post('/api/v1/comments', {post_id, text})
-          .then(({data}) => {
-            onComment(data.comment);
-          });
-      else
-        promise = dispatch(create({post_id, text}));
-
-      promise
-        .then(() => {
+      CommentsService.create({post_id, text})
+        .then(({data}) => {
           inputRef.current.value = '';
-          if (scrollParent)
-            scrollParent.scrollTo(0, scrollParent.scrollHeight);
+          setIsButtonVisible(false);
+          onComment(data.comment);
         })
-        .finally(() => setLoading(false));
+        .finally(() => {
+          setLoading(false);
+        });
     }
+  };
+
+  const onInputChange = (event) => {
+    setIsButtonVisible(event.target.value.length > 0);
   };
 
   return (
@@ -46,26 +42,25 @@ const CommentInput = React.memo(({post_id, scrollParent, onComment, dispatch}) =
         ref={inputRef}
         placeholder='Add comment'
         className={styles.commentInput}
+        onChange={onInputChange}
       />
       {
-        !isMobile() &&
-        <Button
-          size={'small'}
-          htmlType={'submit'}
+        !isMobile() && isButtonVisible && !loading &&
+        <button
+          type={'submit'}
           className={styles.submitButton}
-          loading={loading}
         >
-          Submit
-        </Button>
+          Send
+        </button>
       }
+      {loading && <Loader className={styles.loader}/>}
     </form>
   );
 });
 
 CommentInput.propTypes = {
   post_id: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  onComment: PropTypes.func,
+  onComment: PropTypes.func.isRequired,
 };
 
-export default connect()(CommentInput);
+export default CommentInput;

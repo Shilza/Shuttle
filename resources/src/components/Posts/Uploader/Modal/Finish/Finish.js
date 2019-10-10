@@ -1,5 +1,6 @@
-import React, {useRef, useState} from "react";
+import React, {useCallback, useState} from "react";
 import PropTypes from 'prop-types';
+import {message} from 'antd';
 import TextareaAutosize from 'react-autosize-textarea';
 
 import Header from "components/Posts/Header";
@@ -9,12 +10,21 @@ import Marks from "components/Posts/Marks";
 import styles from './finish.module.css';
 
 const Finish = ({upload, media, goBack, video = false}) => {
-  let inputRef = useRef(null);
   const [isMarks, setIsMarks] = useState(false);
   const [marks, setMarks] = useState([]);
+  const [caption, setCaption] = useState('');
+
+  const onChangeCaption = useCallback((event) => {
+    const value = event.target.value;
+    if (value.length <= 1000)
+      setCaption(value);
+    if(value.length === 1000)
+      message.warning('Caption must must not exceed 1000 characters');
+  }, []);
+
 
   const uploadWithCaption = () => {
-    upload({caption: inputRef.current.value, marks});
+    upload({caption, marks});
   };
 
   const goToMarks = () => {
@@ -29,7 +39,13 @@ const Finish = ({upload, media, goBack, video = false}) => {
   return (
     <>
       {
-        isMarks ? <Marks goBack={goToFinish} media={media} marks={marks} video={video}/>
+        isMarks
+          ? <Marks
+            goBack={goToFinish}
+            media={video ? URL.createObjectURL(media) : media}
+            marks={marks}
+            video={video}
+          />
           :
           <Container>
             <Header goNext={uploadWithCaption} goBack={goBack} title={'New post'} nextButtonText={'Post'}/>
@@ -39,7 +55,8 @@ const Finish = ({upload, media, goBack, video = false}) => {
                 <TextareaAutosize
                   maxRows={8}
                   className={styles.caption}
-                  ref={inputRef}
+                  onChange={onChangeCaption}
+                  value={caption}
                   placeholder={'Caption'}
                   maxLength={1000}
                 />

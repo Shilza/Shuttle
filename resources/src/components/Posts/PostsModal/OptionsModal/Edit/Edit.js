@@ -21,12 +21,12 @@ const Edit = ({post, closeModal}) => {
     <>
       <li onClick={open}>Edit</li>
       {
-        isMobile() ?
-          <Drawer visible={isOpen} placement={'bottom'} height={'100vh'}>
+        isMobile()
+          ? <Drawer visible={isOpen} placement={'bottom'} height={'100vh'}>
             <Editor post={post} closeModal={closeModal}/>
           </Drawer>
-          : isOpen &&
-          <Modal closeModal={close}>
+          :
+          <Modal visible={isOpen} onClose={close}>
             <Editor post={post} closeModal={closeModal}/>
           </Modal>
       }

@@ -17,7 +17,7 @@ export const Username = ({getFieldDecorator, fieldName = 'username', initialValu
                 ],
                 initialValue,
             })(
-                <MaterialInput defaultValue={initialValue} label={'Username'}/>
+                <MaterialInput label={'Username'}/>
             )}
         </FormItem>
     );

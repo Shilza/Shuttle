@@ -9,23 +9,19 @@ import Welcome from "pages/Welcome/Welcome";
 import {isMobile} from "utils/isMobile";
 
 const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
-    <Route {...rest} render={props => (
-        isAuthenticated ? (
-            <Main>
-                <Header/>
-                <Component {...props}/>
-                { isMobile() && <Toolbar/> }
-            </Main>
-        ) : (
-            <Welcome/>
-        )
-    )}/>
+  <Route {...rest} render={props => (
+    isAuthenticated
+      ? <Main>
+        <Header/>
+        <Component {...props}/>
+        {isMobile() && <Toolbar/>}
+      </Main>
+     : <Welcome/>
+  )}/>
 );
 
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated
-    }
-};
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 export default connect(mapStateToProps)(PrivateRoute);

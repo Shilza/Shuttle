@@ -1,36 +1,42 @@
 import React, {useRef} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
 import Header from "./Header";
 import Actions from "./Actions";
 import Footer from "./Footer";
-import Caption from "./Caption";
 
 import CommentsList from "components/Comments/CommentsList";
-import * as CommentService from "services/comments";
-import {getComments} from "store/selectors/comments";
 import TopPagination from "components/TopPagination";
 import Loader from "components/Paginator/Loader";
+import useComments from "utils/useComments";
 
 import styles from './postControl.module.css';
+import Caption from "components/Posts/Caption";
 
 
-const PostControl = ({post, dispatch, comments}) => {
+const PostControl = ({post}) => {
 
-  const {owner, avatar, caption, id} = post;
+  const {owner, avatar, caption, id, comments_count} = post;
   let scrollParent = useRef(null);
+  const {comments, fetchComments, onComment, onCommentRemove, setCommentLiked} = useComments(id, comments_count);
+
+  let style;
+  if(post.src.match('.mp4'))
+    style = {width: 'auto'};
 
   const getScrollParent = (ref) => {
     scrollParent.current = ref.current;
   };
 
-  const fetchComments = page => dispatch(CommentService.getComments(id, page));
+  const scrollCommentsToBottom = (comment) => {
+    onComment(comment);
+    scrollParent.current.scrollTo(0, scrollParent.current.scrollHeight);
+  };
 
   return (
-    <section className={styles.postControl}>
+    <section className={styles.postControl} style={style}>
       <Header username={owner} avatar={avatar}/>
-      <Caption owner={owner} caption={caption}/>
+      <Caption username={owner} caption={caption} className={styles.caption}/>
       <TopPagination
         fetcher={fetchComments}
         withScrollHandler
@@ -40,11 +46,16 @@ const PostControl = ({post, dispatch, comments}) => {
         toBottom
       >
         {
-          comments && <CommentsList comments={comments}/>
+          comments &&
+          <CommentsList
+            comments={comments}
+            onRemove={onCommentRemove}
+            setCommentLiked={setCommentLiked}
+          />
         }
       </TopPagination>
       <Actions post={post}/>
-      <Footer post={post} scrollParent={scrollParent.current}/>
+      <Footer post={post} onComment={scrollCommentsToBottom}/>
     </section>
   );
 };
@@ -55,13 +66,9 @@ PostControl.propTypes = {
     avatar: PropTypes.string,
     caption: PropTypes.string,
     id: PropTypes.number.isRequired
-  }),
-  dispatch: PropTypes.func.isRequired,
-  comments: PropTypes.array
+  })
 };
 
-const mapStateToProps = (state, props) => ({
-  comments: getComments(state.comments.comments.data, props.post)
-});
 
-export default connect(mapStateToProps)(PostControl);
+
+export default PostControl;

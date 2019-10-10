@@ -1,4 +1,19 @@
 
+.wrapper {
+  overflow-y: auto;
+  max-width: 100%;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 1px;
+}
+
 .container {
   padding: 0 10px;
 }
@@ -9,14 +24,24 @@
   padding: 2px 8px;
   width: 100%;
   border: 1px solid #efefef;
-  margin: 5px 0 ;
+  margin: 5px 0;
   border-radius: 5px;
 }
 
 .caption {
   border: 0;
-  margin: 8px;
+  margin: 8px 0;
   padding: 4px 8px;
   width: 100%;
   outline: none;
+}
+
+.caption::-webkit-scrollbar {
+  width: 4px;
+}
+
+.caption::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 2px;
 }

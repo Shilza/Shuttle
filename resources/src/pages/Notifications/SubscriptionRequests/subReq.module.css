@@ -1,56 +1,68 @@
 
 .subReqLabel {
-    display: flex;
-    margin: 0 14px 14px;
-    padding: 14px;
-    background: white;
-    border-radius: 6px;
-    border: 1px solid #efefef;
-    max-width: 350px;
+  display: flex;
+  margin: 0 14px 14px 0;
+  padding: 14px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #efefef;
+  max-width: 350px;
 }
 
 .avatar {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 .avatar img {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 
 .avatarContainer {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .infoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .subReqTitle {
-    font-weight: 600;
-    font-size: 1.1em;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
 .subsContainer {
-    background: white;
-    border: 1px solid #efefef;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 5px 14px 14px;
+  background: white;
+  border: 1px solid #efefef;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 0 14px 0;
 }
 
 .title {
-    margin: 10px 0 15px 0;
-    font-weight: 500;
-    font-size: 1.2em;
+  margin: 10px 0 15px 0;
+  font-weight: 500;
+  font-size: 1.2em;
 }
 
 .cardsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.cardsContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cardsContainer::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 2px;
 }

@@ -7,7 +7,7 @@ const Media = React.memo(({src}) =>
   <>
     {
       src.match('.mp4') ?
-        <video src={src} className={styles.media}/> :
+        <video src={src} className={styles.media} preload="metadata"/> :
         <img
           alt="user's post"
           src={src}

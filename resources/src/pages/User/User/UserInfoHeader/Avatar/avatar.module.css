@@ -1,0 +1,56 @@
+
+.avatarContainer {
+    height: 100px;
+    margin: 30px 0 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    border-radius: 50%;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    border: 3px solid rgba(100,100,100,.0975);
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    background: black;
+    color: white;
+    font-size: large;
+    opacity: 0.5;
+    width: 100px;
+    height: 100px;
+    margin-bottom: -100px;
+    border-radius: 50%;
+    transition: margin 0.13s linear;
+}
+
+.avatarActionButton {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.avatarContainer:hover .buttonsContainer {
+    margin-bottom: 0;
+}
+
+.uploaderContainer {
+  display: flex;
+  flex-direction: column;
+}

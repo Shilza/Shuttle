@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
@@ -6,7 +6,6 @@ import SearchInput from "components/SearchInput/SearchInput";
 
 import {isMobile} from "utils/isMobile";
 import useDialogs from "utils/useDialogs"
-import {readDialog} from "store/actions/auth";
 import ws, {types as WsTypes} from "../../../../../../../Ws";
 
 import Header from "./Header";
@@ -14,11 +13,18 @@ import ListOfUsers from "./ListOfUsers";
 
 import styles from './body.module.css';
 
+const prepare = (users) => users.map(user => user.user ? user.user : user);
+
 const Body = ({src, myId, close, dispatch}) => {
 
   const [message, setMessage] = useState('');
   const [isDone, setIsDone] = useState(false);
-  const {dialogs, search, fetchDialogs} = useDialogs();
+  const [fetcher, setFetcher] = useState(null);
+  const {dialogs, privateSearch, fetchDialogs} = useDialogs();
+
+  useEffect(() => {
+    fetchDialogs();
+  }, []);
 
   const postCode = useMemo(() => src.split('/')[3].split('.')[0], [src]);
 
@@ -36,7 +42,7 @@ const Body = ({src, myId, close, dispatch}) => {
         message
       });
     setIsDone(true);
-    dispatch(readDialog(id));
+    dispatch.auth.readDialog(id);
   };
 
   const onDoneClick = () => {
@@ -47,14 +53,24 @@ const Body = ({src, myId, close, dispatch}) => {
     setMessage(event.target.value);
   }, []);
 
+  const search = username => {
+    if(username.length > 0)
+    setFetcher(() => (page) =>
+      privateSearch(username, page));
+    else {
+      privateSearch(username, 0);
+      setFetcher(null);
+    }
+  };
+
   return (
     <div className={isMobile() ? styles.mobileContainer : styles.container} style={{paddingBottom: isDone && '46px'}}>
       <Header src={src} onInputChange={onInputChange}/>
       <SearchInput search={search} className={styles.search}/>
       <ListOfUsers
-        dialogs={dialogs}
+        users={prepare(dialogs)}
         postCode={postCode}
-        fetchDialogs={fetchDialogs}
+        fetcher={fetcher}
         send={send}
       />
       {

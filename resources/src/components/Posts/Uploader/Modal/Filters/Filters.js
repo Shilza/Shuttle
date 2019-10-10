@@ -188,7 +188,7 @@ const Filters = ({media, goBack, upload}) => {
           :
           <Container>
             <Header goNext={goFinish} goBack={goBack} title={'Filters'} nextButtonText={'Finish'}/>
-            <div className={styles.c}>
+            <div className={styles.wrapper}>
               <FilteredImage imageRef={imageRef} media={media.image} filter={makeFilter(settings)} rotateAngel={rotateAngel}/>
               <div className={styles.iconsContainer}>
                 <img title='Rotate left' className={styles.icon} src={imageRotateLeft} onClick={rotateLeft}

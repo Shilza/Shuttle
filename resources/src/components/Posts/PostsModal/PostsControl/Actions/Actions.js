@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
+import React, {useCallback} from "react";
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {Icon} from "antd";
-
-import {addSmoothScrolling} from "utils/scrolling";
-import {convertTime} from "utils/timeConverter";
+import moment from "moment";
 
 import Save from "./Save";
 import Share from "./Share";
@@ -11,25 +10,26 @@ import Like from "./Like";
 
 import styles from './actions.module.css';
 
-const Actions = ({post, className}) => {
 
-  useEffect(() => {
-    addSmoothScrolling('postCommentLink' + post.id);
-  }, []);
+const Actions = ({post, dispatch, className}) => {
 
   const {likes_count, created_at, isLiked, id} = post;
+
+  const onLike = useCallback(({id, liked}) => {
+    liked ? dispatch.posts.like(id) : dispatch.posts.unLike(id);
+  }, []);
 
   return (
     <div className={`${styles.actionsContainer} ${className}`}>
       <div className={styles.actions}>
-        <Like type='post' id={id} isLiked={isLiked} likesCount={likes_count}/>
-        <a className={styles.action} id={'postCommentLink' + id} href={'#commentInputContainer' + id}>
+        <Like type='post' id={id} isLiked={isLiked} likesCount={likes_count} onLike={onLike}/>
+        <div className={styles.action}>
           <Icon type="message"/>
-        </a>
+        </div>
         <Share className={styles.action} src={post.src}/>
         <Save post={post}/>
       </div>
-      <time dateTime={created_at}>{`${convertTime(created_at)} ago`}</time>
+      <time dateTime={created_at}>{moment(new Date(created_at), "YYYYMMDD").fromNow()}</time>
     </div>
   );
 };
@@ -41,7 +41,7 @@ Actions.propTypes = {
     isLiked: PropTypes.bool.isRequired,
     id: PropTypes.number.isRequired,
     className: PropTypes.string
-  }).isRequired
+  }).isRequired,
 };
 
-export default React.memo(Actions);
+export default connect()(Actions);

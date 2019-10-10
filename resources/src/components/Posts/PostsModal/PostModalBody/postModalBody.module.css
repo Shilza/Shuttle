@@ -1,13 +1,27 @@
 
+.wrapper {
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 810px) {
+  .wrapper {
+    max-height: 100vh;
+  }
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 0;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   background: white;
   height: 496px;
   margin: auto;
-  width: max-content;
-  overflow-y: auto;
-  max-height: 95vh;
+  width: fit-content;
+  max-width: 900px;
 }
 
 @media all and (max-width: 810px) {
@@ -15,6 +29,5 @@
     flex-direction: column;
     height: auto;
     min-width: 310px;
-    width: auto;
   }
 }

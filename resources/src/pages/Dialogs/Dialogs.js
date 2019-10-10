@@ -7,7 +7,7 @@ import useDialogs from "utils/useDialogs"
 
 import ws, {types as WsTypes} from "../../Ws"
 
-import DialogsList from "./DialogsList/DialogsList"
+import DialogsList from "./DialogsList"
 
 import styles from './dialogs.module.css';
 

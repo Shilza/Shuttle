@@ -34,11 +34,9 @@
 }
 
 .caption {
-  display: inline-block;
-  align-items: center;
-  padding: 5px 5px 0 5px;
+  padding: 5px 5px 10px 5px;
   max-height: 190px;
-  margin-bottom: 10px;
+  max-width: 100%;
   overflow-y: auto;
 }
 
@@ -60,21 +58,21 @@
 
 .footer {
   display: inline-flex;
-  margin-top: 5px;
   align-items: flex-end;
+  margin-top: 10px;
 }
 
 .commentInputContainer {
-  width: 100%;
-}
-
-.submitButton {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
   width: 100%;
 }
 
 .commentInput {
   border: none;
   width: 100%;
+  margin-right: 8px;
   outline: 0
 }
 
@@ -98,4 +96,16 @@
   .commentsList {
     max-height: 300px;
   }
+}
+
+.submitButton {
+  border: 0;
+  background: 0;
+  padding: 0;
+  color: #1e90ff;
+  cursor: pointer;
+}
+
+.loader {
+  margin: 0;
 }

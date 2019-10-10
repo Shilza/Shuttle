@@ -1,11 +1,14 @@
-import {useReducer, useRef} from "react"
-import Http from "Http"
+import {useCallback, useReducer, useRef} from "react"
+import {getUnique} from "utils/getUnique";
+import * as SearchService from 'services/search';
+import * as DialogsService from 'services/dialogs';
 
 const initialState = {
   dialogs: []
 };
 
 const SET_DIALOGS = 'SET_DIALOGS';
+const ADD_DIALOGS = 'ADD_DIALOGS';
 const SET_IS_TYPING = 'SET_IS_TYPING';
 const READ_MESSAGES = 'READ_MESSAGES';
 
@@ -13,6 +16,8 @@ function reducer(state, action) {
   switch (action.type) {
     case SET_DIALOGS:
       return {...state, dialogs: action.payload};
+    case ADD_DIALOGS:
+      return {...state, dialogs: getUnique([...state.dialogs, ...action.payload])};
     case SET_IS_TYPING:
       return {
         ...state, dialogs: state.dialogs.map(dialog => {
@@ -40,6 +45,7 @@ function reducer(state, action) {
 }
 
 const setDialogs = (payload) => ({type: SET_DIALOGS, payload});
+const addDialogs = (payload) => ({type: ADD_DIALOGS, payload});
 const setTyping = (payload) => ({type: SET_IS_TYPING, payload});
 const readMessages = (payload) => ({type: READ_MESSAGES, payload});
 
@@ -49,16 +55,17 @@ const useDialogs = () => {
   let typing = useRef([]);
   let firstLoading = useRef(false);
 
-  const fetchDialogs = (page) =>
-    Http.get(`/api/v1/dialogs?page=${page}`)
+  const fetchDialogs = useCallback((page = 1) => {
+    return DialogsService.get(page)
       .then(({data}) => {
-        if(!firstLoading.current)
+        if (!firstLoading.current)
           firstLoading.current = true;
 
         defaultDialogs.current = [...defaultDialogs.current, ...data.data];
-        dispatch(setDialogs([...dialogs, ...data.data]));
+        dispatch(addDialogs(data.data));
         return data;
       });
+  }, [firstLoading, defaultDialogs]);
 
   const search = (username) => {
     if (username.length > 0) {
@@ -69,6 +76,18 @@ const useDialogs = () => {
         }
       ).filter(Boolean);
       dispatch(setDialogs(typeof searchedDialogs === 'undefined' ? [] : searchedDialogs));
+    } else if (dialogs.length !== defaultDialogs.current.length) {
+      dispatch(setDialogs(defaultDialogs.current));
+    }
+  };
+
+  const privateSearch = (username = '', page = 1) => {
+    if (username.length > 0) {
+      return SearchService.privateSearch(username, page)
+        .then(({data}) => {
+          page === 1 ? dispatch(setDialogs(data.data)) : dispatch(addDialogs(data.data));
+          return data;
+        });
     } else if (dialogs.length !== defaultDialogs.current.length) {
       dispatch(setDialogs(defaultDialogs.current));
     }
@@ -125,6 +144,7 @@ const useDialogs = () => {
     dialogs,
     addMessage,
     search,
+    privateSearch,
     readAllMessages,
     setIsTyping,
     fetchDialogs,

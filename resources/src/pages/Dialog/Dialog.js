@@ -1,21 +1,21 @@
 import React, {useCallback, useEffect, useRef, useState} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
+import {message} from 'antd';
 
-import {readDialog} from "store/actions/auth"
 import BlacklistedExplainingLabel from "components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel"
-import Loader from "components/Paginator/Loader/Loader"
+import Loader from "components/Paginator/Loader"
 
 import Header from "./Header"
 import Footer from "./Footer"
 import MessagesList from "./MessagesList"
 
-import Http from "Http"
+import * as UsersService from 'services/user'
 import ws, {types as WsTypes} from "../../Ws"
 
 import useMessages from "./utils/useMessages"
 
-import styles from './dialog.module.css';
+import styles from './dialog.module.css'
 
 
 const Dialog = ({myId, dispatch, match}) => {
@@ -26,14 +26,18 @@ const Dialog = ({myId, dispatch, match}) => {
   let dialog = useRef(null);
   let timerRef = useRef(null);
 
-  const {messages, getMessages, addMessage, readAllMessages, onNewMessage, isFirstLoading} = useMessages(username);
+  const {
+    messages, getMessages, addMessage,
+    readAllMessages, onNewMessage, deleteMessage,
+    isFirstLoading
+  } = useMessages(username);
   const topicName = `dialogs:${myId}`;
 
   useEffect(() => {
-    Http.get('/api/v1/users?username=' + username)
+    UsersService.getUser(username)
       .then(({data}) => {
         setDialogUser(data);
-        dispatch(readDialog(data.id));
+        dispatch.auth.readDialog(data.id);
       });
   }, []);
 
@@ -51,7 +55,7 @@ const Dialog = ({myId, dispatch, match}) => {
           case WsTypes.MESSAGE:
             if (data.message.owner_id === dialogUser.id || data.message.owner_id === myId) {
               addMessage(data.message);
-              if(data.message.receiver_id === myId) {
+              if (data.message.receiver_id === myId) {
                 wsThread.emit('message', {
                   type: WsTypes.READ,
                   receiverId: dialogUser.id
@@ -77,6 +81,12 @@ const Dialog = ({myId, dispatch, match}) => {
                   setIsTyping(false)
               }, 1600);
             }
+            break;
+          case WsTypes.DELETE:
+            deleteMessage(data.messageId);
+            break;
+          case WsTypes.ERROR:
+            message.error(data.error);
             break;
           default:
             break;
@@ -106,6 +116,14 @@ const Dialog = ({myId, dispatch, match}) => {
     })
   }, [dialog, dialogUser]);
 
+  const deleteMsg = useCallback((messageId) => {
+    dialog.current.emit('message', {
+      type: WsTypes.DELETE,
+      receiverId: dialogUser.id,
+      messageId
+    })
+  }, [dialog, dialogUser]);
+
   const getScrollParent = (ref) => {
     onNewMessage(() => {
       ref.current.scrollTo({
@@ -129,11 +147,12 @@ const Dialog = ({myId, dispatch, match}) => {
                 <>
                   <Header username={username} avatar={dialogUser && dialogUser.avatar} isTyping={isTyping}/>
                   <MessagesList
-                    dialogs={messages}
+                    messages={messages}
                     user={dialogUser}
                     myId={myId}
                     getMessages={getMessages}
                     isFirstLoading={isFirstLoading}
+                    deleteMsg={deleteMsg}
                     getScrollParent={getScrollParent}
                   />
                   <Footer sendMessage={sendMessage} typing={typing}/>

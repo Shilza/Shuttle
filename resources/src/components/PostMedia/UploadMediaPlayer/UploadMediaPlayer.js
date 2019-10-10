@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import CropImage from "components/Posts/Uploader/CropImage";
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "../VideoPlayer";
 
 const UploadMediaPlayer = ({media, setCroppedMedia}) => (
   media.type.match('image') ?

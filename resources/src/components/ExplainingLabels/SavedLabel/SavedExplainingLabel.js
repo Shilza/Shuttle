@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ExplainingLabel from "../ExplainingLabel";
 
-import styles from '../../User/NavigationPanel/Saved/saved.module.css';
+import styles from '../../../pages/User/User/NavigationPanel/Saved/saved.module.css';
 
 const SavedExplainingLabel = ({text}) => (
   <ExplainingLabel icon={<div className={styles.bookmark}/>} text='Save'>

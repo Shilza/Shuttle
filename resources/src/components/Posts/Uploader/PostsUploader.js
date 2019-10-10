@@ -1,40 +1,35 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {message} from "antd/lib/index";
+import {message} from "antd";
 
-import Modal from "components/Modal/Modal";
-import * as PostService from "services/post";
+import Modal from "components/Modal";
 import Uploader from "./Modal/Uploader";
 import UploadPost from "./Modal/UploadPost";
 
 const PostsUploader = ({dispatch, trigger}) => {
 
-  let [isOpen, setIsOpen] = useState(false);
+  let [isModalOpen, setIsModalOpen] = useState(false);
   let [media, setMedia] = useState(false);
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => setIsModalOpen(false);
 
   const loadMedia = event => {
-    setIsOpen(true);
+    setIsModalOpen(true);
     setMedia(event.target.files[0]);
   };
 
   const upload = postData => {
-    dispatch(PostService.create(postData))
+    dispatch.posts.create(postData)
       .then(data => message.success(data.message));
-
     closeModal();
   };
 
   return (
     <>
-      {
-        isOpen &&
-        <Modal closeModal={closeModal}>
-          <UploadPost media={media} upload={upload}/>
-        </Modal>
-      }
+      <Modal visible={isModalOpen} onClose={closeModal}>
+        <UploadPost media={media} upload={upload}/>
+      </Modal>
       <Uploader loadMedia={loadMedia} trigger={trigger}/>
     </>
   )

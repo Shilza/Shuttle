@@ -1,6 +1,5 @@
 import Ws from "@adonisjs/websocket-client";
 import store from 'store';
-import {addUnreadDialog} from "./store/actions/auth";
 
 let ws = Ws('ws://localhost:3333');
 
@@ -22,7 +21,7 @@ function handleChange() {
     wsThread.on('message', ({type, message}) => {
       const arr = window.location.href.split('/');
       if (type === types.MESSAGE && message.owner_id !== currentUserId && arr[arr.length - 2] !== 'messages')
-        store.dispatch(addUnreadDialog(message.owner_id));
+        store.dispatch.auth.addUnreadDialog(message.owner_id);
     });
   }
 }
@@ -33,7 +32,9 @@ export const types = {
   MESSAGE: 1,
   CONNECTION: 2,
   READ: 3,
-  IS_TYPING: 4
+  IS_TYPING: 4,
+  ERROR: 5,
+  DELETE: 6
 };
 
 export const start = () => {

@@ -31,8 +31,8 @@ const Footer = ({sendMessage, typing}) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (inputRef.current.value.length > 0) {
-      sendMessage(inputRef.current.value);
+    if (messageText.length > 0 && messageText.length <= 1000) {
+      sendMessage(messageText);
       inputRef.current.value = '';
       setIsSendButtonVisible(false);
       inputRef.current.focus();
@@ -44,12 +44,12 @@ const Footer = ({sendMessage, typing}) => {
   };
 
   const addEmoji = useCallback((emoji) => {
-    if (inputRef.current.value.length < 1000) {
-      inputRef.current.value += emoji.native;
+    if (messageText.length < 1000) {
+      setMessageText(messageText + emoji.native);
       if (!isSendButtonVisible)
         setIsSendButtonVisible(true);
     }
-  }, []);
+  }, [messageText]);
 
   return (
     <>
@@ -60,6 +60,7 @@ const Footer = ({sendMessage, typing}) => {
             placeholder='Enter your message'
             ref={inputRef}
             className={styles.messageInput}
+            maxLength={1000}
             onChange={onInputChange}
           />
           {

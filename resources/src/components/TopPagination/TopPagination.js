@@ -33,8 +33,8 @@ const TopPagination = (props) => {
       returnedValue.then(({page, lastPage}) => {
         setState({isFetching: false, page, lastPage});
         if (typeof toBottom === 'boolean' && toBottom)
-          scrollContainer.current.scrollTo(0, scrollContainer.current.scrollHeight);
-        else if(toBottom && toBottom.current && typeof toBottom.current.scrollTo === 'function')
+          scrollContainer.current && scrollContainer.current.scrollTo(0, scrollContainer.current.scrollHeight);
+        else if (toBottom && toBottom.current && typeof toBottom.current.scrollTo === 'function')
           toBottom.current.scrollTo(0, toBottom.current.scrollHeight);
       });
     else
@@ -49,9 +49,8 @@ const TopPagination = (props) => {
     if (hasMore) {
       setState({isFetching: true});
       fetcher(page + 1).then(({page, lastPage}) => {
-          setState({isFetching: false, page, lastPage})
-        }
-      )
+        setState({isFetching: false, page, lastPage})
+      });
     }
   };
 

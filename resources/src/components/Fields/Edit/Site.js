@@ -11,7 +11,7 @@ export const Site = ({getFieldDecorator, fieldName = 'site', initialValue = ''})
             ],
             initialValue
         })(
-            <MaterialInput defaultValue={initialValue} label={'Site'}/>
+            <MaterialInput label={'Site'}/>
         )}
     </FormItem>
 );

@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 
 import Routes from "routes";
-import * as AuthService from "services/auth";
 
 import StartLoader from "components/StartLoader";
 
@@ -14,8 +13,21 @@ const App = ({isAuthenticated, dispatch}) => {
     return <div>{error.toString()}</div>
   }
 
+  useEffect(() => {
+    // fetch('https://api.ipify.org?format=json').then(data => {
+    //   data.json().then(data => {
+    //     const key = process.env.API_IPSTACK_KEY;
+    //     fetch(`http://api.ipstack.com/${data.ip}?access_key=${key}`).then(data => {
+    //       data.json().then(console.log)
+    //     });
+    //   })
+    // });
+  }, []);
+
+
   if (!isAuthenticated && localStorage.hasOwnProperty('accessToken')) {
-    dispatch(AuthService.me()).catch((err) => setError(err));
+    dispatch.auth.authentication()
+      .catch((err) => setError(err));
     return <StartLoader/>
   }
 

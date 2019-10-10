@@ -1,6 +1,6 @@
 import {useCallback, useReducer, useRef} from "react"
-
-import Http from "Http"
+import * as PostsService from 'services/posts';
+import * as DialogsService from 'services/dialogs';
 import {getImagesUrl} from "utils/getImagesUrl";
 
 const getPostCode = (text) => {
@@ -14,7 +14,7 @@ const getPost = async (text) => {
   if (text) {
     const postCode = getPostCode(text);
     if (postCode && postCode.length === 36) {
-      await Http.get(`/api/v1/posts/${postCode}`)
+      await PostsService.getPostByCode(postCode)
         .then(({data}) => {
           post = data.post;
         })
@@ -51,6 +51,7 @@ const initialState = {
 const READ_MESSAGES = 'READ_MESSAGES';
 const ADD_MESSAGES = 'ADD_MESSAGES';
 const ADD_MESSAGE = 'ADD_MESSAGE';
+const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -70,6 +71,8 @@ function reducer(state, action) {
       return !state.messages.some(item => item.id === action.payload.id)
         ? {messages: [...state.messages, action.payload]}
         : {messages: state.messages};
+    case DELETE_MESSAGE:
+      return {messages: state.messages.filter(msg => msg.id !== action.payload)};
     default:
       throw new Error();
   }
@@ -82,17 +85,15 @@ const useMessages = (username) => {
 
   const getMessages = (page) =>
     new Promise((resolve) => {
-      Http.get(`/api/v1/dialogs/${username}?page=${page}`)
+      DialogsService.getByUsername(username, page)
         .then(async ({data}) => {
           Promise.all(data.data.map(message => prepareMessage(message)))
             .then(messages => {
+              isFirstRender.current = false;
               dispatch({
                 type: ADD_MESSAGES,
                 payload: messages
               });
-              if (isFirstRender.current)
-                window.scrollTo(0, document.body.scrollHeight);
-              isFirstRender.current = false;
               resolve(data);
             });
         });
@@ -118,12 +119,20 @@ const useMessages = (username) => {
     });
   }, []);
 
+  const deleteMessage = useCallback((id) => {
+    dispatch({
+      type: DELETE_MESSAGE,
+      payload: id
+    });
+  }, []);
+
   return {
     messages,
     addMessage,
     getMessages,
     readAllMessages,
     onNewMessage,
+    deleteMessage,
     isFirstLoading: isFirstRender.current
   }
 };

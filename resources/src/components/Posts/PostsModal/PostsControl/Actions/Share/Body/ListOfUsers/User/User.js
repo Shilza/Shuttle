@@ -35,8 +35,8 @@ const User = ({id, username, avatar, send}) => {
 User.propTypes = {
   id: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  send: PropTypes.func.isRequired
+  send: PropTypes.func.isRequired,
+  avatar: PropTypes.string
 };
 
 export default User;

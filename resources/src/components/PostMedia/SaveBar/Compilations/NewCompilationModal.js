@@ -4,9 +4,7 @@ import {connect} from "react-redux";
 import {Button, Form} from "antd";
 
 import Modal from "components/Modal/Modal";
-import {setIsSaveModalOpen} from "store/actions/saved";
 import {CompilationName} from "components//Fields/CompilationName";
-import * as PostService from "services/post";
 
 import styles from './savedBarCompilations.module.css';
 
@@ -15,7 +13,7 @@ const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
   let [loading, setLoading] = useState(false);
 
   const closeModal = () => {
-    dispatch(setIsSaveModalOpen(false));
+    dispatch.saved.setIsModalOpen(false);
   };
 
   const saveToNewCompilation = event => {
@@ -24,23 +22,21 @@ const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
     form.validateFields((err, {compilationName}) => {
       if (!err) {
         setLoading(true);
-        dispatch(PostService.save({post_id: postId, compilation: compilationName}))
-          .then(() => {
-            closeModal();
-          });
+        dispatch.posts.saveAsync({post_id: postId, compilation: compilationName})
+          .then(closeModal);
       }
     });
   };
 
   return (
-    <Modal closeModal={closeModal}>
+    <Modal onClose={closeModal} zIndex={10001} visible>
       <div className={styles.modalContainer}>
         <div className={styles.title}>New Compilation</div>
         <div className={styles.modalBody}>
           <img src={postSrc} alt={'Compilation cover'}/>
           <Form onSubmit={saveToNewCompilation} className={styles.modalBody}>
-            <CompilationName getFieldDecorator={form.getFieldDecorator}/>
-            <Button type={'primary'} htmlType="submit" loading={loading}>Ok</Button>
+            <CompilationName className={styles.compilationName} getFieldDecorator={form.getFieldDecorator}/>
+            <Button type={'primary'} htmlType="submit" loading={loading}>Save</Button>
           </Form>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
 import SearchInput from "components/SearchInput/SearchInput";
+import {useSearch} from "utils/useSearch";
 import Container from "../../Container";
 import Header from "../../Header";
 import UsersList from "../UsersList";
-import {useSearch} from "../utils/useSearch";
 
 import MarkedUsers from "../MarkedUsers";
 import styles from "../marks.module.css";
@@ -12,6 +12,7 @@ import styles from "../marks.module.css";
 const VideoMarks = ({marks: defaultMarks, goBack, media}) => {
 
   const [marks, setMarks] = useState(defaultMarks);
+  const [fetcher, setFetcher] = useState(null);
   const {users, search, resetSearch} = useSearch();
 
   const addUser = ({id, username, avatar}) => {
@@ -25,10 +26,20 @@ const VideoMarks = ({marks: defaultMarks, goBack, media}) => {
 
     setMarks([...marks]);
     resetSearch();
+    setFetcher(null);
   };
 
   const removeUser = (username) => {
     setMarks(marks.filter(mark => mark.username !== username));
+  };
+
+  const onChangeSearch = username => {
+    if (username.length > 0)
+      setFetcher(() => (page) => search(username, page));
+    else {
+      resetSearch();
+      setFetcher(null);
+    }
   };
 
   const goNext = () => {
@@ -42,8 +53,10 @@ const VideoMarks = ({marks: defaultMarks, goBack, media}) => {
   return (
     <Container style={{height: 'fit-content'}}>
       <Header goBack={back} goNext={goNext} nextButtonText={'Done'} title={'Mark friends'}/>
-      <SearchInput className={styles.searchInput} search={search}/>
-      <UsersList users={users} addUser={addUser} removeUser={removeUser}/>
+      <div className={styles.searchContainer}>
+        <SearchInput className={styles.searchInput} search={onChangeSearch} disabled={marks.length >= 10}/>
+        <UsersList users={users} addUser={addUser} removeUser={removeUser} fetcher={fetcher}/>
+      </div>
       <div className={styles.container}>
         <video className={styles.media} src={media}/>
         {

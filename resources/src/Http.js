@@ -1,7 +1,6 @@
 import axios from 'axios';
-import store from './store';
-import * as actions from './store/actions/auth';
-import * as AuthService from './services/auth';
+import store from 'store';
+import * as AuthService from 'services/auth';
 import moment from 'moment';
 
 
@@ -14,7 +13,7 @@ axios.interceptors.response.use(
     response => response,
     error => {
         if (error.response.status === 401)
-            store.dispatch(actions.authLogout());
+            store.dispatch.auth.logout();
 
         return Promise.reject(error);
     }

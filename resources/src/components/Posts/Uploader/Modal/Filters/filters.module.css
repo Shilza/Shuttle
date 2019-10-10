@@ -1,6 +1,16 @@
 
-.c {
-  overflow: auto;
+.wrapper {
+  overflow-y: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: rgba(33, 33, 33, 0.32);
+  border-radius: 1px;
 }
 
 .media {

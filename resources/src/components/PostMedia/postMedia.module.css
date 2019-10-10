@@ -15,6 +15,12 @@
   border-radius: 4px;
 }
 
+.showMarksButtonVideo {
+  composes: showMarksButton;
+  top: 6px;
+  left: 6px;
+}
+
 .drawer {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
