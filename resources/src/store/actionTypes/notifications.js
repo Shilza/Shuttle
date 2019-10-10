@@ -1,2 +1,0 @@
-
-export const ADD_NOTIFICATIONS = 'ADD_NOTIFICATIONS';

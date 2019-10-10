@@ -1,11 +1,8 @@
-import {applyMiddleware,createStore} from 'redux';
-import RootReducer from './reducers/index';
-import thunk from 'redux-thunk';
-import logout from './middlewares/logout';
+import { init } from '@rematch/core'
+import * as models from './models'
 
-const store = createStore(
-    RootReducer,
-    applyMiddleware(thunk, logout)
-);
+const store = init({
+  models,
+});
 
 export default store;
