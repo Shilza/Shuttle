@@ -1,49 +1,8 @@
 import Http from "../Http";
-import {
-    addComment,
-    removeComment,
-    addComments,
-    setIsCommentsModalOpen,
-    setSelectedComment
-} from "../store/actions/comments";
+import {api} from './api';
 
-export function getComments(id, page) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.get(`/api/v1/comments?post_id=${id}&page=${page}`)
-                    .then(({data}) => {
-                        dispatch(addComments(data));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const get = (id, page) => Http.get(`${api.comments}?post_id=${id}&page=${page}`);
 
-export function create(commentData) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/comments', commentData)
-                    .then(({data}) => {
-                        dispatch(addComment(data.comment));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const create = (commentData) => Http.post(api.comments, commentData);
 
-export function remove(id) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.delete('/api/v1/comments?id=' + id)
-                    .then(({data}) => {
-                        dispatch(removeComment(id));
-                        dispatch(setIsCommentsModalOpen(false));
-                        dispatch(setSelectedComment(undefined));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const remove = (id) => Http.delete(`${api.comments}?id=${id}`);

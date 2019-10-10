@@ -1,37 +1,10 @@
 import Http from "../Http";
+import {api} from './api';
 
-export function getSubsRequestsPreview() {
-    return new Promise((resolve, reject) => {
-            Http.get('/api/v1/subRequests/preview')
-                .then(({data}) => resolve(data))
-                .catch(err => reject(err))
-        }
-    );
-}
+export const getSubsRequestsPreview = () => Http.get(`${api.subRequests}/preview`);
 
-export function getSubsRequests() {
-    return new Promise((resolve, reject) => {
-            Http.get('/api/v1/subRequests')
-                .then(({data}) => resolve(data))
-                .catch(err => reject(err))
-        }
-    );
-}
+export const getSubsRequests = () => Http.get(api.subRequests);
 
-export function acceptSubsRequest(user_id) {
-    return new Promise((resolve, reject) => {
-            Http.post('/api/v1/subRequests', {user_id})
-                .then(() => resolve())
-                .catch(err => reject())
-        }
-    );
-}
+export const acceptSubsRequest = (user_id) => Http.post(api.subRequests, {user_id});
 
-export function cancelSubsRequest(userId) {
-    return new Promise((resolve, reject) => {
-            Http.delete('/api/v1/subRequests?user_id=' + userId)
-                .then(() => resolve())
-                .catch(err => reject())
-        }
-    );
-}
+export const cancelSubsRequest = (userId) => Http.delete(`${api.subRequests}?user_id=${userId}`);

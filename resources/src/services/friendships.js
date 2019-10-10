@@ -1,22 +1,8 @@
 import Http from "../Http";
-import * as action from "../store/actions/friendships";
+import {api} from "./api";
 
-export function follow(id) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/friendships/follow', id)
-                    .then(() => dispatch(action.follow()))
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const follow = (data) => Http.post(`${api.friendships}/follow`, data);
 
-export function unfollow(id) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/friendships/unfollow', id)
-                    .then(() => dispatch(action.unfollow()))
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const unfollow = (data) => Http.post(`${api.friendships}/unfollow`, data);
+
+export const removeFollower = (id) => Http.delete(`${api.friendships}/follower?id=${id}`);

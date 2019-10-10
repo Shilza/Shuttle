@@ -1,195 +1,36 @@
 import Http from "../Http";
-import * as action from "../store/actions/users";
-import {setAuthUser} from "../store/actions/auth";
-import {removeFromBlackListedUsers, setBlacklistedUsers} from "../store/actions/blacklist";
+import {api} from './api';
 
-export function getUser(username) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.get('/api/v1/users?username=' + username)
-                    .then(({data}) => {
-                        dispatch(action.setUser(data));
-                        resolve();
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const getUser = (username) => Http.get(`${api.users}?username=${username}`);
+
+export const update = (editedData) => Http.patch(api.users, editedData);
+
+export const getFollowers = (id, page) => Http.get(`${api.users}/followers?id=${id}&page=${page}`);
+
+export const getFollows = (id, page) => Http.get(`${api.users}/follows?id=${id}&page=${page}`);
 
 
-export function update(editedData) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.patch('/api/v1/users', editedData)
-                    .then(({data}) => {
-                        const newUrl = `${window.location.origin}/${data.user.username}`;
-                        window.history.pushState({}, null, newUrl);
+export const searchFollowers = (id, username, page = 0) =>
+  Http.get(`${api.users}/followersSearch?user_id=${id}&username=${username}&page=${page}`);
 
-                        dispatch(setAuthUser(data.user));
-                        dispatch(action.setUser(
-                            {
-                                ...data.user,
-                                canSee: true,
-                                blacklisted: false
-                            }
-                        ));
-                        resolve(data.message);
-                    })
-                    .catch(err => reject(err.response.data.message))
-            }
-        ));
-}
 
-export function getFollowers(id, page) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.get(`/api/v1/users/followers?id=${id}&page=${page}`)
-                .then(({data}) => {
-                    dispatch(action.addFollowers(data.data));
-                    resolve(data);
-                })
-                .catch(err => reject(err))
-        })
-    )
-}
+export const searchFollows = (id, username, page = 0) =>
+  Http.get(`${api.users}/followsSearch?user_id=${id}&username=${username}&page=${page}`);
 
-export function getFollows(id, page) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.get(`/api/v1/users/follows?id=${id}&page=${page}`)
-                .then(({data}) => {
-                    dispatch(action.addFollows(data.data));
-                    resolve(data);
-                })
-                .catch(err => reject(err))
-        })
-    )
-}
 
-export function searchFollowers(id, username, page = 0) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.get(`/api/v1/users/followersSearch?user_id=${id}&username=${username}&page=${page}`)
-                .then(({data}) => {
-                    dispatch(action.setFollowers(data.data));
-                    resolve(data);
-                })
-                .catch(err => reject(err))
-        })
-    )
-}
+export const checkIsUsernameUnique = (username) => Http.get(`${api.users}/unique?username=${username}`);
 
-export function searchFollows(id, username, page = 0) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.get(`/api/v1/users/followsSearch?user_id=${id}&username=${username}&page=${page}`)
-                .then(({data}) => {
-                    dispatch(action.setFollows(data.data));
-                    resolve(data);
-                })
-                .catch(err => reject(err))
-        })
-    )
-}
+export const updateAvatar = (avatar) =>
+        Http.put(`${api.users}/avatar`, avatar, {headers: {'Content-Type': 'multipart/form-data'}});
 
-export function checkIsUsernameUnique(username) {
-    return new Promise((resolve, reject) => {
-        Http.get('/api/v1/users/unique?username=' + username)
-            .then(({data}) => {
-                resolve(data);
-            })
-            .catch(err => reject(err.response.data));
-    })
-}
+export const deleteAvatar = () => Http.delete(`${api.users}/avatar`);
 
-export function updateAvatar(avatar) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.put('/api/v1/users/avatar', avatar, {headers: {'Content-Type': 'multipart/form-data'}})
-                    .then(({data}) => {
-                        dispatch(action.updateAvatar(data.avatar));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const setPrivate = () => Http.post(`${api.users}/privacy`);
 
-export function deleteAvatar() {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.delete('/api/v1/users/avatar')
-                    .then(() => {
-                        dispatch(action.deleteAvatar());
-                        resolve();
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const setPublic = () => Http.delete(`${api.users}/privacy`);
 
-export function setPrivate() {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/users/privacy')
-                    .then(({data}) => {
-                        dispatch(action.setPrivate());
-                        resolve(data.message);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const getBlacklisted = (page) => Http.get(`${api.users}/blacklist?page=${page}`);
 
-export function setPublic() {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.delete('/api/v1/users/privacy')
-                    .then(({data}) => {
-                        dispatch(action.setPublic());
-                        resolve(data.message);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const addToBlacklist = (data) => Http.post(`${api.users}/blacklist`, data);
 
-export function getBlacklisted(page) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.get('/api/v1/users/blacklist?page=' + page)
-                    .then(({data}) => {
-                        dispatch(setBlacklistedUsers(data.data));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
-
-export function addToBlacklist(data) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/users/blacklist', data)
-                    .then(({data}) => {
-                        dispatch(action.setBlacklisted());
-                        resolve(data.message);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
-
-export function removeFromBlacklist(id) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.delete('/api/v1/users/blacklist?id=' + id)
-                    .then(({data}) => {
-                        dispatch(action.setUnblacklisted());
-                        dispatch(removeFromBlackListedUsers(id));
-                        resolve(data.message);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const removeFromBlacklist = (id) => Http.delete(`${api.users}/blacklist?id=${id}`);

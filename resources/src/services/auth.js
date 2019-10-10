@@ -1,114 +1,36 @@
-import Http from '../Http'
-import * as action from '../store/actions/auth'
+import {saveTokensToLocalStorage} from "utils/saveTokensToLocalStorage";
+import Http from '../Http';
+import {api} from './api';
 
-function saveTokensToLocalStorage(expiresIn, accessToken, refreshToken) {
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('expiresIn', expiresIn);
-    localStorage.setItem('refreshToken', refreshToken);
-}
+export const login = (data) =>
+  Http.post(`${api.auth}/login`, data);
 
-export function login({remember, ...data}) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/auth/login', data)
-                    .then(({data}) => {
-                        const {
-                            token,
-                            expiresIn,
-                            refreshToken,
-                            user
-                        } = data;
+export const logout = () =>
+  Http.post(`${api.auth}/logout`, {
+    refreshToken: localStorage.getItem('refreshToken')
+  });
 
-                        if (remember)
-                            saveTokensToLocalStorage(expiresIn, token, refreshToken);
-                        Http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+export const me = () => Http.post(`${api.auth}/me`);
 
-                        dispatch(action.authLogin(user));
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const resetPassword = (credentials) => Http.post(`${api.auth}/password/reset`, credentials);
 
-export function logout() {
-    return dispatch => (
-        Http.post('/api/v1/auth/logout', {
-            refreshToken: localStorage.getItem('refreshToken')
-        }).then(() => dispatch(action.authLogout()))
-    )
-}
+export const updatePassword = (credentials) => Http.post(`${api.auth}/password/update`, credentials);
 
-export function me() {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.post('/api/v1/auth/me')
-                    .then(({data}) => {
-                        dispatch(action.authLogin(data.user));
-                        resolve(data);
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const register = (data) =>
+  Http.post(`${api.auth}/register`, data);
 
-export function refresh() {
-    return new Promise((resolve, reject) => {
-        Http.post('/api/v1/auth/refresh', {
-            refreshToken: localStorage.getItem('refreshToken')
-        })
-            .then(({data}) => {
-                const {
-                    token,
-                    expiresIn,
-                    refreshToken,
-                } = data;
+export const refresh = () =>
+  Http.post(`${api.auth}/refresh`, {
+    refreshToken: localStorage.getItem('refreshToken')
+  })
+    .then(({data}) => {
+      const {
+        token,
+        expiresIn,
+        refreshToken,
+      } = data;
 
-                saveTokensToLocalStorage(expiresIn, token, refreshToken);
-                Http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                resolve(data);
-            })
-            .catch(err => reject(err))
+      saveTokensToLocalStorage(expiresIn, token, refreshToken);
+      Http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      return data;
     });
-}
-
-export function resetPassword(credentials) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.post('/api/v1/auth/password/reset', credentials)
-                .then(({data}) => {
-                    return resolve(data.message)
-                })
-                .catch(({response}) => {
-                    return reject(response.data.message)
-                })
-        })
-    )
-}
-
-export function updatePassword(credentials) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.post('/api/v1/auth/password/update', credentials)
-                .then(({data}) => {
-                    return resolve(data.message);
-                })
-                .catch(err => {
-                    const data = {
-                        message: err.response.data.message,
-                        statusCode: err.response.status,
-                    };
-                    return reject(data);
-                })
-        })
-    )
-}
-
-export function register(data) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.post('/api/v1/auth/register', data)
-                .then(({data}) => resolve(data))
-                .catch(err => reject(err.response.data))
-        })
-    )
-}

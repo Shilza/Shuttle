@@ -1,15 +1,7 @@
 import Http from "../Http";
-import {setUsers} from "../store/actions/search";
+import {api} from './api';
 
-export function search(username) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-                Http.get('/api/v1/search?username=' + username)
-                    .then(({data}) => {
-                        dispatch(setUsers(data.data));
-                        resolve();
-                    })
-                    .catch(err => reject(err))
-            }
-        ));
-}
+export const search = (username, page) => Http.get(`${api.search}?username=${username}&page=${page}`);
+
+export const privateSearch = (username, page) => Http.get(`${api.privateSearch}?username=${username}&page=${page}`);
+
