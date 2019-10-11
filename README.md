@@ -19,7 +19,7 @@ Social network ReactJS application
 * Lucid ORM
 * MySQL
 * ReactJS
-* Redux
+* Redux/Rematch
 * Axios
 * CSS-modules
 * Ant-design
