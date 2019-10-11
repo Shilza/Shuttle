@@ -37,15 +37,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #efefef;
   width: 100%;
   padding: 8px;
   list-style-type: none;
   cursor: pointer;
-}
-
-.friendshipsContainer > ul > li:last-child {
-  border: none;
 }
 
 .inputUsername {
@@ -64,4 +59,20 @@
   border-radius: 50%;
   margin-right: 10px;
   border: 1px solid rgba(0, 0, 0, .0975);
+}
+
+.unFollowButton {
+  border-radius: 5px;
+  margin-left: auto;
+  min-width: 100px;
+  outline: none;
+  transition: 140ms;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  border: 1px solid #efefef;
+}
+
+.unFollowButton:hover {
+  background: #fff;
 }

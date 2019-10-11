@@ -24,3 +24,5 @@ const addBase = (entities) =>
   }, {});
 
 export const api = addBase(entities);
+
+export const ipStackKey = process.env.API_IPSTACK_KEY;

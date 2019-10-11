@@ -6,6 +6,7 @@ import TextareaAutosize from 'react-autosize-textarea';
 import Header from "components/Posts/Header";
 import Container from "components/Posts/Container";
 import Marks from "components/Posts/Marks";
+import Location from "components/Posts/Location";
 
 import styles from './finish.module.css';
 
@@ -13,18 +14,19 @@ const Finish = ({upload, media, goBack, video = false}) => {
   const [isMarks, setIsMarks] = useState(false);
   const [marks, setMarks] = useState([]);
   const [caption, setCaption] = useState('');
+  const [location, setLocation] = useState('');
 
   const onChangeCaption = useCallback((event) => {
     const value = event.target.value;
     if (value.length <= 1000)
       setCaption(value);
-    if(value.length === 1000)
+    if (value.length === 1000)
       message.warning('Caption must must not exceed 1000 characters');
   }, []);
 
 
-  const uploadWithCaption = () => {
-    upload({caption, marks});
+  const uploadWithOtherData = () => {
+    upload({caption, marks, location});
   };
 
   const goToMarks = () => {
@@ -48,7 +50,7 @@ const Finish = ({upload, media, goBack, video = false}) => {
           />
           :
           <Container>
-            <Header goNext={uploadWithCaption} goBack={goBack} title={'New post'} nextButtonText={'Post'}/>
+            <Header goNext={uploadWithOtherData} goBack={goBack} title={'New post'} nextButtonText={'Post'}/>
             <div className={styles.container}>
               <div className={styles.imageContainer}>
                 <Media media={media} video={video}/>
@@ -61,8 +63,8 @@ const Finish = ({upload, media, goBack, video = false}) => {
                   maxLength={1000}
                 />
               </div>
+              <Location onChange={setLocation}/>
               <button className={styles.button} onClick={goToMarks}>Mark friends</button>
-              <button className={styles.button}>Add place</button>
             </div>
           </Container>
       }

@@ -7,7 +7,7 @@ import DefaultAvatar from "components/DefaultAvatar";
 import styles from './friendships.module.css';
 
 
-const UserFriendshipCard = ({avatar, username, id, onRemove, closeModal}) => (
+const UserFriendshipCard = ({avatar, onUnfollow, username, id, onRemove, closeModal}) => (
   <li>
     <Link to={'/' + username} onClick={closeModal} className={styles.cardContainer}>
       {
@@ -18,6 +18,7 @@ const UserFriendshipCard = ({avatar, username, id, onRemove, closeModal}) => (
       <span>{username}</span>
     </Link>
     {onRemove && <Icon type={'close'} onClick={() => onRemove(id)}/>}
+    {onUnfollow && <button onClick={() => onUnfollow(id)} className={styles.unFollowButton}>Unfollow</button>}
   </li>
 );
 
@@ -26,7 +27,8 @@ UserFriendshipCard.propTypes = {
   id: PropTypes.number,
   username: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
+  onUnfollow: PropTypes.func
 };
 
 export default React.memo(UserFriendshipCard);

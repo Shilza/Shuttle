@@ -127,11 +127,12 @@ const Filters = ({media, goBack, upload}) => {
     }
   };
 
-  const uploadWithCaption = ({caption, marks}) => {
+  const uploadWithOtherData = ({caption, location, marks}) => {
     upload({
       image: mediaSrc,
       settings: settings,
       caption,
+      location,
       marks
     });
   };
@@ -184,7 +185,7 @@ const Filters = ({media, goBack, upload}) => {
   return (
     <>
       {
-        isFinish ? <Finish upload={uploadWithCaption} goBack={goFilters} media={mediaSrc}/>
+        isFinish ? <Finish upload={uploadWithOtherData} goBack={goFilters} media={mediaSrc}/>
           :
           <Container>
             <Header goNext={goFinish} goBack={goBack} title={'Filters'} nextButtonText={'Finish'}/>

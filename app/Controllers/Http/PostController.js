@@ -158,6 +158,7 @@ class PostController {
 
     const rules = {
       caption: 'string|max:1000',
+      location: 'string|max:100',
     };
 
     const validation = await validate(request.all(), rules);
@@ -192,9 +193,11 @@ class PostController {
     if (!postMedia.moved())
       return postMedia.error();
 
-    const postData = request.input('caption');
+    const postDataCaption = request.input('caption');
+    const postDataLocation = request.input('location');
     let post = await Post.create({
-      caption: postData,
+      caption: postDataCaption,
+      location: postDataLocation,
       owner_id: user.id,
       src: '/uploads/' + user.id + '/' + name
     });

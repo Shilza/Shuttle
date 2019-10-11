@@ -7,15 +7,17 @@ import Marks from "components/Posts/Marks";
 import Header from "components/Posts/Header";
 import Container from "components/Posts/Container";
 import PostMedia from "components/PostMedia";
+import Location from "components/Posts/Location";
 
 import styles from './editor.module.css';
 
-const preparePost = ({id, owner_id, marks, caption, src, created_at}) => ({
+const preparePost = ({id, owner_id, marks, caption, src, location, created_at}) => ({
   id,
   owner_id,
   marks,
   caption,
   src,
+  location,
   created_at
 });
 
@@ -35,6 +37,13 @@ const Editor = ({post, closeModal, dispatch}) => {
         marks
       });
     setIsMarks(false);
+  };
+
+  const setLocation = (location) => {
+    setEditedPost({
+      ...editedPost,
+      location
+    })
   };
 
   const updatePost = () => {
@@ -75,8 +84,8 @@ const Editor = ({post, closeModal, dispatch}) => {
                   defaultValue={caption}
                   maxLength={1000}
                 />
+                <Location onChange={setLocation} defaultLocation={post.location}/>
                 <button className={styles.button} onClick={goToMarks}>Mark friends</button>
-                <button className={styles.button}>Add place</button>
               </div>
             </div>
           </Container>

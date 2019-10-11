@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 
@@ -12,18 +12,6 @@ const App = ({isAuthenticated, dispatch}) => {
   if (error) {
     return <div>{error.toString()}</div>
   }
-
-  useEffect(() => {
-    // fetch('https://api.ipify.org?format=json').then(data => {
-    //   data.json().then(data => {
-    //     const key = process.env.API_IPSTACK_KEY;
-    //     fetch(`http://api.ipstack.com/${data.ip}?access_key=${key}`).then(data => {
-    //       data.json().then(console.log)
-    //     });
-    //   })
-    // });
-  }, []);
-
 
   if (!isAuthenticated && localStorage.hasOwnProperty('accessToken')) {
     dispatch.auth.authentication()

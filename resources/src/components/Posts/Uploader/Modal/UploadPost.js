@@ -26,6 +26,7 @@ const UploadPost = ({upload, media}) => {
     let postData = new FormData();
     postData.append('media', new File([resultMedia], "media", {type}));
     postData.append('caption', data.caption);
+    postData.append('location', data.location);
     postData.append('marks', JSON.stringify(data.marks));
     upload(postData);
   };

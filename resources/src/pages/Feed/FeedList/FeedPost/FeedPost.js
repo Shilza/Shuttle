@@ -15,7 +15,7 @@ import styles from './feedPost.module.css';
 
 
 const FeedPost = ({post}) => {
-  const {owner, avatar, src, marks, id, caption, comments_count} = post;
+  const {owner, avatar, src, marks, id, caption, location, comments_count} = post;
   const [firstIntersect, setFirstIntersect] = useState(false);
   let containerRef = useRef(null);
   let commentsScrollParentRef = useRef(null);
@@ -43,7 +43,7 @@ const FeedPost = ({post}) => {
 
   return (
     <section className={styles.post} ref={containerRef}>
-      <Header username={owner} avatar={avatar}/>
+      <Header username={owner} avatar={avatar} location={location}/>
       <div className={styles.mediaContainer}>
         <PostMedia
           media={src}

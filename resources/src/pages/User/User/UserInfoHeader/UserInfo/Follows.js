@@ -20,6 +20,10 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
         });
   };
 
+  const unfollow = (id) => {
+    dispatch.users.unfollowAsync({id});
+  };
+
   return (
     <Modal onClose={closeModal} visible>
       <div className={styles.friendshipsContainer}>
@@ -29,9 +33,11 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
             follows.map(user =>
               <UserFriendshipCard
                 key={user.id}
+                id={user.id}
                 avatar={user.avatar}
                 username={user.username}
                 closeModal={closeModal}
+                onUnfollow={unfollow}
               />
             )
           }

@@ -16,7 +16,7 @@ import Caption from "components/Posts/Caption";
 
 const PostControl = ({post}) => {
 
-  const {owner, avatar, caption, id, comments_count} = post;
+  const {owner, avatar, caption, id, location, comments_count} = post;
   let scrollParent = useRef(null);
   const {comments, fetchComments, onComment, onCommentRemove, setCommentLiked} = useComments(id, comments_count);
 
@@ -35,7 +35,7 @@ const PostControl = ({post}) => {
 
   return (
     <section className={styles.postControl} style={style}>
-      <Header username={owner} avatar={avatar}/>
+      <Header username={owner} avatar={avatar} location={location}/>
       <Caption username={owner} caption={caption} className={styles.caption}/>
       <TopPagination
         fetcher={fetchComments}

@@ -10,6 +10,7 @@ class PostSchema extends Schema {
       table.integer('owner_id').unsigned().notNullable().references('id').inTable('users').onDelete('cascade');
       table.string('src').notNullable();
       table.string('caption', 1000).nullable();
+      table.string('location', 100).nullable();
       table.boolean('archive').notNullable().defaultTo(false);
       table.timestamps();
     })

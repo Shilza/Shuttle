@@ -88,7 +88,7 @@ export const users = {
         user
       };
     },
-    unfollow(state) {
+    unfollow(state, id) {
       let user = {...state.user};
 
       if (user.friendshipState !== 1)
@@ -98,7 +98,8 @@ export const users = {
 
       return {
         ...state,
-        user
+        user,
+        follows: state.follows.filter(user => user.id !== id)
       };
     },
     updateAvatar(state, avatar) {
@@ -182,7 +183,7 @@ export const users = {
     },
     async unfollowAsync(data) {
       await FriendshipsService.unfollow(data);
-      dispatch.users.unfollow();
+      dispatch.users.unfollow(data.id);
     },
     async setPrivateAsync() {
       const {data} = await UserService.setPrivate();

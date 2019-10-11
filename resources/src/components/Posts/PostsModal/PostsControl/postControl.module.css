@@ -28,9 +28,23 @@
   border: 1px solid rgba(0, 0, 0, .0975);
 }
 
-.username {
+.usernameLocation {
+  display: flex;
+  flex-direction: column;
   margin: 0 10px 0 10px;
+}
+
+.username {
   color: #262626;
+}
+
+.location {
+  font-size: 0.7rem;
+  color: darkgrey;
+  max-width: 220px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .caption {
