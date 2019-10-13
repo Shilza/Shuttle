@@ -7,6 +7,7 @@ const Mark = use('App/Models/Mark');
 const Friendship = use('App/Models/Friendship');
 const {validate} = use('CValidator');
 const PostsService = use('PostsService');
+const LikesService = use('LikesService');
 const UsersService = use('UsersService');
 
 class PostController {
@@ -129,7 +130,6 @@ class PostController {
     let page = parseInt(request.input('page'), 10);
     page = page > 0 ? page : 1;
 
-
     const user = await auth.getUser();
 
     const ownerId = parseInt(request.input('user_id'), 10);
@@ -141,6 +141,43 @@ class PostController {
     if (canSee) {
       const posts = await PostsService.getMarkedPosts(request.input('user_id'), page);
       return response.json(posts);
+    } else
+      return response.json({private: true});
+  }
+
+  async showLikes({request, response, auth}) {
+    const rules = {
+      page: 'integer',
+      post_id: 'integer|required'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    const user = await auth.getUser();
+
+    const postId = request.input('post_id');
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
+
+    const post = await Post.find(postId);
+
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
+    const owner = await PostsService.getPostsOwnerByPostId(postId);
+
+    const canSee = await UsersService.canSee(owner, user.id);
+
+    if (canSee) {
+      const users = await LikesService.getUsersLikesByPostId(postId, page);
+      return response.json(users);
     } else
       return response.json({private: true});
   }
@@ -167,7 +204,6 @@ class PostController {
       return response.status(400).json({
         message: validation.messages()[0].message
       });
-
 
     const marks = JSON.parse(request.input('marks'));
     if (!Array.isArray(marks))

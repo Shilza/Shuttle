@@ -9,118 +9,118 @@ const LikesService = use('LikesService');
 
 class LikeController {
 
-    async like({request, response, auth}) {
-        const rules = {
-            type: 'required|string',
-            entity_id: 'required|integer'
-        };
+  async like({request, response, auth}) {
+    const rules = {
+      type: 'required|string',
+      entity_id: 'required|integer'
+    };
 
-        const validation = await validate(request.all(), rules);
+    const validation = await validate(request.all(), rules);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        const type = await EntityType.findBy('type', request.input('type'));
-        if (!type)
-            return response.status(400).json({
-                message: 'Type does not exists'
-            });
+    const type = await EntityType.findBy('type', request.input('type'));
+    if (!type)
+      return response.status(400).json({
+        message: 'Type does not exists'
+      });
 
-        const entity_id = request.input('entity_id');
-        const user = await auth.getUser();
+    const entity_id = request.input('entity_id');
+    const user = await auth.getUser();
 
-        const like = await LikesService.isLikeExists(user.id, entity_id, type.id);
-        if (like)
-            return response.json({message: 'Like already exists'});
+    const like = await LikesService.isLikeExists(user.id, entity_id, type.id);
+    if (like)
+      return response.json({message: 'Like already exists'});
 
-        switch (type.type) {
-            case 'comment':
-                const comment = await Comment.find(entity_id);
-                if (!comment)
-                    return response.status(400).json({
-                        message: 'Comment does not exists'
-                    });
+    switch (type.type) {
+      case 'comment':
+        const comment = await Comment.find(entity_id);
+        if (!comment)
+          return response.status(400).json({
+            message: 'Comment does not exists'
+          });
 
-                await Like.create({entity_id, owner_id: user.id, type: type.id});
+        await Like.create({entity_id, owner_id: user.id, type: type.id});
 
-                return response.json({message: 'Comment liked successfully'});
-            case 'post':
-                const post = await Post.find(entity_id);
-                if (!post)
-                    return response.status(400).json({
-                        message: 'Post does not exists'
-                    });
-                await Like.create({entity_id, owner_id: user.id, type: type.id});
+        return response.json({message: 'Comment liked successfully'});
+      case 'post':
+        const post = await Post.find(entity_id);
+        if (!post)
+          return response.status(400).json({
+            message: 'Post does not exists'
+          });
+        await Like.create({entity_id, owner_id: user.id, type: type.id});
 
-                return response.json({message: 'Post liked successfully'});
+        return response.json({message: 'Post liked successfully'});
 
-            default:
-                return response.status(400).json({message: 'Something went wrong'});
-        }
+      default:
+        return response.status(400).json({message: 'Something went wrong'});
     }
+  }
 
 
-    async unlike({request, response, auth}) {
-        const rules = {
-            type: 'required|string',
-            entity_id: 'required|integer'
-        };
+  async unlike({request, response, auth}) {
+    const rules = {
+      type: 'required|string',
+      entity_id: 'required|integer'
+    };
 
-        const validation = await validate(request.all(), rules);
+    const validation = await validate(request.all(), rules);
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        const type = await EntityType.findBy('type', request.input('type'));
-        if (!type)
-            return response.status(400).json({
-                message: 'Type does not exists'
-            });
+    const type = await EntityType.findBy('type', request.input('type'));
+    if (!type)
+      return response.status(400).json({
+        message: 'Type does not exists'
+      });
 
-        const entity_id = request.input('entity_id');
-        const user = await auth.getUser();
+    const entity_id = request.input('entity_id');
+    const user = await auth.getUser();
 
-        const like = await Like.query()
-            .where('owner_id', user.id)
-            .where('entity_id', entity_id)
-            .where('type', type.id)
-            .first();
+    const like = await Like.query()
+      .where('owner_id', user.id)
+      .where('entity_id', entity_id)
+      .where('type', type.id)
+      .first();
 
-        if (!like)
-            return response.json({message: 'Like does not exists'});
+    if (!like)
+      return response.json({message: 'Like does not exists'});
 
-        switch (type.type) {
-            case 'comment':
-                const comment = await Comment.find(entity_id);
-                if (!comment)
-                    return response.status(400).json({
-                        message: 'Comment does not exists'
-                    });
+    switch (type.type) {
+      case 'comment':
+        const comment = await Comment.find(entity_id);
+        if (!comment)
+          return response.status(400).json({
+            message: 'Comment does not exists'
+          });
 
-                if (await like.delete())
-                    return response.json({message: 'Comment unliked successfully'});
+        if (await like.delete())
+          return response.json({message: 'Comment unliked successfully'});
 
-                break;
+        break;
 
-            case 'post':
-                const post = await Post.find(entity_id);
-                if (!post)
-                    return response.status(400).json({
-                        message: 'Post does not exists'
-                    });
+      case 'post':
+        const post = await Post.find(entity_id);
+        if (!post)
+          return response.status(400).json({
+            message: 'Post does not exists'
+          });
 
-                if (await like.delete())
-                    return response.json({message: 'Post unliked successfully'});
+        if (await like.delete())
+          return response.json({message: 'Post unliked successfully'});
 
-                break;
-            default:
-                return response.status(400).json({message: 'Something went wrong'});
-        }
+        break;
+      default:
+        return response.status(400).json({message: 'Something went wrong'});
     }
+  }
 }
 
 module.exports = LikeController;

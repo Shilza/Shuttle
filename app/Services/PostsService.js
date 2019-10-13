@@ -224,20 +224,21 @@ class PostsService {
   }
 
   async _getFeedPosts(userId, page) {
-    const postIds = await Feed
+    const posts = await Feed
       .query()
+      .select(['post_id'])
       .where('receiver_id', userId)
-      .pluck('post_id');
+      .paginate(page, 12);
 
-    let posts = await Post
+    posts.rows = (await Post
       .query()
-      .whereIn('id', postIds)
+      .whereIn('id', posts.rows.map(post => post.post_id))
       .withCount('comments')
       .withCount('likes')
       .with('marks')
       .notArchived()
       .orderBy('id', 'desc')
-      .paginate(page, 12);
+      .fetch()).rows;
 
     return posts.toJSON();
   }

@@ -4,9 +4,9 @@
 const Model = use('Model');
 
 class Feed extends Model {
-    posts () {
-        return this.hasMany('App/Models/Post', 'post_id', 'id');
-    }
+  posts() {
+    return this.hasMany('App/Models/Post', 'post_id', 'id');
+  }
 }
 
 module.exports = Feed;
