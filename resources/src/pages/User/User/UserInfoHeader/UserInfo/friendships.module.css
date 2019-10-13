@@ -6,11 +6,10 @@
   flex-direction: column;
   text-align: center;
   color: black;
-  min-width: 300px;
   align-items: center;
   margin-left: 0;
   padding-left: 0;
-  height: calc(100vh - 50px);
+  height: 80vh;
 }
 
 .friendshipsContainer > ul {
@@ -19,16 +18,17 @@
   text-align: center;
   width: 100%;
   height: 100%;
+  padding: 0 4px 0 0;
+  margin: 5px 0 0;
   overflow-y: auto;
-  padding: 5px 5px 0 5px;
 }
 
 .friendshipsContainer > ul::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .friendshipsContainer > ul::-webkit-scrollbar-thumb {
-  width: 6px;
+  width: 4px;
   background: rgba(33, 33, 33, 0.32);
   border-radius: 2px;
 }
@@ -38,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 8px;
+  padding: 8px 2px;
   list-style-type: none;
   cursor: pointer;
 }
@@ -75,4 +75,18 @@
 
 .unFollowButton:hover {
   background: #fff;
+}
+
+.search {
+  padding: 4px 8px;
+  color: #000;
+  width: 100%;
+  transition: 140ms;
+  outline: none;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+}
+
+.search::placeholder {
+  color: #9a9a9a;
 }

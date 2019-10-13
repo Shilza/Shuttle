@@ -1,5 +1,5 @@
 
-export const transformPostsMetadata = posts =>
+export const transformMetadata = posts =>
   posts.map(post => {
     if (post.hasOwnProperty('__meta__')) {
       Object.keys(post.__meta__).forEach(key =>

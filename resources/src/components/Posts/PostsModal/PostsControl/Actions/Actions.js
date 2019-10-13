@@ -1,7 +1,6 @@
 import React, {useCallback} from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Icon} from "antd";
 import moment from "moment";
 
 import Save from "./Save";
@@ -23,9 +22,6 @@ const Actions = ({post, dispatch, className}) => {
     <div className={`${styles.actionsContainer} ${className}`}>
       <div className={styles.actions}>
         <Like type='post' id={id} isLiked={isLiked} likesCount={likes_count} onLike={onLike}/>
-        <div className={styles.action}>
-          <Icon type="message"/>
-        </div>
         <Share className={styles.action} src={post.src}/>
         <Save post={post}/>
       </div>

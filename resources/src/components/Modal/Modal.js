@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 import {createPortal} from "react-dom";
-import CloseButton from "./ClsoeButton";
+import CloseButton from "./CloseButton";
 import styles from './modal.module.css';
 
 const Modal = ({children, onClose, zIndex = 999, visible = false}) => (

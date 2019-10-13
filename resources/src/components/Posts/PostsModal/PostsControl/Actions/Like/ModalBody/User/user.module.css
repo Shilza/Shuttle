@@ -1,0 +1,24 @@
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container + .container {
+  margin-top: 8px;
+}
+
+.username {
+  margin-left: 10px;
+  color: #000;
+}
+
+.username:hover {
+  color: #000;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}

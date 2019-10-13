@@ -1,19 +1,20 @@
 import React, {useState} from "react";
-
-import {createPortal} from 'react-dom';
-
-import styles from "./image.module.css";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import FullScreen from "./FullScreen";
+
+import styles from "./image.module.css";
 
 const Image = ({src, ...props}) => {
   const [isFull, setIsFull] = useState(false);
 
-  const openImage = () => {
+  const openImage = (event) => {
+    event.stopPropagation();
     setIsFull(true);
   };
 
-  const closeImage = () => {
+  const closeImage = (event) => {
+    event && event.stopPropagation();
     setIsFull(false);
   };
 
@@ -37,15 +38,5 @@ const Image = ({src, ...props}) => {
   )
 };
 
-const appRoot = document.getElementById('root');
-
-const FullScreen = ({children, onClose, ...props}) => (
-  createPortal(
-    <div className={styles.fullscreen} onClick={onClose} {...props}>
-      {children}
-    </div>,
-    appRoot
-  )
-);
 
 export default Image;

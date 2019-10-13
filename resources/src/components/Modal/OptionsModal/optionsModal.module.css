@@ -1,5 +1,5 @@
 
-.listModalContainer {
+.container {
     background: white;
     border-radius: 12px;
     display: flex;
@@ -13,17 +13,17 @@
     max-width: 310px;
 }
 
-.listModalContainer > li:nth-child(n) {
+.container > li:nth-child(n) {
     border-bottom: 1px solid #efefef;
     width: 100%; padding: 8px;
     list-style-type: none;
     cursor: pointer;
 }
 
-.listModalContainer > li:first-child {
+.container > li:first-child {
     color: red;
 }
 
-.listModalContainer > li:last-child {
+.container > li:last-child {
     border: none;
 }

@@ -6,9 +6,7 @@ import "react-image-crop/dist/ReactCrop.css";
 class CropImage extends PureComponent {
   state = {
     crop: {
-      aspect: 1,
       width: 200,
-      minWidth: 50,
       x: 0,
       y: 0
     }
@@ -83,6 +81,9 @@ class CropImage extends PureComponent {
       <ReactCrop
         src={this.props.src}
         crop={crop}
+        minWidth={200}
+        minHeight={200}
+        ruleOfThirds
         onImageLoaded={this.onImageLoaded}
         onComplete={this.onCropComplete}
         onChange={this.onCropChange}

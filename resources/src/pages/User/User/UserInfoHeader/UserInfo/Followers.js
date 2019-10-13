@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {message} from 'antd';
 
-import Modal from "components/Modal/Modal";
+import ListModal from "components/Modal/ListModal";
 import {searchFollowers} from "services/user";
 import UserFriendshipCard from "./UserFriendshipCard";
 
 import styles from './friendships.module.css';
+
 
 const Followers = ({closeModal, id, followers, dispatch}) => {
 
@@ -29,9 +30,9 @@ const Followers = ({closeModal, id, followers, dispatch}) => {
   }, []);
 
   return (
-    <Modal onClose={closeModal} visible>
+    <ListModal onClose={closeModal} title={'Followers'} visible>
       <div className={styles.friendshipsContainer}>
-        <input maxLength={12} onChange={search}/>
+        <input className={styles.search} maxLength={12} onChange={search} placeholder={'Username'}/>
         <ul>
           {
             followers.map(user =>
@@ -47,7 +48,7 @@ const Followers = ({closeModal, id, followers, dispatch}) => {
           }
         </ul>
       </div>
-    </Modal>
+    </ListModal>
   );
 };
 

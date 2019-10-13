@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Linkify from 'linkifyjs/react'
 import moment from "moment";
 
-import ListModal from "components/Modal/ListsModal";
+import OptionsModal from "components/Modal/OptionsModal";
 import Modal from "components/Modal";
 
 import Post from "./Post";
@@ -53,13 +53,13 @@ const Message = ({id, username, avatar, post, images, text, my, read, time, dele
         <time className={my ? styles.myTime : styles.time}>{moment(time).format('HH:mm')}</time>
       </div>
       <Modal visible={modalVisible} onClose={closeModal}>
-        <ListModal>
+        <OptionsModal>
           {
             moment().diff(time, 'hours') <= 24 &&
             <li onClick={deleteMessage}>Delete</li>
           }
           <li onClick={closeModal}>Cancel</li>
-        </ListModal>
+        </OptionsModal>
       </Modal>
     </>
   );

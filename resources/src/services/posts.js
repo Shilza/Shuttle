@@ -29,3 +29,5 @@ export const getLiked = (page) => Http.get(`${api.posts}/liked?page=${page}`);
 export const addToArchive = (id) => Http.post(`${api.posts}/archive`, {post_id: id});
 
 export const removeFromArchive = (id) => Http.delete(`${api.posts}/archive?post_id=${id}`);
+
+export const getLikesUsers = (id, page) => Http.get(`${api.posts}/likes?post_id=${id}&page=${page}`);

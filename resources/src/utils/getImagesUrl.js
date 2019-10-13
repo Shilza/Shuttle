@@ -1,3 +1,4 @@
+import 'core-js/features/promise';
 
 export const getImagesUrl = async (text) => {
   const images = text.match(/https?:\/\/[^"' ]+\.(?:png|jpg|jpeg|gif).*?(?=( |$))/g);

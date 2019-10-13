@@ -1,5 +1,6 @@
 import {useCallback, useState} from "react";
 import * as CommentsService from 'services/comments';
+import {transformMetadata} from "./transformMetadata";
 
 const useComments = (id, commentsCount) => {
 
@@ -9,13 +10,14 @@ const useComments = (id, commentsCount) => {
     if (commentsCount > 0)
       return CommentsService.get(id, page)
         .then(({data}) => {
-          setComments([...(data.data).reverse(), ...comments]);
+          if (Array.isArray(data.data))
+            setComments([...transformMetadata(data.data).reverse(), ...comments]);
           return data;
         });
   };
 
   const onComment = useCallback((comment) => {
-    setComments([...comments, comment]);
+    comment && setComments([...comments, comment]);
   }, [comments]);
 
   const onCommentRemove = useCallback((id) => {
@@ -24,8 +26,9 @@ const useComments = (id, commentsCount) => {
 
   const setCommentLiked = useCallback(({id, liked}) => {
     setComments(comments.map(comment => {
-      if(comment.id === id) {
+      if (comment.id === id) {
         comment.isLiked = liked;
+        liked ? ++comment.likes_count : --comment.likes_count;
         return {...comment};
       }
       return comment;

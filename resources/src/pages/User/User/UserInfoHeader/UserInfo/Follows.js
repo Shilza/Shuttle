@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import Modal from "components/Modal/Modal";
+import ListModal from "components/Modal/ListModal";
 import UserFriendshipCard from "./UserFriendshipCard";
 import {searchFollows} from "services/user";
 
@@ -25,9 +25,9 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
   };
 
   return (
-    <Modal onClose={closeModal} visible>
+    <ListModal onClose={closeModal} title={'Follows'} visible>
       <div className={styles.friendshipsContainer}>
-        <input maxLength={12} onChange={search}/>
+        <input className={styles.search} maxLength={12} onChange={search} placeholder={'Username'}/>
         <ul>
           {
             follows.map(user =>
@@ -43,7 +43,7 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
           }
         </ul>
       </div>
-    </Modal>
+    </ListModal>
   );
 };
 

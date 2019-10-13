@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './listModal.module.css'
+import styles from './optionsModal.module.css'
 
-const ListModal = ({children}) => (
-  <ul className={styles.listModalContainer}>
+const OptionsModal = ({children}) => (
+  <ul className={styles.container}>
     {children}
   </ul>
 );
 
-ListModal.propTypes = {
+OptionsModal.propTypes = {
   children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.bool])).isRequired
 };
 
-export default ListModal;
+export default OptionsModal;

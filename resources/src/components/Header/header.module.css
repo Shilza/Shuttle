@@ -2,6 +2,7 @@
 .header {
   position: sticky;
   top: 0;
+  transform: translateZ(0);
   height: 50px;
   border-bottom: 1px solid #efefef;
   background-color: white;

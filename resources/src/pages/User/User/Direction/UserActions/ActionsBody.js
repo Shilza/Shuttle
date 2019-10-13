@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {message} from "antd/lib/index";
 import {connect} from "react-redux";
-import ListModal from "components/Modal/ListsModal";
+import OptionsModal from "components/Modal/OptionsModal";
 
 const ActionsBody = ({closeModal, dispatch, userId, username, blacklisted}) => {
 
@@ -32,7 +32,7 @@ const ActionsBody = ({closeModal, dispatch, userId, username, blacklisted}) => {
   };
 
   return (
-    <ListModal>
+    <OptionsModal>
       <li>Complain</li>
       {
         blacklisted
@@ -41,7 +41,7 @@ const ActionsBody = ({closeModal, dispatch, userId, username, blacklisted}) => {
       }
       <li onClick={copyUserLinkToClipboard}>Copy link</li>
       <li onClick={closeModal}>Cancel</li>
-    </ListModal>
+    </OptionsModal>
   );
 };
 

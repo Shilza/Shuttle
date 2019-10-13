@@ -11,7 +11,7 @@ import styles from './footer.module.css';
 const Footer = ({sendMessage, typing}) => {
   let inputRef = useRef(null);
   const [isSendButtonVisible, setIsSendButtonVisible] = useState(false);
-  const [isEmoji, setIsEmoji] = useState(false);
+  const [isEmojiOpen, setIsEmojiOpen] = useState(false);
   const [messageText, setMessageText] = useState('');
   const throttledMessageText = useThrottle(messageText, 1200);
 
@@ -26,26 +26,29 @@ const Footer = ({sendMessage, typing}) => {
       setIsSendButtonVisible(true);
     else if (event.target.value.length === 0)
       setIsSendButtonVisible(false);
-    setMessageText(value);
+    if (value.length < 1000)
+      setMessageText(value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
     if (messageText.length > 0 && messageText.length <= 1000) {
       sendMessage(messageText);
-      inputRef.current.value = '';
+      setMessageText('');
       setIsSendButtonVisible(false);
+      setIsEmojiOpen(false);
       inputRef.current.focus();
     }
   };
 
   const toggleEmoji = () => {
-    setIsEmoji(!isEmoji);
+    setIsEmojiOpen(!isEmojiOpen);
   };
 
   const addEmoji = useCallback((emoji) => {
     if (messageText.length < 1000) {
       setMessageText(messageText + emoji.native);
+      inputRef.current.focus();
       if (!isSendButtonVisible)
         setIsSendButtonVisible(true);
     }
@@ -61,6 +64,7 @@ const Footer = ({sendMessage, typing}) => {
             ref={inputRef}
             className={styles.messageInput}
             maxLength={1000}
+            value={messageText}
             onChange={onInputChange}
           />
           {
@@ -79,7 +83,7 @@ const Footer = ({sendMessage, typing}) => {
           </button>
         }
       </form>
-      {isEmoji && <EmojiPicker addEmoji={addEmoji}/>}
+      {isEmojiOpen && <EmojiPicker addEmoji={addEmoji}/>}
     </>
   );
 };

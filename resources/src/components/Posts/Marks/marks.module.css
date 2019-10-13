@@ -24,6 +24,7 @@
   position: static;
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
 
 .searchInput {

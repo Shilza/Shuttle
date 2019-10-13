@@ -1,4 +1,4 @@
-import {transformPostsMetadata} from "utils/transformPostsMetadata";
+import {transformMetadata} from "utils/transformMetadata";
 import * as PostsService from 'services/posts';
 import * as FeedService from 'services/feed';
 
@@ -27,28 +27,28 @@ export const posts = {
       return {...state, [key]: [post, ...state[key]]};
     },
     addUser(state, posts) {
-      return {...state, user: [...state.user, ...transformPostsMetadata(posts)]};
+      return {...state, user: [...state.user, ...transformMetadata(posts)]};
     },
     addFeed(state, posts) {
-      return {...state, feed: [...state.feed, ...transformPostsMetadata(posts)]};
+      return {...state, feed: [...state.feed, ...transformMetadata(posts)]};
     },
     addMarked(state, posts) {
-      return {...state, marked: [...state.marked, ...transformPostsMetadata(posts)]};
+      return {...state, marked: [...state.marked, ...transformMetadata(posts)]};
     },
     addSaved(state, posts) {
-      return {...state, saved: [...state.saved, ...transformPostsMetadata(posts)]};
+      return {...state, saved: [...state.saved, ...transformMetadata(posts)]};
     },
     addLiked(state, posts) {
-      return {...state, liked: [...state.liked, ...transformPostsMetadata(posts)]};
+      return {...state, liked: [...state.liked, ...transformMetadata(posts)]};
     },
     addArchived(state, posts) {
-      return {...state, archived: [...state.archived, ...transformPostsMetadata(posts)]};
+      return {...state, archived: [...state.archived, ...transformMetadata(posts)]};
     },
     setByCode(state, postByCode) {
-      return {...state, postByCode: transformPostsMetadata(postByCode)};
+      return {...state, postByCode: transformMetadata(postByCode)};
     },
     update(state, updatedPost) {
-      const update = post => post.id === updatedPost.id ? transformPostsMetadata([updatedPost])[0] : post;
+      const update = post => post.id === updatedPost.id ? transformMetadata([updatedPost])[0] : post;
 
       return forKeys(initialState, (key) => state[key].map(update));
     },

@@ -6,3 +6,5 @@ export const get = (id, page) => Http.get(`${api.comments}?post_id=${id}&page=${
 export const create = (commentData) => Http.post(api.comments, commentData);
 
 export const remove = (id) => Http.delete(`${api.comments}?id=${id}`);
+
+export const getLikesUsers = (id, page) => Http.get(`${api.comments}/likes?comment_id=${id}&page=${page}`);
