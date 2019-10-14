@@ -33,7 +33,7 @@ You can:
 * Add filters for images
 * Comment on posts
 * Like posts/comments
-* Check fedd
+* Check feed
 * Manage account privacy
 * Add users to blacklist
 * Remove blacklisted users
