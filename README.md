@@ -43,7 +43,7 @@ You can:
 * Get list of liked posts
 * View notifications
 * Manage subscription requests
-* Savi posts to named compilations
+* Save posts to named compilations
 * Search users by nickname
 * Get unique post's link
 * Set custom avatar
