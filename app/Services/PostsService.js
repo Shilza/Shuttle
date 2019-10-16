@@ -228,6 +228,7 @@ class PostsService {
       .query()
       .select(['post_id'])
       .where('receiver_id', userId)
+      .orderBy('created_at', 'desc')
       .paginate(page, 12);
 
     posts.rows = (await Post
@@ -237,7 +238,7 @@ class PostsService {
       .withCount('likes')
       .with('marks')
       .notArchived()
-      .orderBy('id', 'desc')
+      .orderBy('created_at', 'desc')
       .fetch()).rows;
 
     return posts.toJSON();

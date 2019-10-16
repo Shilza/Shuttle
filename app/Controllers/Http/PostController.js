@@ -239,6 +239,7 @@ class PostController {
     });
 
     post.owner = user.username;
+    post.avatar = user.avatar;
     post.isLiked = false;
     post.likes_count = 0;
     post.comments_count = 0;
