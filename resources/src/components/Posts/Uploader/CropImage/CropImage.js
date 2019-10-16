@@ -6,6 +6,7 @@ import "react-image-crop/dist/ReactCrop.css";
 class CropImage extends PureComponent {
   state = {
     crop: {
+      aspect: 1/1,
       width: 200,
       x: 0,
       y: 0
