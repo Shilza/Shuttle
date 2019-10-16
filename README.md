@@ -95,8 +95,8 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### Notifications
 ![Notifications mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/notifications.jpg)
 
-#### Followers list
-![Followers list mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/followersList.jpg)
+#### Follows list
+![Follows list mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/followsList.png)
 
 #### Settings panel
 ![Settings panel mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/settingsPanel.jpg)
