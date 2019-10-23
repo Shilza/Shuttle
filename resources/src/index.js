@@ -1,6 +1,7 @@
 import './css/normalize.css';
 import './css/styles.css';
 import 'antd/dist/antd.css';
+import 'core-js/features/promise';
 
 import React from 'react';
 import {render} from 'react-dom';

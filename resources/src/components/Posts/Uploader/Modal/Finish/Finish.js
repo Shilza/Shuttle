@@ -72,15 +72,15 @@ const Finish = ({upload, media, goBack, video = false}) => {
   )
 };
 
-const Media = ({media, video}) => {
-  return <>
+const Media = React.memo(({media, video}) => (
+  <>
     {
       video
         ? <video src={URL.createObjectURL(media)} className={styles.media}/>
         : <img className={styles.media} src={media} alt='Mini filtered'/>
     }
   </>
-};
+));
 
 Finish.propTypes = {
   upload: PropTypes.func.isRequired,

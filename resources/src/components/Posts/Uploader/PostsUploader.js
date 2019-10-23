@@ -15,8 +15,12 @@ const PostsUploader = ({dispatch, trigger}) => {
   const closeModal = () => setIsModalOpen(false);
 
   const loadMedia = event => {
-    setIsModalOpen(true);
-    setMedia(event.target.files[0]);
+    if (event.target.files[0].size > 10485760)
+      message.warn('File must be less than 10 MB');
+    else {
+      setIsModalOpen(true);
+      setMedia(event.target.files[0]);
+    }
   };
 
   const upload = postData => {

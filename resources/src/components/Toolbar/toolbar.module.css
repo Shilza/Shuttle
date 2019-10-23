@@ -1,19 +1,26 @@
 
 .toolbar {
-    display: flex;
-    position: fixed;
-    top: 100%;
-    transform: translateY(-100%);
-    justify-content: space-evenly;
-    align-items: center;
-    height: 45px;
-    border-top: 1px solid #efefef;
-    width: 100%;
-    background: white;
-    z-index: 999;
+  display: flex;
+  position: fixed;
+  top: 100%;
+  transform: translateY(-100%);
+  justify-content: space-evenly;
+  align-items: center;
+  height: 45px;
+  border-top: 1px solid #efefef;
+  width: 100%;
+  background: white;
+  z-index: 999;
+}
+
+@supports not (justify-content: space-evenly) {
+  .toolbar {
+    justify-content: space-around;
+    padding: 0 22px;
+  }
 }
 
 .icon {
-    cursor: pointer;
-    font-size: 1.1em;
+  cursor: pointer;
+  font-size: 1.1em;
 }

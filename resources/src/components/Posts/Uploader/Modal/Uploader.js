@@ -19,6 +19,7 @@ const Uploader = ({loadMedia, trigger}) => {
         type='file'
         style={{display: 'none'}}
         onChange={loadMedia}
+        accept=".jpg,.jpeg,.png,.mp4"
         ref={fileRef}
       />
     </>

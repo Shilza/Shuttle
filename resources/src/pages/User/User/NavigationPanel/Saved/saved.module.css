@@ -47,12 +47,24 @@
 }
 
 .compilationContainer {
-  display: grid;
-  grid-gap: 1px;
-  border-radius: 6%;
-  grid-template-columns: repeat(2, 100px);
+  display: flex;
+  flex-wrap: wrap;
+  width: 201px;
+  height: 201px;
   margin: 10px;
+  border-radius: 6%;
   overflow: hidden;
+}
+
+@supports (display: grid) {
+  .compilationContainer {
+    display: grid;
+    grid-gap: 1px;
+    border-radius: 6%;
+    grid-template-columns: repeat(2, 100px);
+    margin: 10px;
+    overflow: hidden;
+  }
 }
 
 .compilationName {
@@ -62,7 +74,8 @@
 .media {
   position: relative;
   cursor: pointer;
-  display: inline-block;
+  min-width: 50%;
+  overflow: hidden;
 }
 
 .singlePic {
@@ -94,8 +107,15 @@
     max-width: 560px;
   }
 
+  @supports (display: grid) {
+    .compilationContainer {
+      grid-template-columns: repeat(2, 60px);
+    }
+  }
+
   .compilationContainer {
-    grid-template-columns: repeat(2, 60px);
+    width: 121px;
+    height: 121px;
   }
 
   .singlePic {

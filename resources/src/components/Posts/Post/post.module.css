@@ -1,10 +1,16 @@
 .post {
   position: relative;
-  margin: 1%;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
   background: #efefef;
+}
+
+@supports not (display: grid) {
+  .post {
+    width: 32%;
+    margin: 2px;
+  }
 }
 
 .post:hover .metaInfo {

@@ -32,7 +32,7 @@ const TopPagination = (props) => {
     if (returnedValue instanceof Promise)
       returnedValue.then(({page, lastPage}) => {
         setState({isFetching: false, page, lastPage});
-        if (typeof toBottom === 'boolean' && toBottom)
+        if (typeof toBottom === 'boolean' && toBottom && typeof scrollContainer.current.scrollTo === 'function')
           scrollContainer.current && scrollContainer.current.scrollTo(0, scrollContainer.current.scrollHeight);
         else if (toBottom && toBottom.current && typeof toBottom.current.scrollTo === 'function')
           toBottom.current.scrollTo(0, toBottom.current.scrollHeight);

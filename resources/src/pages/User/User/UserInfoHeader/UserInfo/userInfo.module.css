@@ -7,6 +7,12 @@
   padding: 0 20px 0 20px
 }
 
+@supports not (justify-content: space-evenly) {
+  .mainContainer {
+    justify-content: space-around;
+  }
+}
+
 .unitContainer {
   display: flex;
   flex-direction: row;
