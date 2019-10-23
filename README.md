@@ -8,11 +8,12 @@ Social network ReactJS application
 2. npm install
 3. Create MySQL database
 4. Create .env file with custom settings. You can find example in the root directory of Shuttle project with name .env.example
-5. Add api key by API_IPSTACK_KEY in .env file (Optional. For location detection)
-6. adonis migration:run
-7. adonis seed
-8. npm run start
-9. npm run front-start
+5. adonis key:generate
+6. Add api key by API_IPSTACK_KEY in .env file (Optional. For location detection)
+7. adonis migration:run
+8. adonis seed
+9. npm run start
+10. npm run front-start
 
 ## Stack
 
