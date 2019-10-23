@@ -7,6 +7,7 @@
   transform: translateZ(0);
   background-color: rgba(0, 0, 0, 0.7);
   overflow: hidden;
+  backdrop-filter: blur(4px);
 }
 
 .modalContent {
