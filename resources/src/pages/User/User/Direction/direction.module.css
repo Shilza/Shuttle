@@ -1,18 +1,18 @@
 
 .directionContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .username {
-    font-size: 20px;
-    margin-right: auto;
+  font-size: 20px;
+  margin-right: auto;
 }
 
 .friendshipMessageContainer {
   display: flex;
   width: 250px;
-  margin: 10px 0;
+  margin: 5px 0;
   flex-wrap: wrap;
   justify-content: center
 }
