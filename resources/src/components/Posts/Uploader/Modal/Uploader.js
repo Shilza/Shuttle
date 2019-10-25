@@ -26,12 +26,13 @@ const Uploader = ({loadMedia, trigger}) => {
   );
 };
 
-const DefaultTrigger = ({onClick}) =>
+const DefaultTrigger = ({onClick}) => (
   <Button
     className={styles.uploadButton}
     onClick={onClick} size='small'>
     New
-  </Button>;
+  </Button>
+);
 
 const UploadTrigger = ({onClick, trigger = <DefaultTrigger/>}) =>
   React.cloneElement(trigger, {onClick: onClick});

@@ -7,7 +7,6 @@ import PrivacyExplainingLabel from "components/ExplainingLabels/PrivacyLabel/Pri
 import BlacklistedExplainingLabel from "components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel";
 import {isMobile} from "utils/isMobile";
 
-import StoriesList from "./UserInfoHeader/Stories/StoriesList/StoriesList";
 import NavigationPanel from "./NavigationPanel/NavigationPanel";
 import UserInfoHeader from "./UserInfoHeader/UserInfoHeader";
 
@@ -24,14 +23,15 @@ const User = ({me, canSee, isPrivate, amBlacklisted}) => (
   </div>
 );
 
-const Public = ({me}) =>
+const Public = ({me}) => (
   <>
-    <StoriesList/>
+    {/*<StoriesList/>*/}
     {
       (me && !isMobile()) && <PostsUploader/>
     }
     <NavigationPanel/>
-  </>;
+  </>
+);
 
 User.propTypes = {
   me: PropTypes.bool.isRequired,

@@ -1,7 +1,7 @@
 
 .mainContainer {
   display: flex;
-  margin-top: 5px;
+  margin: 5px 0 10px 0;
   width: 100%;
   justify-content: space-evenly;
   padding: 0 20px 0 20px
