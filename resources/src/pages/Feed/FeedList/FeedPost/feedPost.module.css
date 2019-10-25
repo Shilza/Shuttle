@@ -30,6 +30,7 @@
   font-size: 0.85em;
   max-height: 200px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .comments::-webkit-scrollbar {

@@ -71,7 +71,7 @@
   justify-content: center;
   text-align: center;
   padding: 20px;
-  content: attr(error);
+  content: attr(data-error);
   position: absolute;
   top: 0;
   left: 0;

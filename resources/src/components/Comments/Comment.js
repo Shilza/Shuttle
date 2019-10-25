@@ -1,20 +1,32 @@
 import React, {useCallback, useState} from "react";
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
-import Linkify from 'linkifyjs/react';
 import moment from "moment";
 
+import CLinkify from "components/CLinkify";
 import Like from "components/Posts/PostsModal/PostsControl/Actions/Like";
 import DefaultAvatar from "components/DefaultAvatar";
+import LikesListModal from "components/Posts/PostsModal/PostsControl/Actions/Like/LikesListModal";
+import {shortifyNumber} from "utils/shortifyNumber";
 import CommentsModal from "./Modal/CommentsModal";
 
 import styles from './comment.module.css';
-
 
 const Comment = ({comment, setCommentLiked, onRemove}) => {
 
   const {isLiked, likes_count, owner, text, created_at, id, avatar} = comment;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(false);
+
+  const openList = (event) => {
+    event.stopPropagation();
+    setIsListOpen(true);
+  };
+
+  const closeList = useCallback((event) => {
+    event && event.stopPropagation();
+    setIsListOpen(false);
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -36,19 +48,23 @@ const Comment = ({comment, setCommentLiked, onRemove}) => {
           <div className={styles.container}>
             <div>
               <Link to={'/' + owner} onClick={e => e.stopPropagation()} className={styles.username}>{owner}</Link>
-              <Linkify className={styles.text}>{text}</Linkify>
+              <CLinkify className={styles.text}>{text}</CLinkify>
             </div>
             <div className={styles.metaContainer}>
               <time dateTime={created_at}>{moment(new Date(created_at), "YYYYMMDD").fromNow()}</time>
-              <Like
-                type='comment'
-                id={id}
-                isLiked={isLiked}
-                likesCount={likes_count}
-                onLike={setCommentLiked}
-              />
+              {
+               !!likes_count &&
+               <span className={styles.likesCount} onClick={openList}>Likes count: {shortifyNumber(likes_count)}</span>
+              }
             </div>
           </div>
+          <Like
+            type='comment'
+            id={id}
+            isLiked={isLiked}
+            onLike={setCommentLiked}
+            className={styles.like}
+          />
         </div>
       </div>
       <CommentsModal
@@ -58,6 +74,7 @@ const Comment = ({comment, setCommentLiked, onRemove}) => {
         closeModal={closeModal}
         onRemove={onRemove}
       />
+      <LikesListModal isVisible={isListOpen} onClose={closeList} type={'comment'} id={id} />
     </>
   )
 };

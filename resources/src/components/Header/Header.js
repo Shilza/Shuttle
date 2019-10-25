@@ -19,7 +19,7 @@ const Header = ({username, avatar, countOfUnreadMessages}) => (
     </Link>
     <Search/>
     <div className={styles.rightContainer}>
-      <Link to={'/u/messages'} className={styles.messagesLink} countofunreadmessages={countOfUnreadMessages}>
+      <Link to={'/u/messages'} className={styles.messagesLink} data-countofunreadmessages={countOfUnreadMessages}>
         <img src={plane} alt={'messages'} className={styles.messagesIcon}/>
       </Link>
       {

@@ -1,27 +1,12 @@
-import React, {useCallback, useState} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import {Icon} from "antd";
-
-import ListModal from 'components/Modal/ListModal';
 import * as LikeService from "services/likes";
-import ModalBody from "./ModalBody";
 
 import styles from './like.module.css';
 
 
-const Like = ({id, likesCount, isLiked, onLike, type}) => {
-
-  const [isListOpen, setIsListOpen] = useState(false);
-
-  const openList = (event) => {
-    event.stopPropagation();
-    setIsListOpen(true);
-  };
-
-  const closeList = useCallback((event) => {
-    event && event.stopPropagation();
-    setIsListOpen(false);
-  }, []);
+const Like = ({id, isLiked, onLike, type, className}) => {
 
   const like = event => {
     event.stopPropagation();
@@ -40,10 +25,7 @@ const Like = ({id, likesCount, isLiked, onLike, type}) => {
   };
 
   return (
-    <div>
-      {!!likesCount &&
-      <span onClick={openList} className={styles.likesCount}>{likesCount}</span>
-      }
+    <div className={className} title={'like'}>
       <button className={styles.action} onClick={like}>
         {
           isLiked
@@ -51,19 +33,16 @@ const Like = ({id, likesCount, isLiked, onLike, type}) => {
             : <Icon type="heart" className={styles.heart}/>
         }
       </button>
-      <ListModal visible={isListOpen} onClose={closeList} title={'Likes'}>
-        <ModalBody id={id} type={type}/>
-      </ListModal>
     </div>
   );
 };
 
 Like.propTypes = {
   id: PropTypes.number.isRequired,
-  likesCount: PropTypes.number,
   isLiked: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
-  onLike: PropTypes.func.isRequired
+  onLike: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default Like;

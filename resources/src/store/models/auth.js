@@ -107,11 +107,12 @@ export const auth = {
       dispatch.auth.login(user);
     },
     async logoutAsync(_, rootState) {
-      await AuthService.logout();
-
-      removeTokensFromLocalStorage();
-
-      Object.keys(rootState).forEach(item => dispatch[item].reset());
+      AuthService.logout()
+        .finally((data) => {
+          removeTokensFromLocalStorage();
+          Object.keys(rootState).forEach(item => dispatch[item].reset());
+          return data;
+        });
     },
     async update({editedData, history}) {
       const {data} = await UserService.update(editedData);

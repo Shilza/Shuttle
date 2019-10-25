@@ -4,6 +4,7 @@
   height: fit-content;
   overflow-y: auto;
   width: 100%;
+  scrollbar-width: thin;
 }
 
 .container::-webkit-scrollbar {

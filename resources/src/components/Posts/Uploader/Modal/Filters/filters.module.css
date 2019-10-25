@@ -1,6 +1,7 @@
 
 .wrapper {
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .wrapper::-webkit-scrollbar {

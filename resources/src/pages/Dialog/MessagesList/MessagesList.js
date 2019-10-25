@@ -17,14 +17,6 @@ const MessagesList = ({messages, getScrollParent, user, myId, getMessages, delet
 
   let lastMessage = useRef(null);
 
-  const isNeedAvatar = (messages, index) => {
-    const prevMessage = messages[index - 1];
-    if (Object.is(prevMessage, undefined))
-      return true;
-
-    return prevMessage && prevMessage.owner_id !== messages[index].owner_id
-  };
-
   const messageDate = (created_at) => {
     let text;
     if (lastMessage.current) {
@@ -76,9 +68,6 @@ const MessagesList = ({messages, getScrollParent, user, myId, getMessages, delet
                         key={message.id}
                         id={message.id}
                         my={message.owner_id === myId}
-                        avatar={user && user.avatar}
-                        username={user && user.username}
-                        withAvatar={isNeedAvatar(messages, index)}
                         text={message.text}
                         read={message.read}
                         time={message.created_at}

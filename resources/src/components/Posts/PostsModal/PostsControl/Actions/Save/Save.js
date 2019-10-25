@@ -22,7 +22,7 @@ const Save = ({post, dispatch}) => {
   const removeSaved = () => dispatch.posts.removeSavedPost(post.id);
 
   return (
-    <div className={styles.save} role='button'>
+    <div className={styles.save} title={'Save'} role='button'>
       {
         post.isSaved
           ? <div className={styles.bookmarkSolid} onClick={removeSaved}/>

@@ -17,8 +17,9 @@ const UserPage = ({currentUser, match, dispatch}) => {
   useEffect(() => {
     if (currentUser !== match.params.username)
       dispatch.users.getUser(match.params.username)
-        .catch(err => {
-          setError(err.response.data.message);
+        .then(err => {
+          if(err.response)
+            setError(err.response.data.message);
         })
         .finally(() => {
           setIsLoading(false);

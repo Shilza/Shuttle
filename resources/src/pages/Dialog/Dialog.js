@@ -43,6 +43,7 @@ const Dialog = ({myId, dispatch, match}) => {
 
   useEffect(() => {
     let wsThread = ws.getSubscription(topicName);
+
     if (dialogUser && myId && wsThread) {
 
       wsThread.emit('message', {
@@ -102,7 +103,7 @@ const Dialog = ({myId, dispatch, match}) => {
   }, [dialogUser, myId, ws.getSubscription(topicName)]);
 
   const sendMessage = useCallback((message) => {
-    dialog.current.emit('message', {
+    dialog.current && dialog.current.emit('message', {
       type: WsTypes.MESSAGE,
       receiverId: dialogUser.id,
       message
@@ -110,14 +111,14 @@ const Dialog = ({myId, dispatch, match}) => {
   }, [dialog, dialogUser]);
 
   const typing = useCallback(() => {
-    dialog.current.emit('message', {
+    dialog.current && dialog.current.emit('message', {
       type: WsTypes.IS_TYPING,
       receiverId: dialogUser.id
     })
   }, [dialog, dialogUser]);
 
   const deleteMsg = useCallback((messageId) => {
-    dialog.current.emit('message', {
+    dialog.current && dialog.current.emit('message', {
       type: WsTypes.DELETE,
       receiverId: dialogUser.id,
       messageId

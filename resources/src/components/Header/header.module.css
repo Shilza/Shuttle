@@ -51,8 +51,8 @@
   cursor: pointer;
 }
 
-.messagesLink:not([countofunreadmessages='0'])::after {
-  content: attr(countofunreadmessages);
+.messagesLink:not([data-countofunreadmessages='0'])::after {
+  content: attr(data-countofunreadmessages);
   position: absolute;
   top: -20%;
   left: 45%;

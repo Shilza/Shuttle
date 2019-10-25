@@ -2,6 +2,7 @@
 .container {
   position: relative;
   overflow-x: hidden;
+  scrollbar-width: thin;
 }
 
 .container::-webkit-scrollbar {

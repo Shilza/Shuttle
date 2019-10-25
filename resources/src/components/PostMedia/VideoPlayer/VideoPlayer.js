@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import React, {useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types';
 

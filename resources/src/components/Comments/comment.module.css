@@ -30,14 +30,15 @@
 
 .metaContainer {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 0.7em;
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: gray;
 }
 
 .likesCount {
-  margin-right: 5px;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
 .infoAvatarContainer {
@@ -47,7 +48,7 @@
 .avatar {
   width: 28px;
   height: 28px;
-  margin: 3px 7px 0 0;
+  margin: 3px 10px 0 0;
   border-radius: 50%;
 }
 
@@ -57,4 +58,11 @@
 
 .container {
   width: 100%;
+}
+
+.like {
+  display: flex;
+  align-items: flex-end;
+  font-size: 0.8em;
+  margin-left: 5px;
 }

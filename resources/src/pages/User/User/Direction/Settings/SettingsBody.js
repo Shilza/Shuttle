@@ -38,7 +38,7 @@ const SettingsBody = ({isPrivate, username, avatar, countOfUnreadMessages, notif
         <Link to={'/posts/liked'} className={styles.linkStyle}>Liked</Link>
       </li>
       <li>
-        <Link to={'/u/messages'} className={styles.messagesLink} countofunreadmessages={countOfUnreadMessages}>
+        <Link to={'/u/messages'} className={styles.messagesLink} data-countofunreadmessages={countOfUnreadMessages}>
           Messages
         </Link>
       </li>

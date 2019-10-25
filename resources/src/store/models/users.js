@@ -174,8 +174,9 @@ export const users = {
   },
   effects: (dispatch) => ({
     async getUser(username) {
-      const {data} = await UserService.getUser(username);
-      dispatch.users.setUser(data);
+      const data = await UserService.getUser(username);
+      data.data && dispatch.users.setUser(data.data);
+      return data;
     },
     async followAsync(data) {
       await FriendshipsService.follow(data);

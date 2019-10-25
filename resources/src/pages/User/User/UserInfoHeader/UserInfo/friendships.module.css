@@ -21,6 +21,7 @@
   padding: 0 4px 0 0;
   margin: 5px 0 0;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .friendshipsContainer > ul::-webkit-scrollbar {

@@ -36,8 +36,8 @@
   composes: linkStyle;
 }
 
-.messagesLink:not([countofunreadmessages='0'])::after {
-  content: attr(countofunreadmessages);
+.messagesLink:not([data-countofunreadmessages='0'])::after {
+  content: attr(data-countofunreadmessages);
   position: absolute;
   top: 5%;
   left: 110%;

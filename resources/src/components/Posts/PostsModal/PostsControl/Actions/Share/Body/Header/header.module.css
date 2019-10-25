@@ -1,12 +1,12 @@
 
 .container {
+  display: flex;
   padding: 0 15px 12px;
   border-bottom: 1px solid #efefef;
 }
 
 .media {
-  display: inline-block;
-  float: left;
+  position: static;
   width: 42px;
   height: 42px;
   border-radius: 10px;

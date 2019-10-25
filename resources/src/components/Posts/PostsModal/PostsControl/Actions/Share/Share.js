@@ -23,7 +23,7 @@ const Share = React.memo(({src, className}) => {
 
   return (
     <>
-      <button className={`${styles.button} ${className}`} onClick={open}>
+      <button className={`${styles.button} ${className}`} onClick={open} title={'Share'}>
         <img src={plane} alt={'Share post'} className={styles.plane}/>
       </button>
       {

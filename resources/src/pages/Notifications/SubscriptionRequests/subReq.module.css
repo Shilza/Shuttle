@@ -55,6 +55,7 @@
   justify-content: space-evenly;
   max-height: 30vh;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .cardsContainer::-webkit-scrollbar {

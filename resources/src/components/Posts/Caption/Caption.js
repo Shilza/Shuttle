@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import Linkify from 'linkifyjs/react';
+
+import CLinkify from "components/CLinkify";
 
 import styles from './caption.module.css';
 
@@ -19,7 +20,7 @@ const Caption = ({caption, username, className}) => {
         <div className={`${styles.captionContainer} ${className}`} style={{display: showCaption ? 'block' : 'flex'}}
              onClick={shopCaption}>
           <span className={styles.username}>{username}</span>
-          <Linkify className={showCaption ? styles.fullCaption : styles.shortCaption}>{caption}</Linkify>
+          <CLinkify className={showCaption ? styles.fullCaption : styles.shortCaption}>{caption}</CLinkify>
         </div>
       }
     </>

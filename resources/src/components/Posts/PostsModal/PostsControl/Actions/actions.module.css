@@ -38,3 +38,12 @@
   cursor: pointer;
   color: rgba(0, 0, 0, 1);
 }
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.likesCount {
+  cursor: pointer;
+}

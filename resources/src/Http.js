@@ -1,7 +1,7 @@
 import axios from 'axios';
+import moment from 'moment';
 import store from 'store';
 import * as AuthService from 'services/auth';
-import moment from 'moment';
 
 
 const token = document.head.querySelector('meta[name="csrf-token"]');
@@ -13,9 +13,9 @@ axios.interceptors.response.use(
     response => response,
     error => {
         if (error.response.status === 401)
-            store.dispatch.auth.logout();
+          store.dispatch.auth.logoutAsync();
 
-        return Promise.reject(error);
+        return error;
     }
 );
 
@@ -27,7 +27,7 @@ axios.interceptors.request.use(
         //if it is not valid we send a refresh token
         //isRefreshing variable is needed to prevent recursion
         if (localStorage.hasOwnProperty('expiresIn') &&
-            localStorage.getItem('expiresIn') < moment().format('X') &&
+            +localStorage.getItem('expiresIn') < +moment().format('X') &&
             !isRefreshing
         ) {
             isRefreshing = true;
@@ -41,7 +41,7 @@ axios.interceptors.request.use(
             config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
         }
 
-        return Promise.resolve(config);
+        return config;
     }
 );
 

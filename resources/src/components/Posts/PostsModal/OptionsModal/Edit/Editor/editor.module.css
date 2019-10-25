@@ -1,7 +1,8 @@
 
 .wrapper {
-  overflow-y: auto;
   max-width: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -34,6 +35,7 @@
   padding: 4px 8px;
   width: 100%;
   outline: none;
+  scrollbar-width: thin;
 }
 
 .caption::-webkit-scrollbar {

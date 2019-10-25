@@ -1,20 +1,19 @@
 import React, {useCallback, useState} from "react"
 import PropTypes from "prop-types"
-import Linkify from 'linkifyjs/react'
 import moment from "moment";
 
+import CLinkify from 'components/CLinkify'
 import OptionsModal from "components/Modal/OptionsModal";
 import Modal from "components/Modal";
 
 import Post from "./Post";
-import Avatar from "./Avatar";
 import Images from "./Images";
 import SingleImage from "./Images/SingleImage";
 
 import styles from "./message.module.css";
 
 
-const Message = ({id, username, avatar, post, images, text, my, read, time, deleteMsg, withAvatar = false}) => {
+const Message = ({id, post, images, text, my, read, time, deleteMsg}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -33,7 +32,6 @@ const Message = ({id, username, avatar, post, images, text, my, read, time, dele
   return (
     <>
       <div className={my ? styles.myWrapper : styles.wrapper} onClick={openModal}>
-        {withAvatar && <Avatar my={my} post={post} src={avatar} images={images} username={username}/>}
         {
           post
             ? <Post post={post} my={my} postCode={text.split('/')[4]}/>
@@ -42,7 +40,7 @@ const Message = ({id, username, avatar, post, images, text, my, read, time, dele
                 text.length > 0 || (images && images.length > 1) ?
                   <div className={my ? styles.myText : styles.text}>
                     {my && !read && <div className={styles.unreadBadge}/>}
-                    <Linkify>{text}</Linkify>
+                    <CLinkify>{text}</CLinkify>
                     <Images images={images}/>
                   </div>
                   :
@@ -67,15 +65,12 @@ const Message = ({id, username, avatar, post, images, text, my, read, time, dele
 
 Message.propTypes = {
   id: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
-  avatar: PropTypes.string,
   text: PropTypes.string.isRequired,
   my: PropTypes.bool.isRequired,
   read: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.number
   ]),
-  withAvatar: PropTypes.bool,
   deleteMsg: PropTypes.func.isRequired
 };
 
