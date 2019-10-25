@@ -40,10 +40,7 @@ class NotificationsService {
     const posts = await this._getPosts(likes, comments);
 
     notifications.data = notifications.data.map(item => {
-      const owner = users.rows.find(user => {
-        if (user.id === item.initiator_id)
-          return true;
-      });
+      const owner = users.rows.find(user => user.id === item.initiator_id);
       item.username = owner.username;
       item.avatar = owner.avatar;
 
@@ -53,19 +50,16 @@ class NotificationsService {
             if (like.id === item.entity_id) {
               switch (like.type) {
                 case 1:
-                  item.post_src = (posts.rows.find(post => {
-                    if (post.id === like.entity_id)
-                      return true;
-                  })).src;
+                  let post = posts.rows.find(post => post.id === like.entity_id);
+                  item.post_src = post && post.src;
                   item.info = 'liked your post';
                   break;
                 case 2:
                   comments.rows.forEach(comment => {
-                    if (comment.id === like.entity_id)
-                      item.post_src = (posts.rows.find(post => {
-                        if (post.id === comment.post_id)
-                          return true;
-                      })).src;
+                    if (comment.id === like.entity_id) {
+                      let post = posts.rows.find(post => post.id === comment.post_id);
+                      item.post_src = post && post.src;
+                    }
                   });
                   item.info = 'liked your comment';
                   break;
@@ -81,11 +75,8 @@ class NotificationsService {
               if (comment.text.length > 20)
                 text = text.slice(0, 20) + '...';
               item.text = text;
-              item.post_src = (posts.rows.find(post => {
-                  if (post.id === comment.post_id)
-                    return true;
-                }
-              )).src;
+              let post = posts.rows.find(post => post.id === comment.post_id);
+              item.post_src = post && post.src;
             }
           });
           break;
