@@ -3,6 +3,7 @@ input[type=range].slider {
   width: 100%;
   margin: 4.05px 0;
   border: 0;
+  background-color: transparent;
 }
 input[type=range].slider:focus {
   outline: none;

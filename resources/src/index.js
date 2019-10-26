@@ -11,6 +11,7 @@ import App from "./app/App";
 import ErrorBoundary from "./app/ErrorBoundary";
 import store from "./store";
 import * as ws from "./Ws";
+import * as ThemeManager from "./utils/ThemeManager";
 import * as serviceWorker from './serviceWorker';
 
 render(
@@ -23,6 +24,7 @@ render(
 );
 
 ws.start();
+ThemeManager.initialize();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

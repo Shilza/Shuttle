@@ -79,7 +79,7 @@ class ResetPass extends React.Component {
 
     return (
       <Spin spinning={this.state.loading} indicator={antIcon} delay={150}>
-        <h1 style={{textAlign: 'center'}}>Reset password</h1>
+        <h1 className={styles.title}>Reset password</h1>
         <Form onSubmit={this.handleSubmit}>
           <Email
             getFieldDecorator={getFieldDecorator}

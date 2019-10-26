@@ -1,10 +1,10 @@
 
-
 .searchContainer {
   color: #9a9a9a;
   display: flex;
   align-items: center;
-  border: 1px solid #e7e7e7;
+  border: 1px solid var(--accent-second);
+  background-color: transparent;
   padding: 6px 12px;
   border-radius: 6px;
   margin: 0 15px 15px;
@@ -14,10 +14,11 @@
   border: none;
   padding: 0 5px;
   margin-left: 5px;
-  color: #000;
+  color: var(--text);
   width: 100%;
   transition: 140ms;
   outline: none;
+  background-color: transparent;
 }
 
 .searchContainer input::placeholder {

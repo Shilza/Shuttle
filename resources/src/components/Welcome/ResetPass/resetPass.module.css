@@ -1,9 +1,14 @@
 .submit {
-    width: 100%;
+  width: 100%;
 }
 
 .loginRegisterContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  color: var(--text);
 }

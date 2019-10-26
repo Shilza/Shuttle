@@ -13,7 +13,7 @@
 
 .container::-webkit-scrollbar-thumb {
   width: 4px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 2px;
 }
 

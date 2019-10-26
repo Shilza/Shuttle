@@ -3,7 +3,7 @@
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  background: #efefef;
+  background: var(--accent);
 }
 
 @supports not (display: grid) {

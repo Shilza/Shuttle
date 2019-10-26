@@ -28,12 +28,12 @@
   align-items: center;
   font-size: 1rem;
   min-height: 70px;
-  padding: 0 10px;
-  border-bottom: solid 1px #efefef;
+  padding: 0 15px;
+  border-bottom: solid 1px var(--accent);
 }
 
 .user:hover {
-  background-color: #fafafa;
+  background-color: var(--accent);
 }
 
 .user:last-child {
@@ -56,10 +56,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: #999;
+  max-height: 40px;
 }
 
 .avatar {
-  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
   height: 48px;
   border-radius: 50%;
   z-index: 3;

@@ -52,7 +52,7 @@ class Login extends React.Component {
 
     return (
       <Spin spinning={this.state.loading} indicator={antIcon}>
-        <h1 style={{textAlign: 'center'}}>Login</h1>
+        <h1 className={styles.title}>Login</h1>
         <Form onSubmit={this.handleSubmit}>
           <Username getFieldDecorator={getFieldDecorator}/>
           <Password

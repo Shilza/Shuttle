@@ -7,9 +7,10 @@
   justify-content: space-evenly;
   align-items: center;
   height: 45px;
-  border-top: 1px solid #efefef;
+  border-top: 1px solid var(--accent);
   width: 100%;
-  background: white;
+  background: var(--primary);
+  color: var(--text);
   z-index: 999;
 }
 

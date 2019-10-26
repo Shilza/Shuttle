@@ -4,7 +4,7 @@
   max-width: 650px;
   margin: 0 auto;
   min-height: calc(100vh - 150px);
-  background: #fff;
+  background: var(--primary);
 }
 
 .explainingContainer {

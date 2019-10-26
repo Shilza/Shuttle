@@ -1,7 +1,7 @@
 
 .actionsContainer {
-  border-top: 1px solid #efefef;
-  border-bottom: 1px solid #efefef;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
   padding: 10px 0 10px 0;
   margin-top: auto;
 }

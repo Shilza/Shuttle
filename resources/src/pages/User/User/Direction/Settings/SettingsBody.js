@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import styles from './settings.module.css';
-import Logout from "./Logout";
 import {Switch} from 'antd';
 import {connect} from "react-redux";
 import {message} from "antd/lib/index";
 import {Link} from "react-router-dom";
-
 import DefaultAvatar from "components/DefaultAvatar";
+
+import Theme from "./Theme";
+import Logout from "./Logout";
+
+import styles from './settings.module.css';
 
 const SettingsBody = ({isPrivate, username, avatar, countOfUnreadMessages, notificationsCount, close, dispatch}) => {
 
@@ -53,6 +55,9 @@ const SettingsBody = ({isPrivate, username, avatar, countOfUnreadMessages, notif
       <li className={styles.privateContainer}>
         <span>Private account</span>
         <Switch defaultChecked={!!isPrivate} size='small' onChange={changePrivacy}/>
+      </li>
+      <li className={styles.privateContainer}>
+        <Theme/>
       </li>
       <Logout/>
     </ul>

@@ -2,7 +2,7 @@
 .container {
   display: flex;
   padding: 0 15px 12px;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--accent);
 }
 
 .media {
@@ -10,7 +10,7 @@
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
   object-fit: cover;
 }
 
@@ -18,5 +18,7 @@
   border: 0;
   width: calc(100% - 70px);
   margin-left: 15px;
+  color: var(--text);
   outline: none;
+  background-color: transparent;
 }

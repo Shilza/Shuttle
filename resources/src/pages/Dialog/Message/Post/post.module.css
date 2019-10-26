@@ -9,8 +9,8 @@
   flex-direction: column;
   max-width: 70%;
   min-width: 230px;
-  background: #fff;
-  border: 1px solid #efefef;
+  background: var(--primary);
+  border: 1px solid var(--accent);
   border-radius: 15px;
   overflow: hidden;
   color: #000;

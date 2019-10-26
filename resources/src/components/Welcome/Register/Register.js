@@ -87,7 +87,7 @@ class Register extends React.Component {
 
     return (
       <Spin spinning={this.state.loading} indicator={antIcon} delay={150}>
-        <h1 style={{textAlign: 'center'}}>Register</h1>
+        <h1 className={styles.title}>Register</h1>
         <Form onSubmit={this.handleSubmit}>
           <Email getFieldDecorator={getFieldDecorator}/>
           <Username getFieldDecorator={getFieldDecorator}/>

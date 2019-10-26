@@ -5,6 +5,17 @@
   padding: 0 5px;
   height: 350px;
   overflow: auto;
+  scrollbar-width: thin;
+}
+
+.container::-webkit-scrollbar {
+  width: 2px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: var(--scrollbar);
+  border-radius: 1px;
 }
 
 .mobileContainer {

@@ -9,23 +9,26 @@ import PostsUploader from "../Posts/Uploader";
 
 import styles from './toolbar.module.css';
 
+const currentLocationColor = '#096dd9';
+
+const getTextColor = () => getComputedStyle(document.documentElement).getPropertyValue('--text');
+
 const Toolbar = ({notificationsCount, dispatch}) => {
-  let feedStyle = {color: 'rgba(0, 0, 0, .7)'};
-  let notificationsStyle = {color: 'rgba(0, 0, 0, .7)'};
+  let feedStyle = {color: getTextColor()};
+  let notificationsStyle = {color: getTextColor()};
 
   const openSearch = () => {
     dispatch.search.setIsSearchFocused(true);
   };
 
   if (window.location.href === window.location.origin + '/')
-    feedStyle.color = '#096dd9';
+    feedStyle.color = currentLocationColor;
   else if (window.location.href.includes('notifications'))
-    notificationsStyle.color = '#096dd9';
+    notificationsStyle.color = currentLocationColor;
 
   return (
     <div className={styles.toolbar}>
-      <Link to={"/"}
-            style={feedStyle}>
+      <Link to={"/"} style={feedStyle}>
         <Icon type={'fire'}/>
       </Link>
       <Icon type={'search'} className={styles.icon} onClick={openSearch}/>

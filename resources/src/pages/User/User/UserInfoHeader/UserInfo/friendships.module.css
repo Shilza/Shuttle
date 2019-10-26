@@ -1,11 +1,11 @@
 
 .friendshipsContainer {
-  background: white;
+  background-color: var(--primary);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: black;
+  color: var(--text);
   align-items: center;
   margin-left: 0;
   padding-left: 0;
@@ -30,7 +30,7 @@
 
 .friendshipsContainer > ul::-webkit-scrollbar-thumb {
   width: 4px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 2px;
 }
 
@@ -69,22 +69,23 @@
   outline: none;
   transition: 140ms;
   cursor: pointer;
-  background: #fff;
-  color: #000;
-  border: 1px solid #efefef;
+  background: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--accent);
 }
 
 .unFollowButton:hover {
-  background: #fff;
+  background-color: var(--accent);
 }
 
 .search {
   padding: 4px 8px;
-  color: #000;
+  color: var(--text);
   width: 100%;
   transition: 140ms;
   outline: none;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
+  background-color: transparent;
   border-radius: 5px;
 }
 

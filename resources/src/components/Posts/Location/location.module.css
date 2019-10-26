@@ -1,6 +1,7 @@
 
 .label {
   display: flex;
+  color: var(--text);
 }
 
 .inputLocation {
@@ -9,12 +10,15 @@
   padding: 0 5px 2px 5px;
   margin: 0 10px;
   border-bottom: 1px solid #1e90ff;
+  background-color: transparent;
+  color: var(--text);
   outline: none;
 }
 
 .recommendedContainer {
   display: flex;
   margin: 10px 0;
+  color: var(--text);
 }
 
 .locations {
@@ -26,13 +30,14 @@
 }
 
 .button {
-  color: #000;
+  color: var(--text);
   background: transparent;
   padding: 2px 8px;
   width: 100%;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
   margin: 5px 0 ;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .container {

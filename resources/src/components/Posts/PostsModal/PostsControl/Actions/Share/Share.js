@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {Drawer} from "react-pretty-drawer";
 
 import {isMobile} from "utils/isMobile";
-import plane from 'images/plane.svg';
 import Modal from "components/Modal/Modal";
+import SvgIcon from "components/SvgIcon";
+import planeIcon from "images/plane.svg";
 
 import Body from "./Body";
 import styles from './share.module.css';
@@ -24,7 +25,7 @@ const Share = React.memo(({src, className}) => {
   return (
     <>
       <button className={`${styles.button} ${className}`} onClick={open} title={'Share'}>
-        <img src={plane} alt={'Share post'} className={styles.plane}/>
+        <SvgIcon title={'Share post'} icon={planeIcon}/>
       </button>
       {
         isMobile()

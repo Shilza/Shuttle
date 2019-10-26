@@ -7,13 +7,14 @@
   padding: 8px 12px;
   min-height: 40px;
   align-items: center;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--accent);
 }
 
 .title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  color: var(--text);
 }
 
 .next {
@@ -21,4 +22,9 @@
   background: transparent;
   color: #1e90ff;
   margin-left: auto;
+  cursor: pointer;
+}
+
+.back {
+  color: var(--text);
 }

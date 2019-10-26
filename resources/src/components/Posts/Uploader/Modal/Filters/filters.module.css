@@ -10,7 +10,7 @@
 
 .wrapper::-webkit-scrollbar-thumb {
   width: 4px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 1px;
 }
 
@@ -28,4 +28,7 @@
 
 .icon {
   width: 20px;
+  height: 22px;
+  background-color: var(--icon);
+  cursor: pointer;
 }

@@ -17,7 +17,7 @@ const UserFriendshipCard = ({avatar, onUnfollow, username, id, onRemove, closeMo
       }
       <span>{username}</span>
     </Link>
-    {onRemove && <Icon type={'close'} onClick={() => onRemove(id)}/>}
+    {onRemove && <Icon type={'close'} onClick={() => onRemove(id)} title={'Remove'}/>}
     {onUnfollow && <button onClick={() => onUnfollow(id)} className={styles.unFollowButton}>Unfollow</button>}
   </li>
 );

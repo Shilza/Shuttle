@@ -52,7 +52,7 @@ const Location = React.memo(({defaultLocation = '', onChange}) => {
       {
         (isLocationOpen || defaultLocation) ?
           <div className={styles.container}>
-            <Icon type={'close'} className={styles.closeButton} onClick={closeLocation}/>
+            <Icon type={'close'} className={styles.closeButton} title={'Close'} onClick={closeLocation}/>
             <label className={styles.label}>
               Place
               <input

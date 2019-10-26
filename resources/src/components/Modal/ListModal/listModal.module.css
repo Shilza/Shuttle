@@ -4,11 +4,12 @@
   min-width: 310px;
   max-height: 95vh;
   border-radius: 15px;
-  background: #fff;
+  background: var(--primary);
+  color: var(--text);
 }
 
 .title {
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +17,7 @@
   font-weight: 600;
   height: 40px;
   margin: 0;
+  color: var(--text);
 }
 
 .body {
@@ -30,6 +32,6 @@
 
 .body::-webkit-scrollbar-thumb {
   width: 6px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 2px;
 }

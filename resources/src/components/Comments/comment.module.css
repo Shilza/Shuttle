@@ -21,11 +21,11 @@
   display: inline-flex;
   margin-right: 5px;
   font-weight: 500;
-  color: #000;
+  color: var(--text);
 }
 
 .username:hover {
-  color: #000;
+  color: var(--text);
 }
 
 .metaContainer {

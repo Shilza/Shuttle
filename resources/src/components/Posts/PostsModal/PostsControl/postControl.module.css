@@ -3,7 +3,9 @@
   display: flex;
   flex-direction: column;
   width: 280px;
-  margin: 16px 16px 14px 16px;
+  padding: 16px 16px 14px 16px;
+  background-color: var(--primary);
+  color: var(--text);
 }
 
 @media (max-width: 810px) {
@@ -17,7 +19,7 @@
   flex-direction: row;
   padding-bottom: 10px;
   align-items: center;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--accent);
   order: -2;
 }
 
@@ -35,7 +37,8 @@
 }
 
 .username {
-  color: #262626;
+  color: var(--text);
+  font-weight: bold;
 }
 
 .location {
@@ -61,7 +64,7 @@
 
 .caption::-webkit-scrollbar-thumb {
   width: 2px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 1px;
 }
 
@@ -88,6 +91,7 @@
   border: none;
   width: 100%;
   margin-right: 8px;
+  background-color: transparent;
   outline: 0;
 }
 
@@ -104,7 +108,7 @@
 
 .commentsList::-webkit-scrollbar-thumb {
   width: 2px;
-  background: rgba(33, 33, 33, 0.32);
+  background: var(--scrollbar);
   border-radius: 1px;
 }
 
@@ -116,9 +120,10 @@
 
 .submitButton {
   border: 0;
-  background: 0;
+  background-color: transparent;
   padding: 0;
   color: #1e90ff;
+  margin-top: 8px;
   cursor: pointer;
 }
 

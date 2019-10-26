@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import SearchInput from "components/SearchInput/SearchInput";
+import SearchInput from "components/SearchInput";
 
 import {isMobile} from "utils/isMobile";
 import useDialogs from "utils/useDialogs"

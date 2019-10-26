@@ -1,16 +1,18 @@
 
 .container {
-  background: #fff;
+  background: var(--primary);
   width: 100%;
   max-width: 650px;
   display: flex;
-  border-top: 1px solid #efefef;
+  border-top: 1px solid var(--accent);
   padding: 10px;
 }
 
 .messageInput {
   padding: 5px 38px 5px 8px;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
+  background-color: transparent;
+  color: var(--text);
   border-radius: 25px;
   width: 100%;
   transition: 130ms;

@@ -14,7 +14,7 @@ const Feed = ({posts, dispatch}) => {
   const fetcher = useCallback((page) => {
     return dispatch.posts.fetchFeed(page)
       .then((data) => {
-        if(!firstLoading)
+        if (!firstLoading)
           setFirstLoading(true);
         return data;
       })

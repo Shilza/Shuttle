@@ -16,10 +16,9 @@
   border: none;
   background: none;
   z-index: 1;
-  width: 20px;
+  width: 14px;
   transition: all 0.16s ease-in 0.16s;
-  color: transparent;
-
+  color: var(--text);
 }
 
 .searchBox input[type="text"]:hover {
@@ -30,16 +29,12 @@
   cursor: text;
 }
 
-.searchBox input[type="text"]:hover + span {
-  background: rgba(255, 255, 255, 0.2);
-}
-
 .searchBox input[type="text"]:focus {
   width: 220px;
   padding: 0 10px 10px;
   outline: none;
   background: none;
-  color: black;
+  color: var(--text)
 }
 
 .searchBox input[type="text"]:focus + span {

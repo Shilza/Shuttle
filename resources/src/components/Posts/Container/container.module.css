@@ -1,8 +1,7 @@
 
 .container {
-  background: #fff;
+  background: var(--primary);
   display: flex;
-  justify-content: center;
   flex-direction: column;
   height: 600px;
   max-height: calc(100vh - 50px);

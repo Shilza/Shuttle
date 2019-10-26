@@ -1,8 +1,4 @@
 
-.settingsTitle {
-  margin-left: 10px;
-}
-
 .settingsContainer {
   display: flex;
   flex-direction: column;
@@ -47,7 +43,7 @@
   justify-content: center;
   font-size: 0.6rem;
   font-weight: bold;
-  background: red;
+  background: rgb(255, 68, 75);
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -69,7 +65,7 @@
   justify-content: center;
   font-size: 0.6rem;
   font-weight: bold;
-  background: red;
+  background: rgb(255, 68, 75);
   width: 16px;
   height: 16px;
   border-radius: 50%;

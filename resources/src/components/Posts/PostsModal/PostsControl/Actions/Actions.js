@@ -12,8 +12,6 @@ import {shortifyNumber} from "utils/shortifyNumber";
 
 import styles from './actions.module.css';
 
-
-
 const Actions = ({post, dispatch, className}) => {
 
   const {likes_count, created_at, isLiked, id} = post;
@@ -45,7 +43,7 @@ const Actions = ({post, dispatch, className}) => {
             }
             <Like type='post' id={id} isLiked={isLiked} onLike={onLike}/>
           </div>
-          <Share className={styles.action} src={post.src}/>
+          <Share src={post.src}/>
           <Save post={post}/>
         </div>
         <time dateTime={created_at}>{moment(new Date(created_at), "YYYYMMDD").fromNow()}</time>

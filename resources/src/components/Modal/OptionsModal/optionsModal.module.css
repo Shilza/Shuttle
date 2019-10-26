@@ -1,29 +1,30 @@
 
 .container {
-    background: white;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: black;
-    min-width: 300px;
-    align-items: center;
-    margin-left: 0;
-    padding-left: 0;
-    max-width: 310px;
+  background: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 300px;
+  align-items: center;
+  margin-left: 0;
+  padding-left: 0;
+  max-width: 310px;
+  color: var(--text);
 }
 
 .container > li:nth-child(n) {
-    border-bottom: 1px solid #efefef;
-    width: 100%; padding: 8px;
-    list-style-type: none;
-    cursor: pointer;
+  border-bottom: 1px solid var(--accent);
+  width: 100%;
+  padding: 8px;
+  list-style-type: none;
+  cursor: pointer;
 }
 
 .container > li:first-child {
-    color: red;
+  color: red;
 }
 
 .container > li:last-child {
-    border: none;
+  border: none;
 }

@@ -22,7 +22,7 @@
 
 .text {
   position: relative;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
   padding: 5px 10px;
   border-radius: 25px;
   max-width: 70%;
@@ -40,7 +40,7 @@
 
 .myText {
   composes: text;
-  background: #efefef;
+  background-color: var(--accent);
   margin-left: auto;
   width: fit-content;
 }

@@ -1,12 +1,16 @@
 
 .container {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .text {
-    text-align: center;
+  text-align: center;
+}
+
+.icon {
+  height: 32px;
 }

@@ -10,11 +10,11 @@
 
 .username {
   margin-left: 10px;
-  color: #000;
+  color: var(--text);
 }
 
 .username:hover {
-  color: #000;
+  color: var(--text);
 }
 
 .avatar {

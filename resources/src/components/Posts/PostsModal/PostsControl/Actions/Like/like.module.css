@@ -4,11 +4,11 @@
 }
 
 .heart {
-  color: rgba(0, 0, 0, 1);
+  color: var(--icon);
 }
 
 .redHeart {
-  color: rgba(255, 0, 0, 1);
+  color: rgb(255, 68, 75);
   animation: beat;
   animation-duration: 300ms;
   animation-timing-function: ease-out;

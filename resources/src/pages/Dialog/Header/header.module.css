@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--accent);
   background: #fdfdfd;
 }
 

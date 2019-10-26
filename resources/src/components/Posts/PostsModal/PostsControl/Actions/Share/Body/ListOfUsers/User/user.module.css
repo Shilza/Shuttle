@@ -24,6 +24,7 @@
 
 .username {
   font-weight: 700;
+  color: var(--text);
 }
 
 .sendButton {
@@ -46,7 +47,7 @@
   composes: sendButton;
   background: #fff;
   color: #000;
-  border: 1px solid #efefef;
+  border: 1px solid var(--accent);
 }
 
 .sentButton:hover {

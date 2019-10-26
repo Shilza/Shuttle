@@ -1,28 +1,29 @@
 
 .sectionContainer {
-    max-width: 350px;
-    margin: auto;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  max-width: 350px;
+  margin: auto;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--text);
 }
 
 .iconContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background: transparent;
-    border: 2px solid rgb(100, 100 , 100);
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: transparent;
+  border: 2px solid rgb(100, 100, 100);
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
 }
 
 .sectionLabel {
-    font-size: x-large;
-    font-weight: 400;
+  font-size: x-large;
+  font-weight: 400;
 }

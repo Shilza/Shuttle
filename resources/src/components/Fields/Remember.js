@@ -8,7 +8,7 @@ const Remember = ({getFieldDecorator, remember, onChange}) => (
             valuePropName: 'checked',
             initialValue: remember,
         })(
-            <Checkbox onChange={onChange}>Remember me</Checkbox>
+            <Checkbox onChange={onChange} style={{color: 'var(--text)'}}>Remember me</Checkbox>
         )}
     </>
 );

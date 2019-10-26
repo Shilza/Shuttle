@@ -4,6 +4,10 @@ import {connect} from "react-redux";
 import {debounce} from "utils/debounce";
 import store from 'store';
 
+import SvgIcon from "components/SvgIcon";
+import bookmarkFlat from './icons/bookmarkFlat.svg';
+import bookmarkSolid from './icons/bookmarkSolid.svg';
+
 import styles from './save.module.css';
 
 const Save = ({post, dispatch}) => {
@@ -25,8 +29,8 @@ const Save = ({post, dispatch}) => {
     <div className={styles.save} title={'Save'} role='button'>
       {
         post.isSaved
-          ? <div className={styles.bookmarkSolid} onClick={removeSaved}/>
-          : <div className={styles.bookmarkFlat} onClick={save}/>
+          ? <SvgIcon icon={bookmarkSolid} onClick={removeSaved}/>
+          : <SvgIcon icon={bookmarkFlat} onClick={save}/>
       }
     </div>
   );

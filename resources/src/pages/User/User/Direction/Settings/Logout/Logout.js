@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import styles from './settings.module.css';
 import {Icon} from "antd";
+import styles from '../settings.module.css';
 
 const Logout = ({dispatch}) => {
 

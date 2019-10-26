@@ -1,17 +1,26 @@
-main {
-    background-color: #fafafa;
-}
 
 .ant-drawer-body {
-    height: calc(100% - 55px);
+  height: 100%;
+  background-color: var(--main-background);
 }
 
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    background: #EAEAEA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  background: #EAEAEA;
+}
+
+:root {
+  --primary: #fff;
+  --accent: #efefef;
+  --accent-second: #e6e6e6;
+  --main-background: #fafafa;
+  --text: #666;
+  --text-secondary: #999;
+  --icon: #000;
+  --scrollbar: #666;
 }
