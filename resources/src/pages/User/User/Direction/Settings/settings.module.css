@@ -24,7 +24,7 @@
 }
 
 .linkStyle:hover {
-  color: black;
+  color: var(--text);
 }
 
 .messagesLink {

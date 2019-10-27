@@ -83,7 +83,7 @@
   content: '';
   left: 5px;
   top: 8px;
-  background: #2f57f9;
+  background: var(--badge-unread-message);
   opacity: 0.6;
   width: 8px;
   height: 8px;

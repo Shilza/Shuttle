@@ -2,7 +2,6 @@
 .editContainer {
   position: relative;
   padding: 3em 8%;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -4,7 +4,7 @@ import styles from './materialInput.module.css';
 
 const MaterialInput = React.forwardRef(({label, onChange, ...props}, ref) => (
   <div className={styles.group}>
-    <input ref={ref} type="text" onChange={onChange} {...props}/>
+    <input ref={ref} type="text" className={styles.input} onChange={onChange} {...props}/>
     <span className={styles.highlight}/>
     <span className={styles.bar}/>
     <label className={styles.label}>{label}</label>

@@ -26,12 +26,8 @@ const Like = ({id, isLiked, onLike, type, className}) => {
 
   return (
     <div className={className} title={'Like'}>
-      <button className={styles.action} onClick={like}>
-        {
-          isLiked
-            ? <Icon type="heart" className={styles.redHeart}/>
-            : <Icon type="heart" className={styles.heart}/>
-        }
+      <button className={isLiked ? styles.redHeart : styles.heart} onClick={like}>
+        <Icon type="heart"/>
       </button>
     </div>
   );

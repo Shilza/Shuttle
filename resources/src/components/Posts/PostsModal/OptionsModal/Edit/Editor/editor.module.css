@@ -27,6 +27,7 @@
   border: 1px solid var(--accent);
   margin: 5px 0;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .caption {

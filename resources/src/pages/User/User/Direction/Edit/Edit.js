@@ -68,6 +68,7 @@ const Edit = React.memo(({ dispatch, editedData, history, user }) => {
               title='Edit profile'
               visible={isEditVisible}
               onCancel={closeDrawer}
+              bodyStyle={{backgroundColor: 'var(--primary)'}}
               onOk={submit}
             >
               <EditBody/>

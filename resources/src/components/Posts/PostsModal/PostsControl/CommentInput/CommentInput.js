@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import Loader from "components/Paginator/Loader";
 import * as CommentsService from 'services/comments';
-import {isMobile} from "utils/isMobile";
 
 import styles from '../postControl.module.css';
 
@@ -45,7 +44,7 @@ const CommentInput = React.memo(({post_id, onComment}) => {
         onChange={onInputChange}
       />
       {
-        !isMobile() && isButtonVisible && !loading &&
+        isButtonVisible && !loading &&
         <button
           type={'submit'}
           className={styles.submitButton}

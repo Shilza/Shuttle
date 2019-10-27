@@ -1,13 +1,11 @@
 
-.action {
-  composes: action from '../actions.module.css';
-}
-
 .heart {
+  composes: action from '../actions.module.css';
   color: var(--icon);
 }
 
 .redHeart {
+  composes: action from '../actions.module.css';
   color: rgb(255, 68, 75);
   animation: beat;
   animation-duration: 300ms;

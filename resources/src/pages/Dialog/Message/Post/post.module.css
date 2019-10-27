@@ -13,18 +13,18 @@
   border: 1px solid var(--accent);
   border-radius: 15px;
   overflow: hidden;
-  color: #000;
+  color: var(--text);
   transition: 60ms;
 }
 
 .container:hover {
-  color: #000;
-  background: #d4d4d4;
+  color: var(--text);
+  background: var(--post-message-second);
 }
 
 .myContainer {
   composes: container;
-  background: #efefef;
+  background: var(--accent);
   margin-left: auto;
 }
 

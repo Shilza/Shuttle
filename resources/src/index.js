@@ -1,5 +1,5 @@
-import './css/normalize.css';
-import './css/styles.css';
+import './styles/normalize.css';
+import './styles/styles.css';
 import 'antd/dist/antd.css';
 import 'core-js/features/promise';
 

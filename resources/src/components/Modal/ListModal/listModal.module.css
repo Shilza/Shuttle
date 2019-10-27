@@ -9,7 +9,7 @@
 }
 
 .title {
-  border-bottom: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent-second);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
   font-weight: 600;
   height: 40px;
   margin: 0;
-  color: var(--text);
+  color: var(--modal-heading);
 }
 
 .body {

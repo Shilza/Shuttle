@@ -14,6 +14,14 @@ export const toDarkTheme = () => {
   rootStyle.setProperty('--text-secondary', '#999');
   rootStyle.setProperty('--icon', '#999');
   rootStyle.setProperty('--scrollbar', '#666');
+  rootStyle.setProperty('--modal-heading', '#efefef');
+  rootStyle.setProperty('--badge-unread-message', '#00c4ff');
+  rootStyle.setProperty('--post-message-second', '#404040');
+  rootStyle.setProperty('--dialog-heading', '#212121');
+
+  window.less.modifyVars({
+    '@btn-default-bg': '#e2e2e2',
+  });
 };
 
 export const toLightTheme = () => {
@@ -28,6 +36,14 @@ export const toLightTheme = () => {
   rootStyle.setProperty('--text-secondary', '#999');
   rootStyle.setProperty('--icon', '#000');
   rootStyle.setProperty('--scrollbar', '#bfbfbf');
+  rootStyle.setProperty('--modal-heading', '#666');
+  rootStyle.setProperty('--badge-unread-message', '#2f57f9');
+  rootStyle.setProperty('--post-message-second', '#d4d4d4');
+  rootStyle.setProperty('--dialog-heading', '#fdfdfd');
+
+  window.less.modifyVars({
+    '@btn-default-bg': '#fff',
+  });
 };
 
 export const initialize = () => {

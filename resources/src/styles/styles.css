@@ -4,6 +4,14 @@
   background-color: var(--main-background);
 }
 
+.ant-tabs {
+  color: var(--text);
+}
+
+.ant-modal-content {
+  background-color: var(--primary);
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -23,4 +31,8 @@
   --text-secondary: #999;
   --icon: #000;
   --scrollbar: #666;
+  --modal-heading: #666;
+  --badge-unread-message: #2f57f9;
+  --post-message-second: #d4d4d4;
+  --dialog-heading: #fdfdfd;
 }

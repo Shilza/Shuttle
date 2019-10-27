@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
     "revision": "48f792127b270769872c",
-    "url": "/static/css/17.f1f6efca.chunk.css"
+    "url": "/static/styles/17.f1f6efca.chunk.styles"
   },
   {
     "revision": "635482c5c8c95f6a4d81",
@@ -189,71 +189,71 @@ self.__precacheManifest = [
   },
   {
     "revision": "face41df527c24766e02",
-    "url": "/static/css/10.58d3e1ef.chunk.css"
+    "url": "/static/styles/10.58d3e1ef.chunk.styles"
   },
   {
     "revision": "860d3ae01ec5bda9f7b6",
-    "url": "/static/css/19.852b07b5.chunk.css"
+    "url": "/static/styles/19.852b07b5.chunk.styles"
   },
   {
     "revision": "4fe4249df84ec2f850b4",
-    "url": "/static/css/2.c53b746c.chunk.css"
+    "url": "/static/styles/2.c53b746c.chunk.styles"
   },
   {
     "revision": "bc99a9c8768c1f0205e4",
-    "url": "/static/css/3.7b14c5f7.chunk.css"
+    "url": "/static/styles/3.7b14c5f7.chunk.styles"
   },
   {
     "revision": "d0dd252b7f0298e60b64",
-    "url": "/static/css/main.feccb17b.chunk.css"
+    "url": "/static/styles/main.feccb17b.chunk.styles"
   },
   {
     "revision": "9187f914f2a05433a123",
-    "url": "/static/css/6.083fbe4e.chunk.css"
+    "url": "/static/styles/6.083fbe4e.chunk.styles"
   },
   {
     "revision": "51ea24048636a71e063a",
-    "url": "/static/css/7.782df784.chunk.css"
+    "url": "/static/styles/7.782df784.chunk.styles"
   },
   {
     "revision": "d383616251ee33852116",
-    "url": "/static/css/8.0f0c4a25.chunk.css"
+    "url": "/static/styles/8.0f0c4a25.chunk.styles"
   },
   {
     "revision": "ac83c7b93a390880022a",
-    "url": "/static/css/9.d1ac907a.chunk.css"
+    "url": "/static/styles/9.d1ac907a.chunk.styles"
   },
   {
     "revision": "dd52ccaa4b41570c9249",
-    "url": "/static/css/18.bb7a45d8.chunk.css"
+    "url": "/static/styles/18.bb7a45d8.chunk.styles"
   },
   {
     "revision": "b32bfece805565eba56a",
-    "url": "/static/css/16.5106c1a6.chunk.css"
+    "url": "/static/styles/16.5106c1a6.chunk.styles"
   },
   {
     "revision": "6f26db6f8647500bdbaa",
-    "url": "/static/css/15.64b57496.chunk.css"
+    "url": "/static/styles/15.64b57496.chunk.styles"
   },
   {
     "revision": "f59a28912dd871af2191",
-    "url": "/static/css/14.70ff5285.chunk.css"
+    "url": "/static/styles/14.70ff5285.chunk.styles"
   },
   {
     "revision": "acf037b1c6b62feacfea",
-    "url": "/static/css/13.58a2d1df.chunk.css"
+    "url": "/static/styles/13.58a2d1df.chunk.styles"
   },
   {
     "revision": "6ab5a08eddc03438a507",
-    "url": "/static/css/12.05c21953.chunk.css"
+    "url": "/static/styles/12.05c21953.chunk.styles"
   },
   {
     "revision": "ca3cfeabfd4fbd3c5b33",
-    "url": "/static/css/11.f500da9a.chunk.css"
+    "url": "/static/styles/11.f500da9a.chunk.styles"
   },
   {
     "revision": "ba7babb090a2cdbfdc7f",
-    "url": "/static/css/1.d7321d39.chunk.css"
+    "url": "/static/styles/1.d7321d39.chunk.styles"
   },
   {
     "revision": "dbd057a3ddc8e91b3aba73e238a7c14b",
