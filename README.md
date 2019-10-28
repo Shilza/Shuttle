@@ -61,6 +61,9 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### User page
 ![User page mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/userPage.png)
 
+#### User page (dark mode)
+![User page (dark mode)](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/darkUserPage.png)
+
 #### Feed
 ![Feed mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/feed.png)
 
@@ -68,7 +71,7 @@ This section shows the Shuttle user interface on desktop and mobile devices
 ![View post mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/post.png)
 
 #### Post's modal
-![Post's modal mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/postModal.png)
+![Post's modal mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/postsModal.png)
 
 #### Select posts compilation
 ![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/chooseCompilation.png)
@@ -100,8 +103,11 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### Follows list
 ![Follows list mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/followsList.png)
 
-#### Settings panel
-![Settings panel mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/settingsPanel.jpg)
+#### Side menu
+![Side menu mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/sideMenu.png)
+
+#### Switcher to light mode
+![Switcher to light mode mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/switchToLight.png)
 
 #### Archived posts
 ![Archived posts mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/archive.jpg)
