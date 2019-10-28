@@ -51,6 +51,7 @@ You can:
 * Send messages
 * Mark a friends in photo
 * Add location for posts
+* Dark theme
 
 ## Shuttle inside
 This section shows the Shuttle user interface on desktop and mobile devices
@@ -58,28 +59,28 @@ This section shows the Shuttle user interface on desktop and mobile devices
 ### Mobile
 
 #### User page
-![User page mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/userPage.jpg)
+![User page mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/userPage.png)
 
 #### Feed
-![Feed mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/feed.jpg)
+![Feed mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/feed.png)
 
 #### View post
-![View post mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/post.jpg)
+![View post mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/post.png)
 
 #### Post's modal
 ![Post's modal mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/postOptions.jpg)
 
 #### Select posts compilation
-![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/chooseCompilation.jpg)
+![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/chooseCompilation.png)
 
 #### Save post to new compilation
-![Save post to new compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/newCompilation.jpg)
+![Save post to new compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/newCompilation.png)
 
 #### View posts compilations
 ![View compilations mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/compilationOnPage.jpg)
 
 #### Edit profile
-![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/editProfile.jpg)
+![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/editProfile.png)
 
 #### Marks
 ![Posts marks](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/marks.png)
