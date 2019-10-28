@@ -1,10 +1,5 @@
 
 .icon {
-  width: 20px;
-  height: 20px;
-  background-size: cover;
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  background-color: var(--icon);
+  fill: var(--icon);
   margin: 0;
 }
