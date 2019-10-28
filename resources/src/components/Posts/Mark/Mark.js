@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from "react";
+import React, {useLayoutEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import styles from "./mark.module.css";
 
-const Mark = ({mark, link = false, text = 'Who is it?', ...props}) => {
+const Mark = ({mark, parentWidth, link = false, text = 'Who is it?', ...props}) => {
 
   let markRef = useRef(null);
 
@@ -13,8 +13,7 @@ const Mark = ({mark, link = false, text = 'Who is it?', ...props}) => {
     left: `${mark.left}%`
   };
 
-  useEffect(() => {
-    const parentWidth = parseInt(getComputedStyle(markRef.current.parentNode).getPropertyValue('width'));
+  useLayoutEffect(() => {
     const onePercentOfScreenWidth = parentWidth / 100;
     const markerWidth = parseInt(getComputedStyle(markRef.current).getPropertyValue('width'));
     const markerLeftPositionInPixels = onePercentOfScreenWidth * mark.left;
@@ -31,7 +30,7 @@ const Mark = ({mark, link = false, text = 'Who is it?', ...props}) => {
 
     if (mark.top < 1)
       markRef.current.style.top = '1%';
-  }, []);
+  });
 
   return (
     <>
@@ -67,7 +66,8 @@ Mark.propTypes = {
     username: PropTypes.string
   }),
   test: PropTypes.string,
-  link: PropTypes.bool
+  link: PropTypes.bool,
+  parentWidth: PropTypes.number.isRequired
 };
 
 export default Mark;

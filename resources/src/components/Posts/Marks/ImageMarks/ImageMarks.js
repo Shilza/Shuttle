@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { message } from 'antd';
 import Container from "../../Container";
 import Header from "../../Header";
@@ -14,7 +14,15 @@ const ImageMarks = ({marks: defaultMarks, goBack, media}) => {
   const [newMark, setNewMark] = useState(null);
   const [marks, setMarks] = useState(defaultMarks);
   const [fetcher, setFetcher] = useState(null);
+  const [containerWidth, setContainerWidth] = useState(0);
   const {users, search, resetSearch} = useSearch();
+  let containerRef = useRef(null);
+
+  useEffect(() => {
+    setContainerWidth(
+      containerRef && containerRef.current && parseInt(getComputedStyle(containerRef.current).getPropertyValue('width'))
+    );
+  }, []);
 
   const onImageClick = (event) => {
     if(marks.length < 10) {
@@ -78,17 +86,18 @@ const ImageMarks = ({marks: defaultMarks, goBack, media}) => {
           </>
         }
       </div>
-      <div className={styles.container}>
+      <div className={styles.container} ref={containerRef}>
         <img src={media} onClick={onImageClick} className={styles.media} alt={'Post'}/>
         {
           newMark &&
-          <Mark mark={newMark}/>
+          <Mark mark={newMark} parentWidth={containerWidth}/>
         }
         {
           marks && marks.map(mark =>
             <Mark
               key={mark.username}
               mark={mark}
+              parentWidth={containerWidth}
               onClick={() => removeUser(mark.username)}
             />
           )
