@@ -9,6 +9,11 @@
   background: transparent;
 }
 
+.drawer {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 .saveBar {
   composes: staticSaveBar;
 }
@@ -17,7 +22,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh - 120px);
+  height: calc(90vh - 50px);
+  background-color: var(--primary);
 }
 
 .staticButtonLink {
@@ -39,10 +45,20 @@
 .compilationsList {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  overflow-y: scroll;
+  padding-bottom: 15px;
+  scrollbar-width: thin;
 }
 
-.compilationsList::-webkit-scrollbar {
-  width: 0;
+.caption::-webkit-scrollbar {
+  width: 2px;
+}
+
+.caption::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: var(--scrollbar);
+  border-radius: 1px;
 }
 
 .compilationsList {

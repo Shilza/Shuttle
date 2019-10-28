@@ -19,6 +19,8 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, muted, autoPla
   const [isMarksShown, setIsMarksShown] = useState(false);
   const [isMarksButtonShow, setIsMarksButtonShow] = useState(true);
   let timer = useRef(null);
+  let containerRef = useRef(null);
+  const containerWidth = containerRef && containerRef.current && parseInt(getComputedStyle(containerRef.current).getPropertyValue('width'));
 
   useEffect(() => {
     if(isVideo)
@@ -46,7 +48,7 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, muted, autoPla
   };
 
   return (
-    <div className={styles.container} onMouseMove={onMouseMove} onMouseOver={onMouseMove}>
+    <div className={styles.container} onMouseMove={onMouseMove} onMouseOver={onMouseMove} ref={containerRef}>
       <MediaPlayer
         media={media}
         autoPlay={autoPlay}
@@ -72,6 +74,7 @@ const PostMedia = ({media, showBar, marks, closeModal, fullWidth, muted, autoPla
                 key={mark.id}
                 mark={mark}
                 onClick={closeModal}
+                parentWidth={containerWidth}
                 link
               />
             )

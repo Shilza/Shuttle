@@ -21,7 +21,13 @@ const Header = ({username, avatar, countOfUnreadMessages}) => (
     <Search/>
     <div className={styles.rightContainer}>
       <Link to={'/u/messages'} className={styles.messagesLink} data-countofunreadmessages={countOfUnreadMessages}>
-        <SvgIcon title={'Messages'} icon={planeIcon} className={styles.messagesIcon}/>
+        <SvgIcon
+          title={'Messages'}
+          icon={planeIcon}
+          className={styles.messagesIcon}
+          width={24}
+          height={24}
+        />
       </Link>
       {
         !isMobile() &&

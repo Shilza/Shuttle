@@ -6,6 +6,7 @@
   width: 100%;
   padding: 8px 12px;
   min-height: 40px;
+  height: 44px;
   align-items: center;
   border-bottom: 1px solid var(--accent);
 }
@@ -14,7 +15,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--text);
+  color: var(--modal-heading);
 }
 
 .next {

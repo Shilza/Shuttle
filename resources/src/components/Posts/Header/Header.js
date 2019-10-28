@@ -16,12 +16,12 @@ const Header = ({goNext, goBack, title, nextButtonText, withEnter = true}) => {
         document.body.removeEventListener('keydown', listener);
       }
     }
-  }, []);
+  }, [withEnter, goNext]);
 
   return (
     <div className={styles.container}>
       {
-        goBack && <Icon type={'arrow-left'} style={{color: 'var(--icon)'}} onClick={goBack} className={styles.back}/>
+        goBack && <Icon type={'arrow-left'} style={{color: 'var(--icon)'}} onClick={goBack} className={styles.back} title={'Back'}/>
       }
       <span className={styles.title}>{title}</span>
       {

@@ -76,14 +76,17 @@ const Editor = ({post, closeModal, dispatch}) => {
             <div className={styles.wrapper}>
               <PostMedia media={editedPost.src} marks={editedPost.marks} postId={editedPost.id}/>
               <div className={styles.container}>
-                <TextareaAutosize
-                  maxRows={8}
-                  className={styles.caption}
-                  placeholder={'Caption'}
-                  onChange={onCaptionChange}
-                  defaultValue={caption}
-                  maxLength={1000}
-                />
+                <label className={styles.label}>
+                  <span className={styles.labelText}>Caption</span>
+                  <TextareaAutosize
+                    maxRows={8}
+                    className={styles.caption}
+                    placeholder={'Enter caption'}
+                    onChange={onCaptionChange}
+                    defaultValue={caption}
+                    maxLength={1000}
+                  />
+                </label>
                 <Location onChange={setLocation} defaultLocation={post.location}/>
                 <button className={styles.button} onClick={goToMarks}>Mark friends</button>
               </div>

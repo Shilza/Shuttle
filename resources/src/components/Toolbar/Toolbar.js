@@ -9,7 +9,7 @@ import PostsUploader from "../Posts/Uploader";
 
 import styles from './toolbar.module.css';
 
-const currentLocationColor = '#096dd9';
+const currentLocationColor = '#1890ff';
 
 const getTextColor = () => getComputedStyle(document.documentElement).getPropertyValue('--text');
 

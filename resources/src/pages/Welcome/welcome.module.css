@@ -28,15 +28,17 @@
 }
 
 .title {
-  color: var(--text);
+  color: var(--modal-heading);
   margin: 0 0 0 10px;
 }
 
 .card {
   width: 320px;
-  border-radius: 2%;
   background-color: var(--primary);
-  border-color: var(--accent);
+  border: 1px solid var(--accent-second);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 2px 14px rgba(0, 0, 0, 0.17), 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 768px) {

@@ -29,6 +29,5 @@
 .icon {
   width: 20px;
   height: 22px;
-  background-color: var(--icon);
   cursor: pointer;
 }

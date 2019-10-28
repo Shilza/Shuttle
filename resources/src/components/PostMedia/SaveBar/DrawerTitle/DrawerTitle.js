@@ -11,8 +11,8 @@ const DrawerTitle = ({dispatch}) => {
 
   return (
     <div className={styles.drawerTitle}>
-      <span>Compilations</span>
-      <Icon type={'plus'} className={styles.icon} onClick={openModal}/>
+      <h1 className={styles.title}>Compilations</h1>
+      <Icon type={'plus'} className={styles.icon} style={{color: 'var(--icon)'}} onClick={openModal}/>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {Card} from 'antd';
 
 import Login from "components/Welcome/Login/Login";
 import logo from 'images/logo.png';
@@ -15,9 +14,9 @@ const Welcome = ({children = <Login/>}) => (
       </div>
       <span>Let's start with a progressive social network</span>
     </div>
-    <Card className={styles.card}>
+    <div className={styles.card}>
       {children}
-    </Card>
+    </div>
   </div>
 );
 

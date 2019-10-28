@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 import {Button, Form} from "antd";
+import {connect} from 'react-redux';
 
 import Modal from "components/Modal/Modal";
 import {CompilationName} from "components//Fields/CompilationName";
 
 import styles from './savedBarCompilations.module.css';
 
-const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
+const NewCompilationModal = ({dispatch, visible, form, postId, postSrc}) => {
 
   let [loading, setLoading] = useState(false);
 
@@ -29,11 +29,15 @@ const NewCompilationModal = ({dispatch, form, postId, postSrc}) => {
   };
 
   return (
-    <Modal onClose={closeModal} zIndex={10001} visible>
+    <Modal onClose={closeModal} zIndex={10001} visible={visible}>
       <div className={styles.modalContainer}>
         <div className={styles.title}>New Compilation</div>
         <div className={styles.modalBody}>
-          <img src={postSrc} alt={'Compilation cover'}/>
+          {
+            postSrc && postSrc.match('.mp4')
+              ? <video src={postSrc} className={styles.media}/>
+              : <img src={postSrc} className={styles.media} alt={'Compilation cover'}/>
+          }
           <Form onSubmit={saveToNewCompilation} className={styles.modalBody}>
             <CompilationName className={styles.compilationName} getFieldDecorator={form.getFieldDecorator}/>
             <Button type={'primary'} htmlType="submit" loading={loading}>Save</Button>

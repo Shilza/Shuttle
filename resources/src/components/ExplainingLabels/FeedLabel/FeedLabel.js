@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 const FeedExplainingLabel = () => (
     <div className={styles.container}>
-        <ExplainingLabel icon={<SvgIcon title="Feed" src={feed} className={styles.icon}/>} text={'Feed'}>
+        <ExplainingLabel icon={<SvgIcon title="Feed" icon={feed} height={30} width={28}/>} text={'Feed'}>
         <span className={styles.text}>
             Here will be the latest publications of users on which you are subscribed
         </span>

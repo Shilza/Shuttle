@@ -51,10 +51,10 @@
 .searchBox input[type="text"] + span {
   z-index: -1;
   position: absolute;
-  border: 1px solid cornflowerblue;
-  top: 0;
-  width: 20px;
-  height: 20px;
+  border: 1px solid #1890ff;
+  top: 1px;
+  width: 18px;
+  height: 18px;
   transition: all 0.16s ease-in 0.16s;
   border-radius: 10px;
   left: 0;
@@ -68,6 +68,6 @@
   width: 8px;
   height: 2px;
   border-radius: 5px;
-  background: cornflowerblue;
-  transform: rotate(45deg) translate(22px, -2px);
+  background: #1890ff;
+  transform: rotate(45deg) translate(20px, -1px);
 }

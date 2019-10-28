@@ -3,6 +3,7 @@
   max-height: 95vh;
   overflow-y: auto;
   scrollbar-width: thin;
+  margin: 20px 0;
 }
 
 @media (max-width: 810px) {

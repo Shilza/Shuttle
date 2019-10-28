@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
-import {Icon, Tag} from "antd";
+import {Icon} from "antd";
 
 import * as ThirdPartyService from 'services/thirdParty';
 
+import Tag from "./Tag";
 import styles from './location.module.css';
 
 
@@ -52,7 +53,7 @@ const Location = React.memo(({defaultLocation = '', onChange}) => {
       {
         (isLocationOpen || defaultLocation) ?
           <div className={styles.container}>
-            <Icon type={'close'} className={styles.closeButton} title={'Close'} onClick={closeLocation}/>
+            <Icon type={'close'} className={styles.closeButton} style={{color: 'var(--icon)'}} title={'Close'} onClick={closeLocation}/>
             <label className={styles.label}>
               Place
               <input
@@ -68,7 +69,7 @@ const Location = React.memo(({defaultLocation = '', onChange}) => {
               <div className={styles.locations}>
                 {
                   recommended
-                    ? recommended.map(l => <Tag className={styles.location} key={l} onClick={setLocByTarget}>{l}</Tag>)
+                    ? recommended.map(l => <Tag className={styles.tag} key={l} onClick={setLocByTarget}>{l}</Tag>)
                     : <Icon type={'loading'} fontSize={12}/>
                 }
               </div>

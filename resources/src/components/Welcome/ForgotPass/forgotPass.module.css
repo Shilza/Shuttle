@@ -9,6 +9,6 @@
 }
 
 .title {
-  color: var(--text);
   text-align: center;
+  color: var(--modal-heading);
 }

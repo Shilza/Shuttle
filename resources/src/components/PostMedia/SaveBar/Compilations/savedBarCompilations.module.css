@@ -10,8 +10,8 @@
   width: 300px;
   height: 300px;
   margin: auto;
-  background: white;
-  border: 1px solid #efefef;
+  background: var(--primary);
+  border: 1px solid var(--accent);
   border-radius: 3%;
   padding: 15px;
   overflow: hidden;
@@ -22,6 +22,7 @@
 }
 
 .modalBody {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,22 +30,29 @@
   margin-top: 10%;
 }
 
-.modalContainer img {
-  width: 100px;
-  height: 100px;
+.media {
+  position: relative;
+  max-width: 100px;
+  max-height: 100px;
+  min-height: 100px;
+  min-width: 100px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .title {
   font-size: 1.2em;
   font-weight: 500;
+  color: var(--modal-heading);
 }
 
 .compilationName {
   padding: 4px 10px;
-  border: 0;
   height: 28px;
   border-radius: 5px;
   width: 100%;
+  border: 1px solid #1973cb;
+  outline: none;
 }
 
 .compilationName:focus {

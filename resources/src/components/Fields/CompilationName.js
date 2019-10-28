@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FormItem from "antd/es/form/FormItem";
 
 export const CompilationName = ({getFieldDecorator, className, fieldName = 'compilationName', initialValue = ''}) => {
-  const regExpr = /^[a-z0-9]+$/;
+  const regExpr = /^[A-z0-9]+$/;
 
   return (
     <FormItem>

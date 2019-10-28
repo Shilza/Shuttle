@@ -2,14 +2,16 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Drawer} from 'react-pretty-drawer';
 import {connect} from "react-redux";
-import {Button, message, Modal} from "antd";
+import {Button, message} from "antd";
 
 import {isMobile} from "utils/isMobile";
+import SimpleModal from "components/Modal/SimpleModal/SimpleModal";
 import EditBody from "./EditBody/EditBody";
 
 import EditTitle from "./EditTitle/EditTitle";
-import style from './edit.module.css';
 import {withRouter} from "react-router";
+import styles from './edit.module.css';
+
 
 
 const Edit = React.memo(({ dispatch, editedData, history, user }) => {
@@ -48,7 +50,7 @@ const Edit = React.memo(({ dispatch, editedData, history, user }) => {
   };
 
     return <>
-        <Button size='small' onClick={showDrawer} className={style.editButton}>
+        <Button size='small' onClick={showDrawer} className={styles.editButton}>
             Edit
         </Button>
       {
@@ -56,23 +58,24 @@ const Edit = React.memo(({ dispatch, editedData, history, user }) => {
             <Drawer
               visible={isEditVisible}
               onClose={closeDrawer}
+              className={styles.drawer}
               placement='bottom'
-              height={'70%'}
+              height={'90%'}
             >
               <>
                 <EditTitle onClose={closeDrawer} submit={submit}/>
                 <EditBody/>
               </>
             </Drawer>
-            : <Modal
+            : <SimpleModal
               title='Edit profile'
+              className={styles.modal}
               visible={isEditVisible}
               onCancel={closeDrawer}
-              bodyStyle={{backgroundColor: 'var(--primary)'}}
               onOk={submit}
             >
               <EditBody/>
-            </Modal>
+            </SimpleModal>
       }
     </>;
 });

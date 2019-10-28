@@ -6,5 +6,5 @@
 
 .title {
   text-align: center;
-  color: var(--text);
+  color: var(--modal-heading);
 }

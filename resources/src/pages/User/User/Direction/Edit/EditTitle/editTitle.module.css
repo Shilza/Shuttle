@@ -4,14 +4,14 @@
   align-items: center;
   width: 100%;
   padding: 16px 18px 16px 12px;
-  border-radius: 4px 4px 0 0;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
+  background: var(--primary);
+  border-bottom: 1px solid var(--accent-second);
   position: relative;
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.85);
+  height: 50px;
+  color: var(--text);
 }
 
 .check {

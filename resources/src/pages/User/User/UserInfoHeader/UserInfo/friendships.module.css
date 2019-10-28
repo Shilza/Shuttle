@@ -84,7 +84,7 @@
   width: 100%;
   transition: 140ms;
   outline: none;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent-second);
   background-color: transparent;
   border-radius: 5px;
 }

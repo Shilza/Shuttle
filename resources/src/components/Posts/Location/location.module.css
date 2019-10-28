@@ -8,7 +8,7 @@
   width: min-content;
   border: 0;
   padding: 0 5px 2px 5px;
-  margin: 0 10px;
+  margin-left: 8px;
   border-bottom: 1px solid #1e90ff;
   background-color: transparent;
   color: var(--text);
@@ -19,14 +19,28 @@
   display: flex;
   margin: 10px 0;
   color: var(--text);
+  height: 40px;
+  align-items: center;
 }
 
 .locations {
   margin-left: 10px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  scrollbar-width: thin;
 }
 
-.location {
-  padding: 4px 0;
+.locations::-webkit-scrollbar {
+  width: 2px;
+}
+
+.locations::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: var(--scrollbar);
+  border-radius: 1px;
 }
 
 .button {
@@ -34,7 +48,7 @@
   background: transparent;
   padding: 2px 8px;
   width: 100%;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent-second);
   margin: 5px 0 ;
   border-radius: 5px;
   cursor: pointer;
@@ -47,4 +61,8 @@
 .closeButton {
   position: absolute;
   left: calc(100% - 10px);
+}
+
+.tag {
+  cursor: pointer;
 }

@@ -1,8 +1,10 @@
+const CHANGE_TIMEOUT = 500;
+
 const setCurrentTheme = (themeName) => localStorage.setItem('app-theme', themeName);
 
 export const getCurrentTheme = () => localStorage.getItem('app-theme');
 
-export const toDarkTheme = () => {
+const toDark = () => {
   setCurrentTheme('dark');
 
   let rootStyle = document.documentElement.style;
@@ -24,7 +26,7 @@ export const toDarkTheme = () => {
   });
 };
 
-export const toLightTheme = () => {
+const toLight = () => {
   setCurrentTheme('light');
 
   let rootStyle = document.documentElement.style;
@@ -46,8 +48,28 @@ export const toLightTheme = () => {
   });
 };
 
+export const toDarkTheme = (async = true) => {
+  return async
+    ? new Promise(resolve => {
+      setTimeout(() => {
+        toDark();
+        resolve();
+      }, CHANGE_TIMEOUT);
+    }) : toDark();
+};
+
+export const toLightTheme = (async = true) => {
+  return async
+    ? new Promise(resolve => {
+      setTimeout(() => {
+        toLight();
+        resolve();
+      }, CHANGE_TIMEOUT);
+    }) : toLight();
+};
+
 export const initialize = () => {
   getCurrentTheme() === 'dark'
-    ? toDarkTheme()
-    : toLightTheme()
+    ? toDarkTheme(false)
+    : toLightTheme(false)
 };
