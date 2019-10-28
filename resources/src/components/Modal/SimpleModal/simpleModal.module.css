@@ -1,11 +1,8 @@
 
 .container {
-  max-width: 700px;
-  min-width: 310px;
-  max-height: 95vh;
+  background-color: var(--primary);
+  min-width: 320px;
   border-radius: 15px;
-  background: var(--primary);
-  color: var(--text);
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -21,18 +18,24 @@
   color: var(--modal-heading);
 }
 
-.body {
-  padding: 8px 14px;
-  max-height: calc(95vh - 40px);
-  overflow-y: auto;
+.button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--text);
 }
 
-.body::-webkit-scrollbar {
-  width: 6px;
+.ok {
+  composes: button;
+  color: #40a9ff;
 }
 
-.body::-webkit-scrollbar-thumb {
-  width: 6px;
-  background: var(--scrollbar);
-  border-radius: 2px;
+.cancel {
+  composes: button;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 12px 10px 12px;
 }
