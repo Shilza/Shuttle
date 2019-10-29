@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Drawer} from 'react-pretty-drawer';
 import {connect} from "react-redux";
-import {Button, message} from "antd";
+import {compose} from "redux";
+import {Button, Form} from "antd";
 
 import {isMobile} from "utils/isMobile";
 import SimpleModal from "components/Modal/SimpleModal/SimpleModal";
@@ -13,90 +14,75 @@ import {withRouter} from "react-router";
 import styles from './edit.module.css';
 
 
+const Edit = React.memo(({dispatch, history, form}) => {
 
-const Edit = React.memo(({ dispatch, editedData, history, user }) => {
+  let [isEditVisible, setIsEditVisible] = useState(false);
+  let [isLoading, setIsLoading] = useState(false);
 
-    let [isEditVisible, setIsEditVisible] = useState(false);
-
-    const showDrawer = () => {
-        setIsEditVisible(true);
-    };
-
-    const closeDrawer = () => {
-        setIsEditVisible(false);
-    };
-
-  const submit = () => {
-    const editedData = getFilterEditedData();
-
-    if (Object.keys(editedData).length)
-      dispatch.auth.update({editedData, history})
-        .then((data) => {
-          message.success(data.message);
-          setIsEditVisible(false);
-        })
-        .catch((err) => message.error(err.response.data.message));
-    else
-      message.warning('Nothing to update');
+  const showDrawer = () => {
+    setIsEditVisible(true);
   };
 
-  const getFilterEditedData = () => {
-    Object.entries(editedData).forEach(([key, value]) => {
-      if (Object.is(value, undefined) || user[key] === value)
-        delete editedData[key];
-    });
-
-    return editedData;
+  const closeDrawer = () => {
+    setIsEditVisible(false);
   };
 
-    return <>
-        <Button size='small' onClick={showDrawer} className={styles.editButton}>
-            Edit
-        </Button>
-      {
-          isMobile() ?
-            <Drawer
-              visible={isEditVisible}
-              onClose={closeDrawer}
-              className={styles.drawer}
-              placement='bottom'
-              height={'90%'}
-            >
-              <>
-                <EditTitle onClose={closeDrawer} submit={submit}/>
-                <EditBody/>
-              </>
-            </Drawer>
-            : <SimpleModal
-              title='Edit profile'
-              className={styles.modal}
-              visible={isEditVisible}
-              onCancel={closeDrawer}
-              onOk={submit}
-            >
-              <EditBody/>
-            </SimpleModal>
+  const onSubmit = (event) => {
+    event.preventDefault();
+    form.validateFields((err, values) => {
+      if (!err) {
+        setIsLoading(true);
+        dispatch.auth.update({values, history})
+          .finally(() => {
+            setIsLoading(false);
+            setIsEditVisible(false);
+          })
       }
-    </>;
+    });
+  };
+
+  return <>
+    <Button size='small' onClick={showDrawer} className={styles.editButton}>
+      Edit
+    </Button>
+    <>
+      {
+        isMobile() ?
+          <Drawer
+            visible={isEditVisible}
+            onClose={closeDrawer}
+            className={styles.drawer}
+            placement='bottom'
+            height={'90%'}
+          >
+            <Form onSubmit={onSubmit}>
+              <EditTitle onClose={closeDrawer} submit={onSubmit} isLoading={isLoading}/>
+              <EditBody form={form}/>
+            </Form>
+          </Drawer>
+          : <SimpleModal
+            title='Edit profile'
+            className={styles.modal}
+            visible={isEditVisible}
+            onCancel={closeDrawer}
+            onOk={onSubmit}
+            isLoading={isLoading}
+          >
+            <Form onSubmit={onSubmit}>
+              <EditBody form={form} />
+            </Form>
+          </SimpleModal>
+      }
+    </>
+  </>
 });
 
 Edit.propTypes = {
-  editedData: PropTypes.shape({
-    username: PropTypes.string,
-    bio: PropTypes.string,
-    site: PropTypes.string
-  }),
-  user: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  editedData: {
-    username: state.edit.username,
-    bio: state.edit.bio,
-    site: state.edit.site
-  },
-  user: state.auth.user
-});
-
-export default connect(mapStateToProps)(withRouter(Edit));
+export default compose(
+  connect(),
+  Form.create(),
+  withRouter
+)(Edit);

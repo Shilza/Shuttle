@@ -114,8 +114,8 @@ export const auth = {
           return data;
         });
     },
-    async update({editedData, history}) {
-      const {data} = await UserService.update(editedData);
+    async update({values, history}) {
+      const {data} = await UserService.update(values);
 
       history.push(data.user.username);
 

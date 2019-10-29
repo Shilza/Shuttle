@@ -39,3 +39,7 @@
   justify-content: space-around;
   padding: 5px 12px 10px 12px;
 }
+
+.buttonOkContainer {
+  display: flex;
+}

@@ -15,11 +15,11 @@
 }
 
 .check {
-  margin-left: auto;
   color: cornflowerblue;
   cursor: pointer;
 }
 
 .title {
   margin-left: 15px;
+  margin-right: auto;
 }

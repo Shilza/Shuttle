@@ -5,12 +5,13 @@ import Username from "./Username";
 import Bio from "./Bio";
 import Site from "./Site";
 import styles from '../edit.module.css';
+import {compose} from "redux";
 
-const EditBody = ({user}) => (
+const EditBody = ({user, form}) => (
   <div className={styles.editContainer}>
-    <Username username={user.username}/>
-    <Bio bio={user.bio}/>
-    <Site site={user.site}/>
+    <Username initialValue={user.username} form={form}/>
+    <Bio initialValue={user.bio} form={form}/>
+    <Site initialValue={user.site} form={form}/>
   </div>
 );
 
@@ -18,4 +19,6 @@ EditBody.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
-export default connect(state => ({user: state.auth.user}))(EditBody);
+export default compose(
+  connect(state => ({user: state.auth.user})),
+)(EditBody);

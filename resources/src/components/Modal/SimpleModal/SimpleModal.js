@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Loader from "components/Paginator/Loader";
 import Modal from "../Modal";
 import styles from './simpleModal.module.css';
 
-const SimpleModal = ({title, onOk, onCancel, visible, className, children, withCloseButton, zIndex, ...props}) => (
+const SimpleModal = ({title, onOk, onCancel, visible, className, children, withCloseButton, zIndex, isLoading, ...props}) => (
   <Modal visible={visible} onClose={onCancel} zIndex={zIndex} withCloseButton={withCloseButton}>
     <div className={`${styles.container} ${className}`} {...props}>
       {title && <h1 className={styles.title}>{title}</h1>}
@@ -12,7 +13,12 @@ const SimpleModal = ({title, onOk, onCancel, visible, className, children, withC
         (onCancel || onOk) &&
         <div className={styles.footer}>
           {onCancel && <button className={styles.cancel} onClick={onCancel}>Cancel</button>}
-          {onOk && <button className={styles.ok} onClick={onOk}>Ok</button>}
+          {onOk &&
+          <div className={styles.buttonOkContainer}>
+            <button className={styles.ok} onClick={onOk} disabled={isLoading}>Ok</button>
+            {isLoading && <Loader/>}
+          </div>
+          }
         </div>
       }
     </div>
@@ -20,7 +26,8 @@ const SimpleModal = ({title, onOk, onCancel, visible, className, children, withC
 );
 
 SimpleModal.defaultProps = {
-  zIndex: 999
+  zIndex: 999,
+  isLoading: false
 };
 
 SimpleModal.propTypes = {
@@ -31,6 +38,7 @@ SimpleModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   className: PropTypes.string,
   withCloseButton: PropTypes.bool,
+  isLoading: PropTypes.bool,
   children: PropTypes.element.isRequired
 };
 
