@@ -61,11 +61,11 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### User page
 ![User page mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/userPage.png)
 
-#### User page (dark mode)
-![User page (dark mode)](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/darkUserPage.png)
-
 #### Feed
 ![Feed mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/feed.png)
+
+#### Feed (dark mode)
+![Feed (dark mode)](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/darkUserPage.png)
 
 #### View post
 ![View post mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/post.png)
@@ -80,7 +80,7 @@ This section shows the Shuttle user interface on desktop and mobile devices
 ![Save post to new compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/newCompilation.png)
 
 #### View posts compilations
-![View compilations mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/compilationOnPage.jpg)
+![View compilations mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/compilationOnPage.png)
 
 #### Edit profile
 ![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/editProfile.png)
