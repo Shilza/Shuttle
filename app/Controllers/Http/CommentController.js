@@ -36,7 +36,7 @@ class CommentController {
       const comments = await CommentsService.getComments(user.id, postId, page);
       return response.json(comments);
     } else
-      return response.json({private: true});
+      return response.status(400).json({message: 'Profile is private'});
   }
 
   async showLikes({request, response, auth}) {
@@ -75,7 +75,7 @@ class CommentController {
 
       return response.json(users);
     } else
-      return response.json({private: true});
+      return response.status(400).json({message: 'Profile is private'});
   }
 
   async create({request, response, auth}) {
@@ -105,19 +105,25 @@ class CommentController {
 
     const canSee = await UsersService.canSee(owner, user.id);
     if (canSee) {
-      let comment = await Comment.create({
+      const createdComment = await Comment.create({
         post_id,
         owner_id: user.id,
         text: request.input('text')
       });
 
+      const comment = await Comment
+        .query()
+        .where('id', createdComment.id)
+        .withCount('likes')
+        .first();
+
       comment.owner = user.username;
       comment.avatar = user.avatar;
       comment.isLiked = false;
 
-      response.json({comment});
+      response.json(comment);
     } else
-      return response.json({private: true});
+      return response.status(400).json({message: 'Profile is private'});
   }
 
   async update({request, response, auth}) {

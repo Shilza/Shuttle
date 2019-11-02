@@ -6,6 +6,8 @@ const Comment = use('App/Models/Comment');
 const EntityType = use('App/Models/EntityType');
 const {validate} = use('CValidator');
 const LikesService = use('LikesService');
+const UsersService = use('UsersService');
+const PostsService = use('PostsService');
 
 class LikeController {
 
@@ -36,31 +38,40 @@ class LikeController {
       return response.json({message: 'Like already exists'});
 
     switch (type.type) {
-      case 'comment':
+      case 'comment': {
         const comment = await Comment.find(entity_id);
         if (!comment)
           return response.status(400).json({
             message: 'Comment does not exists'
           });
 
-        await Like.create({entity_id, owner_id: user.id, type: type.id});
-
-        return response.json({message: 'Comment liked successfully'});
+        const owner = await PostsService.getPostsOwnerByPostId(comment.post_id);
+        const canSee = await UsersService.canSee(owner, user.id);
+        if (canSee) {
+          await Like.create({entity_id, owner_id: user.id, type: type.id});
+          return response.json({message: 'Comment liked successfully'});
+        } else
+          return response.status(400).json({message: 'Profile is private'});
+      }
       case 'post':
         const post = await Post.find(entity_id);
         if (!post)
           return response.status(400).json({
             message: 'Post does not exists'
           });
-        await Like.create({entity_id, owner_id: user.id, type: type.id});
 
-        return response.json({message: 'Post liked successfully'});
+        const owner = await PostsService.getPostsOwnerByPostId(post.id);
+        const canSee = await UsersService.canSee(owner, user.id);
+        if (canSee) {
+          await Like.create({entity_id, owner_id: user.id, type: type.id});
+          return response.json({message: 'Post liked successfully'});
+        } else
+          return response.status(400).json({message: 'Profile is private'});
 
       default:
         return response.status(400).json({message: 'Something went wrong'});
     }
   }
-
 
   async unlike({request, response, auth}) {
     const rules = {
@@ -94,18 +105,23 @@ class LikeController {
       return response.json({message: 'Like does not exists'});
 
     switch (type.type) {
-      case 'comment':
+      case 'comment': {
         const comment = await Comment.find(entity_id);
         if (!comment)
           return response.status(400).json({
             message: 'Comment does not exists'
           });
 
-        if (await like.delete())
-          return response.json({message: 'Comment unliked successfully'});
-
+        const owner = await PostsService.getPostsOwnerByPostId(comment.post_id);
+        const canSee = await UsersService.canSee(owner, user.id);
+        if (canSee) {
+          await Like.create({entity_id, owner_id: user.id, type: type.id});
+          if (await like.delete())
+            return response.json({message: 'Comment unliked successfully'});
+        } else
+          return response.status(400).json({message: 'Profile is private'});
         break;
-
+      }
       case 'post':
         const post = await Post.find(entity_id);
         if (!post)
@@ -113,8 +129,14 @@ class LikeController {
             message: 'Post does not exists'
           });
 
-        if (await like.delete())
-          return response.json({message: 'Post unliked successfully'});
+        const owner = await PostsService.getPostsOwnerByPostId(post.id);
+        const canSee = await UsersService.canSee(owner, user.id);
+        if (canSee) {
+          await Like.create({entity_id, owner_id: user.id, type: type.id});
+          if (await like.delete())
+            return response.json({message: 'Post unliked successfully'});
+        } else
+          return response.status(400).json({message: 'Profile is private'});
 
         break;
       default:
