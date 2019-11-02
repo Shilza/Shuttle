@@ -21,4 +21,4 @@ class DeleteFeedPostsTriggerSchema extends Schema {
 }
 
 
-module.exports = DeleteFeedPostsTriggerSchema
+module.exports = DeleteFeedPostsTriggerSchema;

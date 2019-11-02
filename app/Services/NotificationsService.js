@@ -19,6 +19,7 @@ class NotificationsService {
 
     let likesIds = [];
     let commentsIds = [];
+    let postsIds = [];
     let usersIds = [];
 
     notifications.data.forEach(item => {
@@ -29,6 +30,9 @@ class NotificationsService {
         case 2:
           commentsIds.push(item.entity_id);
           break;
+        case 4:
+          postsIds.push(item.entity_id);
+          break;
       }
       usersIds.push(item.initiator_id);
     });
@@ -37,7 +41,7 @@ class NotificationsService {
     const comments = await Comment.query().select(['id', 'post_id', 'text']).whereIn('id', commentsIds).fetch();
     const users = await User.query().select(['id', 'username', 'avatar']).whereIn('id', usersIds).fetch();
 
-    const posts = await this._getPosts(likes, comments);
+    const posts = await this._getPosts(likes, comments, postsIds);
 
     notifications.data = notifications.data.map(item => {
       const owner = users.rows.find(user => user.id === item.initiator_id);
@@ -82,6 +86,12 @@ class NotificationsService {
           break;
         case 3:
           item.info = 'follows you';
+          break;
+        case 4:
+          let post = posts.rows.find(post => post.id === item.entity_id);
+          item.info = 'marked you on post';
+          item.post_src = post && post.src;
+          break;
       }
 
       delete item.receiver_id;
@@ -96,7 +106,7 @@ class NotificationsService {
     return notifications;
   }
 
-  async _getPosts(likes, comments) {
+  async _getPosts(likes, comments, posts) {
     const likedPostsIds = [];
     const likedCommentsIds = [];
     likes.rows.forEach(item => {
@@ -111,7 +121,7 @@ class NotificationsService {
     const commentsPostsIds = comments.rows.map(item => item.post_id);
 
     const postsIds = NotificationsService.arrayUnique(
-      [...likedPostsIds, ...likedCommentsPostsIds, ...commentsPostsIds]
+      [...likedPostsIds, ...likedCommentsPostsIds, ...commentsPostsIds, ...posts]
     );
 
     return await Post.query().select(['id', 'src']).whereIn('id', postsIds).fetch();

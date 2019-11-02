@@ -20,4 +20,4 @@ class MarksSchema extends Schema {
   }
 }
 
-module.exports = MarksSchema
+module.exports = MarksSchema;

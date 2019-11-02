@@ -19,6 +19,7 @@ class ActionTypeSeeder {
         await ActionType.create({id: 1, type: 'like'});
         await ActionType.create({id: 2, type: 'comment'});
         await ActionType.create({id: 3, type: 'follow'});
+        await ActionType.create({id: 4, type: 'mark'});
     }
 }
 
