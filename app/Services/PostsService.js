@@ -292,7 +292,7 @@ class PostsService {
   }
 
   async _setOwnersInfo(posts) {
-    const owners = await this._getPostsOwners(posts.map(e => e.owner_id));
+    const owners = await this._getPostsOwners(posts.map(post => post.owner_id));
 
     return posts.map(post => {
       post.owner = this._findUserById(owners, post.owner_id).username;
@@ -303,10 +303,7 @@ class PostsService {
   }
 
   _findUserById(array, id) {
-    return array.find(user => {
-      if (user.id === id)
-        return true;
-    });
+    return array.find(user => user.id === id);
   }
 }
 
