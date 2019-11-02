@@ -25,7 +25,7 @@ const Share = React.memo(({src, className}) => {
   return (
     <>
       <button className={`${styles.button} ${className}`} onClick={open} title={'Share'}>
-        <SvgIcon title={'Share post'} icon={planeIcon}/>
+        <SvgIcon title={'Share post'} icon={planeIcon} className={styles.icon}/>
       </button>
       {
         isMobile()
@@ -44,7 +44,7 @@ const Share = React.memo(({src, className}) => {
 
 Share.propTypes = {
   src: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string
 };
 
 export default Share;

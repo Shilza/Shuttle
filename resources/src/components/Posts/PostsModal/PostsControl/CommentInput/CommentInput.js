@@ -23,7 +23,7 @@ const CommentInput = React.memo(({post_id, onComment}) => {
         .then(({data}) => {
           inputRef.current.value = '';
           setIsButtonVisible(false);
-          onComment(data.comment);
+          onComment(data);
         })
         .finally(() => {
           setLoading(false);

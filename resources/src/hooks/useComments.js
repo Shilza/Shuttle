@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
 import * as CommentsService from 'services/comments';
-import {transformMetadata} from "./transformMetadata";
+import {transformMetadata} from "utils/transformMetadata";
 
 const useComments = (id, commentsCount) => {
 
@@ -17,7 +17,7 @@ const useComments = (id, commentsCount) => {
   };
 
   const onComment = useCallback((comment) => {
-    comment && setComments([...comments, comment]);
+    comment && setComments([...comments, transformMetadata([comment])[0]]);
   }, [comments]);
 
   const onCommentRemove = useCallback((id) => {

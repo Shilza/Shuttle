@@ -11,7 +11,7 @@
 }
 
 .header {
-  color: var(--text);
+  color: var(--heading);
 }
 
 .loader {

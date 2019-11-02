@@ -14,7 +14,7 @@
 }
 
 .title {
-  color: var(--modal-heading);
+  color: var(--heading);
   text-align: center;
 }
 

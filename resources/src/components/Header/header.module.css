@@ -73,4 +73,5 @@
 .messagesIcon {
   margin-top: 10px;
   margin-right: 12px;
+  fill: var(--heading);
 }

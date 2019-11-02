@@ -10,7 +10,7 @@ import CommentsList from "components/Comments/CommentsList";
 import TopPagination from "components/TopPagination";
 import Loader from "components/Paginator/Loader";
 import Caption from "components/Posts/Caption";
-import useComments from "utils/useComments";
+import useComments from "hooks/useComments";
 
 import styles from './feedPost.module.css';
 

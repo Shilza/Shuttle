@@ -1,12 +1,12 @@
 
-export const transformMetadata = posts =>
-  posts.map(post => {
-    if (post.hasOwnProperty('__meta__')) {
-      Object.keys(post.__meta__).forEach(key =>
-        post[key] = post.__meta__[key]
+export const transformMetadata = items =>
+  items.map(item => {
+    if (item.hasOwnProperty('__meta__')) {
+      Object.keys(item.__meta__).forEach(key =>
+        item[key] = item.__meta__[key]
       );
-      delete post.__meta__;
+      delete item.__meta__;
     }
 
-    return post;
+    return item;
   });

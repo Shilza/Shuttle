@@ -1,7 +1,7 @@
 
 .savedContainer {
   max-width: 350px;
-  margin: auto;
+  margin: 0 auto;
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -44,6 +44,7 @@
   flex-wrap: wrap;
   max-width: 760px;
   margin: auto;
+  padding-bottom: 20px;
 }
 
 .compilationContainer {

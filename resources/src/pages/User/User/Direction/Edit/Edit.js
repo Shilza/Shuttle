@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import PropTypes from "prop-types";
 import {Drawer} from 'react-pretty-drawer';
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {Button, Form} from "antd";
+import {Button, Form, message} from "antd";
 
 import {isMobile} from "utils/isMobile";
 import SimpleModal from "components/Modal/SimpleModal/SimpleModal";
@@ -23,23 +23,30 @@ const Edit = React.memo(({dispatch, history, form}) => {
     setIsEditVisible(true);
   };
 
-  const closeDrawer = () => {
+  const closeDrawer = useCallback(() => {
     setIsEditVisible(false);
-  };
+  }, []);
 
-  const onSubmit = (event) => {
+  const onSubmit = useCallback((event) => {
     event.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        setIsLoading(true);
-        dispatch.auth.update({values, history})
-          .finally(() => {
-            setIsLoading(false);
-            setIsEditVisible(false);
-          })
+        if(form.isFieldsTouched(Object.keys(values))) {
+          setIsLoading(true);
+          dispatch.auth.update({values, history})
+            .then((data) => {
+              message.success(data.message);
+            })
+            .finally(() => {
+              setIsLoading(false);
+              setIsEditVisible(false);
+            })
+        } else {
+          message.warn('Nothing to update');
+        }
       }
     });
-  };
+  }, [form, dispatch]);
 
   return <>
     <Button size='small' onClick={showDrawer} className={styles.editButton}>

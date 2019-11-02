@@ -8,7 +8,7 @@ const nicknameToLink = text => {
   const regex = /^@[A-Za-z0-9]+$/;
   const createLink = (word, index) => regex.test(word) ? <Link key={index} to={`/${word.slice(1)}`}>{word}</Link> : word;
   const addSpaces = (acc, e) => [...acc, ' ', e];
-  return text.split(' ').map(createLink).reduce(addSpaces, []).slice(1);
+  return text && text.split(' ').map(createLink).reduce(addSpaces, []).slice(1);
 };
 
 const CLinkify = ({children, ...props}) => <Linkify {...props}>{nicknameToLink(children)}</Linkify>;

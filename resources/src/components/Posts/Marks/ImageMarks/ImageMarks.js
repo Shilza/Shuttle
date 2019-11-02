@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState} from "react";
 import { message } from 'antd';
+
+import {useSearch} from "hooks/useSearch";
+import SearchInput from "components/SearchInput/SearchInput";
+
 import Container from "../../Container";
 import Header from "../../Header";
 import UsersList from "../UsersList";
 import Mark from "../../Mark/Mark";
-import {useSearch} from "utils/useSearch";
-import SearchInput from "components/SearchInput/SearchInput";
 
 import styles from "../marks.module.css";
 

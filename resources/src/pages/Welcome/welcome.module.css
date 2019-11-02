@@ -28,7 +28,7 @@
 }
 
 .title {
-  color: var(--modal-heading);
+  color: var(--heading);
   margin: 0 0 0 10px;
 }
 

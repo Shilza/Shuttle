@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import {useSearch} from "utils/useSearch";
+import {useSearch} from "hooks/useSearch";
 import SearchBar from './SearchBar';
 import SearchInput from "./SearchInput";
 

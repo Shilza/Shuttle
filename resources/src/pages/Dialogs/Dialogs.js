@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
 import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
-import useDialogs from "utils/useDialogs"
+import useDialogs from "hooks/useDialogs"
 
 import ws, {types as WsTypes} from "../../Ws"
 

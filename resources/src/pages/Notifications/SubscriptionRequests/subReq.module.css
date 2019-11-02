@@ -33,7 +33,7 @@
 .subReqTitle {
   font-weight: 600;
   font-size: 1.1em;
-  color: var(--modal-heading);
+  color: var(--heading);
 }
 
 .subsContainer {
@@ -48,7 +48,7 @@
   margin: 10px 0 15px 0;
   font-weight: 500;
   font-size: 1.2em;
-  color: var(--modal-heading);
+  color: var(--heading);
 }
 
 .cardsContainer {

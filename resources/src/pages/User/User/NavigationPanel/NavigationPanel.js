@@ -10,8 +10,10 @@ import styles from './navigationPanel.module.css';
 
 const TabPane = Tabs.TabPane;
 
+const tabBarStyle = {color: 'var(--text)', borderBottom: '1px solid var(--accent-second)'};
+
 const NavigationPanel = ({me}) => (
-  <Tabs defaultActiveKey="1" className={styles.tabsContainer}>
+  <Tabs defaultActiveKey="1" className={styles.tabsContainer} tabBarStyle={tabBarStyle}>
     <TabPane tab="Posts" key="1">
       <PostsManager/>
     </TabPane>
