@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import MaterialInput from "../MaterialInput/MaterialInput";
 import FormItem from "antd/es/form/FormItem";
 
+import styles from './edit.module.css';
+
 export const Username = ({getFieldDecorator, validator, fieldName = 'username', initialValue = ''}) => {
   const regExpr = /^[a-z0-9]+$/;
 
   return (
-    <FormItem>
+    <FormItem className={styles.formItem}>
       {getFieldDecorator(fieldName, {
         rules: [
           {required: true, message: 'Please input your username!'},
