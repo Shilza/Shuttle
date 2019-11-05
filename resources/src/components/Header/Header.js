@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
-import SvgIcon from "components/SvgIcon";
+import {SvgIcon} from 'ui';
 import {isMobile} from "utils/isMobile";
 import logoIcon from 'images/logo.png';
 import planeIcon from 'images/plane.svg';

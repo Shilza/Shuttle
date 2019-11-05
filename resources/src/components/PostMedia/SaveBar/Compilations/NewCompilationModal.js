@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Button, Form} from "antd";
 import {connect} from 'react-redux';
 
-import Modal from "components/Modal/Modal";
+import {Modal} from 'ui';
 import {CompilationName} from "components//Fields/CompilationName";
 
 import styles from './savedBarCompilations.module.css';

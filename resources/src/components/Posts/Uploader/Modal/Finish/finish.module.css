@@ -32,17 +32,5 @@
 }
 
 .button {
-  background: transparent;
-  padding: 2px 8px;
   width: 100%;
-  color: var(--text);
-  border: 1px solid var(--accent-second);
-  margin: 5px 0 ;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 140ms;
-}
-
-.button:hover {
-  border-color: #1892ff;
 }

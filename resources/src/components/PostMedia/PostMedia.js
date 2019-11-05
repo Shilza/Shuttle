@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {Drawer} from 'react-pretty-drawer';
 
 import Mark from "components/Posts/Mark";
-import Modal from "components/Modal";
+import {Modal} from 'ui';
 import {isMobile} from "utils/isMobile";
 
 import MediaPlayer from "./MediaPlayer";

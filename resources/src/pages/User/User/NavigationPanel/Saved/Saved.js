@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
 import PropTypes from 'prop-types';
-import {Button} from "antd";
 import {connect} from "react-redux";
-import SavedContainer from "./SavedContainer";
-import withLoader from "components/Loader/Loader";
 
+import {Button} from 'ui';
+import withLoader from "components/Loader/Loader";
 import PostsList from "components/Posts/PostsList/PostsList";
 import Paginator from "components/Paginator/Paginator";
 import * as PostService from 'services/posts';
+import SavedContainer from "./SavedContainer";
 
 import styles from './saved.module.css';
 

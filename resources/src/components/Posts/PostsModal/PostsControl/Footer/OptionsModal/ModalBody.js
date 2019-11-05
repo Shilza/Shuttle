@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import OptionsModal from "components/Modal/OptionsModal";
 import Archive from "./Archive";
 import RemovePostButton from "./RemovePostButton";
 import CopyLinkButton from "./CopyLinkButton";
@@ -14,7 +13,7 @@ const ModalBody = ({post, me, closeModal}) => {
   const link = window.location.origin + '/p/' + src.match(/.+?\/.+?\/(.+?)\.+/)[1];
 
   return (
-    <OptionsModal>
+    <>
       <li>Complain</li>
       <CopyLinkButton link={link} closeModal={closeModal}/>
       {
@@ -26,7 +25,7 @@ const ModalBody = ({post, me, closeModal}) => {
         </>
       }
       <li onClick={closeModal}>Cancel</li>
-    </OptionsModal>
+    </>
   );
 };
 

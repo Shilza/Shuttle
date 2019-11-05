@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Icon} from "antd";
 import {Link} from "react-router-dom";
 
+import {Button} from 'ui';
 import DefaultAvatar from "components/DefaultAvatar";
 import styles from './friendships.module.css';
 
@@ -18,7 +19,7 @@ const UserFriendshipCard = ({avatar, onUnfollow, username, id, onRemove, closeMo
       <span>{username}</span>
     </Link>
     {onRemove && <Icon type={'close'} onClick={() => onRemove(id)} title={'Remove'}/>}
-    {onUnfollow && <button onClick={() => onUnfollow(id)} className={styles.unFollowButton}>Unfollow</button>}
+    {onUnfollow && <Button onClick={() => onUnfollow(id)} className={styles.unFollowButton}>Unfollow</Button>}
   </li>
 );
 

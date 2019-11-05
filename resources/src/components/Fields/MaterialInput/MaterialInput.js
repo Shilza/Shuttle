@@ -13,8 +13,7 @@ const MaterialInput = React.forwardRef(({label, onChange, ...props}, ref) => (
 
 MaterialInput.propTypes = {
   label: PropTypes.node,
-  onChange: PropTypes.func,
-  defaultValue: PropTypes.string
+  onChange: PropTypes.func
 };
 
 export default MaterialInput;

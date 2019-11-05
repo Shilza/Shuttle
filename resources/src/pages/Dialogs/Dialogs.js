@@ -2,14 +2,16 @@ import React, {useEffect, useMemo} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
-import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel"
-import useDialogs from "hooks/useDialogs"
+import MessagesExplainingLabel from "components/ExplainingLabels/MessagesLabel/MessagesExplainingLabel";
+import useDialogs from "hooks/useDialogs";
+import {isMobile} from "utils/isMobile";
 
-import ws, {types as WsTypes} from "../../Ws"
+import ws, {types as WsTypes} from "../../Ws";
 
-import DialogsList from "./DialogsList"
+import DialogsList from "./DialogsList";
 
 import styles from './dialogs.module.css';
+
 
 
 const Dialogs = ({myId}) => {
@@ -55,7 +57,7 @@ const Dialogs = ({myId}) => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={isMobile() ? styles.mobileContainer : styles.container}>
       {
         firstLoading && defaultDialogs.length === 0 ?
           <div className={styles.labelContainer}>

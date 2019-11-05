@@ -1,34 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {Icon} from "antd";
+import {Button} from 'ui';
 
-import * as ThirdPartyService from 'services/thirdParty';
-
-import Tag from "./Tag";
+import Recommended from "./Recommended";
 import styles from './location.module.css';
 
+
+const closeIconStyle = {color: 'var(--icon)'};
 
 const Location = React.memo(({defaultLocation = '', onChange}) => {
 
   const [isLocationOpen, setIsLocationOpen] = useState(!!defaultLocation);
-  const [recommended, setRecommended] = useState(null);
-  const [location, _setLocation] = useState(defaultLocation);
 
-  useEffect(() => {
-    ThirdPartyService.getIp().then(data => {
-      data.json().then(data => {
-        ThirdPartyService.getDataByIp(data.ip)
-          .then(data => {
-            data.json().then((data) => {
-              setRecommended([data.continent_name, data.country_name, data.region_name, data.city].filter(Boolean));
-            })
-          })
-          .catch(() => {
-            setRecommended([]);
-          });
-      })
-    });
-  }, []);
+  const [location, _setLocation] = useState(defaultLocation);
 
   const setLocation = (value) => {
     onChange(value);
@@ -44,16 +29,13 @@ const Location = React.memo(({defaultLocation = '', onChange}) => {
     setLocation(defaultLocation);
   };
 
-  const setLocByTarget = (event) => {
-    setLocation(event.target.textContent);
-  };
-
   return (
     <>
       {
-        (isLocationOpen || defaultLocation) ?
+        isLocationOpen ?
           <div className={styles.container}>
-            <Icon type={'close'} className={styles.closeButton} style={{color: 'var(--icon)'}} title={'Close'} onClick={closeLocation}/>
+            <Icon type={'close'} className={styles.closeButton} style={closeIconStyle} title={'Close'}
+                  onClick={closeLocation}/>
             <label className={styles.label}>
               Place
               <input
@@ -64,18 +46,9 @@ const Location = React.memo(({defaultLocation = '', onChange}) => {
                 maxLength={100}
               />
             </label>
-            <div className={styles.recommendedContainer}>
-              Recommended
-              <div className={styles.locations}>
-                {
-                  recommended
-                    ? recommended.map(l => <Tag className={styles.tag} key={l} onClick={setLocByTarget}>{l}</Tag>)
-                    : <Icon type={'loading'} fontSize={12}/>
-                }
-              </div>
-            </div>
+            <Recommended setLocation={setLocation}/>
           </div>
-          : <button className={styles.button} onClick={openLocation}>Add place</button>
+          : <Button className={styles.button} onClick={openLocation}>Add place</Button>
       }
     </>
   )

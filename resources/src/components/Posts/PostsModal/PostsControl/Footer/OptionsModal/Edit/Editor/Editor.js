@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {message} from 'antd';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import {Button} from 'ui';
 import Marks from "components/Posts/Marks";
 import Header from "components/Posts/Header";
 import Container from "components/Posts/Container";
@@ -88,7 +89,7 @@ const Editor = ({post, closeModal, dispatch}) => {
                   />
                 </label>
                 <Location onChange={setLocation} defaultLocation={post.location}/>
-                <button className={styles.button} onClick={goToMarks}>Mark friends</button>
+                <Button className={styles.button} onClick={goToMarks}>Mark friends</Button>
               </div>
             </div>
           </Container>

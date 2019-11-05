@@ -10,13 +10,3 @@
   height: 20px;
   background-size: cover;
 }
-
-.bookmarkFlat {
-  composes: bookmark;
-  background-image: url("./icons/bookmarkFlat.svg");
-}
-
-.bookmarkSolid {
-  composes: bookmark;
-  background-image: url("./icons/bookmarkSolid.svg");
-}

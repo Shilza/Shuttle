@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import * as PostService from "services/posts";
 import PostsExplainingLabel from "components/ExplainingLabels/PostsLabel/PostsExplainingLabel";
 import Paginator from "components/Paginator/Paginator";
-import PostsList from "components/Posts/PostsList/PostsList";
+import PostsList from "components/Posts/PostsList";
 
 
 const PostsManager = ({id, posts, dispatch}) => {

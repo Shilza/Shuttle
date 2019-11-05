@@ -1,7 +1,7 @@
 import React, {useCallback} from "react";
 import PropTypes from 'prop-types';
 
-import Modal from "components/Modal/Modal";
+import {Modal} from 'ui';
 
 import PostModalBody from "./PostModalBody";
 

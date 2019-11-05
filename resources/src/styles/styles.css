@@ -27,12 +27,19 @@
   --accent: #efefef;
   --accent-second: #e6e6e6;
   --main-background: #fafafa;
+
   --text: #666;
   --text-secondary: #999;
+
   --icon: #000;
   --scrollbar: #666;
   --heading: #666;
   --badge-unread-message: #2f57f9;
   --post-message-second: #d4d4d4;
   --dialog-heading: #fdfdfd;
+
+  --btn-border: #cccccc;
+  --btn-border-hover: #40a9ff;
+  --btn-border-active: #096dd9;
+  --btn-text-hover-color: #40a9ff;
 }

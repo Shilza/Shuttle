@@ -4,6 +4,8 @@ import {Icon} from "antd";
 
 import styles from './header.module.css';
 
+const backButtonStyle = {color: 'var(--icon)'};
+
 const Header = ({goNext, goBack, title, nextButtonText, withEnter = true}) => {
   useEffect(() => {
     if (withEnter && goNext && typeof goNext === 'function') {
@@ -21,7 +23,7 @@ const Header = ({goNext, goBack, title, nextButtonText, withEnter = true}) => {
   return (
     <div className={styles.container}>
       {
-        goBack && <Icon type={'arrow-left'} style={{color: 'var(--icon)'}} onClick={goBack} className={styles.back} title={'Back'}/>
+        goBack && <Icon type={'arrow-left'} style={backButtonStyle} onClick={goBack} className={styles.back} title={'Back'}/>
       }
       <span className={styles.title}>{title}</span>
       {

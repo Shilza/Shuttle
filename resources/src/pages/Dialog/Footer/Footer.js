@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types"
 import {useThrottle} from 'use-throttle';
 
-import SvgIcon from "components/SvgIcon/SvgIcon";
+import {SvgIcon} from "ui";
 import EmojiPicker from "./EmojiPicker";
 
 import emojiIcon from './icons/smile.svg';

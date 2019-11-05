@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {debounce} from "utils/debounce";
 import store from 'store';
 
-import SvgIcon from "components/SvgIcon";
+import {SvgIcon} from 'ui';
 import bookmarkFlat from './icons/bookmarkFlat.svg';
 import bookmarkSolid from './icons/bookmarkSolid.svg';
 

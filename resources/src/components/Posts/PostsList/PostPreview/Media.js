@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import styles from './post.module.css';
+import styles from './postPreview.module.css';
 
 const Media = React.memo(({src}) =>
   <>

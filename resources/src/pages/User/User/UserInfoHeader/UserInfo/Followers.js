@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {message} from 'antd';
 
-import ListModal from "components/Modal/ListModal";
+import {ListModal} from 'ui';
 import {searchFollowers} from "services/user";
 import UserFriendshipCard from "./UserFriendshipCard";
 

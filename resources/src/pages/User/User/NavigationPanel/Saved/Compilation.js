@@ -15,8 +15,8 @@ const Compilation = ({compilation, loadPosts}) => {
   const load = () => loadPosts(compilationName);
 
   return (
-    <div onClick={load}>
-      <div className={styles.compilationContainer}>
+    <div onClick={load} className={styles.compilationContainer}>
+      <div className={styles.imagesContainer}>
         {
           isQuad
             ? compilationImages.map(QuadCompilation)

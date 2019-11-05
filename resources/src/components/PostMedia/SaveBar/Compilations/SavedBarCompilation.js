@@ -17,11 +17,14 @@ const SavedBarCompilation = ({compilation, dispatch, postId}) => {
       .then(() => setLoading(false));
   };
 
+  const onClickCompilation = (event) => {
+    setCompilationToSave(event, Object.keys(compilation)[0]);
+  };
+
   const icon = <Icon type="loading" style={{fontSize: 24}} spin/>;
   return (
     <Spin spinning={loading} indicator={icon}>
-      <div className={styles.compilation}
-           onClick={event => setCompilationToSave(event, Object.keys(compilation)[0])}>
+      <div className={styles.compilation} onClick={onClickCompilation}>
         <Compilation compilation={compilation}/>
       </div>
     </Spin>

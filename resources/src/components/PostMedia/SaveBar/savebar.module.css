@@ -12,6 +12,11 @@
 .drawer {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  background-color: transparent;
+}
+
+.compilationsModal {
+  width: 55vw;
 }
 
 .saveBar {
@@ -24,6 +29,20 @@
   align-items: center;
   height: calc(90vh - 50px);
   background-color: var(--primary);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.compilationsContainer::-webkit-scrollbar {
+  width: 2px;
+}
+
+.compilationsContainer::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: var(--scrollbar);
+  border-radius: 1px;
 }
 
 .staticButtonLink {
@@ -46,23 +65,37 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  overflow-y: scroll;
-  padding-bottom: 15px;
-  scrollbar-width: thin;
 }
 
-.caption::-webkit-scrollbar {
+@supports (display: grid) {
+  .compilationsList {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fill, minmax(201px, 1fr));
+    grid-gap: 10px;
+    width: 100%;
+    align-content: center;
+    justify-items: center;
+    overflow-y: scroll;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+  }
+
+  @media all and (max-width: 768px) {
+    .compilationsList {
+      grid-template-columns: repeat(auto-fill, minmax(121px, 1fr));
+    }
+  }
+}
+
+.compilationsList::-webkit-scrollbar {
   width: 2px;
 }
 
-.caption::-webkit-scrollbar-thumb {
+.compilationsList::-webkit-scrollbar-thumb {
   width: 2px;
   background: var(--scrollbar);
   border-radius: 1px;
-}
-
-.compilationsList {
-  overflow: -moz-scrollbars-none;
 }
 
 @media all and (max-width: 768px) {

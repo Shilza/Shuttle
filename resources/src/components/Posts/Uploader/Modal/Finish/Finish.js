@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {message} from 'antd';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import {Button} from 'ui';
 import Header from "components/Posts/Header";
 import Container from "components/Posts/Container";
 import Marks from "components/Posts/Marks";
@@ -64,7 +65,7 @@ const Finish = ({upload, media, goBack, video = false}) => {
                 />
               </div>
               <Location onChange={setLocation}/>
-              <button className={styles.button} onClick={goToMarks}>Mark friends</button>
+              <Button className={styles.button} onClick={goToMarks}>Mark friends</Button>
             </div>
           </Container>
       }

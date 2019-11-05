@@ -1,4 +1,4 @@
-.post {
+.container {
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -7,17 +7,17 @@
 }
 
 @supports not (display: grid) {
-  .post {
+  .container {
     width: 32%;
     margin: 2px;
   }
 }
 
-.post:hover .metaInfo {
+.container:hover .metaInfo {
   opacity: 1;
 }
 
-.post:before {
+.container:before {
   content: "";
   display: block;
   padding-top: 100%;

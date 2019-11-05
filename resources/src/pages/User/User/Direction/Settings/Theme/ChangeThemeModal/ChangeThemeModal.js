@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import SimpleModal from "components/Modal/SimpleModal/SimpleModal";
+import {SimpleModal} from 'ui';
 
 import moonIcon from './icons/moon.svg';
 import sunIcon from './icons/sun.svg';

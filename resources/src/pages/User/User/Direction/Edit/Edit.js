@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import {Drawer} from 'react-pretty-drawer';
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {Button, Form, message} from "antd";
+import {Form, message} from "antd";
 
 import {isMobile} from "utils/isMobile";
-import SimpleModal from "components/Modal/SimpleModal/SimpleModal";
+import {Button} from 'ui';
+import {SimpleModal} from 'ui';
 import EditBody from "./EditBody/EditBody";
 
 import EditTitle from "./EditTitle/EditTitle";
@@ -49,7 +50,7 @@ const Edit = React.memo(({dispatch, history, form}) => {
   }, [form, dispatch]);
 
   return <>
-    <Button size='small' onClick={showDrawer} className={styles.editButton}>
+    <Button onClick={showDrawer} className={styles.editButton}>
       Edit
     </Button>
     <>

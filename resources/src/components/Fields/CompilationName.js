@@ -15,7 +15,7 @@ export const CompilationName = ({getFieldDecorator, className, fieldName = 'comp
         ],
         initialValue
       })(
-        <input className={className} placeholder='name'/>
+        <input className={className} placeholder='name' autoComplete='off'/>
       )}
     </FormItem>
   );

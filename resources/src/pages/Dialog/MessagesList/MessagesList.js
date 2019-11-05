@@ -13,7 +13,7 @@ import Slider from "./Slider"
 import styles from "./messagesList.module.css"
 
 
-const MessagesList = ({messages, getScrollParent, user, myId, getMessages, deleteMsg, isFirstLoading}) => {
+const MessagesList = ({messages, getScrollParent, myId, getMessages, deleteMsg, isFirstLoading}) => {
 
   let lastMessage = useRef(null);
 
@@ -61,7 +61,7 @@ const MessagesList = ({messages, getScrollParent, user, myId, getMessages, delet
                   <StartMessagingLabel/>
                 </div>
                 :
-                messages.map((message, index) => (
+                messages.map((message) => (
                     <>
                       {messageDate(message.created_at)}
                       <Message
@@ -88,10 +88,6 @@ const MessagesList = ({messages, getScrollParent, user, myId, getMessages, delet
 
 MessagesList.propTypes = {
   messages: PropTypes.array.isRequired,
-  user: PropTypes.shape({
-    avatar: PropTypes.string,
-    username: PropTypes.string
-  }),
   myId: PropTypes.number.isRequired,
   getMessages: PropTypes.func.isRequired,
   isFirstLoading: PropTypes.bool.isRequired,

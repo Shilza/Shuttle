@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Modal from "components/Modal/Modal";
+import {OptionsModal} from 'ui';
 import ActionsBody from "./ActionsBody";
 import ActionsButton from "./ActionsButton";
 
@@ -13,9 +13,9 @@ const ActionsModal = () => {
 
   return (
     <>
-      <Modal visible={isModalOpen} onClose={closeModal}>
+      <OptionsModal visible={isModalOpen} onClose={closeModal}>
         <ActionsBody closeModal={closeModal}/>
-      </Modal>
+      </OptionsModal>
       <ActionsButton open={open}/>
     </>
   );

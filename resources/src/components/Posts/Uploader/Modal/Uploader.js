@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import PropTypes from 'prop-types';
-import {Button} from "antd";
+import {Button} from 'ui';
 
 import styles from './uploader.module.css';
 
@@ -29,7 +29,8 @@ const Uploader = ({loadMedia, trigger}) => {
 const DefaultTrigger = ({onClick}) => (
   <Button
     className={styles.uploadButton}
-    onClick={onClick} size='small'>
+    onClick={onClick}
+  >
     New
   </Button>
 );

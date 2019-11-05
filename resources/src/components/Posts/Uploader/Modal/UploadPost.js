@@ -6,9 +6,9 @@ import UploadMediaPlayer from "components/PostMedia/UploadMediaPlayer";
 
 import {convertImageToBlob} from "utils/convertImageToBlob";
 
-import Filters from "./Filters";
 import Container from "../../Container";
 import Header from "../../Header";
+import Filters from "./Filters";
 import Finish from "./Finish";
 
 const FILTERS = 'FILTERS';

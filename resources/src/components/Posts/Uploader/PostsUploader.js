@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {message} from "antd";
 
-import Modal from "components/Modal";
+import {Modal} from "ui";
 import Uploader from "./Modal/Uploader";
 import UploadPost from "./Modal/UploadPost";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import ListModal from "components/Modal/ListModal/ListModal";
+import {ListModal} from 'ui';
 import ModalBody from "./ModalBody";
 
 const LikesListModal = ({onClose, isVisible, id, type}) => (

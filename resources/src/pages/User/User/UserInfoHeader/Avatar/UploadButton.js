@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState} from "react";
 import {Icon} from "antd";
 import styles from './avatar.module.css';
-import Modal from "components/Modal/Modal";
+import {Modal} from 'ui';
 import AvatarUploader from "./AvatarUploader";
 
 const inputStyle = {display: 'none'};

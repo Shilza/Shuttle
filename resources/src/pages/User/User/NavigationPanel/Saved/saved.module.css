@@ -10,7 +10,7 @@
 }
 
 .compilationsLabel {
-  margin: 15px 0 25px 0;
+  margin: 10px auto 25px auto;
 }
 
 .bookmark {
@@ -48,6 +48,10 @@
 }
 
 .compilationContainer {
+  width: min-content;
+}
+
+.imagesContainer {
   display: flex;
   flex-wrap: wrap;
   width: 201px;
@@ -58,7 +62,7 @@
 }
 
 @supports (display: grid) {
-  .compilationContainer {
+  .imagesContainer {
     display: grid;
     grid-gap: 1px;
     border-radius: 6%;
@@ -110,12 +114,12 @@
   }
 
   @supports (display: grid) {
-    .compilationContainer {
+    .imagesContainer {
       grid-template-columns: repeat(2, 60px);
     }
   }
 
-  .compilationContainer {
+  .imagesContainer {
     width: 121px;
     height: 121px;
   }

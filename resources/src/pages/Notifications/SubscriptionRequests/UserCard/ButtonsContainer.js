@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {Button} from "antd";
+
+import {Button} from 'ui';
 import {acceptSubsRequest, cancelSubsRequest} from "services/subscriptionRequests";
+
 import styles from './userCard.module.css';
 
 const ButtonsContainer = ({id, deleteFromSubsList}) => {
@@ -25,16 +27,10 @@ const ButtonsContainer = ({id, deleteFromSubsList}) => {
 
   return (
     <div className={styles.actionButtons}>
-      <Button size={'small'}
-              loading={acceptLoading}
-              onClick={accept}
-      >
+      <Button loading={acceptLoading} onClick={accept}>
         Accept
       </Button>
-      <Button size={'small'}
-              loading={cancelLoading}
-              onClick={cancel}
-      >
+      <Button loading={cancelLoading} onClick={cancel}>
         Deny
       </Button>
     </div>

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import {Icon} from "antd";
 
 import Media from "./Media";
-import PostsModal from "../PostsModal";
+import PostsModal from "../../PostsModal";
 
-import camera from './icons/camera.svg';
-import styles from './post.module.css';
+import cameraIcon from './icons/camera.svg';
+import styles from './postPreview.module.css';
 
 
-const Post = ({post}) => {
+const PostPreview = React.memo(({post}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -22,7 +22,7 @@ const Post = ({post}) => {
 
   return (
     <>
-      <div className={styles.post} onClick={openModal}>
+      <div className={styles.container} onClick={openModal}>
         <Media src={post.src}/>
         <div className={styles.metaInfo}>
           <div>
@@ -34,14 +34,14 @@ const Post = ({post}) => {
             <Icon className={styles.icon} type='message'/>
           </div>
         </div>
-        {post.src.match('.mp4') && <picture className={styles.videoCamera}><img src={camera} alt={'Video'}/></picture>}
+        {post.src.match('.mp4') && <picture className={styles.videoCamera}><img src={cameraIcon} alt={'Video'}/></picture>}
       </div>
       <PostsModal visible={isModalOpen} post={post} onClose={closeModal}/>
     </>
   );
-};
+});
 
-Post.propTypes = {
+PostPreview.propTypes = {
   post: PropTypes.shape({
     src: PropTypes.string.isRequired,
     likes_count: PropTypes.number.isRequired,
@@ -49,4 +49,4 @@ Post.propTypes = {
   }),
 };
 
-export default React.memo(Post);
+export default PostPreview;

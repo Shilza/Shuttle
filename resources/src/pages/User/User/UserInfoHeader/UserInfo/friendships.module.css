@@ -66,16 +66,8 @@
   border-radius: 5px;
   margin-left: auto;
   min-width: 100px;
-  outline: none;
-  transition: 140ms;
-  cursor: pointer;
-  background: var(--primary);
   color: var(--text);
   border: 1px solid var(--accent);
-}
-
-.unFollowButton:hover {
-  background-color: var(--accent);
 }
 
 .search {

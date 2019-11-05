@@ -2,9 +2,12 @@ import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Link} from "react-router-dom";
-import {Button} from "antd";
 import {connect} from "react-redux";
 import {Drawer} from 'react-pretty-drawer';
+
+import {Button} from 'ui';
+import {SimpleModal} from 'ui';
+import {isMobile} from "utils/isMobile";
 
 import SavedBarCompilationsList from "./Compilations/SavedBarCompilationsList";
 import DrawerTitle from "./DrawerTitle";
@@ -48,28 +51,41 @@ const SaveBar = ({dispatch, isModalOpen, showBar, isVideo, username}) => {
             Choose compilation
           </button>
           <Link to={`/${username}`}>
-            <Button size='small'>
+            <Button>
               See compilations
             </Button>
           </Link>
         </div>
       }
-      <Drawer
-        height={'90vh'}
-        placement={'bottom'}
-        visible={drawerVisible}
-        className={styles.drawer}
-        closable={false}
-        zIndex={10000}
-        onClose={closeDrawer}
-      >
-        <DrawerTitle/>
-        <div className={styles.compilationsContainer}>
-          <SavedBarCompilationsList/>
-          <Button size={'small'} onClick={closeDrawer}>Cancel</Button>
-        </div>
-        <NewCompilationModal visible={isModalOpen}/>
-      </Drawer>
+      {
+        isMobile() ?
+          <Drawer
+            height={'90vh'}
+            placement={'bottom'}
+            visible={drawerVisible}
+            className={styles.drawer}
+            closable={false}
+            zIndex={10000}
+            onClose={closeDrawer}
+          >
+            <DrawerTitle/>
+            <div className={styles.compilationsContainer}>
+              <SavedBarCompilationsList/>
+              <Button onClick={closeDrawer}>Cancel</Button>
+            </div>
+            <NewCompilationModal visible={isModalOpen}/>
+          </Drawer>
+          :
+          <SimpleModal visible={drawerVisible} className={styles.compilationsModal} onCancel={closeDrawer}>
+            <>
+              <DrawerTitle/>
+              <div className={styles.compilationsContainer}>
+                <SavedBarCompilationsList/>
+              </div>
+              <NewCompilationModal visible={isModalOpen}/>
+            </>
+          </SimpleModal>
+      }
     </ReactCSSTransitionGroup>
   );
 };

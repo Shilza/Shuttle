@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import {Drawer} from "react-pretty-drawer";
 
 import {isMobile} from "utils/isMobile";
-import Modal from "components/Modal/Modal";
+import {Modal} from 'ui';
 import Editor from "./Editor";
+
+import styles from './edit.module.css';
 
 const Edit = ({post, closeModal}) => {
 
@@ -22,7 +24,8 @@ const Edit = ({post, closeModal}) => {
       <li onClick={open}>Edit</li>
       {
         isMobile()
-          ? <Drawer visible={isOpen} placement={'bottom'} height={'100vh'}>
+          ?
+          <Drawer visible={isOpen} placement={'bottom'} height={'100vh'} className={styles.drawer}>
             <Editor post={post} closeModal={closeModal}/>
           </Drawer>
           :

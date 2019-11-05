@@ -149,7 +149,6 @@ const Dialog = ({myId, dispatch, match}) => {
                   <Header username={username} avatar={dialogUser && dialogUser.avatar} isTyping={isTyping}/>
                   <MessagesList
                     messages={messages}
-                    user={dialogUser}
                     myId={myId}
                     getMessages={getMessages}
                     isFirstLoading={isFirstLoading}

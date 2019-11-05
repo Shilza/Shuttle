@@ -7,6 +7,9 @@
 .redHeart {
   composes: action from '../actions.module.css';
   color: rgb(255, 68, 75);
+}
+
+.beatHeart {
   animation: beat;
   animation-duration: 300ms;
   animation-timing-function: ease-out;

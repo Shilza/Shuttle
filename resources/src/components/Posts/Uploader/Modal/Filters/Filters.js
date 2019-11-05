@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {convertImageToBlob} from "utils/convertImageToBlob";
 import Header from "components/Posts/Header";
-import SvgIcon from "components/SvgIcon";
+import {SvgIcon} from 'ui';
 import Container from "components/Posts//Container";
 import Settings from "./Settings";
 import FilteredImage from "./FilteredImage";

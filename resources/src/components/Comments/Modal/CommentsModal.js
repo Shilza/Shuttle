@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import ModalBody from "./ModalBody";
-import Modal from "components/Modal/Modal";
+import {OptionsModal} from 'ui';
 import * as CommentService from "services/comments";
 
 const CommentsModal = ({id, canDelete, closeModal, isModalOpen, onRemove}) => {
@@ -12,9 +12,9 @@ const CommentsModal = ({id, canDelete, closeModal, isModalOpen, onRemove}) => {
   };
 
   return (
-    <Modal visible={isModalOpen} onClose={closeModal}>
+    <OptionsModal visible={isModalOpen} onClose={closeModal}>
       <ModalBody closeModal={closeModal} canDelete={canDelete} removeComment={removeComment}/>
-    </Modal>
+    </OptionsModal>
   );
 };
 

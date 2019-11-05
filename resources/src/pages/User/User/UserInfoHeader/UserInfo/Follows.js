@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import ListModal from "components/Modal/ListModal";
+import {ListModal} from 'ui';
 import UserFriendshipCard from "./UserFriendshipCard";
 import {searchFollows} from "services/user";
 

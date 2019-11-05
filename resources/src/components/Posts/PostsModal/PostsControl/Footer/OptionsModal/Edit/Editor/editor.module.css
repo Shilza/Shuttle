@@ -30,17 +30,6 @@
   padding: 0 10px;
 }
 
-.button {
-  color: var(--text);
-  background: transparent;
-  padding: 2px 8px;
-  width: 100%;
-  border: 1px solid var(--accent-second);
-  margin: 5px 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .caption {
   border: 0;
   padding: 4px 8px;
@@ -60,4 +49,8 @@
   width: 4px;
   background: var(--scrollbar);
   border-radius: 2px;
+}
+
+.button {
+  width: 100%;
 }

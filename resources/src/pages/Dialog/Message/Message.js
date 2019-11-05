@@ -3,8 +3,7 @@ import PropTypes from "prop-types"
 import moment from "moment";
 
 import CLinkify from 'components/CLinkify'
-import OptionsModal from "components/Modal/OptionsModal";
-import Modal from "components/Modal";
+import {OptionsModal} from 'ui';
 
 import Post from "./Post";
 import Images from "./Images";
@@ -50,15 +49,13 @@ const Message = ({id, post, images, text, my, read, time, deleteMsg}) => {
         }
         <time className={my ? styles.myTime : styles.time}>{moment(time).format('HH:mm')}</time>
       </div>
-      <Modal visible={modalVisible} onClose={closeModal}>
-        <OptionsModal>
-          {
-            moment().diff(time, 'hours') <= 24 &&
-            <li onClick={deleteMessage}>Delete</li>
-          }
-          <li onClick={closeModal}>Cancel</li>
-        </OptionsModal>
-      </Modal>
+      <OptionsModal visible={modalVisible && moment().diff(time, 'hours') <= 24} onClose={closeModal}>
+        {
+          moment().diff(time, 'hours') <= 24 &&
+          <li onClick={deleteMessage}>Delete</li>
+        }
+        <li onClick={closeModal}>Cancel</li>
+      </OptionsModal>
     </>
   );
 };
