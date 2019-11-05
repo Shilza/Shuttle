@@ -1,0 +1,28 @@
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: transparent;
+  padding: 2px 8px;
+  border: 1px solid var(--btn-border);
+  margin: 5px 0 ;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 180ms;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+}
+
+.button:hover {
+  color: var(--btn-text-hover-color);
+  border-color: var(--btn-border-hover);
+}
+
+.button:active {
+  border-color: var(--btn-border-active);
+}
+
+.loader {
+  margin: 0 2px 0 8px;
+}

@@ -70,8 +70,8 @@ This section shows the Shuttle user interface on desktop and mobile devices
 #### View post
 ![View post mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/post.png)
 
-#### Post's modal
-![Post's modal mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/postsModal.png)
+#### PostPreview's modal
+![PostPreview's modal mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/postsModal.png)
 
 #### Select posts compilation
 ![Select compilation mobile](https://github.com/Shilza/Shuttle/blob/master/presentation/mobile/chooseCompilation.png)

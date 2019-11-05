@@ -4,7 +4,7 @@ import Loader from "components/Paginator/Loader";
 import Modal from "../Modal";
 import styles from './simpleModal.module.css';
 
-const SimpleModal = ({
+const SimpleModal = React.memo(({
                        title, onOk, onCancel, visible, className,
                        children, withCloseButton, zIndex, okButtonText, cancelButtonText, isLoading, ...props
                      }) => (
@@ -26,7 +26,7 @@ const SimpleModal = ({
       }
     </div>
   </Modal>
-);
+));
 
 SimpleModal.defaultProps = {
   zIndex: 999,

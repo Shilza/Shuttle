@@ -5,9 +5,13 @@
   padding: .5em;
   line-height: 1;
   border: 0;
+  background-color: transparent;
   cursor: pointer;
-  background: transparent;
   outline: none;
+}
+
+.closeButton:hover .closeIcon{
+  stroke-width: 2px;
 }
 
 .closeIcon {
@@ -16,4 +20,5 @@
   fill: transparent;
   stroke: white;
   stroke-linecap: round;
+  transition: 140ms;
 }

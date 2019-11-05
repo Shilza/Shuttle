@@ -1,2 +1,0 @@
-
-export SimpleModal from './SimpleModal';

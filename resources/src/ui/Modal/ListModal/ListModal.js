@@ -4,7 +4,7 @@ import Modal from "../Modal";
 
 import styles from './listModal.module.css';
 
-const ListModal = ({visible, title, children, withCloseButton, className, onClose}) => (
+const ListModal = React.memo(({visible, title, children, withCloseButton, className, onClose}) => (
   <Modal visible={visible} onClose={onClose} withCloseButton={withCloseButton}>
     <div className={`${styles.container} ${className}`}>
       <h1 className={styles.title}>
@@ -15,7 +15,7 @@ const ListModal = ({visible, title, children, withCloseButton, className, onClos
       </div>
     </div>
   </Modal>
-);
+));
 
 ListModal.propTypes = {
   visible: PropTypes.bool.isRequired,

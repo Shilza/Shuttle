@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Window from "./Window";
 
-const Modal = ({children, onClose, zIndex, withCloseButton, visible}) => (
+const Modal = React.memo(({children, onClose, zIndex, withCloseButton, visible}) => (
   <>
     {
       visible && <Window withCloseButton={withCloseButton} zIndex={zIndex} onClose={onClose}>{children}</Window>
     }
   </>
-);
+));
 
 Modal.defaultProps = {
   zIndex: 999,

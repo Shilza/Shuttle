@@ -29,7 +29,7 @@ const Window = ({children, zIndex, withCloseButton, onClose}) => {
 
   return createPortal(
     <aside style={{zIndex}} className={styles.modalCover} id={`modalCover${id}`} onClick={closeByCoverClick}>
-      { withCloseButton && <CloseButton closeModal={onClose}/> }
+      { withCloseButton && <CloseButton closeModal={onClose} zIndex={zIndex + 1}/> }
       <div className={styles.modalContent} id={`modalContent${id}`}>
         {children}
       </div>
