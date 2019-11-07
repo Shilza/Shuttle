@@ -1,6 +1,6 @@
 import {useReducer, useRef} from "react";
-import {getUnique} from "utils/getUnique";
-import * as SearchService from 'services/search';
+import {getUnique} from "utils";
+import {SearchService} from 'services';
 
 const initialState = {
   users: []

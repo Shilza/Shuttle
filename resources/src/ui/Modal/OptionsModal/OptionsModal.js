@@ -22,7 +22,7 @@ OptionsModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   className: PropTypes.string,
   withCloseButton: PropTypes.bool,
-  children: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.bool])).isRequired,
+  children: PropTypes.element,
   onClose: PropTypes.func
 };
 

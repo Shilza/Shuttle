@@ -2,9 +2,8 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {Drawer} from "react-pretty-drawer";
 
-import {isMobile} from "utils/isMobile";
-import {SimpleModal} from 'ui';
-import {SvgIcon} from 'ui';
+import {isMobile} from "utils";
+import {IconButton, SimpleModal} from 'ui';
 import planeIcon from "images/plane.svg";
 
 import Body from "./Body";
@@ -24,9 +23,12 @@ const Share = React.memo(({src, className}) => {
 
   return (
     <>
-      <button className={`${styles.button} ${className}`} onClick={open} title={'Share'}>
-        <SvgIcon title={'Share post'} icon={planeIcon} className={styles.icon}/>
-      </button>
+      <IconButton
+        iconProps={{title: 'Share post', icon: planeIcon, className: styles.icon}}
+        ariaLabel='Share post'
+        title='Share post'
+        className={`${styles.button} ${className}`} onClick={open}
+      />
       {
         isMobile()
           ? <Drawer onClose={close} visible={isVisible} placement='bottom' height='90%' className={styles.drawer}>

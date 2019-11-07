@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import * as PostService from "services/posts";
+import {PostsService} from "services";
 import PostsExplainingLabel from "components/ExplainingLabels/PostsLabel/PostsExplainingLabel";
 import Paginator from "components/Paginator/Paginator";
 import PostsList from "components/Posts/PostsList";
@@ -16,7 +16,7 @@ const PostsManager = ({id, posts, dispatch}) => {
   }, [id]);
 
   const fetchPosts = useCallback((page) => {
-    return PostService.getPosts(id)(page)
+    return PostsService.getPosts(id)(page)
       .then(({data}) => {
         dispatch.posts.addUser(data.data);
         return data;

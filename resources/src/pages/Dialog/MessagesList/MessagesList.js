@@ -2,7 +2,7 @@ import React, {useRef} from "react"
 import PropTypes from "prop-types"
 import moment from "moment"
 
-import {isMobile} from "utils/isMobile"
+import {isMobile} from "utils"
 import TopPagination from "components/TopPagination"
 import Loader from "components/Paginator/Loader"
 import StartMessagingLabel from "components/ExplainingLabels/StartMessagingLabel/StartMessagingLabel"

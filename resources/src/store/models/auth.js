@@ -1,7 +1,7 @@
 import Http from "Http";
-import {saveTokensToLocalStorage} from "utils/saveTokensToLocalStorage";
-import * as AuthService from 'services/auth'
-import * as UserService from 'services/user';
+import {saveTokensToLocalStorage} from "utils";
+import {AuthService} from 'services';
+import {UsersService} from 'services';
 
 
 function removeTokensFromLocalStorage() {
@@ -115,7 +115,7 @@ export const auth = {
         });
     },
     async update({values, history}) {
-      const {data} = await UserService.update(values);
+      const {data} = await UsersService.update(values);
 
       history.push(data.user.username);
 

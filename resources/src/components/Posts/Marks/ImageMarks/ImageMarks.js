@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import { message } from 'antd';
 
-import {useSearch} from "hooks/useSearch";
-import SearchInput from "components/SearchInput/SearchInput";
+import {useSearch} from "hooks";
+import SearchInput from "components/SearchInput";
 
 import Container from "../../Container";
 import Header from "../../Header";

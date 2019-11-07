@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
-import {SvgIcon} from 'ui';
-import {isMobile} from "utils/isMobile";
+import {IconButton} from "ui";
+import {isMobile} from "utils";
 import logoIcon from 'images/logo.png';
 import planeIcon from 'images/plane.svg';
 
@@ -21,12 +21,15 @@ const Header = ({username, avatar, countOfUnreadMessages}) => (
     <Search/>
     <div className={styles.rightContainer}>
       <Link to={'/u/messages'} className={styles.messagesLink} data-countofunreadmessages={countOfUnreadMessages}>
-        <SvgIcon
-          title={'Messages'}
-          icon={planeIcon}
+        <IconButton
+          iconProps={{
+            icon: planeIcon,
+            width: 24,
+            height: 24
+          }}
+          ariaLabel='Open messages'
+          title='Messages'
           className={styles.messagesIcon}
-          width={24}
-          height={24}
         />
       </Link>
       {

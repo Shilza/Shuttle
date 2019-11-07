@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import UserRequestCard from "./UserCard/UserRequestCard";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import {getSubsRequests} from "services/subscriptionRequests";
+import {SubscriptionRequestsService} from "services";
+import UserRequestCard from "./UserCard/UserRequestCard";
 import transitions from './transitions.module.css';
 import styles from './subReq.module.css';
 
@@ -10,7 +10,7 @@ const SubRequestList = () => {
   let [requests, setRequests] = useState(undefined);
 
   useEffect(() => {
-    getSubsRequests().then(({data}) => setRequests(data.data));
+    SubscriptionRequestsService.getSubsRequests().then(({data}) => setRequests(data.data));
   }, []);
 
   const deleteFromSubsList = id => setRequests(requests.filter(item => id !== item.id));

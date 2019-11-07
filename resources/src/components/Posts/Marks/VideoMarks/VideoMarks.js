@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-import SearchInput from "components/SearchInput/SearchInput";
-import {useSearch} from "hooks/useSearch";
+import SearchInput from "components/SearchInput";
+import {useSearch} from "hooks";
 import Container from "../../Container";
 import Header from "../../Header";
 import UsersList from "../UsersList";

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {debounce} from "utils/debounce";
+import {debounce} from "utils";
 import store from 'store';
 
-import {SvgIcon} from 'ui';
+import {IconButton} from 'ui';
 import bookmarkFlat from './icons/bookmarkFlat.svg';
 import bookmarkSolid from './icons/bookmarkSolid.svg';
 
@@ -26,11 +26,12 @@ const Save = ({post, dispatch}) => {
   const removeSaved = () => dispatch.posts.removeSavedPost(post.id);
 
   return (
-    <div className={styles.save} title={'Save'} role='button'>
+    <div className={styles.save} role='button'>
       {
         post.isSaved
-          ? <SvgIcon icon={bookmarkSolid} onClick={removeSaved}/>
-          : <SvgIcon icon={bookmarkFlat} onClick={save}/>
+          ? <IconButton ariaLabel='Remove from saved' title='Remove from saved' iconProps={{icon: bookmarkSolid}}
+                        onClick={removeSaved}/>
+          : <IconButton ariaLabel='Save' title='Save' iconProps={{icon: bookmarkFlat}} onClick={save}/>
       }
     </div>
   );

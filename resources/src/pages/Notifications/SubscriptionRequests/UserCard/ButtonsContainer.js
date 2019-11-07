@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 
 import {Button} from 'ui';
-import {acceptSubsRequest, cancelSubsRequest} from "services/subscriptionRequests";
+import {SubscriptionRequestsService} from "services";
 
 import styles from './userCard.module.css';
 
@@ -11,9 +11,9 @@ const ButtonsContainer = ({id, deleteFromSubsList}) => {
   let [acceptLoading, setAcceptLoading] = useState(false);
   let [cancelLoading, setCancelLoading] = useState(false);
 
-  const accept = () => interactionWithSubRequest(acceptSubsRequest, () => (setAcceptLoading(false)));
+  const accept = () => interactionWithSubRequest(SubscriptionRequestsService.acceptSubsRequest, () => (setAcceptLoading(false)));
 
-  const cancel = () => interactionWithSubRequest(cancelSubsRequest, () => (setCancelLoading(true)));
+  const cancel = () => interactionWithSubRequest(SubscriptionRequestsService.cancelSubsRequest, () => (setCancelLoading(true)));
 
   const interactionWithSubRequest = (loader, setStateCallback) => {
     setStateCallback();

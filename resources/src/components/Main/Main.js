@@ -1,6 +1,6 @@
 import React from "react";
 
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 import styles from './main.module.css';
 
 const Main = ({children}) => (

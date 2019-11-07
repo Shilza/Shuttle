@@ -1,8 +1,8 @@
 import React, {useCallback, useState} from "react";
 
 import Paginator from "components/Paginator";
-import * as PostsService from 'services/posts';
-import * as CommentsService from 'services/comments';
+import {PostsService} from 'services';
+import {CommentsService} from 'services';
 
 import User from "./User";
 

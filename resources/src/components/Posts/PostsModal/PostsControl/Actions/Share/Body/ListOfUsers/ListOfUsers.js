@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 import Paginator from "components/Paginator/";
 
 import User from "./User";

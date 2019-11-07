@@ -1,9 +1,9 @@
 import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
 
-import {convertImageToBlob} from "utils/convertImageToBlob";
+import {convertImageToBlob} from "utils";
 import Header from "components/Posts/Header";
-import {SvgIcon} from 'ui';
+import {IconButton} from 'ui';
 import Container from "components/Posts//Container";
 import Settings from "./Settings";
 import FilteredImage from "./FilteredImage";
@@ -191,10 +191,15 @@ const Filters = ({media, goBack, upload}) => {
           <Container>
             <Header goNext={goFinish} goBack={goBack} title={'Filters'} nextButtonText={'Finish'}/>
             <div className={styles.wrapper}>
-              <FilteredImage imageRef={imageRef} media={media.image} filter={makeFilter(settings)} rotateAngel={rotateAngel}/>
+              <FilteredImage imageRef={imageRef} media={media.image} filter={makeFilter(settings)}
+                             rotateAngel={rotateAngel}/>
               <div className={styles.iconsContainer}>
-                <SvgIcon title='Rotate left' className={styles.icon} icon={imageRotateLeft} onClick={rotateLeft}/>
-                <SvgIcon title='Rotate right' className={styles.icon} icon={imageRotateRight} onClick={rotateRight}/>
+                <IconButton title='Rotate left' ariaLabel='Rotate image left' className={styles.icon}
+                            iconProps={{icon: imageRotateLeft}}
+                            onClick={rotateLeft}/>
+                <IconButton title='Rotate right' ariaLabel='Rotate image right' className={styles.icon}
+                            iconProps={{icon: imageRotateRight}}
+                            onClick={rotateRight}/>
               </div>
               <Settings settings={settings} url={media.image} onChange={handleChange}/>
             </div>

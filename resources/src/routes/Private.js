@@ -6,7 +6,7 @@ import Main from "components/Main";
 import Toolbar from "components/Toolbar";
 import Header from "components/Header";
 import Welcome from "pages/Welcome";
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 
 const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
   <Route {...rest} render={props => (

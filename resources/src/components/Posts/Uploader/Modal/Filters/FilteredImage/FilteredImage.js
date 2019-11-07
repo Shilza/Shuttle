@@ -9,7 +9,7 @@ const FilteredImage = ({filter, media, imageRef, rotateAngel}) => {
     filter
   };
 
-  return <img ref={imageRef} className={styles.media} src={media} style={imgStyle} alt='Filtered'/>
+  return <img ref={imageRef} className={styles.media} src={media} style={imgStyle} alt='With filters'/>
 };
 
 FilteredImage.propTypes = {

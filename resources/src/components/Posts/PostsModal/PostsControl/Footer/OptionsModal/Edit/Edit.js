@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Drawer} from "react-pretty-drawer";
 
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 import {Modal} from 'ui';
 import Editor from "./Editor";
 

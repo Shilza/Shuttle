@@ -1,4 +1,4 @@
-import * as CompilationsService from 'services/saved';
+import {CompilationsService} from 'services';
 
 const initialState = {
   compilations: [],

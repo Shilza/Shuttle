@@ -5,7 +5,7 @@ import {Drawer} from 'react-pretty-drawer';
 
 import Mark from "components/Posts/Mark";
 import {Modal} from 'ui';
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 
 import MediaPlayer from "./MediaPlayer";
 import SaveBar from "./SaveBar";

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import PostsUploader from "components/Posts/Uploader";
 import PrivacyExplainingLabel from "components/ExplainingLabels/PrivacyLabel/PrivacyExplainingLabel";
 import BlacklistedExplainingLabel from "components/ExplainingLabels/BlacklistedLabel/BlacklistedExplainingLabel";
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 
 import NavigationPanel from "./NavigationPanel/NavigationPanel";
 import UserInfoHeader from "./UserInfoHeader/UserInfoHeader";

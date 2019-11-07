@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import UploadMediaPlayer from "components/PostMedia/UploadMediaPlayer";
 
-import {convertImageToBlob} from "utils/convertImageToBlob";
+import {convertImageToBlob} from "utils";
 
 import Container from "../../Container";
 import Header from "../../Header";

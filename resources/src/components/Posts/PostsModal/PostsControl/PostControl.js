@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import CommentsList from "components/Comments/CommentsList";
 import TopPagination from "components/TopPagination";
 import Loader from "components/Paginator/Loader";
-import useComments from "hooks/useComments";
+import {useComments} from "hooks";
 
 import styles from './postControl.module.css';
 import Caption from "components/Posts/Caption";

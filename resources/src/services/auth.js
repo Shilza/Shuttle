@@ -1,4 +1,4 @@
-import {saveTokensToLocalStorage} from "utils/saveTokensToLocalStorage";
+import {saveTokensToLocalStorage} from "utils";
 import Http from '../Http';
 import {api} from './api';
 

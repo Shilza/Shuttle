@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {Icon} from "antd";
-import * as LikeService from "services/likes";
+import {LikesService} from "services";
 
 import styles from './like.module.css';
 
@@ -20,11 +20,11 @@ const Like = ({id, isLiked, onLike, type, className}) => {
     if (isLiked) {
       onLike({id, liked: false});
       setIsBeat(false);
-      LikeService.unlike(data).catch(() => onLike({id, liked: true}));
+      LikesService.unlike(data).catch(() => onLike({id, liked: true}));
     } else {
       onLike({id, liked: true});
       setIsBeat(true);
-      LikeService.like(data).catch(() => onLike({id, liked: false}));
+      LikesService.like(data).catch(() => onLike({id, liked: false}));
     }
   };
 

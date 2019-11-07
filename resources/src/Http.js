@@ -1,7 +1,7 @@
 import axios from 'axios';
 import moment from 'moment';
 import store from 'store';
-import * as AuthService from 'services/auth';
+import {AuthService} from 'services';
 
 
 const token = document.head.querySelector('meta[name="csrf-token"]');

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Switch} from "antd";
-import * as ThemeManager from "utils/ThemeManager";
+import {ThemeManager} from "utils";
 import ChangeThemeModal from "./ChangeThemeModal/ChangeThemeModal";
 
 

@@ -16,6 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--heading);
+  font-weight: 500;
 }
 
 .next {
@@ -24,6 +25,11 @@
   color: #1e90ff;
   margin-left: auto;
   cursor: pointer;
+  transition: 140ms;
+}
+
+.next:hover {
+  color: #37afff;
 }
 
 .back {

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import ModalBody from "./ModalBody";
 import {OptionsModal} from 'ui';
-import * as CommentService from "services/comments";
+import {CommentsService} from "services";
 
 const CommentsModal = ({id, canDelete, closeModal, isModalOpen, onRemove}) => {
 
   const removeComment = () => {
-    CommentService.remove(id).then(() => onRemove(id));
+    CommentsService.remove(id).then(() => onRemove(id));
   };
 
   return (

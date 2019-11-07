@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
 
 import Loader from "components/Paginator/Loader";
-import * as CommentsService from 'services/comments';
+import {CommentsService} from 'services';
 
 import styles from '../postControl.module.css';
 

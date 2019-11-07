@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import {useSearch} from "hooks/useSearch";
+import {useSearch} from "hooks";
 import SearchBar from './SearchBar';
 import SearchInput from "./SearchInput";
 
@@ -56,7 +56,7 @@ const Search = ({dispatch, isSearchFocused}) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} aria-label='Global search'>
       <SearchInput
         search={onChangeSearch}
         searchRef={searchRef}

@@ -1,7 +1,7 @@
 import {useCallback, useReducer, useRef} from "react"
-import * as PostsService from 'services/posts';
-import * as DialogsService from 'services/dialogs';
-import {getImagesUrl} from "utils/getImagesUrl";
+import {PostsService} from 'services';
+import {DialogsService} from 'services';
+import {getImagesUrl} from "./getImagesUrl";
 
 const getPostCode = (text) => {
   const postMatches = text.match(/^https?:\/\/([^/?#]+)(?:[/?#]|$)/i);

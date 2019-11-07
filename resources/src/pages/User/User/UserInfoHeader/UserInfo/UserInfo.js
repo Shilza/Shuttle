@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import {addSmoothScrolling} from "utils/scrolling";
-import * as UsersService from "services/user";
+import {UsersService} from "services";
 import Paginator from "components/Paginator/Paginator";
 
 import Followers from "./Followers";
@@ -18,10 +17,6 @@ const UserInfo = ({postsCount, canSee, followersCount, followsCount, id, dispatc
 
   let [isFollowersModal, setIsFollowersModal] = useState(false);
   let [isFollowsModal, setIsFollowsModal] = useState(false);
-
-  useEffect(() => {
-    addSmoothScrolling('userInfoPostsLink');
-  }, []);
 
   const closeFollowersModal = () => setIsFollowersModal(false);
 

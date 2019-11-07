@@ -9,7 +9,7 @@ import Email from "../../Fields/Email";
 import {Username} from "../../Fields/Username";
 import Password from "../../Fields/Password";
 import Confirm from "../../Fields/Confirm";
-import * as AuthService from 'services/auth';
+import {AuthService} from 'services';
 import styles from './register.module.css';
 
 

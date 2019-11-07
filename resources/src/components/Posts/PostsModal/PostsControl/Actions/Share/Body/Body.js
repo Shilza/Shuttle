@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 
 import SearchInput from "components/SearchInput";
 
-import {isMobile} from "utils/isMobile";
-import useDialogs from "hooks/useDialogs"
+import {isMobile} from "utils";
+import {useDialogs} from "hooks"
 import ws, {types as WsTypes} from "../../../../../../../Ws";
 
 import Header from "./Header";

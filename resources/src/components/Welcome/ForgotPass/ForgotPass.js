@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {Button, Form, Icon, Spin} from "antd";
 import Welcome from "pages/Welcome/Welcome";
 import Email from "../../Fields/Email";
-import * as AuthService from 'services/auth';
+import {AuthService} from 'services';
 import styles from './forgotPass.module.css';
 
 const FormItem = Form.Item;

@@ -27,7 +27,7 @@ const Toolbar = ({notificationsCount, dispatch}) => {
     notificationsStyle.color = currentLocationColor;
 
   return (
-    <div className={styles.toolbar}>
+    <nav className={styles.toolbar}>
       <Link to={"/"} style={feedStyle}>
         <Icon type={'fire'}/>
       </Link>
@@ -39,7 +39,7 @@ const Toolbar = ({notificationsCount, dispatch}) => {
         </Badge>
       </Link>
       <SettingsMenu trigger={<Icon type={'align-right'} className={styles.icon}/>}/>
-    </div>
+    </nav>
   );
 };
 

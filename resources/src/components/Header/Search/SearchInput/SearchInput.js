@@ -5,7 +5,8 @@ const SearchInput = ({search, onBlur, onFocus, searchRef}) => (
   <div className={styles.search}>
     <div className={styles.searchBox}>
       <input
-        type="text"
+        type='text'
+        aria-label='Global search by users'
         onChange={search}
         ref={searchRef}
         onBlur={onBlur}

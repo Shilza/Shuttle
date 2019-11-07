@@ -1,7 +1,7 @@
 import {useCallback, useReducer, useRef} from "react"
-import {getUnique} from "utils/getUnique";
-import * as SearchService from 'services/search';
-import * as DialogsService from 'services/dialogs';
+import {getUnique} from "utils";
+import {SearchService} from 'services';
+import {DialogsService} from 'services';
 
 const initialState = {
   dialogs: []

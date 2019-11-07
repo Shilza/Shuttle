@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import MarksLabel from "components/ExplainingLabels/MarksLabel/MarksLabel";
 import Paginator from "components/Paginator/Paginator";
 import PostsList from "components/Posts/PostsList/PostsList";
-import * as PostsService from 'services/posts';
+import {PostsService} from 'services';
 
 const Marked = ({posts, userId, dispatch}) => {
 

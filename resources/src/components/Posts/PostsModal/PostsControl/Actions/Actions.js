@@ -7,7 +7,7 @@ import Save from "./Save";
 import Share from "./Share";
 import Like from "./Like";
 import LikesListModal from "./Like/LikesListModal";
-import {shortifyNumber} from "utils/shortifyNumber";
+import {shortifyNumber} from "utils";
 
 
 import styles from './actions.module.css';

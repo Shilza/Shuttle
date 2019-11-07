@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
-import * as CommentsService from 'services/comments';
-import {transformMetadata} from "utils/transformMetadata";
+import {CommentsService} from 'services';
+import {transformMetadata} from "utils";
 
 const useComments = (id, commentsCount) => {
 

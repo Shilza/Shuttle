@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {Badge} from 'antd';
 
-import {shortifyNumber} from "utils/shortifyNumber";
+import {shortifyNumber} from "utils";
 import DefaultAvatar from "components/DefaultAvatar";
 
 import styles from './subReq.module.css';

@@ -6,7 +6,7 @@ import {Button} from 'ui';
 import withLoader from "components/Loader/Loader";
 import PostsList from "components/Posts/PostsList/PostsList";
 import Paginator from "components/Paginator/Paginator";
-import * as PostService from 'services/posts';
+import {PostsService} from 'services';
 import SavedContainer from "./SavedContainer";
 
 import styles from './saved.module.css';
@@ -29,7 +29,7 @@ const Saved = ({posts, dispatch}) => {
       });
 
   const fetchCompilationPosts = useCallback((page) => {
-    return PostService.getSavedPosts(compilationName)(page)
+    return PostsService.getSavedPosts(compilationName)(page)
       .then(({data}) => {
         dispatch.posts.addSaved(data.data);
         return data;

@@ -10,7 +10,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import MessagesList from "./MessagesList"
 
-import * as UsersService from 'services/user'
+import {UsersService} from 'services'
 import ws, {types as WsTypes} from "../../Ws"
 
 import useMessages from "./utils/useMessages"

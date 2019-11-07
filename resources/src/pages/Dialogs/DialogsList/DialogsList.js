@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import SearchInput from "components/SearchInput/SearchInput";
+import SearchInput from "components/SearchInput";
 import Paginator from "components/Paginator";
 
 import Dialog from "../Dialog"

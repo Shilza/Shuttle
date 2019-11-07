@@ -23,7 +23,7 @@ const SearchInput = React.memo(({search, className, ...props}) => {
       <Icon type='search'/>
       <input ref={inputRef} placeholder='Search' maxLength='32' onChange={onInputChange} {...props}/>
       {
-        showClose && <Icon type={'close'} onClick={clearInput}/>
+        showClose && <Icon type={'close'} title='Clear' onClick={clearInput}/>
       }
     </div>
   )

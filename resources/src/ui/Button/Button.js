@@ -29,7 +29,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  PropTypes: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
   className: PropTypes.string,
   htmlType: PropTypes.oneOf([
     "button",

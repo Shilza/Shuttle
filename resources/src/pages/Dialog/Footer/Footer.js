@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types"
 import {useThrottle} from 'use-throttle';
-
-import {SvgIcon} from "ui";
+import {IconButton} from "ui";
 import EmojiPicker from "./EmojiPicker";
 
 import emojiIcon from './icons/smile.svg';
 import styles from './footer.module.css';
+
 
 
 const Footer = ({sendMessage, typing}) => {
@@ -69,9 +69,14 @@ const Footer = ({sendMessage, typing}) => {
             onChange={onInputChange}
           />
           {
-            <button type={'button'} className={styles.emojiIcon} onClick={toggleEmoji}>
-              <SvgIcon icon={emojiIcon} title={'Emoji'}/>
-            </button>
+            <IconButton
+              type='button'
+              ariaLabel='Open emoji picker'
+              title='Emoji'
+              className={styles.emojiIcon}
+              onClick={toggleEmoji}
+              iconProps={{icon: emojiIcon, title: 'Emoji'}}
+            />
           }
         </div>
         {

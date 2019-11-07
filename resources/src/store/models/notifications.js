@@ -1,4 +1,4 @@
-import * as NotificationsService from 'services/notifications';
+import {NotificationsService} from 'services';
 
 const initialState = [];
 

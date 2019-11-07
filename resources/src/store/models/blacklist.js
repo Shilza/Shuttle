@@ -1,4 +1,4 @@
-import * as UserService from 'services/user'
+import {UsersService} from 'services'
 
 const initialState = {
   users: []
@@ -25,17 +25,17 @@ export const blacklist = {
   },
   effects: (dispatch) => ({
     async getBlacklisted(page) {
-      const {data} = await UserService.getBlacklisted(page);
+      const {data} = await UsersService.getBlacklisted(page);
       dispatch.blacklist.setBlacklistedUsers(data.data);
       return data;
     },
     async addToBlacklist(usersData) {
-      const {data} = await UserService.addToBlacklist(usersData);
+      const {data} = await UsersService.addToBlacklist(usersData);
       dispatch.users.setBlacklisted();
       return data.message;
     },
     async removeFromBlacklistAsync(id) {
-      const {data} = await UserService.removeFromBlacklist(id);
+      const {data} = await UsersService.removeFromBlacklist(id);
       dispatch.users.setUnblacklisted();
       dispatch.blacklist.removeFromBlacklist(id);
       return data.message;

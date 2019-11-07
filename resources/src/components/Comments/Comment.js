@@ -7,7 +7,7 @@ import CLinkify from "components/CLinkify";
 import Like from "components/Posts/PostsModal/PostsControl/Actions/Like";
 import DefaultAvatar from "components/DefaultAvatar";
 import LikesListModal from "components/Posts/PostsModal/PostsControl/Actions/Like/LikesListModal";
-import {shortifyNumber} from "utils/shortifyNumber";
+import {shortifyNumber} from "utils";
 import CommentsModal from "./Modal/CommentsModal";
 
 import styles from './comment.module.css';

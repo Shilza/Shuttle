@@ -7,7 +7,7 @@ import {Drawer} from 'react-pretty-drawer';
 
 import {Button} from 'ui';
 import {SimpleModal} from 'ui';
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 
 import SavedBarCompilationsList from "./Compilations/SavedBarCompilationsList";
 import DrawerTitle from "./DrawerTitle";

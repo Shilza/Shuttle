@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {Form, message} from "antd";
 
-import {isMobile} from "utils/isMobile";
+import {isMobile} from "utils";
 import {Button} from 'ui';
 import {SimpleModal} from 'ui';
 import EditBody from "./EditBody/EditBody";

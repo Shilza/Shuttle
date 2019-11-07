@@ -48,12 +48,6 @@
   right: 8px;
   top: 97%;
   transform: translateY(-100%);
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  outline: 0;
-  cursor: pointer;
 }
 
 .emojiIcon > img {

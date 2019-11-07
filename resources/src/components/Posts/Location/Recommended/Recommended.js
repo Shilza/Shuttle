@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Icon} from "antd";
 
-import * as ThirdPartyServices from 'services/thirdParty';
+import {ThirdPartyService} from 'services';
 import {Tag} from 'ui';
 import styles from "./recommended.module.css";
 
@@ -9,9 +9,9 @@ const Recommended = React.memo(({setLocation}) => {
   const [recommended, setRecommended] = useState(null);
 
   useEffect(() => {
-    ThirdPartyServices.getIp().then(data => {
+    ThirdPartyService.getIp().then(data => {
       data.json().then(data => {
-        ThirdPartyServices.getDataByIp(data.ip)
+        ThirdPartyService.getDataByIp(data.ip)
           .then(data => {
             data.json().then((data) => {
               setRecommended([data.continent_name, data.country_name, data.region_name, data.city].filter(Boolean));

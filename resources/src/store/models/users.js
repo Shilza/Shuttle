@@ -1,6 +1,6 @@
-import {getUnique} from "utils/getUnique";
-import * as UserService from 'services/user';
-import * as FriendshipsService from "services/friendships";
+import {getUnique} from "utils";
+import {UsersService} from 'services';
+import {FriendshipsService} from "services";
 
 const initialState = {
   user: undefined,
@@ -174,7 +174,7 @@ export const users = {
   },
   effects: (dispatch) => ({
     async getUser(username) {
-      const data = await UserService.getUser(username);
+      const data = await UsersService.getUser(username);
       data.data && dispatch.users.setUser(data.data);
       return data;
     },
@@ -187,22 +187,22 @@ export const users = {
       dispatch.users.unfollow(data.id);
     },
     async setPrivateAsync() {
-      const {data} = await UserService.setPrivate();
+      const {data} = await UsersService.setPrivate();
       dispatch.users.setPrivate();
       return data.message;
     },
     async setPublicAsync() {
-      const {data} = await UserService.setPublic();
+      const {data} = await UsersService.setPublic();
       dispatch.users.setPublic();
       return data.message;
     },
     async updateAvatarAsync(avatar) {
-      const {data} = await UserService.updateAvatar(avatar);
+      const {data} = await UsersService.updateAvatar(avatar);
       dispatch.users.updateAvatar(data.avatar);
       return data;
     },
     async deleteAvatarAsync() {
-      await UserService.deleteAvatar();
+      await UsersService.deleteAvatar();
       dispatch.users.deleteAvatar();
     },
     async removeFollowerAsync(id) {

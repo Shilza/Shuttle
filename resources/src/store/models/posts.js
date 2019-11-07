@@ -1,6 +1,6 @@
-import {transformMetadata} from "utils/transformMetadata";
-import * as PostsService from 'services/posts';
-import * as FeedService from 'services/feed';
+import {transformMetadata} from "utils";
+import {PostsService} from 'services';
+import {FeedService} from 'services';
 
 const initialState = {
   user: [],

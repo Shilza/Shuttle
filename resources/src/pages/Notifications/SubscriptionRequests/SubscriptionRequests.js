@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getSubsRequestsPreview} from "services/subscriptionRequests";
+import {SubscriptionRequestsService} from "services";
 import SubRequestList from "./SubRequestsList";
 import SubscriptionRequestsLabel from "./SubscriptionRequestsLabel";
 
@@ -10,7 +10,7 @@ const SubscriptionRequests = () => {
   let [count, setCount] = useState(0);
 
   useEffect(() => {
-    getSubsRequestsPreview().then(({data: {avatar, count}}) => {
+    SubscriptionRequestsService.getSubsRequestsPreview().then(({data: {avatar, count}}) => {
       setAvatar(avatar);
       setCount(count);
     });

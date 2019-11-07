@@ -8,7 +8,7 @@ import FormItem from "antd/es/form/FormItem";
 import Confirm from "../../Fields/Confirm";
 import Password from "../../Fields/Password";
 import Email from "../../Fields/Email";
-import * as AuthService from 'services/auth';
+import {AuthService} from 'services';
 import styles from './resetPass.module.css';
 
 class ResetPass extends React.Component {
