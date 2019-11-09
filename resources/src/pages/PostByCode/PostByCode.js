@@ -11,7 +11,7 @@ const PostByCode = ({dispatch, match, currentPost}) => {
 
   useEffect(() => {
     dispatch.posts.getPostByCode(match.params.code)
-      .catch(err => setError(err.message));
+      .catch((err) => setError(err.response.data.message));
   }, []);
 
   return (

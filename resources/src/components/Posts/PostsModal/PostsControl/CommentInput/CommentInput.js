@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import PropTypes from 'prop-types';
+import {message} from 'antd';
 
 import Loader from "components/Paginator/Loader";
 import {CommentsService} from 'services';
@@ -21,11 +22,14 @@ const CommentInput = React.memo(({post_id, onComment}) => {
       setLoading(true);
       CommentsService.create({post_id, text})
         .then(({data}) => {
-          inputRef.current.value = '';
-          setIsButtonVisible(false);
           onComment(data);
         })
+        .catch((err) => {
+          message.error(err.response.data.message);
+        })
         .finally(() => {
+          inputRef.current.value = '';
+          setIsButtonVisible(false);
           setLoading(false);
         });
     }
