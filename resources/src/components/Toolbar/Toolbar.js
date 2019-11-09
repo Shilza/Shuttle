@@ -21,6 +21,14 @@ const Toolbar = ({notificationsCount, dispatch}) => {
     dispatch.search.setIsSearchFocused(true);
   };
 
+  const scrollToTop = () => {
+    if (window.location.href === window.location.origin + '/')
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+  };
+
   if (window.location.href === window.location.origin + '/')
     feedStyle.color = currentLocationColor;
   else if (window.location.href.includes('notifications'))
@@ -28,17 +36,17 @@ const Toolbar = ({notificationsCount, dispatch}) => {
 
   return (
     <nav className={styles.toolbar}>
-      <Link to={"/"} style={feedStyle}>
-        <Icon type={'fire'}/>
+      <Link to={'/'} style={feedStyle} onClick={scrollToTop}>
+        <Icon type={'fire'} title='News'/>
       </Link>
-      <Icon type={'search'} className={styles.icon} onClick={openSearch}/>
-      <PostsUploader trigger={<Icon type={'plus'} className={styles.icon}/>}/>
+      <Icon type={'search'} title='Search' className={styles.icon} onClick={openSearch}/>
+      <PostsUploader trigger={<Icon type={'plus'} title='Create post' className={styles.icon}/>}/>
       <Link to={'/account/notifications'} style={notificationsStyle}>
         <Badge dot={notificationsCount !== 0}>
-          <Icon type="bell"/>
+          <Icon type="bell" title='Notifications'/>
         </Badge>
       </Link>
-      <SettingsMenu trigger={<Icon type={'align-right'} className={styles.icon}/>}/>
+      <SettingsMenu trigger={<Icon type={'align-right'} title='Menu' className={styles.icon}/>}/>
     </nav>
   );
 };
