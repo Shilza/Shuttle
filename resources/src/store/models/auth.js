@@ -91,7 +91,7 @@ export const auth = {
       dispatch.auth.login(data.user);
     },
     async loginAsync({remember, ...data}) {
-      const {
+      const  {
         data: {
           token,
           expiresIn,

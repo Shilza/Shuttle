@@ -1,5 +1,6 @@
 import {Button, Form, Icon, Spin} from 'antd';
 import React from "react";
+import {compose} from "redux";
 import {connect} from "react-redux";
 import {message} from "antd/lib/index";
 import {Link, withRouter} from 'react-router-dom';
@@ -8,6 +9,7 @@ import Password from "../../Fields/Password";
 import Remember from "../../Fields/Remember";
 import {Username} from "../../Fields/Username";
 import styles from './login.module.css';
+
 
 class Login extends React.Component {
 
@@ -84,4 +86,8 @@ class Login extends React.Component {
 }
 
 
-export default Form.create()(connect()(withRouter(Login)));
+export default compose(
+  Form.create(),
+  connect(),
+  withRouter
+)(Login);

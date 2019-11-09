@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {Icon, Spin} from "antd";
+import {Icon, Spin, message} from "antd";
 import {connect} from "react-redux";
 import Compilation from "pages/User/User/NavigationPanel/Saved/Compilation";
 import styles from './savedBarCompilations.module.css';
@@ -14,7 +14,10 @@ const SavedBarCompilation = ({compilation, dispatch, postId}) => {
     event.stopPropagation();
     setLoading(true);
     dispatch.posts.saveAsync({post_id: postId, compilation: compilationName})
-      .then(() => setLoading(false));
+      .catch((err) => {
+        message.error(err.response.data.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   const onClickCompilation = (event) => {

@@ -1,4 +1,9 @@
 
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .ant-drawer-body {
   height: 100%;
   background-color: var(--main-background);
@@ -42,4 +47,6 @@
   --btn-border-hover: #40a9ff;
   --btn-border-active: #096dd9;
   --btn-text-hover-color: #40a9ff;
+
+  --login-noise-background: url('http://api.thumbr.it/whitenoise-361x370.png?background=efefef&noise=626262&density=5&opacity=36');
 }

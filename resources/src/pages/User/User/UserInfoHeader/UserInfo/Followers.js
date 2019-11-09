@@ -10,7 +10,7 @@ import UserFriendshipCard from "./UserFriendshipCard";
 import styles from './friendships.module.css';
 
 
-const Followers = ({closeModal, id, followers, dispatch}) => {
+const Followers = ({closeModal, me, id, followers, dispatch}) => {
 
   const search = event => {
     let username = event.target.value;
@@ -41,7 +41,7 @@ const Followers = ({closeModal, id, followers, dispatch}) => {
                 avatar={user.avatar}
                 username={user.username}
                 closeModal={closeModal}
-                onRemove={onRemove}
+                onRemove={me && onRemove}
                 id={user.id}
               />
             )
@@ -60,11 +60,13 @@ Followers.propTypes = {
     id: PropTypes.number.isRequired,
     avatar: PropTypes.string,
     username: PropTypes.string.isRequired
-  }))
+  })),
+  me: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   followers: state.users.followers,
+  me: state.auth.user.id === (state.users.user && state.users.user.id)
 });
 
 export default connect(mapStateToProps)(Followers);

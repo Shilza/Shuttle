@@ -8,7 +8,7 @@ import {searchFollows} from "services/user";
 
 import styles from './friendships.module.css';
 
-const Follows = ({closeModal, id, dispatch, follows}) => {
+const Follows = ({closeModal, me, id, dispatch, follows}) => {
 
   const search = event => {
     let username = event.target.value;
@@ -37,7 +37,7 @@ const Follows = ({closeModal, id, dispatch, follows}) => {
                 avatar={user.avatar}
                 username={user.username}
                 closeModal={closeModal}
-                onUnfollow={unfollow}
+                onUnfollow={me && unfollow}
               />
             )
           }
@@ -59,7 +59,8 @@ Follows.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  follows: state.users.follows
+  follows: state.users.follows,
+  me: state.auth.user.id === (state.users.user && state.users.user.id)
 });
 
 export default connect(mapStateToProps)(Follows);

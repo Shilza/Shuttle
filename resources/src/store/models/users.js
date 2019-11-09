@@ -62,6 +62,7 @@ export const users = {
         follows: getUnique([...state.follows, ...follows])
       }
     },
+
     setFollowers(state, followers) {
       return {
         ...state,
@@ -88,13 +89,15 @@ export const users = {
         user
       };
     },
-    unfollow(state, id) {
+
+    unfollow(state, {id, canSee}) {
       let user = {...state.user};
 
       if (user.friendshipState !== 1)
-        user.followers_count--;
+        user.follows_count--;
 
       user.friendshipState = 0;
+      user.canSee = canSee;
 
       return {
         ...state,
@@ -102,6 +105,7 @@ export const users = {
         follows: state.follows.filter(user => user.id !== id)
       };
     },
+
     updateAvatar(state, avatar) {
       state = {
         ...state,
@@ -113,6 +117,7 @@ export const users = {
 
       return state;
     },
+
     deleteAvatar(state) {
       return {
         ...state,
@@ -122,6 +127,7 @@ export const users = {
         }
       };
     },
+
     setPrivate(state) {
       return {
         ...state,
@@ -131,6 +137,7 @@ export const users = {
         }
       };
     },
+
     setPublic(state) {
       return {
         ...state,
@@ -140,6 +147,7 @@ export const users = {
         }
       };
     },
+
     setBlacklisted(state) {
       let user = {...state.user};
       user.blacklisted = true;
@@ -149,6 +157,7 @@ export const users = {
         user
       }
     },
+
     setUnblacklisted(state) {
       let updatedUser = {...state.user};
       updatedUser.blacklisted = false;
@@ -158,6 +167,7 @@ export const users = {
         user: updatedUser
       }
     },
+
     removeFollower(state, id) {
       return {
         ...state,
@@ -183,8 +193,8 @@ export const users = {
       dispatch.users.follow();
     },
     async unfollowAsync(data) {
-      await FriendshipsService.unfollow(data);
-      dispatch.users.unfollow(data.id);
+      const receivedData = await FriendshipsService.unfollow(data);
+      dispatch.users.unfollow({id: data.id, canSee: receivedData.data.canSee});
     },
     async setPrivateAsync() {
       const {data} = await UsersService.setPrivate();
