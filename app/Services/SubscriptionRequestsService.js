@@ -1,6 +1,5 @@
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const User = use('App/Models/User');
-const FriendshipsService = use('FriendshipsService');
 const Friendship = use('App/Models/Friendship');
 
 class SubscriptionRequestsService {
@@ -16,10 +15,7 @@ class SubscriptionRequestsService {
             .fetch();
 
         requests.data = requests.data.map(item => {
-            const user = subs.rows.find(user => {
-                if (user.id === item.subscriber_id)
-                    return true;
-            });
+            const user = subs.rows.find(user => user.id === item.subscriber_id);
 
             item.avatar = user.avatar;
             item.username = user.username;
@@ -86,7 +82,7 @@ class SubscriptionRequestsService {
         });
 
         await Promise.all(friendships);
-        await await SubscriptionRequest
+        await SubscriptionRequest
             .query()
             .where('receiver_id', userId)
             .delete();

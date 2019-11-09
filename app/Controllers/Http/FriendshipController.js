@@ -112,7 +112,8 @@ class FriendshipController {
 
         await FriendshipsService.delete(user_id, user.id);
 
-        return response.json({message: 'Unfollowed successfully'});
+        const canSee = await UsersService.canSee(owner, user.id);
+        return response.json({message: 'Unfollowed successfully', canSee});
     }
 
     async deleteFollower({request, response, auth}) {

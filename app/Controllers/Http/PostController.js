@@ -18,7 +18,7 @@ class PostController {
 
     const owner = await PostsService.getPostsOwnerByPostCode(params.code);
 
-    if(!owner)
+    if (!owner)
       return response.status(400).json({
         message: 'Post does not exists'
       });
@@ -34,8 +34,9 @@ class PostController {
         });
 
       return response.json({post});
-    } else
-      return response.json({private: true});
+    }
+
+    return response.status(400).json({message: 'Post is private'});
   }
 
   async show({request, response, auth}) {
@@ -211,7 +212,7 @@ class PostController {
         message: 'Marks should be an array'
       });
 
-    if(marks.length > 10)
+    if (marks.length > 10)
       return response.status(400).json({
         message: 'Marks count should be less than 10'
       });
@@ -245,10 +246,10 @@ class PostController {
     post.comments_count = 0;
 
     const marksPromises = marks.map(mark =>
-       Mark.create({
-         post_id: post.id,
-         ...mark
-       })
+      Mark.create({
+        post_id: post.id,
+        ...mark
+      })
     );
 
     post.marks = await Promise.all(marksPromises);
@@ -316,7 +317,7 @@ class PostController {
         message: 'Marks should be an array'
       });
 
-    if(receivedMarks.length > 10)
+    if (receivedMarks.length > 10)
       return response.status(400).json({
         message: 'Marks count should be less than 10'
       });

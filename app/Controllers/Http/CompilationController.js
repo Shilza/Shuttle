@@ -2,8 +2,10 @@
 
 const {validate} = use('CValidator');
 const Post = use('App/Models/Post');
+const User = use('App/Models/User');
 const Compilation = use('App/Models/Compilation');
 const CompilationsService = use('CompilationsService');
+const UsersService = use('UsersService');
 const PostsService = use('PostsService');
 
 class CompilationController {
@@ -83,29 +85,37 @@ class CompilationController {
 
     const user = await auth.getUser();
 
-    const isSaved = await CompilationsService.isSavedBy(user.id, post.id);
+    const owner = await User.find(post.owner_id);
+    const canSee = await UsersService.canSee(owner, user.id);
 
-    if (isSaved)
-      return response.status(400).json({
-        message: 'Post already saved'
+    if (canSee) {
+
+      const isSaved = await CompilationsService.isSavedBy(user.id, post.id);
+
+      if (isSaved)
+        return response.status(400).json({
+          message: 'Post already saved'
+        });
+
+      const compilationData = {
+        owner_id: user.id,
+        post_id: post.id,
+        name: request.input('compilation')
+      };
+      Object.entries(compilationData).forEach(
+        e => {
+          if (!e[1])
+            delete compilationData[e[0]]
+        }
+      );
+      await Compilation.create(compilationData);
+
+      return response.json({
+        message: 'Post saved successfully'
       });
+    }
 
-    const compilationData = {
-      owner_id: user.id,
-      post_id: post.id,
-      name: request.input('compilation')
-    };
-    Object.entries(compilationData).forEach(
-      e => {
-        if (!e[1])
-          delete compilationData[e[0]]
-      }
-    );
-    await Compilation.create(compilationData);
-
-    response.json({
-      message: 'Post saved successfully'
-    });
+    return response.status(400).json({message: 'Profile is private'});
   }
 
   async update({request, response, auth}) {

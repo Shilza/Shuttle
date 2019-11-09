@@ -95,10 +95,7 @@ class CompilationsService {
     const savedPosts = await this.getSavedPostsId(userId, posts.map(item => item.id));
 
     return posts.map(post => {
-      post.isSaved = !!savedPosts.find(savedPost => {
-        if (savedPost === post.id)
-          return true;
-      });
+      post.isSaved = !!savedPosts.find(savedPost => savedPost === post.id);
 
       return post;
     });
