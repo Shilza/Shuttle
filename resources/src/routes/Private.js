@@ -10,7 +10,7 @@ import {isMobile} from "utils";
 
 const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
   <Route {...rest} render={props => (
-    <Main>
+    <Main isPrivate={isAuthenticated}>
       {
         isAuthenticated
           ? <>
