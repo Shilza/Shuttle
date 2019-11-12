@@ -40,11 +40,13 @@ const Comment = ({comment, setCommentLiked, onRemove}) => {
     <>
       <div className={styles.comment} onClick={openModal}>
         <div className={styles.infoAvatarContainer}>
-          {
-            avatar
-            ? <img src={avatar} alt={`${owner} avatar`} className={styles.avatar}/>
-            : <DefaultAvatar fontSize={'16px'} className={styles.avatar}/>
-          }
+          <Link to={'/' + owner} onClick={e => e.stopPropagation()}>
+            {
+              avatar
+                ? <img src={avatar} alt={`${owner} avatar`} className={styles.avatar}/>
+                : <DefaultAvatar fontSize={'16px'} className={styles.avatar}/>
+            }
+          </Link>
           <div className={styles.container}>
             <div>
               <Link to={'/' + owner} onClick={e => e.stopPropagation()} className={styles.username}>{owner}</Link>
@@ -53,8 +55,8 @@ const Comment = ({comment, setCommentLiked, onRemove}) => {
             <div className={styles.metaContainer}>
               <time dateTime={created_at}>{moment(new Date(created_at), "YYYYMMDD").fromNow()}</time>
               {
-               !!likes_count &&
-               <span className={styles.likesCount} onClick={openList}>Likes count: {shortifyNumber(likes_count)}</span>
+                !!likes_count &&
+                <span className={styles.likesCount} onClick={openList}>Likes count: {shortifyNumber(likes_count)}</span>
               }
             </div>
           </div>
@@ -74,7 +76,7 @@ const Comment = ({comment, setCommentLiked, onRemove}) => {
         closeModal={closeModal}
         onRemove={onRemove}
       />
-      <LikesListModal isVisible={isListOpen} onClose={closeList} type={'comment'} id={id} />
+      <LikesListModal isVisible={isListOpen} onClose={closeList} type={'comment'} id={id}/>
     </>
   )
 };
