@@ -11,6 +11,8 @@ import Header from "../../Header";
 import Filters from "./Filters";
 import Finish from "./Finish";
 
+import styles from './uploadPost.module.css';
+
 const FILTERS = 'FILTERS';
 const FINISH = 'FINISH';
 const CROP = 'CROP';
@@ -47,7 +49,7 @@ const UploadPost = ({upload, media}) => {
     switch (location) {
       case CROP:
         return (
-          <Container style={{height: 'fit-content'}}>
+          <Container className={styles.container}>
             {
               media.type.match('.mp4')
               ? <Header title={'New post'} goNext={goFinish} nextButtonText={'Post'}/>

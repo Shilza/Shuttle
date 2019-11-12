@@ -62,6 +62,7 @@
   position: relative;
   object-fit: cover;
   min-height: 150px;
+  max-height: 230px;
   width: 100%;
 }
 

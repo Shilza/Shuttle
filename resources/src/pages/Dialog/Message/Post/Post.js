@@ -17,7 +17,7 @@ const Post = ({post, my, postCode}) => {
           <span className={styles.username}>{post.owner}</span>
         </div>
         {
-          post.error ? <div className={styles.media} data-error={'Post is no longer available'}/>
+          post.error ? <div className={styles.media} data-error={post.error}/>
             :
             post.src && post.src.match('.mp4')
               ? <video src={post.src} className={styles.media}/>

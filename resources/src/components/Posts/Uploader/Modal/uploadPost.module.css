@@ -27,3 +27,8 @@
     margin: 20px;
     min-width: 260px;
 }
+
+.container {
+  height: fit-content;
+  max-height: 90vh;
+}

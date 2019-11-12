@@ -19,7 +19,7 @@ const getPost = async (text) => {
           post = data.post;
         })
         .catch(err => {
-          post = {error: err.message}
+          post = {error: (err.response && err.response.data && err.response.data.message) || err.message}
         });
     }
   }

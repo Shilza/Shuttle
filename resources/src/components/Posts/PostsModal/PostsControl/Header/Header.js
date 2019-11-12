@@ -6,7 +6,7 @@ import DefaultAvatar from "components/DefaultAvatar";
 import styles from '../postControl.module.css';
 
 const Header = ({username, location, avatar}) => (
-  <Link to={username}>
+  <Link to={`/${username}`}>
     <header className={styles.header}>
       {
         avatar

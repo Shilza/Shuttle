@@ -18,7 +18,6 @@ const prepare = (users) => users.map(user => user.user ? user.user : user);
 const Body = ({src, myId, close, dispatch}) => {
 
   const [message, setMessage] = useState('');
-  const [isDone, setIsDone] = useState(false);
   const [fetcher, setFetcher] = useState(null);
   const {dialogs, privateSearch, fetchDialogs} = useDialogs();
 
@@ -30,23 +29,20 @@ const Body = ({src, myId, close, dispatch}) => {
 
   const send = (id) => {
     const wsThread = ws.getSubscription(`dialogs:${myId}`);
-    wsThread.emit('message', {
-      type: WsTypes.MESSAGE,
-      receiverId: id,
-      message: `${window.location.origin}/p/${postCode}`
-    });
-    if (message.length > 0 && message.length < 1000)
+    if(wsThread) {
       wsThread.emit('message', {
         type: WsTypes.MESSAGE,
         receiverId: id,
-        message
+        message: `${window.location.origin}/p/${postCode}`
       });
-    setIsDone(true);
-    dispatch.auth.readDialog(id);
-  };
-
-  const onDoneClick = () => {
-    close();
+      if (message.length > 0 && message.length < 1000)
+        wsThread.emit('message', {
+          type: WsTypes.MESSAGE,
+          receiverId: id,
+          message
+        });
+      dispatch.auth.readDialog(id);
+    }
   };
 
   const onInputChange = useCallback(event => {
@@ -64,7 +60,7 @@ const Body = ({src, myId, close, dispatch}) => {
   };
 
   return (
-    <div className={isMobile() ? styles.mobileContainer : styles.container} style={{paddingBottom: isDone && '46px'}}>
+    <div className={isMobile() ? styles.mobileContainer : styles.container}>
       <Header src={src} onInputChange={onInputChange}/>
       <SearchInput search={search} className={styles.search}/>
       <ListOfUsers
@@ -73,9 +69,6 @@ const Body = ({src, myId, close, dispatch}) => {
         fetcher={fetcher}
         send={send}
       />
-      {
-        isDone && <button className={styles.doneButton} onClick={onDoneClick}>Done</button>
-      }
     </div>
   )
 };

@@ -1,9 +1,13 @@
 
 .container {
   position: relative;
-  height: calc(100vh - 90px);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+}
+
+.mobileContainer {
+  composes: container;
+  height: calc(100vh - 90px);
 }

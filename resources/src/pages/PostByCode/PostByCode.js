@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+
+import {isMobile} from "utils";
 import PostModalBody from "components/Posts/PostsModal/PostModalBody";
 
 import styles from './postByCode.module.css';
@@ -15,7 +17,7 @@ const PostByCode = ({dispatch, match, currentPost}) => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={isMobile() ? styles.mobileContainer : styles.container}>
       {
         error
           ? <div>{error}</div>

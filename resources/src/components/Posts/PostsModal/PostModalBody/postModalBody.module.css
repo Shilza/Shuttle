@@ -1,9 +1,16 @@
 
 .wrapper {
-  max-height: 95vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  margin: 20px 0;
+  height: 100%;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.mobileWrapper {
+  composes: wrapper;
+  padding-top: 0;
+  margin-bottom: 0;
 }
 
 @media (max-width: 810px) {
