@@ -29,12 +29,12 @@ function handleChange() {
 store.subscribe(handleChange);
 
 export const types = {
-  MESSAGE: 1,
-  CONNECTION: 2,
-  READ: 3,
-  IS_TYPING: 4,
-  ERROR: 5,
-  DELETE: 6
+  MESSAGE: 'MESSAGE',
+  CONNECTION: 'CONNECTION',
+  READ: 'READ',
+  IS_TYPING: 'IS_TYPING',
+  ERROR: 'ERROR',
+  DELETE: 'DELETE'
 };
 
 export const start = () => {

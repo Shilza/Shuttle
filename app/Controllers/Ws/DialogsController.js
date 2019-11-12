@@ -9,12 +9,12 @@ const {validate} = use('CValidator');
 
 const TOPIC_NAME = 'dialogs';
 
-const MESSAGE = 1;
-const CONNECTION = 2;
-const READ = 3;
-const IS_TYPING = 4;
-const ERROR = 5;
-const DELETE = 6;
+const MESSAGE = 'MESSAGE';
+const CONNECTION = 'CONNECTION';
+const READ = 'READ';
+const IS_TYPING = 'IS_TYPING';
+const ERROR = 'ERROR';
+const DELETE = 'DELETE';
 
 class DialogsController {
   constructor({socket, request, auth}) {
