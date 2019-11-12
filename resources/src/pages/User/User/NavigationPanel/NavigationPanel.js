@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useEffect, useLayoutEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Tabs} from 'antd';
@@ -12,22 +12,41 @@ const TabPane = Tabs.TabPane;
 
 const tabBarStyle = {color: 'var(--text)', borderBottom: '1px solid var(--accent-second)'};
 
-const NavigationPanel = ({me}) => (
-  <Tabs defaultActiveKey="1" className={styles.tabsContainer} tabBarStyle={tabBarStyle}>
-    <TabPane tab="Posts" key="1">
-      <PostsManager/>
-    </TabPane>
-    <TabPane tab="Marks" key="2">
-      <Marked/>
-    </TabPane>
-    {
-      me &&
-      <TabPane tab="Saved" key="3">
-        <Saved/>
+const tabs = ['postsList', 'marks', 'saved'];
+
+const NavigationPanel = ({me}) => {
+  const [tab, setTab] = useState(tabs[0]);
+
+  useLayoutEffect(() => {
+    let { hash } = window.location;
+    hash = hash.replace('#', '');
+    if(me && tabs.includes(hash))
+      setTab(hash);
+    else if(hash !== 'saved' && tabs.includes(hash))
+      setTab(hash);
+  }, [window.location]);
+
+  const changeTab = useCallback((tab) => {
+    setTab(tab);
+  }, []);
+
+  return (
+    <Tabs activeKey={tab} onTabClick={changeTab} className={styles.tabsContainer} tabBarStyle={tabBarStyle}>
+      <TabPane tab="Posts" key={tabs[0]}>
+        <PostsManager/>
       </TabPane>
-    }
-  </Tabs>
-);
+      <TabPane tab="Marks" key={tabs[1]}>
+        <Marked/>
+      </TabPane>
+      {
+        me &&
+        <TabPane tab="Saved" key={tabs[2]}>
+          <Saved/>
+        </TabPane>
+      }
+    </Tabs>
+  );
+};
 
 NavigationPanel.propTypes = {
   me: PropTypes.bool.isRequired
