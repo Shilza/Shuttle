@@ -1,11 +1,12 @@
 {
-  "name": "adonis-react-auth",
+  "name": "shuttle",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
-  "description": "The fullstack application with auth boilerplate for Adonisjs",
+  "description": "Media hosting social network",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "storybook": "start-storybook",
     "test": "node ace test",
     "front-start": "node scripts/start.js",
     "front-test": "node scripts/test.js",
@@ -118,6 +119,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@storybook/react": "^5.2.6",
     "antd-theme-webpack-plugin": "^1.3.0",
     "css-has-pseudo": "^1.0.0",
     "less-loader": "^5.0.0"

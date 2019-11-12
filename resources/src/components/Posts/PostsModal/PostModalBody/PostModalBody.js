@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 
+import {isMobile} from "utils";
 import PostMedia from "components/PostMedia";
 import PostControl from "../PostsControl";
 
@@ -21,7 +22,7 @@ const PostModalBody = ({post, closeModal, needReplaceLocation = true}) => {
     style = {flexDirection: 'column', height: 'auto'};
 
   return (
-    <section className={styles.wrapper}>
+    <section className={isMobile() ? styles.mobileWrapper : styles.wrapper}>
       <div className={styles.container} style={style}>
         <PostMedia
           media={post.src}
