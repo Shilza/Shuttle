@@ -1,9 +1,6 @@
-/.idea
-
 # Node modules
 node_modules
 package-lock.json
-yarn.lock
 
 # Adonis directory for storing tmp files
 tmp
@@ -12,6 +9,9 @@ tmp
 .env
 
 # The development sqlite file
-database/development.sqlite
+database/*.sqlite
 
+# VSCode & Webstorm history directories
+.history
+.idea
 public/uploads

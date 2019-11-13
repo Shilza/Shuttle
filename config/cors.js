@@ -84,4 +84,4 @@ module.exports = {
   |
   */
   maxAge: 90
-};
+}

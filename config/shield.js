@@ -142,4 +142,4 @@ module.exports = {
       maxAge: 7200
     }
   }
-};
+}

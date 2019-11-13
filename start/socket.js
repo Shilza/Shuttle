@@ -13,6 +13,6 @@
 |
 */
 
-const Ws = use('Ws')
+const Ws = use('Ws');
 
-Ws.channel('dialogs:*', 'DialogsController').middleware(['auth'])
+Ws.channel('dialogs:*', 'DialogsController').middleware(['auth']);
