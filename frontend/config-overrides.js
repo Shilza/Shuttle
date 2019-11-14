@@ -1,5 +1,7 @@
-const {override, useBabelRc} = require("customize-cra");
+const {override, addBabelPlugins} = require("customize-cra");
 
 module.exports = override(
-  useBabelRc()
+  ...addBabelPlugins(
+    "@babel/plugin-proposal-export-default-from"
+  ),
 );
