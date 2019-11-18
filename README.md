@@ -13,7 +13,7 @@ Social network ReactJS application
 7. adonis migration:run
 8. adonis seed
 9. npm run start
-10. npm run front-start
+10. cd frontend && npm run start
 
 ## Stack
 
