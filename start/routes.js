@@ -79,6 +79,9 @@ Route.group(() => {
   Route.delete('', 'CompilationController.deletePost');
 }).prefix('api/v1/posts/save').middleware(['auth:jwt']);
 
+Route.group(() => {
+  Route.post('delete', 'MarkController.delete');
+}).prefix('api/v1/marks');
 
 Route.group(() => {
   Route.get('', 'CommentController.show');
