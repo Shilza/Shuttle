@@ -1,5 +1,6 @@
 'use strict'
 const Mark = use('App/Models/Mark');
+const {validate} = use('CValidator');
 
 class MarkController {
   async delete({request, response, auth}) {

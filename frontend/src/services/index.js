@@ -6,6 +6,7 @@ import * as FriendshipsService from './friendships';
 import * as LikesService from './likes';
 import * as NotificationsService from './notifications';
 import * as PostsService from './posts';
+import * as MarksService from './marks';
 import * as CompilationsService from './compilations';
 import * as SearchService from './search';
 import * as SubscriptionRequestsService from './subscriptionRequests';
@@ -17,5 +18,5 @@ export {
   FriendshipsService, LikesService, NotificationsService,
   PostsService, CompilationsService, SearchService,
   SubscriptionRequestsService, ThirdPartyService,
-  UsersService
+  UsersService, MarksService
 };

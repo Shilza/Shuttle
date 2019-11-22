@@ -3,6 +3,7 @@ const base = '/api/v1/';
 const entities = {
   auth: 'auth',
   posts: 'posts',
+  marks: 'marks',
   compilations: 'compilations',
   comments: 'comments',
   like: 'like',
