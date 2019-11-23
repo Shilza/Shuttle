@@ -1,6 +1,8 @@
 import React, {useLayoutEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import transitions from './transitions.module.css';
 
 import styles from "./mark.module.css";
 
@@ -33,7 +35,20 @@ const Mark = ({mark, parentWidth, link = false, text = 'Who is it?', ...props}) 
   });
 
   return (
-    <>
+    <ReactCSSTransitionGroup
+      transitionName={{
+        leave: transitions.leave,
+        leaveActive: transitions.leaveActive,
+        appear: transitions.appear,
+        appearActive: transitions.appearActive
+      }}
+      transitionEnterTimeout={300}
+      transitionLeaveTimeout={300}
+      transitionAppearTimeout={300}
+      transitionAppear
+      transitionEnter
+      transitionLeave
+    >
       {
         link ?
           <Link
@@ -55,7 +70,7 @@ const Mark = ({mark, parentWidth, link = false, text = 'Who is it?', ...props}) 
             {mark.username || text}
           </div>
       }
-    </>
+    </ReactCSSTransitionGroup>
   );
 };
 

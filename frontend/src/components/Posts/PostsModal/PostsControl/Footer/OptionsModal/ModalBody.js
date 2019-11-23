@@ -18,7 +18,7 @@ const ModalBody = ({post, my, closeModal, myMarkId}) => {
     MarksService.remove(myMarkId).then(({data}) => {
       message.success(data.message);
     }).finally(closeModal)
-  }, [myMarkId]);
+  }, [myMarkId, closeModal]);
 
   return (
     <>
