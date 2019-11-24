@@ -43,7 +43,7 @@ class PasswordController {
 
         if (!user) {
             return response.status(400).json({
-                message: 'User with this nickname not found'
+                message: 'User with this email is not found'
             });
         }
 
