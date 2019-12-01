@@ -12,6 +12,12 @@
   /*background: linear-gradient(135deg, rgba(3, 192, 253, .55), rgba(155, 35, 181, 0.5));*/
 }
 
+@media (min-width: 1300px) {
+  .welcome {
+    overflow-y: hidden;
+  }
+}
+
 /* noise */
 .welcome:before {
   content: "";

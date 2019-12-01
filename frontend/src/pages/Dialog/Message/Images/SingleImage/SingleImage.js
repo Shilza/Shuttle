@@ -1,6 +1,5 @@
 import React from "react";
-
-import Image from "../Image";
+import {Image} from "ui/Image";
 
 import styles from "./singleImage.module.css";
 

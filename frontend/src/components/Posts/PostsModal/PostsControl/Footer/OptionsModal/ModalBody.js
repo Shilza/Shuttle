@@ -55,7 +55,7 @@ const mapStateToProps = (state, props) => {
   }
 
   return {
-    my: state.auth.user.id === props.post && props.post.owner_id,
+    my: state.auth.user.id === (props.post && props.post.owner_id),
     myMarkId: myMark && myMark.id
   }
 };

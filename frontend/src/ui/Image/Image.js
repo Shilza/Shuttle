@@ -1,11 +1,12 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import FullScreen from "./FullScreen";
 
 import styles from "./image.module.css";
 
-const Image = React.memo(({src, ...props}) => {
+const Image = React.memo(({src, wrapperClassName, ...props}) => {
   const [isFull, setIsFull] = useState(false);
 
   const openImage = (event) => {
@@ -31,12 +32,20 @@ const Image = React.memo(({src, ...props}) => {
         alt={'Media'}
         effect="blur"
         onClick={openImage}
-        wrapperClassName={styles.img}
+        wrapperClassName={wrapperClassName}
         {...props}
       />
     </>
   )
 });
 
+Image.defaultProps = {
+  wrapperClassName: styles.img
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  wrapperClassName: PropTypes.string
+};
 
 export default Image;

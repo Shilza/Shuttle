@@ -6,7 +6,7 @@ import {LikesService} from "services";
 import styles from './like.module.css';
 
 
-const Like = ({id, isLiked, onLike, type, className}) => {
+const Like = ({id, isLiked, onLike, type, createLike, className}) => {
 
   const [isBeat, setIsBeat] = useState(false);
 
@@ -18,31 +18,41 @@ const Like = ({id, isLiked, onLike, type, className}) => {
       type
     };
     if (isLiked) {
-      onLike({id, liked: false});
+      if (onLike)
+        onLike({id, liked: false});
       setIsBeat(false);
-      LikesService.unlike(data).catch(() => onLike({id, liked: true}));
+      if (createLike)
+        LikesService.unlike(data).catch(() => onLike({id, liked: true}));
     } else {
-      onLike({id, liked: true});
+      if (onLike)
+        onLike({id, liked: true});
       setIsBeat(true);
-      LikesService.like(data).catch(() => onLike({id, liked: false}));
+      if (createLike)
+        LikesService.like(data).catch(() => onLike({id, liked: false}));
     }
   };
 
   return (
     <div className={className} title={'Like'}>
-      <button className={[isLiked ? styles.redHeart : styles.heart, isBeat ? styles.beatHeart : ''].join(' ')} onClick={like}>
+      <button className={[isLiked ? styles.redHeart : styles.heart, isBeat ? styles.beatHeart : ''].join(' ')}
+              onClick={like}>
         <Icon type="heart"/>
       </button>
     </div>
   );
 };
 
+Like.defaultProps = {
+  createLike: true
+};
+
 Like.propTypes = {
   id: PropTypes.number.isRequired,
   isLiked: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
-  onLike: PropTypes.func.isRequired,
+  onLike: PropTypes.func,
   className: PropTypes.string,
+  createLike: PropTypes.bool
 };
 
 export default Like;

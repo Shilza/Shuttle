@@ -42,9 +42,9 @@ const Mark = ({mark, parentWidth, link = false, text = 'Who is it?', ...props}) 
         appear: transitions.appear,
         appearActive: transitions.appearActive
       }}
-      transitionEnterTimeout={300}
-      transitionLeaveTimeout={300}
-      transitionAppearTimeout={300}
+      transitionEnterTimeout={200}
+      transitionLeaveTimeout={200}
+      transitionAppearTimeout={200}
       transitionAppear
       transitionEnter
       transitionLeave

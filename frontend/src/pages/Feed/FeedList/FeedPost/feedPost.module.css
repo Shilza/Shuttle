@@ -4,9 +4,10 @@
   flex-direction: column;
   width: 100%;
   background: var(--primary);
-  border: 1px solid var(--accent-second);
-  padding: 12px;
+  padding: 12px 12px 16px 12px;
   margin-bottom: 25px;
+  border-radius: 3px;
+  box-shadow: 1px 3px 6px rgba(0,0,0,0.16);
 }
 
 .mediaContainer {

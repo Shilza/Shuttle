@@ -5,7 +5,7 @@
 
 .leaveActive {
   opacity: 0;
-  transition: all 300ms ease-in-out
+  transition: all 200ms ease-in-out
 }
 
 .appear {
@@ -16,5 +16,5 @@
 .appearActive {
   opacity: 1;
   transform: scale(1, 1);
-  transition: 300ms ease-out;
+  transition: 200ms ease-out;
 }
