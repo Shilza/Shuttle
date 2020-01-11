@@ -144,3 +144,4 @@ This section shows the Shuttle user interface on desktop and mobile devices
 ### Privacy explaining label
 ![Privacy explaining label desktop](https://github.com/Shilza/Shuttle/blob/master/presentation/desktop/private.jpg)
 
+
