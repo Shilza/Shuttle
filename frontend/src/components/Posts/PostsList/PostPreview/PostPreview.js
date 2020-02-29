@@ -34,7 +34,8 @@ const PostPreview = React.memo(({post}) => {
             <Icon className={styles.icon} type='message'/>
           </div>
         </div>
-        {post.src.match('.mp4') && <picture className={styles.videoCamera}><img src={cameraIcon} alt={'Video'}/></picture>}
+        {post.src.match('.mp4') &&
+        <picture className={styles.videoCamera}><img src={cameraIcon} alt={'Video'}/></picture>}
       </div>
       <PostsModal visible={isModalOpen} post={post} onClose={closeModal}/>
     </>

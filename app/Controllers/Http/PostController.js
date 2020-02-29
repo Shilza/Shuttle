@@ -1,5 +1,4 @@
 'use strict';
-
 const Post = use('App/Models/Post');
 const User = use('App/Models/User');
 const Feed = use('App/Models/Feed');
@@ -9,6 +8,7 @@ const {validate} = use('CValidator');
 const PostsService = use('PostsService');
 const LikesService = use('LikesService');
 const UsersService = use('UsersService');
+const CloudinaryService = use('App/Services/CloudinaryService');
 
 class PostController {
 
@@ -93,7 +93,7 @@ class PostController {
     response.json(posts);
   }
 
-  async showLikedPosts({request, response, auth}) {
+  async showLikedPosts ({request, response, auth}) {
     const rules = {
       page: 'integer'
     };
@@ -188,12 +188,6 @@ class PostController {
     const Helpers = use('Helpers');
     const uuidv4 = require('uuid/v4');
 
-    const postMedia = request.file('media', {
-      types: ['image', 'video'],
-      size: '10mb',
-      subtypes: ['jpg', 'jpeg', 'mp4']
-    });
-
     const rules = {
       caption: 'string|max:1000',
       location: 'string|max:100',
@@ -219,16 +213,13 @@ class PostController {
 
     const user = await auth.getUser();
 
-    const extension = postMedia.type === 'image' ? 'jpg' : 'mp4';
-    const name = uuidv4() + '.' + extension;
-    const path = Helpers.publicPath('uploads') + '/' + user.id;
-
-    await postMedia.move(path, {
-      name, overwrite: true
+    const postMedia = request.file('media', {
+      types: ['image', 'video'],
+      size: '10mb'
     });
 
-    if (!postMedia.moved())
-      return postMedia.error();
+    const cdnOptions = {resource_type: postMedia.type, public_id: `${user.id}/${uuidv4()}`};
+    const cdnResult = await CloudinaryService.v2.uploader.upload(postMedia.tmpPath, cdnOptions);
 
     const postDataCaption = request.input('caption');
     const postDataLocation = request.input('location');
@@ -236,7 +227,7 @@ class PostController {
       caption: postDataCaption,
       location: postDataLocation,
       owner_id: user.id,
-      src: '/uploads/' + user.id + '/' + name
+      src: cdnResult.url
     });
 
     post.owner = user.username;

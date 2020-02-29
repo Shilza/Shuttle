@@ -11,8 +11,8 @@ import Edit from "./Edit";
 
 const ModalBody = ({post, my, closeModal, myMarkId}) => {
 
-  const {id, src, archive} = post;
-  const link = window.location.origin + '/p/' + src.match(/.+?\/.+?\/(.+?)\.+/)[1];
+  const {id, archive} = post;
+  const link = window.location.href;
 
   const removeMeFromMarks = useCallback(() => {
     MarksService.remove(myMarkId).then(({data}) => {

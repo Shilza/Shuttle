@@ -11,7 +11,7 @@ const PostModalBody = ({post, closeModal, needReplaceLocation = true}) => {
 
   useEffect(() => {
     if (needReplaceLocation) {
-      const url = window.location.origin + '/p/' + post.src.match(/.+?\/.+?\/(.+?)\.+/)[1];
+      const url = window.location.origin + '/p/' + post.src.match(/(?!.*\/.*).+(?=\.)/)[0];
       window.history.pushState({}, null, url);
       return () => window.history.pushState({}, null, `${window.location.origin}/${post.owner}`);
     }

@@ -12,6 +12,12 @@
   animation-timing-function: linear;
 }
 
+@media (min-width: 1800px) {
+  .container {
+    left: 200px;
+  }
+}
+
 .container:hover {
   animation-play-state: paused;
 }

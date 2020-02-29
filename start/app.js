@@ -32,7 +32,8 @@ const providers = [
   path.join(__dirname, '..', 'providers', 'CompilationsServiceProvider'),
   path.join(__dirname, '..', 'providers', 'SubscriptionRequestProvider'),
   path.join(__dirname, '..', 'providers', 'FriendshipProvider'),
-  path.join(__dirname, '..', 'providers', 'NotificationProvider')
+  path.join(__dirname, '..', 'providers', 'NotificationProvider'),
+  path.join(__dirname, '..', 'providers', 'CloudinaryProvider'),
 ];
 
 /*
@@ -69,7 +70,8 @@ const aliases = {
   UsersService: 'Adonis/Addons/UsersService',
   SubscriptionRequestsService: 'Adonis/Addons/SubscriptionRequestsService',
   FriendshipsService: 'Adonis/Addons/FriendshipsService',
-  NotificationsService: 'Adonis/Addons/NotificationsService'
+  NotificationsService: 'Adonis/Addons/NotificationsService',
+  CloudinaryService: 'Adonis/Addons/CloudinaryService'
 };
 
 /*

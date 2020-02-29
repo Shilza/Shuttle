@@ -29,6 +29,7 @@
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
     "@adonisjs/websocket": "^1.0.12",
+    "cloudinary": "^1.19.0",
     "mysql": "^2.17.1",
     "uuid": "^3.3.3"
   },
