@@ -1,5 +1,5 @@
 import Ws from "@adonisjs/websocket-client";
-import store from 'store';
+import store from './store';
 
 let ws = Ws(`ws://localhost:${process.env.BACKEND_PORT || 3333}`);
 
