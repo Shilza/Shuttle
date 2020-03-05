@@ -9,7 +9,7 @@ class AddCommentActionSchema extends Schema {
     await Database
       .raw(
         'CREATE TRIGGER `add_comment_action` AFTER INSERT ON `comments`' +
-        'FOR EACH ROW BEGIN' +
+        'FOR EACH ROW BEGIN ' +
         'IF (SELECT owner_id FROM posts WHERE id=new.post_id) <> NEW.owner_id' +
         'THEN' +
         'INSERT INTO actions (receiver_id, initiator_id, type, entity_id, created_at)VALUES((SELECT owner_id FROM posts WHERE id=new.post_id),NEW.owner_id, 2, NEW.id, NOW());' +
