@@ -2,14 +2,19 @@ import axios from 'axios';
 import moment from 'moment';
 import store from 'store';
 import {AuthService} from 'services';
+import {CONFIG} from "./config";
 
+
+const axiosInstance = axios.create({
+  baseURL: CONFIG.BASE_URL
+});
 
 //const CsrfToken = document.head.querySelector('meta[name="csrf-token"]');
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axiosInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //axios.defaults.headers.common['X-CSRF-TOKEN'] = CsrfToken.content;
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   response => response,
   error => {
     if (error.response.status === 401)
@@ -21,7 +26,7 @@ axios.interceptors.response.use(
 
 let isRefreshing = false;
 
-axios.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   async config => {
     //before every request, we check the access token for validity
     //if it is not valid we send a refresh token
@@ -33,7 +38,7 @@ axios.interceptors.request.use(
       isRefreshing = true;
       await AuthService.refresh().catch(() => {
         //if an error was received, we interrupt the execution of requests
-        throw new axios.Cancel();
+        throw new axiosInstance.Cancel();
       });
       isRefreshing = false;
 
@@ -45,4 +50,4 @@ axios.interceptors.request.use(
   }
 );
 
-export default axios;
+export default axiosInstance;
