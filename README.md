@@ -20,6 +20,13 @@ Social network application. Backend
 * Lucid ORM
 * MySQL
 
+## Services
+
+* Cloudinary
+* Ipstack
+* Herkou
+* Db4free
+
 ## Features
 
 You can:
