@@ -1,3 +1,5 @@
+'use strict'
+
 const { ServiceProvider } = require('@adonisjs/fold')
 
 class CloudinaryProvider extends ServiceProvider {

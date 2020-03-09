@@ -93,7 +93,7 @@ class PostController {
     response.json(posts);
   }
 
-  async showLikedPosts ({request, response, auth}) {
+  async showLikedPosts({request, response, auth}) {
     const rules = {
       page: 'integer'
     };
@@ -185,8 +185,7 @@ class PostController {
 
   async create({request, response, auth}) {
 
-    const Helpers = use('Helpers');
-    const uuidv4 = require('uuid/v4');
+    const { v4: uuidv4 } = require('uuid');
 
     const rules = {
       caption: 'string|max:1000',
@@ -212,7 +211,6 @@ class PostController {
       });
 
     const user = await auth.getUser();
-
     const postMedia = request.file('media', {
       types: ['image', 'video'],
       size: '10mb'
@@ -223,6 +221,7 @@ class PostController {
 
     const postDataCaption = request.input('caption');
     const postDataLocation = request.input('location');
+
     let post = await Post.create({
       caption: postDataCaption,
       location: postDataLocation,
