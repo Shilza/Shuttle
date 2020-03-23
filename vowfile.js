@@ -14,6 +14,9 @@
 // const ace = require('@adonisjs/ace')
 
 module.exports = (cli, runner) => {
+
+  cli.group('tests', 'test/**/*.spec.js');
+
   runner.before(async () => {
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +37,7 @@ module.exports = (cli, runner) => {
     | Migrate the database before starting the tests.
     |
     */
-    // await ace.call('migration:run', {}, { silent: true })
+    // await ace.call('migration:run', {}, { silent: true });
   })
 
   runner.after(async () => {
@@ -59,4 +62,4 @@ module.exports = (cli, runner) => {
     */
     // await ace.call('migration:reset', {}, { silent: true })
   })
-}
+};
