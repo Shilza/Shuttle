@@ -9,7 +9,7 @@ class CValidator {
         return {
             'email.required': 'Email is required',
             'email.unique': 'Email already exists',
-            'email.email': 'Wrong email',
+            'email.email': 'Wrong email format',
 
             'username.required': 'Username is required',
             'username.min': 'Username must be at least 2 characters',

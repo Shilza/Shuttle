@@ -20,19 +20,19 @@ const Route = use('Route');
 Route.group(() => {
   Route.post('register', 'AuthController.register');
   Route.post('login', 'AuthController.login');
-  Route.post('refresh', 'AuthController.refresh');
 }).prefix('api/v1/auth');
-
-Route.group(() => {
-  Route.post('reset', 'PasswordController.reset');
-  Route.post('update', 'PasswordController.update');
-}).prefix('api/v1/auth/password');
 
 Route.group(() => {
   Route.post('logout', 'AuthController.logout');
   Route.post('revokeAll', 'AuthController.revokeAll');
   Route.post('me', 'AuthController.me');
+  Route.post('refresh', 'AuthController.refresh');
 }).prefix('api/v1/auth').middleware(['auth:jwt']);
+
+Route.group(() => {
+  Route.post('reset', 'PasswordController.reset');
+  Route.post('update', 'PasswordController.update');
+}).prefix('api/v1/auth/password');
 
 Route.group(() => {
   Route.get('', 'UserController.show');
@@ -81,7 +81,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.delete('', 'MarkController.delete');
-}).prefix('api/v1/marks');
+}).prefix('api/v1/marks').middleware(['auth:jwt']);
 
 Route.group(() => {
   Route.get('', 'CommentController.show');

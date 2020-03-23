@@ -185,7 +185,7 @@ class PostController {
 
   async create({request, response, auth}) {
 
-    const { v4: uuidv4 } = require('uuid');
+    const {v4: uuidv4} = require('uuid');
 
     const rules = {
       caption: 'string|max:1000',
@@ -199,7 +199,8 @@ class PostController {
         message: validation.messages()[0].message
       });
 
-    const marks = JSON.parse(request.input('marks'));
+    const marks = request.input('marks') ? JSON.parse(request.input('marks')) : null;
+
     if (!Array.isArray(marks))
       return response.status(400).json({
         message: 'Marks should be an array'
@@ -215,6 +216,11 @@ class PostController {
       types: ['image', 'video'],
       size: '10mb'
     });
+
+    if (!postMedia)
+      return response.status(400).json({
+        message: 'media is required'
+      });
 
     const cdnOptions = {resource_type: postMedia.type, public_id: `${user.id}/${uuidv4()}`};
     const cdnResult = await CloudinaryService.v2.uploader.upload(postMedia.tmpPath, cdnOptions);
@@ -244,32 +250,12 @@ class PostController {
 
     post.marks = await Promise.all(marksPromises);
 
-    this.contentDistribution(post.id, user.id);
+    await PostsService.contentDistribution(post.id, user.id);
 
     response.json({
       message: 'Post successfully created',
       post
     });
-  }
-
-  async contentDistribution(post_id, id) {
-    let friends = await Friendship
-      .query()
-      .where('user_id', id)
-      .pluck('subscriber_id');
-    friends.push(id);
-
-    const bulkFeed = friends.map(id => {
-      return {
-        receiver_id: id,
-        post_id
-      }
-    });
-
-    await Feed
-      .query()
-      .from('feeds')
-      .insert(bulkFeed);
   }
 
   async update({request, response, auth}) {
@@ -300,7 +286,7 @@ class PostController {
       });
 
     const data = request.all();
-    const receivedMarks = data.marks;
+    const receivedMarks = data.marks ? JSON.parse(data.marks) : "";
 
     if (!Array.isArray(receivedMarks))
       return response.status(400).json({
@@ -312,9 +298,11 @@ class PostController {
         message: 'Marks count should be less than 10'
       });
 
-    await PostsService.removeMarksByPostId(post.id);
+    if (receivedMarks.length > 0) {
+      await PostsService.removeMarksByPostId(post.id);
 
-    await Promise.all(receivedMarks.map(mark => Mark.create({...mark, post_id: post.id})));
+      await Promise.all(receivedMarks.map(mark => Mark.create({...mark, post_id: post.id})));
+    }
 
     delete data.marks;
 
@@ -389,7 +377,8 @@ class PostController {
     await post.save();
 
     response.json({
-      message: 'Successfully added to the archive'
+      message: 'Successfully added to the archive',
+      post
     });
   }
 
@@ -427,7 +416,8 @@ class PostController {
     await post.save();
 
     response.json({
-      message: 'Successfully unarchived'
+      message: 'Successfully unarchived',
+      post
     });
   }
 }

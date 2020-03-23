@@ -5,6 +5,7 @@ const UsersService = use('UsersService');
 const FriendshipsService = use('FriendshipsService');
 const NotificationsService = use('NotificationsService');
 const SubscriptionRequestsService = use('SubscriptionRequestsService');
+const CloudinaryService = use('App/Services/CloudinaryService');
 
 class UserController {
 
@@ -12,7 +13,7 @@ class UserController {
     const {validate} = use('CValidator');
 
     const rules = {
-      username: 'string|min:2|max:12|regex:^[a-z0-9]+$'
+      username: 'required|string|min:2|max:12|regex:^[a-z0-9]+$'
     };
 
     const validation = await validate(request.all(), rules);
@@ -49,7 +50,7 @@ class UserController {
     const {validate} = use('CValidator');
 
     const rules = {
-      username: 'string|min:2|max:12'
+      username: 'required|string|min:2|max:12'
     };
 
     const validation = await validate(request.all(), rules);
@@ -69,7 +70,7 @@ class UserController {
       .first();
 
     if (!user)
-      return response.status(404).json({
+      return response.status(400).json({
         message: 'User does not exists'
       });
 
@@ -159,10 +160,9 @@ class UserController {
 
   async updateAvatar({request, response, auth}) {
 
-    const user = await auth.getUser();
+    const {v4: uuidv4} = require('uuid');
 
-    const Helpers = use('Helpers');
-    const uuidv1 = require('uuid/v1');
+    const user = await auth.getUser();
 
     const profilePic = request.file('avatar', {
       types: ['image'],
@@ -170,17 +170,13 @@ class UserController {
       subtypes: ['jpg', 'jpeg']
     });
 
-    const name = uuidv1() + '.' + profilePic.extname;
-    const path = Helpers.publicPath('uploads') + '/' + user.id;
+    if(!profilePic)
+      return response.status(400).json({message: 'avatar is required'});
 
-    await profilePic.move(path, {
-      name, overwrite: true
-    });
+    const cdnOptions = {resource_type: profilePic.type, public_id: `${user.id}/${uuidv4()}`};
+    const cdnResult = await CloudinaryService.v2.uploader.upload(profilePic.tmpPath, cdnOptions);
 
-    if (!profilePic.moved())
-      return profilePic.error();
-
-    user.avatar = '/uploads/' + user.id + '/' + name;
+    user.avatar = cdnResult.url;
     user.save();
 
     response.json({
@@ -232,12 +228,44 @@ class UserController {
       return response.json({private: true});
   }
 
+  async follows({request, response, auth}) {
+    const {validate} = use('CValidator');
+
+    const rules = {
+      id: 'required|integer',
+      page: 'integer'
+    };
+
+    const validation = await validate(request.all(), rules);
+
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
+
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
+
+    const user = await User.find(request.input('id'));
+    if (!user)
+      return response.status(400).json({message: 'User does not exists'});
+
+    const requester = await auth.getUser();
+
+    const canSee = await UsersService.canSee(user, requester.id);
+    if (canSee) {
+      const follows = await UsersService.getFollows(user, page);
+      return response.json(follows);
+    } else
+      return response.json({private: true});
+  }
+
   async followersSearch({request, response, auth}) {
     const {validate} = use('CValidator');
 
     const rules = {
       user_id: 'required|integer',
-      username: 'string|max:12',
+      username: 'required|string|max:12',
       page: 'integer'
     };
 
@@ -297,38 +325,6 @@ class UserController {
       const follows = await FriendshipsService.searchFollows(
         user.id, page, request.input('username')
       );
-      return response.json(follows);
-    } else
-      return response.json({private: true});
-  }
-
-  async follows({request, response, auth}) {
-    const {validate} = use('CValidator');
-
-    const rules = {
-      id: 'required|integer',
-      page: 'integer'
-    };
-
-    const validation = await validate(request.all(), rules);
-
-    if (validation.fails())
-      return response.status(400).json({
-        message: validation.messages()[0].message
-      });
-
-    let page = parseInt(request.input('page'), 10);
-    page = page > 0 ? page : 1;
-
-    const user = await User.find(request.input('id'));
-    if (!user)
-      response.status(400).json({message: 'User does not exists'});
-
-    const requester = await auth.getUser();
-
-    const canSee = await UsersService.canSee(user, requester.id);
-    if (canSee) {
-      const follows = await UsersService.getFollows(user, page);
       return response.json(follows);
     } else
       return response.json({private: true});

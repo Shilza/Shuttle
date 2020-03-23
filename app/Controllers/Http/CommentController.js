@@ -29,6 +29,12 @@ class CommentController {
     const postId = request.input('post_id');
     const user = await auth.getUser();
 
+    const post = await Post.find(postId);
+    if (!post)
+      return response.status(400).json({
+        message: 'Post does not exists'
+      });
+
     const owner = await PostsService.getPostsOwnerByPostId(postId);
 
     const canSee = await UsersService.canSee(owner, user.id);
@@ -70,9 +76,7 @@ class CommentController {
     const canSee = await UsersService.canSee(owner, user.id);
 
     if (canSee) {
-
       const users = await LikesService.getUsersLikesByCommentId(commentId, page);
-
       return response.json(users);
     } else
       return response.status(400).json({message: 'Profile is private'});
@@ -82,7 +86,7 @@ class CommentController {
 
     const rules = {
       post_id: 'required|integer',
-      text: 'required|string|min:0|max:1000'
+      text: 'required|string|min:1|max:1000'
     };
 
     const validation = await validate(request.all(), rules);

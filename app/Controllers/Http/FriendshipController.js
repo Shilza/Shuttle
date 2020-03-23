@@ -107,7 +107,7 @@ class FriendshipController {
 
         if (!isFollower)
             return response.status(400).json({
-                message: 'Does not follow'
+                message: 'You are does not follow'
             });
 
         await FriendshipsService.delete(user_id, user.id);

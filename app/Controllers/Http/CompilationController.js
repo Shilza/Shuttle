@@ -62,7 +62,7 @@ class CompilationController {
   async create({request, response, auth}) {
     const rules = {
       post_id: 'required|integer',
-      compilation: 'string|min:2|max:12|regex:^[A-z0-9]+$:'
+      compilation: 'required|string|min:2|max:12|regex:^[A-z0-9]+$:'
     };
 
     const validation = await validate(request.all(), rules);
@@ -102,12 +102,10 @@ class CompilationController {
         post_id: post.id,
         name: request.input('compilation')
       };
-      Object.entries(compilationData).forEach(
-        e => {
-          if (!e[1])
-            delete compilationData[e[0]]
-        }
-      );
+      Object.entries(compilationData).forEach((item) => {
+        if (!item[1])
+          delete compilationData[item[0]]
+      });
       await Compilation.create(compilationData);
 
       return response.json({
@@ -135,7 +133,7 @@ class CompilationController {
     const isExists = await CompilationsService.isCompilationExists(user.id, request.input('old_compilation_name'));
     if (!isExists)
       return response.status(400).json({
-        message: 'Compilation does not esists'
+        message: 'Compilation does not exists'
       });
 
     await Compilation
@@ -166,7 +164,7 @@ class CompilationController {
     const isExists = await CompilationsService.isCompilationExists(user.id, request.input('compilation'));
 
     if (!isExists)
-      return response.json({
+      return response.status(400).json({
         message: 'Compilation does not exists'
       });
 

@@ -31,7 +31,7 @@ class PasswordController {
             .getCount();
 
         if (resetsCount > 2) {
-            return response.json({
+            return response.status(400).json({
                 message: 'Password recovery limit exceeded, please check your email or wait until the end of the limit'
             });
         }
@@ -82,7 +82,7 @@ class PasswordController {
 
         const rules = {
             email: 'required|string|email',
-            password: 'required|string|min:6|max:32|confirmed',
+            password: 'required|string|min:8|max:32|confirmed',
             token: 'required|string'
         };
 
@@ -106,7 +106,7 @@ class PasswordController {
 
         if (!passReset)
             return response.status(400).json({
-                message: 'Invalid reset token'
+                message: 'Invalid email or reset token'
             });
 
         const isTokenInvalid = moment()

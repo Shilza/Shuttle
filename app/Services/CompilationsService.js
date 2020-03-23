@@ -61,8 +61,9 @@ class CompilationsService {
   }
 
   async isPostExists(userId, postId) {
-    return !!(Compilation
+    return !!(await Compilation
       .query()
+      .select(1)
       .where('owner_id', userId)
       .where('post_id', postId)
       .first());

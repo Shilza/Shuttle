@@ -100,6 +100,7 @@ class NotificationsService {
       delete item.is_read;
       delete item.entity_id;
 
+      item.read = 1;
       return item;
     });
 

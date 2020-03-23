@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const {validate} = use('CValidator');
 const Dialog = use('App/Models/Dialog');
@@ -26,7 +26,7 @@ class DialogController {
       .where('username', params.peerUsername)
       .pluck('id');
 
-    peerId = peerId[0]
+    peerId = peerId[0];
 
     if (typeof peerId !== 'number')
       return response.status(400).json({
@@ -76,7 +76,7 @@ class DialogController {
     page = page > 0 ? page : 1;
 
     const subQuery = Database
-      .raw('SELECT MAX(id) FROM dialogs WHERE owner_id = ? OR receiver_id = ? GROUP BY least(owner_id,receiver_id), greatest(owner_id,receiver_id)', [user.id, user.id])
+      .raw('SELECT MAX(id) FROM dialogs WHERE owner_id = ? OR receiver_id = ? GROUP BY least(owner_id,receiver_id), greatest(owner_id,receiver_id)', [user.id, user.id]);
 
     let dialogs = await Dialog
       .query()
@@ -95,8 +95,8 @@ class DialogController {
     users = users.toJSON();
 
     dialogs.rows = dialogs.rows.map(dialog => {
-      const a = dialog.owner_id === user.id ? dialog.receiver_id : dialog.owner_id
-      dialog.user = users.find(userr => userr.id === a)
+      const whoId = dialog.owner_id === user.id ? dialog.receiver_id : dialog.owner_id;
+      dialog.user = users.find(user => user.id === whoId);
       return dialog;
     });
 

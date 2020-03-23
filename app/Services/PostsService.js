@@ -4,6 +4,7 @@ const Feed = use('App/Models/Feed');
 const Post = use('App/Models/Post');
 const User = use('App/Models/User');
 const Mark = use('App/Models/Mark');
+const Friendship = use('App/Models/Friendship');
 const LikesService = use('LikesService');
 const CompilationsService = use('CompilationsService');
 
@@ -120,6 +121,26 @@ class PostsService {
     posts.data = await CompilationsService.setSavedInfo(userId, posts.data);
 
     return posts;
+  }
+
+  async contentDistribution(post_id, id) {
+    let friends = await Friendship
+      .query()
+      .where('user_id', id)
+      .pluck('subscriber_id');
+    friends.push(id);
+
+    const bulkFeed = friends.map(id => {
+      return {
+        receiver_id: id,
+        post_id
+      }
+    });
+
+    await Feed
+      .query()
+      .from('feeds')
+      .insert(bulkFeed);
   }
 
   async getArchivedPosts(user, page) {

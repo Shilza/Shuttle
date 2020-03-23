@@ -92,7 +92,7 @@ class BlacklistController {
             await SubscriptionRequestsService.delete(user.id, blacklistedId);
 
         response.json({
-            message: 'Added to blacklist successful'
+            message: 'Added to blacklist successfully'
         });
     }
 

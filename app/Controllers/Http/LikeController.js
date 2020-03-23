@@ -35,7 +35,7 @@ class LikeController {
 
     const like = await LikesService.isLikeExists(user.id, entity_id, type.id);
     if (like)
-      return response.json({message: 'Like already exists'});
+      return response.status(400).json({message: 'Like already exists'});
 
     switch (type.type) {
       case 'comment': {
@@ -95,15 +95,6 @@ class LikeController {
     const entity_id = request.input('entity_id');
     const user = await auth.getUser();
 
-    const like = await Like.query()
-      .where('owner_id', user.id)
-      .where('entity_id', entity_id)
-      .where('type', type.id)
-      .first();
-
-    if (!like)
-      return response.json({message: 'Like does not exists'});
-
     switch (type.type) {
       case 'comment': {
         const comment = await Comment.find(entity_id);
@@ -112,10 +103,19 @@ class LikeController {
             message: 'Comment does not exists'
           });
 
+        const like = await Like.query()
+          .where('owner_id', user.id)
+          .where('entity_id', entity_id)
+          .where('type', type.id)
+          .first();
+
+        if (!like)
+          return response.status(400).json({message: 'Like does not exists'});
+
         const owner = await PostsService.getPostsOwnerByPostId(comment.post_id);
         const canSee = await UsersService.canSee(owner, user.id);
+
         if (canSee) {
-          await Like.create({entity_id, owner_id: user.id, type: type.id});
           if (await like.delete())
             return response.json({message: 'Comment unliked successfully'});
         } else
@@ -129,10 +129,19 @@ class LikeController {
             message: 'Post does not exists'
           });
 
+        const like = await Like.query()
+          .where('owner_id', user.id)
+          .where('entity_id', entity_id)
+          .where('type', type.id)
+          .first();
+
+        if (!like)
+          return response.status(400).json({message: 'Like does not exists'});
+
         const owner = await PostsService.getPostsOwnerByPostId(post.id);
         const canSee = await UsersService.canSee(owner, user.id);
+
         if (canSee) {
-          await Like.create({entity_id, owner_id: user.id, type: type.id});
           if (await like.delete())
             return response.json({message: 'Post unliked successfully'});
         } else

@@ -49,7 +49,8 @@ class DialogsController {
         case DELETE:
           this.onDelete({topic, data});
           break;
-        default: break;
+        default:
+          break;
       }
     }
   }
@@ -66,10 +67,9 @@ class DialogsController {
 
     if (DialogsController.isReceiverHasMessagesConnection(receiverId) > 0)
       topic.broadcast('message', {
-          type: CONNECTION,
-          receiver_id: this.user.id
-        }
-      );
+        type: CONNECTION,
+        receiver_id: this.user.id
+      });
   }
 
   async onRead({topic, data}) {
@@ -84,9 +84,8 @@ class DialogsController {
 
     if (DialogsController.isReceiverHasMessagesConnection(receiverId) > 0)
       topic.broadcast('message', {
-          type: READ
-        }
-      );
+        type: READ
+      });
   }
 
   async onMsg({topic, data}) {
@@ -127,18 +126,17 @@ class DialogsController {
     });
 
     if (DialogsController.isReceiverHasMessagesConnection(receiver_id) > 0)
-      topic
-        .broadcast('message', {
-          type: MESSAGE,
-          message: {
-            ...msg.toJSON(),
-            user: {
-              id: this.user.id,
-              avatar: this.user.avatar,
-              username: this.user.username
-            }
+      topic.broadcast('message', {
+        type: MESSAGE,
+        message: {
+          ...msg.toJSON(),
+          user: {
+            id: this.user.id,
+            avatar: this.user.avatar,
+            username: this.user.username
           }
-        });
+        }
+      });
   }
 
   async onDelete({data}) {
@@ -160,7 +158,7 @@ class DialogsController {
       return;
     }
 
-    if(!(await DialogsController.isOwner(owner_id, messageId))) {
+    if (!(await DialogsController.isOwner(owner_id, messageId))) {
       this.socket.emit('message', {
         type: ERROR,
         error: 'Only owner can delete message'
@@ -168,7 +166,7 @@ class DialogsController {
       return;
     }
 
-    if(await DialogsController.isDayLeft(owner_id, messageId)) {
+    if (await DialogsController.isDayLeft(owner_id, messageId)) {
       this.socket.emit('message', {
         type: ERROR,
         error: 'Message can be deleted only during the day'
@@ -192,11 +190,10 @@ class DialogsController {
     const {receiverId} = data;
 
     if (DialogsController.isReceiverHasMessagesConnection(receiverId) > 0)
-      topic
-        .broadcast('message', {
-          type: IS_TYPING,
-          owner_id: this.user.id
-        });
+      topic.broadcast('message', {
+        type: IS_TYPING,
+        owner_id: this.user.id
+      });
   }
 
   static async isOwner(userId, messageId) {

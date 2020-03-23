@@ -6,99 +6,99 @@ const FriendshipsService = use('FriendshipsService');
 
 class SubscriptionRequestController {
 
-    async preview({request, response, auth}) {
-        const user = await auth.getUser();
+  async preview({request, response, auth}) {
+    const user = await auth.getUser();
 
-        const subsRequestsCount = await SubscriptionRequestsService.getSubRequestsCount(user.id);
-        let subscriptionsRequests;
-        if (subsRequestsCount) {
-            const avatar = await SubscriptionRequestsService.getAvatarOfLastSubscriber(user.id);
-            subscriptionsRequests = {
-                avatar: avatar,
-                count: subsRequestsCount
-            };
-        }
-
-        response.json(subscriptionsRequests);
+    const subsRequestsCount = await SubscriptionRequestsService.getSubRequestsCount(user.id);
+    let subscriptionsRequests;
+    if (subsRequestsCount) {
+      const avatar = await SubscriptionRequestsService.getAvatarOfLastSubscriber(user.id);
+      subscriptionsRequests = {
+        avatar: avatar,
+        count: subsRequestsCount
+      };
     }
 
-    async show({request, response, auth}) {
-        const rules = {
-            page: 'integer'
-        };
+    response.json(subscriptionsRequests);
+  }
 
-        const validation = await validate(request.all(), rules);
+  async show({request, response, auth}) {
+    const rules = {
+      page: 'integer'
+    };
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const validation = await validate(request.all(), rules);
 
-        let page = parseInt(request.input('page'), 10);
-        page = page > 0 ? page : 1;
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        const user = await auth.getUser();
-        const requests = await SubscriptionRequestsService.getRequests(user.id, page);
+    let page = parseInt(request.input('page'), 10);
+    page = page > 0 ? page : 1;
 
-        return response.json(requests);
-    }
+    const user = await auth.getUser();
+    const requests = await SubscriptionRequestsService.getRequests(user.id, page);
 
-    async accept({request, response, auth}) {
-        const rules = {
-            user_id: 'required|integer'
-        };
+    return response.json(requests);
+  }
 
-        const validation = await validate(request.all(), rules);
+  async accept({request, response, auth}) {
+    const rules = {
+      user_id: 'required|integer'
+    };
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const validation = await validate(request.all(), rules);
 
-        const user = await auth.getUser();
-        const subscriberId = request.input('user_id');
-        const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        if (!isReqExists)
-            return response.status(400).json({
-                message: 'Subscription request does not exists'
-            });
+    const user = await auth.getUser();
+    const subscriberId = request.input('user_id');
+    const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
 
-        await FriendshipsService.create(user.id, subscriberId);
-        await SubscriptionRequestsService.delete(user.id, subscriberId);
+    if (!isReqExists)
+      return response.status(400).json({
+        message: 'Subscription request does not exists'
+      });
 
-        response.json({
-            message: 'Subscription request accepted'
-        });
-    }
+    await FriendshipsService.create(user.id, subscriberId);
+    await SubscriptionRequestsService.delete(user.id, subscriberId);
 
-    async deny({request, response, auth}) {
-        const rules = {
-            user_id: 'required|integer'
-        };
+    response.json({
+      message: 'Subscription request accepted'
+    });
+  }
 
-        const validation = await validate(request.all(), rules);
+  async deny({request, response, auth}) {
+    const rules = {
+      user_id: 'required|integer'
+    };
 
-        if (validation.fails())
-            return response.status(400).json({
-                message: validation.messages()[0].message
-            });
+    const validation = await validate(request.all(), rules);
 
-        const user = await auth.getUser();
-        const subscriberId = request.input('user_id');
-        const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
+    if (validation.fails())
+      return response.status(400).json({
+        message: validation.messages()[0].message
+      });
 
-        if (!isReqExists)
-            return response.status(400).json({
-                message: 'Subscription request does not exists'
-            });
+    const user = await auth.getUser();
+    const subscriberId = request.input('user_id');
+    const isReqExists = await SubscriptionRequestsService.isRequestExists(user.id, subscriberId);
 
-        await SubscriptionRequestsService.delete(user.id, subscriberId);
+    if (!isReqExists)
+      return response.status(400).json({
+        message: 'Subscription request does not exists'
+      });
 
-        response.json({
-            message: 'Subscription request canceled'
-        });
-    }
+    await SubscriptionRequestsService.delete(user.id, subscriberId);
+
+    response.json({
+      message: 'Subscription request canceled'
+    });
+  }
 }
 
 module.exports = SubscriptionRequestController;
