@@ -19,12 +19,10 @@ class CommentsService {
   }
 
   _findUserById(array, id) {
-    const user = array.find(user => {
+    return array.find(user => {
       if (user.id === id)
         return true;
     });
-
-    return user;
   }
 
   async _getOwners(commentsIds) {
