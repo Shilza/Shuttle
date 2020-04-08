@@ -3,6 +3,7 @@ const {test, trait} = use('Test/Suite')(SUITE_NAME);
 const {ioc} = use('@adonisjs/fold');
 const User = use('App/Models/User');
 const Compilation = use('App/Models/Compilation');
+const CompilationsService = use('CompilationsService');
 
 trait('Test/ApiClient');
 trait('Auth/Client');

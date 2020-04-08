@@ -3,6 +3,7 @@ const {test, trait} = use('Test/Suite')(SUITE_NAME);
 const SubscriptionRequest = use('App/Models/SubscriptionRequest');
 const User = use('App/Models/User');
 const FriendshipsService = use('FriendshipsService');
+const SubscriptionRequestsService = use('SubscriptionRequestsService');
 
 trait('Test/ApiClient');
 trait('Auth/Client');

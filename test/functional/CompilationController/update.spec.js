@@ -46,21 +46,6 @@ test(`${SUITE_NAME} error required validation failed on old_compilation_name`, a
   })
 });
 
-test(`${SUITE_NAME} error min validation failed on old_compilation_name`, async ({client, assert}) => {
-  const user = await User.find(1);
-
-  const response = await client
-    .patch(ENDPOINT)
-    .query({old_compilation_name: "a"})
-    .loginVia(user, 'jwt')
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "min validation failed on old_compilation_name"
-  });
-});
-
 test(`${SUITE_NAME} error max validation failed on old_compilation_name`, async ({client, assert}) => {
   const user = await User.find(1);
 
@@ -89,21 +74,6 @@ test(`${SUITE_NAME} error required validation failed on new_compilation_name`, a
   response.assertError({
     message: "required validation failed on new_compilation_name"
   })
-});
-
-test(`${SUITE_NAME} error min validation failed on new_compilation_name`, async ({client, assert}) => {
-  const user = await User.find(1);
-
-  const response = await client
-    .patch(ENDPOINT)
-    .query({old_compilation_name: "aaa", new_compilation_name: "a"})
-    .loginVia(user, 'jwt')
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "min validation failed on new_compilation_name"
-  });
 });
 
 test(`${SUITE_NAME} error max validation failed on new_compilation_name`, async ({client, assert}) => {
