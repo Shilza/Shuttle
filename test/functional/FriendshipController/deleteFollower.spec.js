@@ -1,4 +1,5 @@
-const {test, trait} = use('Test/Suite')('Friendship delete follower');
+const SUITE_NAME = 'Friendship delete follower';
+const {test, trait} = use('Test/Suite')(SUITE_NAME);
 const User = use('App/Models/User');
 const Friendship = use('App/Models/Friendship');
 const FriendshipsService = use('FriendshipsService');
@@ -9,7 +10,7 @@ trait('DatabaseTransactions');
 
 const API_FRIENDSHIP = "api/v1/friendships";
 
-test('Friendship delete follower error 401', async ({client, assert}) => {
+test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
 
   const response = await client
     .delete(`${API_FRIENDSHIP}/follower`)
@@ -18,7 +19,7 @@ test('Friendship delete follower error 401', async ({client, assert}) => {
   response.assertStatus(401);
 });
 
-test('Friendship delete follower error required validation failed on id', async ({client, assert}) => {
+test(`${SUITE_NAME} error required validation failed on id`, async ({client, assert}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -32,7 +33,7 @@ test('Friendship delete follower error required validation failed on id', async 
   });
 });
 
-test('Friendship delete follower error User does not exists', async ({client, assert}) => {
+test(`${SUITE_NAME} error User does not exists`, async ({client, assert}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -47,7 +48,7 @@ test('Friendship delete follower error User does not exists', async ({client, as
   });
 });
 
-test('Friendship delete follower error User is not follow you', async ({client, assert}) => {
+test(`${SUITE_NAME} error User is not follow you`, async ({client, assert}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -62,7 +63,7 @@ test('Friendship delete follower error User is not follow you', async ({client, 
   });
 });
 
-test('Friendship  delete follower successfully', async ({client, assert}) => {
+test(`${SUITE_NAME} successfully`, async ({client, assert}) => {
   const user = await User.find(1);
 
   await Friendship.create({user_id: user.id, subscriber_id: 2});
