@@ -20,5 +20,6 @@ const files = readdirRecursive("./test");
   for await (let file of files) {
     execSync("adonis test -f " + file, {stdio: 'inherit'});
   }
+  console.log(`Total files count: ${files.length}`);
 })();
 
