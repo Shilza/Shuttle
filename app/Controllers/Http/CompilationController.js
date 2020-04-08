@@ -118,8 +118,8 @@ class CompilationController {
 
   async update({request, response, auth}) {
     const rules = {
-      old_compilation_name: 'required|string|min:1|max:32',
-      new_compilation_name: 'required|string|min:1|max:32'
+      old_compilation_name: 'required|string|max:32',
+      new_compilation_name: 'required|string|max:32'
     };
 
     const validation = await validate(request.all(), rules);
