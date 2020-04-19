@@ -39,7 +39,7 @@ class CommentController {
 
     const canSee = await UsersService.canSee(owner, user.id);
     if (canSee) {
-      const comments = await CommentsService.getComments(user.id, postId, page);
+      const comments = await CommentsService.getComments(user.id, postId, post.owner_id, page);
       return response.json(comments);
     } else
       return response.status(400).json({message: 'Profile is private'});
@@ -124,6 +124,7 @@ class CommentController {
       comment.owner = user.username;
       comment.avatar = user.avatar;
       comment.isLiked = false;
+      comment.postOwnerId = post.owner_id;
 
       response.json(comment);
     } else

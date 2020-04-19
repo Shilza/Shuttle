@@ -4,7 +4,7 @@ const LikesService = use('LikesService');
 
 class CommentsService {
 
-  async getComments(userId, postId, page) {
+  async getComments(userId, postId, postOwnerId, page) {
     const comments = await Comment
       .query()
       .where('post_id', postId)
@@ -14,6 +14,10 @@ class CommentsService {
 
     comments.rows = await this._setOwnersInfo(comments.rows);
     comments.rows = await LikesService.setIsLikedCommentsInfo(userId, comments.rows);
+    comments.rows = comments.rows.map((comment) => {
+      comment.postOwnerId = postOwnerId;
+      return comment;
+    });
 
     return comments;
   }
