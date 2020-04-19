@@ -18,11 +18,8 @@ class CommentsService {
     return comments;
   }
 
-  _findUserById(array, id) {
-    return array.find(user => {
-      if (user.id === id)
-        return true;
-    });
+  _findUserById(users, id) {
+    return users.find(user => user.id === id);
   }
 
   async _getOwners(commentsIds) {
