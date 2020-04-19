@@ -286,7 +286,10 @@ class PostController {
       });
 
     const data = request.all();
-    const receivedMarks = data.marks ? JSON.parse(data.marks) : "";
+    let receivedMarks = [];
+    try {
+      receivedMarks = JSON.parse(data.marks);
+    } catch {}
 
     if (!Array.isArray(receivedMarks))
       return response.status(400).json({
