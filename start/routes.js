@@ -10,12 +10,11 @@
 |
 | A complete guide on routing is available here.
 | http://adonisjs.com/docs/4.1/routing
-|
+
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
-
 
 Route.group(() => {
   Route.post('register', 'AuthController.register');
@@ -133,9 +132,22 @@ Route.group(() => {
   Route.get('/:peerUsername', 'DialogController.show');
 }).prefix('api/v1/dialogs').middleware(['auth:jwt']);
 
-
 Route.get('*', ({view}) => view.render('index'));
+}
 
+if (process.env.NODE_ENV === 'testing') {
+  // TEST ENDPOINTS
+  Route.group(() => {
+    Route.post('setDatabase', () => {
+      execSync("adonis migration:run");
+      execSync("adonis seed");
+    });
+
+    Route.post('resetDatabase', () => {
+      execSync("adonis migration:reset");
+    });
+  }).prefix('api/v1');
+}
 
 
 
