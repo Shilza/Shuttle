@@ -133,7 +133,6 @@ Route.group(() => {
 }).prefix('api/v1/dialogs').middleware(['auth:jwt']);
 
 Route.get('*', ({view}) => view.render('index'));
-}
 
 if (process.env.NODE_ENV === 'testing') {
   // TEST ENDPOINTS
