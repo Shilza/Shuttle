@@ -91,30 +91,6 @@ test(`${SUITE_NAME} error forbidden. Unable to update`, async ({client, assert})
   });
 });
 
-test(`${SUITE_NAME} error mark should be an array`, async ({client, assert}) => {
-
-  const user = await User.find(1);
-
-  const post = await Post.create({
-    caption: "caption",
-    location: "location",
-    owner_id: user.id,
-    src: "src"
-  });
-
-  const response = await client
-    .patch(ENDPOINT)
-    .query({id: post.id})
-    .loginVia(user, 'jwt')
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "Marks should be an array"
-  });
-});
-
-
 test(`${SUITE_NAME} error marks count should be less than 10`, async ({client, assert}) => {
 
   const user = await User.find(1);
