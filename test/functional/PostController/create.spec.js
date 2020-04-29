@@ -33,7 +33,7 @@ ioc.fake('PostsService', () => {
   }
 });
 
-test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
+test(`${SUITE_NAME} error 401`, async ({client}) => {
 
   const response = await client
     .post(ENDPOINT)
@@ -43,7 +43,7 @@ test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
   response.assertStatus(401);
 });
 
-test(`${SUITE_NAME} error media is required`, async ({client, assert}) => {
+test(`${SUITE_NAME} error media is required`, async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -58,7 +58,7 @@ test(`${SUITE_NAME} error media is required`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} marks should be an array error`, async ({client, assert}) => {
+test(`${SUITE_NAME} marks should be an array error`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -74,7 +74,7 @@ test(`${SUITE_NAME} marks should be an array error`, async ({client, assert}) =>
 });
 
 
-test(`${SUITE_NAME} max validation failed on location`, async ({client, assert}) => {
+test(`${SUITE_NAME} max validation failed on location`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -90,7 +90,7 @@ test(`${SUITE_NAME} max validation failed on location`, async ({client, assert})
   });
 });
 
-test(`${SUITE_NAME} max validation failed on location`, async ({client, assert}) => {
+test(`${SUITE_NAME} max validation failed on caption`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -106,7 +106,7 @@ test(`${SUITE_NAME} max validation failed on location`, async ({client, assert})
   });
 });
 
-test(`${SUITE_NAME} marks count should be less than 10`, async ({client, assert}) => {
+test(`${SUITE_NAME} marks count should be less than 10`, async ({client}) => {
 
   const user = await User.find(1);
 

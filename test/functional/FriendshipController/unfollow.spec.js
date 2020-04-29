@@ -11,7 +11,7 @@ trait('DatabaseTransactions');
 
 const API_FRIENDSHIP = "api/v1/friendships";
 
-test('Friendship unfollow error 401', async ({client, assert}) => {
+test('Friendship unfollow error 401', async ({client}) => {
 
   const response = await client
     .post(`${API_FRIENDSHIP}/unfollow`)
@@ -20,7 +20,7 @@ test('Friendship unfollow error 401', async ({client, assert}) => {
   response.assertStatus(401);
 });
 
-test('Friendship unfollow error required validation failed on id', async ({client, assert}) => {
+test('Friendship unfollow error required validation failed on id', async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -34,7 +34,7 @@ test('Friendship unfollow error required validation failed on id', async ({clien
   });
 });
 
-test('Friendship unfollow error User does not exists', async ({client, assert}) => {
+test('Friendship unfollow error User does not exists', async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -49,7 +49,7 @@ test('Friendship unfollow error User does not exists', async ({client, assert}) 
   });
 });
 
-test('Friendship unfollow error You are is blacklisted', async ({client, assert}) => {
+test('Friendship unfollow error You are is blacklisted', async ({client}) => {
   const user = await User.find(1);
 
   await Blacklist.create({
@@ -93,7 +93,7 @@ test('Friendship unfollow Subscription request successfully canceled', async ({c
   assert.equal(response.body.message, "Subscription request successfully canceled");
 });
 
-test('Friendship unfollow Subscription request successfully canceled', async ({client, assert}) => {
+test('Friendship unfollow You are does not follow', async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
