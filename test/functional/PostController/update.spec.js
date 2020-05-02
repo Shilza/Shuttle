@@ -10,7 +10,7 @@ trait('DatabaseTransactions');
 const API_POSTS = "api/v1/posts";
 const ENDPOINT = API_POSTS;
 
-test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
+test(`${SUITE_NAME} error 401`, async ({client}) => {
 
   const response = await client
     .patch(ENDPOINT)
@@ -19,7 +19,7 @@ test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
   response.assertStatus(401);
 });
 
-test(`${SUITE_NAME} error required validation failed on id`, async ({client, assert}) => {
+test(`${SUITE_NAME} error required validation failed on id`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -34,7 +34,7 @@ test(`${SUITE_NAME} error required validation failed on id`, async ({client, ass
   });
 });
 
-test(`${SUITE_NAME} error max validation failed on location`, async ({client, assert}) => {
+test(`${SUITE_NAME} error max validation failed on location`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -51,7 +51,7 @@ test(`${SUITE_NAME} error max validation failed on location`, async ({client, as
   });
 });
 
-test(`${SUITE_NAME} error post doesnt exists`, async ({client, assert}) => {
+test(`${SUITE_NAME} error post doesnt exists`, async ({client}) => {
 
   const user = await User.find(1);
 
@@ -67,7 +67,7 @@ test(`${SUITE_NAME} error post doesnt exists`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} error forbidden. Unable to update`, async ({client, assert}) => {
+test(`${SUITE_NAME} error forbidden. Unable to update`, async ({client}) => {
 
   const user = await User.find(1);
   const user2 = await User.find(2);
@@ -91,31 +91,7 @@ test(`${SUITE_NAME} error forbidden. Unable to update`, async ({client, assert})
   });
 });
 
-test(`${SUITE_NAME} error mark should be an array`, async ({client, assert}) => {
-
-  const user = await User.find(1);
-
-  const post = await Post.create({
-    caption: "caption",
-    location: "location",
-    owner_id: user.id,
-    src: "src"
-  });
-
-  const response = await client
-    .patch(ENDPOINT)
-    .query({id: post.id})
-    .loginVia(user, 'jwt')
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "Marks should be an array"
-  });
-});
-
-
-test(`${SUITE_NAME} error marks count should be less than 10`, async ({client, assert}) => {
+test(`${SUITE_NAME} error marks count should be less than 10`, async ({client}) => {
 
   const user = await User.find(1);
 

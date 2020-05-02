@@ -9,7 +9,7 @@ trait('DatabaseTransactions');
 const API_AUTH = "api/v1/auth";
 const ENDPOINT = `${API_AUTH}/login`;
 
-test(`${SUITE_NAME} error username is required`, async ({client, assert}) => {
+test(`${SUITE_NAME} error username is required`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .end();
@@ -20,7 +20,7 @@ test(`${SUITE_NAME} error username is required`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} error Username must be at least 2 characters`, async ({client, assert}) => {
+test(`${SUITE_NAME} error Username must be at least 2 characters`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: "1"})
@@ -32,7 +32,7 @@ test(`${SUITE_NAME} error Username must be at least 2 characters`, async ({clien
   });
 });
 
-test(`${SUITE_NAME} error Username must be less than 16 characters`, async ({client, assert}) => {
+test(`${SUITE_NAME} error Username must be less than 16 characters`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: new Array(18).fill("a").join("")})
@@ -44,7 +44,7 @@ test(`${SUITE_NAME} error Username must be less than 16 characters`, async ({cli
   });
 });
 
-test(`${SUITE_NAME}error password is required`, async ({client, assert}) => {
+test(`${SUITE_NAME} error password is required`, async ({client, assert}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: "test"})
@@ -56,31 +56,7 @@ test(`${SUITE_NAME}error password is required`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} error Username must be at least 2 characters`, async ({client, assert}) => {
-  const response = await client
-    .post(ENDPOINT)
-    .query({username: "1"})
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "Username must be at least 2 characters"
-  });
-});
-
-test(`${SUITE_NAME} error password is required`, async ({client, assert}) => {
-  const response = await client
-    .post(ENDPOINT)
-    .query({username: "newtest"})
-    .end();
-
-  response.assertStatus(400);
-  response.assertError({
-    message: "Password is required"
-  });
-});
-
-test(`${SUITE_NAME} error password must be at least 8 characters`, async ({client, assert}) => {
+test(`${SUITE_NAME} error password must be at least 8 characters`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: "newtest", password: "123"})
@@ -92,7 +68,7 @@ test(`${SUITE_NAME} error password must be at least 8 characters`, async ({clien
   });
 });
 
-test(`${SUITE_NAME} error Password must be less than 32 characters`, async ({client, assert}) => {
+test(`${SUITE_NAME} error Password must be less than 32 characters`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: "newtest", password: new Array(40).join('a')})
@@ -116,7 +92,7 @@ test(`${SUITE_NAME} error User does not exists`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} error Incorrect login or password`, async ({client, assert}) => {
+test(`${SUITE_NAME} error Incorrect login or password`, async ({client}) => {
   const response = await client
     .post(ENDPOINT)
     .query({username: "test", password: "newtestpass"})
@@ -137,3 +113,4 @@ test(`${SUITE_NAME} successfully`, async ({client, assert}) => {
   response.assertStatus(200);
   assert.hasAllKeys(response.body, ["type", "token", "refreshToken", "expiresIn", "user"]);
 });
+

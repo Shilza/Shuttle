@@ -10,7 +10,7 @@ trait('DatabaseTransactions');
 
 const API_FRIENDSHIP = "api/v1/friendships";
 
-test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
+test(`${SUITE_NAME} error 401`, async ({client}) => {
 
   const response = await client
     .delete(`${API_FRIENDSHIP}/follower`)
@@ -19,7 +19,7 @@ test(`${SUITE_NAME} error 401`, async ({client, assert}) => {
   response.assertStatus(401);
 });
 
-test(`${SUITE_NAME} error required validation failed on id`, async ({client, assert}) => {
+test(`${SUITE_NAME} error required validation failed on id`, async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -33,7 +33,7 @@ test(`${SUITE_NAME} error required validation failed on id`, async ({client, ass
   });
 });
 
-test(`${SUITE_NAME} error User does not exists`, async ({client, assert}) => {
+test(`${SUITE_NAME} error User does not exists`, async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
@@ -48,7 +48,7 @@ test(`${SUITE_NAME} error User does not exists`, async ({client, assert}) => {
   });
 });
 
-test(`${SUITE_NAME} error User is not follow you`, async ({client, assert}) => {
+test(`${SUITE_NAME} error User is not follow you`, async ({client}) => {
   const user = await User.find(1);
 
   const response = await client
