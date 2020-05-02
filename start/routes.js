@@ -15,6 +15,7 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
+const ace = require('@adonisjs/ace')
 
 Route.group(() => {
   Route.post('register', 'AuthController.register');
@@ -138,12 +139,12 @@ if (process.env.NODE_ENV === 'testing') {
   // TEST ENDPOINTS
   Route.group(() => {
     Route.post('setDatabase', () => {
-      execSync("adonis migration:run");
-      execSync("adonis seed");
+      ace.call('migration:run');
+      ace.call('seed');
     });
 
     Route.post('resetDatabase', () => {
-      execSync("adonis migration:reset");
+      ace.call('migration:reset');
     });
   }).prefix('api/v1');
 }
