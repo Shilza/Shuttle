@@ -80,7 +80,7 @@ class AuthController {
       .withRefreshToken()
       .generate(user);
 
-    jwt.expiresIn = Number(moment().unix()) + Config.get('app.jwt.ttl');
+    jwt.expiresIn = Number(moment().unix() * 1000) + Config.get('app.jwt.ttl');
     jwt.user = user;
     jwt.user.notificationsCount = await NotificationsService.getNotificationsCount(user.id);
     jwt.user.unreadDialogs = await UsersService.unreadDialogs(user.id);
@@ -130,7 +130,7 @@ class AuthController {
     const jwt = await auth
       .newRefreshToken()
       .generateForRefreshToken(request.input('refreshToken'));
-    jwt.expiresIn = Number(moment().unix()) + Config.get('app.jwt.ttl');
+    jwt.expiresIn = Number(moment().unix() * 1000) + Config.get('app.jwt.ttl');
 
     response.json(jwt);
   }
