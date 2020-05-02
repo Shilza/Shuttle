@@ -76,8 +76,8 @@ class NotificationsService {
           comments.rows.forEach(comment => {
             if (comment.id === item.entity_id) {
               let text = comment.text;
-              if (comment.text.length > 20)
-                text = text.slice(0, 20) + '...';
+              if (comment.text.length > 80)
+                text = text.slice(0, 80) + '...';
               item.text = text;
               let post = posts.rows.find(post => post.id === comment.post_id);
               item.post_src = post && post.src;
