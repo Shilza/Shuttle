@@ -19,7 +19,7 @@ const ace = require('@adonisjs/ace');
 
 Route.group(() => {
   // Комментируем, тк временно регистрация будет закрыта
-  // Route.post('register', 'AuthController.register');
+  Route.post('register', 'AuthController.register');
   Route.post('login', 'AuthController.login');
 }).prefix('api/v1/auth');
 
