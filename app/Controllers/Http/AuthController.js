@@ -15,6 +15,11 @@ class AuthController {
     const Event = use('Event');
     const {validate} = use('CValidator');
 
+    // Врменно убираем возможность регистрации
+    return response.status(400).json({
+      message: 'Registration temporary is blocked'
+    });
+
     const rules = {
       email: 'required|email|unique:users,email',
       username: 'required|min:2|max:12|regex:^[a-z0-9]+$|unique:users,username',
