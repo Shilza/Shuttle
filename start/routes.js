@@ -15,10 +15,11 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
-const ace = require('@adonisjs/ace')
+const ace = require('@adonisjs/ace');
 
 Route.group(() => {
-  Route.post('register', 'AuthController.register');
+  // Комментируем, тк временно регистрация будет закрыта
+  // Route.post('register', 'AuthController.register');
   Route.post('login', 'AuthController.login');
 }).prefix('api/v1/auth');
 
